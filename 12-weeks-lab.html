@@ -1,0 +1,1336 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SOUND DESIGN LAB | 発音記号を、使える武器に</title>
+    <meta
+      name="description"
+      content="SOUND DESIGN LABの12週間プログラム紹介ページ。発音記号を使える武器に変えるための、EPT2回・まりあ担当レッスン・EIGHTの1-on-1コーチング付き集中プログラムです。"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #f6f6f1;
+        --paper: #fffefa;
+        --ink: #111111;
+        --muted: #5a5a52;
+        --line: #141414;
+        --lime: #dbff32;
+        --lime-soft: #f2ffb3;
+        --shadow: 6px 6px 0 var(--lime);
+        --radius: 16px;
+        --phone-width: 430px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        background:
+          radial-gradient(circle at top left, rgba(219, 255, 50, 0.18), transparent 18%),
+          linear-gradient(180deg, #fbfbf7 0%, var(--bg) 100%);
+        color: var(--ink);
+        font-family: "Zen Kaku Gothic New", sans-serif;
+      }
+
+      body {
+        padding: 0 0 2rem;
+      }
+
+      .page {
+        width: min(var(--phone-width), calc(100% - 1rem));
+        margin: 0 auto;
+      }
+
+      .topbar {
+        position: sticky;
+        top: 0.5rem;
+        z-index: 20;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.6rem;
+        margin: 0.55rem auto 0;
+        padding: 0.85rem 0.9rem;
+        width: min(var(--phone-width), calc(100% - 1rem));
+        border: 2px solid var(--line);
+        border-radius: 999px;
+        background: rgba(255, 254, 250, 0.92);
+        backdrop-filter: blur(10px);
+      }
+
+      .brand {
+        font-family: "Montserrat", sans-serif;
+        font-size: 0.95rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        color: var(--ink);
+        text-decoration: none;
+      }
+
+      .topbar a.cta-mini {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.55rem 0.85rem;
+        border: 2px solid var(--line);
+        border-radius: 999px;
+        background: var(--lime);
+        color: var(--ink);
+        font-size: 0.84rem;
+        font-weight: 700;
+        text-decoration: none;
+      }
+
+      section {
+        margin-top: 0.95rem;
+      }
+
+      .card {
+        border: 2px solid var(--line);
+        border-radius: var(--radius);
+        background: var(--paper);
+        padding: 1rem;
+        box-shadow: var(--shadow);
+      }
+
+      .label-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+      }
+
+      .tag {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.22rem 0.5rem;
+        border: 1.5px solid var(--line);
+        border-radius: 999px;
+        background: #fff;
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+      }
+
+      .tag.highlight {
+        background: var(--lime);
+      }
+
+      .hero {
+        padding: 1rem;
+      }
+
+      .hero h1 {
+        margin: 0.9rem 0 0;
+        font-family: "Montserrat", sans-serif;
+        font-size: 2rem;
+        line-height: 1.02;
+        letter-spacing: -0.03em;
+      }
+
+      .hero h1 span {
+        display: block;
+        margin-top: 0.3rem;
+        font-family: "Zen Kaku Gothic New", sans-serif;
+        font-size: 1.18rem;
+        line-height: 1.35;
+      }
+
+      .hero p {
+        margin: 0.95rem 0 0;
+        line-height: 1.72;
+      }
+
+      .hero-thumb {
+        width: 100%;
+        margin-top: 0.95rem;
+        border: 2px solid var(--line);
+        border-radius: 14px;
+        display: block;
+      }
+
+      .hero-embed-wrap {
+        margin-top: 0.95rem;
+        border: 2px solid var(--line);
+        border-radius: 14px;
+        overflow: hidden;
+        background: #fff;
+      }
+
+      .hero-embed {
+        width: 100%;
+        aspect-ratio: 16 / 10;
+        border: 0;
+        display: block;
+        background: #f2f2ec;
+      }
+
+      .hero-embed-note {
+        margin-top: 0.7rem;
+        padding: 0.75rem 0.85rem;
+        border: 2px solid var(--line);
+        border-radius: 12px;
+        background: var(--lime-soft);
+        font-size: 0.88rem;
+        line-height: 1.65;
+      }
+
+      .collab-visual {
+        width: 100%;
+        margin-top: 0.7rem;
+        border: 2px solid var(--line);
+        border-radius: 12px;
+        display: block;
+      }
+
+      .collab-video {
+        width: 100%;
+        margin-top: 0.7rem;
+        border: 2px solid var(--line);
+        border-radius: 12px;
+        aspect-ratio: 16 / 9;
+      }
+
+      .collab-flow {
+        margin-top: 0.8rem;
+        display: grid;
+        gap: 0.55rem;
+      }
+
+      .collab-item {
+        border-top: 1px solid #dce78a;
+        padding-top: 0.65rem;
+      }
+
+      .collab-item p {
+        margin: 0;
+        line-height: 1.62;
+      }
+
+      .collab-lead {
+        margin: 0.72rem 0 0;
+        line-height: 1.66;
+      }
+
+      .collab-example {
+        margin-top: 0;
+        padding: 0.35rem 0.8rem;
+        border: 2px solid var(--line);
+        border-radius: 12px;
+        background: var(--lime-soft);
+      }
+
+      .collab-example-grid {
+        margin-top: 0.8rem;
+        display: grid;
+        gap: 0.6rem;
+      }
+
+      .collab-example p {
+        margin: 0;
+        line-height: 1.62;
+      }
+
+      .collab-example details {
+        padding: 0.52rem 0;
+      }
+
+      .collab-example summary {
+        list-style: none;
+        cursor: pointer;
+        position: relative;
+        padding: 0.18rem 1.8rem 0.18rem 0;
+        font-weight: 700;
+        line-height: 1.5;
+      }
+
+      .collab-example summary::-webkit-details-marker {
+        display: none;
+      }
+
+      .collab-example summary::after {
+        content: "+";
+        position: absolute;
+        right: 0.1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 1.12rem;
+        font-weight: 700;
+      }
+
+      .collab-example details[open] summary::after {
+        content: "-";
+      }
+
+      .collab-example .example-lines {
+        margin-top: 0.35rem;
+      }
+
+      .collab-example .example-lines p + p {
+        margin-top: 0.2rem;
+      }
+
+      .collab-highlight {
+        margin: 1.15rem auto 1rem;
+        padding: 0;
+        border: 0;
+        background: transparent;
+        width: fit-content;
+        padding-bottom: 0.08rem;
+        border-bottom: 6px solid var(--lime);
+        font-size: 1.32rem;
+        font-weight: 800;
+        line-height: 1.35;
+        text-align: left;
+        letter-spacing: 0.01em;
+      }
+
+      .collab-subtext {
+        margin: 0.28rem 0 0;
+        text-align: left;
+        line-height: 1.62;
+      }
+
+      .cta-row {
+        display: grid;
+        gap: 0.65rem;
+        margin-top: 1rem;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        min-height: 48px;
+        padding: 0.75rem 1rem;
+        border: 2px solid var(--line);
+        border-radius: 999px;
+        font-weight: 700;
+        text-decoration: none;
+      }
+
+      .btn.primary {
+        background: var(--line);
+        color: #fff;
+      }
+
+      .btn.secondary {
+        background: var(--lime);
+        color: var(--ink);
+      }
+
+      .oni-btn {
+        border: 2px solid #3a0f00;
+        background:
+          linear-gradient(180deg, #ffba3a 0%, #ff6a00 46%, #8f1a00 100%);
+        color: #fff7df;
+        text-shadow: 0 1px 0 rgba(0, 0, 0, 0.45);
+        box-shadow:
+          0 0 0 1px rgba(255, 199, 102, 0.35) inset,
+          0 9px 16px rgba(115, 23, 0, 0.38);
+      }
+
+      .oni-btn:hover {
+        filter: brightness(1.03);
+      }
+
+      .stat-grid,
+      .issue-grid,
+      .goal-grid,
+      .program-grid,
+      .support-grid,
+      .class-grid,
+      .price-grid {
+        display: grid;
+        gap: 0.75rem;
+      }
+
+      .stat-grid,
+      .issue-grid,
+      .goal-grid,
+      .program-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .goal-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .mini-card,
+      .issue-card,
+      .goal-card,
+      .program-card,
+      .support-card,
+      .class-card,
+      .price-card,
+      .note-card {
+        border: 2px solid var(--line);
+        border-radius: 14px;
+        background: #fff;
+        padding: 0.9rem;
+      }
+
+      .mini-card p:first-child,
+      .program-card p:first-child,
+      .class-card p:first-child,
+      .note-card p:first-child {
+        margin: 0;
+        font-size: 0.73rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+      }
+
+      .mini-card h3,
+      .program-card h3,
+      .class-card h3,
+      .price-card h3 {
+        margin: 0.45rem 0 0;
+        font-size: 1rem;
+        line-height: 1.4;
+      }
+
+      .mini-card strong {
+        display: block;
+        margin-top: 0.35rem;
+        font-family: "Montserrat", sans-serif;
+        font-size: 1.15rem;
+      }
+
+      .mini-card a {
+        display: inline-flex;
+        margin-top: 0.55rem;
+        font-size: 0.82rem;
+        font-weight: 700;
+        color: var(--ink);
+      }
+
+      .section-head {
+        margin-bottom: 0.8rem;
+      }
+
+      .section-head .eyebrow {
+        display: inline-block;
+        padding: 0.16rem 0.5rem;
+        border: 1.5px solid var(--line);
+        background: var(--lime);
+        font-size: 0.72rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+      }
+
+      .section-head h2 {
+        margin: 0.55rem 0 0;
+        font-size: 1.55rem;
+        line-height: 1.18;
+      }
+
+      .section-head p {
+        margin: 0.6rem 0 0;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      .issue-card,
+      .goal-card,
+      .program-card,
+      .support-card,
+      .class-card,
+      .price-card,
+      .note-card {
+        position: relative;
+      }
+
+      .issue-card::before,
+      .goal-card::before,
+      .program-card::before,
+      .support-card::before,
+      .class-card::before,
+      .price-card::before {
+        content: "";
+        position: absolute;
+        top: 0.7rem;
+        right: 0.7rem;
+        width: 10px;
+        height: 10px;
+        border-radius: 999px;
+        background: var(--lime);
+        border: 1.5px solid var(--line);
+      }
+
+      .issue-card {
+        background: var(--lime-soft);
+      }
+
+      .goal-card {
+        padding: 0;
+        overflow: hidden;
+        background: var(--lime-soft);
+      }
+
+      .goal-card::before {
+        display: none;
+      }
+
+      .goal-card summary {
+        list-style: none;
+        cursor: pointer;
+        position: relative;
+        padding: 0.9rem 2.3rem 0.9rem 0.9rem;
+        font-weight: 700;
+        line-height: 1.5;
+      }
+
+      .goal-card summary::-webkit-details-marker {
+        display: none;
+      }
+
+      .goal-card summary::after {
+        content: "+";
+        position: absolute;
+        right: 0.85rem;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 1.18rem;
+        font-weight: 700;
+      }
+
+      .goal-card[open] summary::after {
+        content: "-";
+      }
+
+      .goal-card p {
+        margin: 0;
+        padding: 0 0.9rem 0.9rem;
+        line-height: 1.66;
+      }
+
+      .issue-card p,
+      .goal-card p,
+      .program-card p:last-child,
+      .support-card p,
+      .class-card p:last-of-type,
+      .price-card p,
+      .note-card p {
+        margin: 0;
+        line-height: 1.66;
+      }
+
+      .issue-card strong,
+      .goal-card strong,
+      .support-card strong {
+        display: block;
+        margin-bottom: 0.35rem;
+      }
+
+      .audio-card audio {
+        width: 100%;
+      }
+
+      .before-after-list {
+        grid-template-columns: 1fr;
+      }
+
+      .ba-audio-group {
+        margin-top: 0.72rem;
+        display: grid;
+        gap: 0.65rem;
+      }
+
+      .ba-audio-item {
+        border: 0;
+        border-radius: 0;
+        background: transparent;
+        padding: 0;
+      }
+
+      .ba-audio-item.after {
+        background: transparent;
+      }
+
+      .ba-audio-label {
+        margin: 0 0 1.05rem;
+        font-size: 0.85rem;
+        font-weight: 700;
+        line-height: 1.4;
+      }
+
+      .audio-card .voice {
+        margin-top: 0.7rem;
+        font-size: 0.88rem;
+        color: var(--muted);
+      }
+
+      .ba-note {
+        margin: 0.75rem 0 0;
+        font-size: 0.82rem;
+        line-height: 1.62;
+        color: var(--muted);
+      }
+
+      .timeline {
+        display: grid;
+        gap: 0.7rem;
+      }
+
+      .timeline details {
+        border: 2px solid var(--line);
+        border-radius: 14px;
+        background: #fff;
+        overflow: hidden;
+      }
+
+      .timeline summary {
+        list-style: none;
+        cursor: pointer;
+        padding: 0.9rem 2.4rem 0.9rem 0.9rem;
+        position: relative;
+      }
+
+      .timeline summary::-webkit-details-marker {
+        display: none;
+      }
+
+      .timeline summary::after {
+        content: "+";
+        position: absolute;
+        right: 0.85rem;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 1.2rem;
+        font-weight: 700;
+      }
+
+      .timeline details[open] summary::after {
+        content: "-";
+      }
+
+      .timeline .week-label {
+        display: block;
+        font-size: 0.74rem;
+        font-weight: 800;
+        letter-spacing: 0.05em;
+        color: #49493f;
+      }
+
+      .timeline .week-title {
+        display: block;
+        margin-top: 0.25rem;
+        font-size: 0.98rem;
+        font-weight: 700;
+        line-height: 1.5;
+      }
+
+      .timeline details p {
+        margin: 0;
+        padding: 0 0.9rem 0.9rem;
+        line-height: 1.68;
+        color: var(--muted);
+      }
+
+      .support-card img,
+      .support-card iframe {
+        width: 100%;
+        margin-top: 0.7rem;
+        border: 2px solid var(--line);
+        border-radius: 12px;
+      }
+
+      .support-card iframe {
+        aspect-ratio: 16 / 9;
+      }
+
+      .support-inline-cta {
+        margin-top: 0.78rem;
+        padding: 0.75rem 0.8rem;
+        border: 2px solid var(--line);
+        border-radius: 12px;
+        background: var(--lime-soft);
+      }
+
+      .support-inline-cta p {
+        margin: 0;
+        font-size: 0.87rem;
+        line-height: 1.63;
+      }
+
+      .support-inline-cta a {
+        margin-top: 0.62rem;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        min-height: 44px;
+        padding: 0.62rem 0.8rem;
+        border: 2px solid var(--line);
+        border-radius: 999px;
+        background: #fff;
+        color: var(--ink);
+        text-decoration: none;
+        font-weight: 700;
+      }
+
+      .support-inline-cta .small-note {
+        margin: 0.45rem 0 0;
+        font-size: 0.74rem;
+        line-height: 1.55;
+        color: #5c5c52;
+      }
+
+      .support-grid {
+        gap: 0;
+      }
+
+      .support-grid > .support-card {
+        border: 0;
+        border-top: 1px solid #dce78a;
+        border-radius: 0;
+        background: transparent;
+        padding: 0.95rem 0.1rem;
+      }
+
+      .support-grid > .support-card:last-child {
+        border-bottom: 1px solid #dce78a;
+      }
+
+      .support-grid > .support-card::before {
+        display: none;
+      }
+
+      .support-grid .support-inline-cta {
+        margin-top: 0.72rem;
+        padding: 0.2rem 0;
+        border: 0;
+        border-radius: 0;
+        background: transparent;
+      }
+
+      .program-flow-image {
+        width: 100%;
+        margin: 0.8rem 0;
+        border: 0;
+        border-radius: 0;
+        display: block;
+        background: transparent;
+      }
+
+      .class-top,
+      .price-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.5rem;
+      }
+
+      .status {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.22rem 0.52rem;
+        border: 1.5px solid var(--line);
+        border-radius: 999px;
+        font-size: 0.7rem;
+        font-weight: 800;
+        background: var(--lime);
+      }
+
+      .status.low {
+        background: #fff;
+      }
+
+      .class-card a,
+      .price-card a {
+        margin-top: 0.8rem;
+        display: inline-flex;
+        color: var(--ink);
+        font-weight: 700;
+      }
+
+      .price-cta-row {
+        margin-top: 0.8rem;
+        display: grid;
+        gap: 0.55rem;
+      }
+
+      .price-cta-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        min-height: 44px;
+        padding: 0.62rem 0.8rem;
+        border: 2px solid var(--line);
+        border-radius: 999px;
+        background: #fff;
+        color: var(--ink);
+        text-decoration: none;
+        font-weight: 700;
+      }
+
+      .price-card ul {
+        margin: 0.8rem 0 0;
+        padding-left: 1.1rem;
+      }
+
+      .price-card li {
+        margin-top: 0.35rem;
+        line-height: 1.6;
+      }
+
+      .price-card li.bonus-item {
+        font-weight: 700;
+      }
+
+      .price-card li.bonus-note {
+        margin-top: 0.15rem;
+        margin-left: -1.05rem;
+        list-style: none;
+        font-size: 0.76rem;
+        line-height: 1.55;
+        color: #57574d;
+      }
+
+      .amount {
+        margin-top: 0.7rem;
+        font-family: "Montserrat", sans-serif;
+        font-size: 2rem;
+        line-height: 1;
+      }
+
+      .amount span {
+        font-family: "Zen Kaku Gothic New", sans-serif;
+        font-size: 0.88rem;
+        margin-left: 0.2rem;
+      }
+
+      .split {
+        margin-top: 0.75rem;
+        padding: 0.8rem;
+        border: 2px solid var(--line);
+        border-radius: 12px;
+        background: var(--lime-soft);
+      }
+
+      .split small {
+        display: block;
+        font-size: 0.74rem;
+        font-weight: 800;
+        letter-spacing: 0.05em;
+      }
+
+      .split strong {
+        display: block;
+        margin-top: 0.22rem;
+        font-size: 1.2rem;
+      }
+
+      .split .split-note {
+        margin: 0.45rem 0 0;
+        font-size: 0.72rem;
+        line-height: 1.55;
+        color: #525248;
+      }
+
+      .note-card {
+        background: var(--lime-soft);
+      }
+
+      .note-card .small-note {
+        margin-top: 0.45rem;
+        font-size: 0.76rem;
+        line-height: 1.55;
+        color: #5c5c52;
+      }
+
+      .faq-list {
+        display: grid;
+        gap: 0.7rem;
+      }
+
+      .faq-list details {
+        border: 2px solid var(--line);
+        border-radius: 14px;
+        background: #fff;
+        overflow: hidden;
+      }
+
+      .faq-list summary {
+        list-style: none;
+        cursor: pointer;
+        padding: 0.9rem 2.2rem 0.9rem 0.9rem;
+        position: relative;
+        font-weight: 700;
+        line-height: 1.5;
+      }
+
+      .faq-list summary::-webkit-details-marker {
+        display: none;
+      }
+
+      .faq-list summary::after {
+        content: "+";
+        position: absolute;
+        right: 0.9rem;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 1.15rem;
+      }
+
+      .faq-list details[open] summary::after {
+        content: "-";
+      }
+
+      .faq-list p {
+        margin: 0;
+        padding: 0 0.9rem 0.9rem;
+        color: var(--muted);
+        line-height: 1.68;
+      }
+
+      .final {
+        text-align: left;
+      }
+
+      .final .btn {
+        margin-top: 0.9rem;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#top">SOUND DESIGN LAB</a>
+      <a
+        class="cta-mini"
+        href="https://mosh.jp/services/cdbda261116343b49d4cce0a77700ecc?openExternalBrowser=1"
+        target="_blank"
+        rel="noopener noreferrer"
+        >申し込む</a
+      >
+    </header>
+
+    <main id="top" class="page">
+      <section class="card hero">
+        <div class="label-row">
+          <span class="tag">12 WEEKS</span>
+          <span class="tag">SPRING 2026</span>
+        </div>
+        <h1>
+          ご提案資料はこちら
+          <span>全体像をスライドで確認できます。</span>
+        </h1>
+        <div class="hero-embed-wrap">
+          <iframe
+            class="hero-embed"
+            src="https://www.canva.com/design/DAHFL768wQc/hmb93o2Xun7wZ63DfsrBAw/view?utm_content=DAHFL768wQc&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h30796a3891"
+            title="SOUND DESIGN LAB ご提案資料"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+        <p class="hero-embed-note">埋め込み表示が環境によって不安定な場合があります。その場合は下のボタンから直接ご確認ください。</p>
+
+        <div class="cta-row">
+          <a
+            class="btn secondary"
+            href="Sozai/SOUND%20DESIGN%20LAB%EF%BD%9C2026.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            >うまく見れない場合はこちら</a
+          >
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="section-head">
+          <span class="eyebrow">SPECIAL COLLABORATION</span>
+          <h2>スペシャルコラボオファー</h2>
+        </div>
+        <img class="collab-visual" src="Sozai/oni-camp.webp" alt="鬼キャンのスペシャルコラボ案内" />
+        <iframe
+          class="collab-video"
+          src="https://www.youtube.com/embed/x73grDqCpgE"
+          title="鬼キャン紹介動画"
+          loading="lazy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+        ></iframe>
+
+        <p class="collab-lead">4月5日（日）10:00〜17:00の鬼キャンに参加すると次の特典がつきます。猛トレ母音バスターズの参加者と鬼キャン両方に参加される方のみへのオファーです。</p>
+        <h2 class="collab-highlight">🎁 コラボ特別還元</h2>
+        <p class="collab-subtext">鬼キャンにご参加の場合、SOUND DESIGN LAB（12週間講座）の価格が割引になります。</p>
+
+        <div class="collab-example-grid">
+          <div class="collab-example">
+          <details>
+            <summary>例1：鬼キャン見学コース（19,800円）で参加の場合</summary>
+            <div class="example-lines">
+              <p>・12週間見学プラン：0円（税込）</p>
+              <p>・スタンダードプラン：75, 150円（税込）</p>
+            </div>
+          </details>
+          </div>
+          <div class="collab-example">
+          <details>
+            <summary>例2：鬼キャン矯正付コース（25,800円）で参加の場合</summary>
+            <div class="example-lines">
+              <p>・12週間見学プラン：0円（税込）</p>
+              <p>・スタンダードプラン：69,150円（税込）</p>
+            </div>
+          </details>
+          </div>
+        </div>
+
+        <div class="cta-row">
+          <a
+            class="btn oni-btn"
+            href="https://ei-ma-ri.studio.site/oni-camp"
+            target="_blank"
+            rel="noopener noreferrer"
+            >鬼キャンの詳細を見る</a
+          >
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="section-head">
+          <span class="eyebrow">BEFORE / AFTER</span>
+          <h2>卒業生のあゆみ</h2>
+          <p>実際の課題提出音声の一部です。変化のイメージを掴んでください。</p>
+        </div>
+        <div class="program-grid before-after-list">
+          <article class="support-card audio-card">
+            <p>CASE 01</p>
+            <h3>YOSHIKIさん（主婦）</h3>
+            <div class="ba-audio-group">
+              <div class="ba-audio-item before">
+                <p class="ba-audio-label">Before</p>
+                <audio controls preload="none">
+                  <source src="BA/y_before.mp3" type="audio/mpeg" />
+                </audio>
+              </div>
+              <div class="ba-audio-item after">
+                <p class="ba-audio-label">After</p>
+                <audio controls preload="none">
+                  <source src="BA/y_after.mp3" type="audio/mpeg" />
+                </audio>
+              </div>
+            </div>
+            <p class="voice">
+              発音に自信はなかったのですが練習をするたびにうまくなるのを実感できました。現在引っ越したニュージーランドでは、発音で聞き返されることがなくなって感動しています！！
+            </p>
+          </article>
+          <article class="support-card audio-card">
+            <p>CASE 02</p>
+            <h3>MIWAさん（自営業）</h3>
+            <div class="ba-audio-group">
+              <div class="ba-audio-item before">
+                <p class="ba-audio-label">Before</p>
+                <audio controls preload="none">
+                  <source src="BA/m_before.m4a" type="audio/mp4" />
+                </audio>
+              </div>
+              <div class="ba-audio-item after">
+                <p class="ba-audio-label">After</p>
+                <audio controls preload="none">
+                  <source src="BA/m_after.m4a" type="audio/mp4" />
+                </audio>
+              </div>
+            </div>
+            <p class="voice">
+              外国人と毎月交流する機会があるのですが、発音を褒められることが増えました！単語力のなさにヒーヒーは変わらずなので今はフレーズを覚えていますが、新しい言葉でも発音するのは楽になったので、感謝しております笑
+            </p>
+          </article>
+        </div>
+        <p class="ba-note">※ 効果には個人差があります。学習時間と継続状況によって変化の幅は異なります。</p>
+      </section>
+
+      <section class="card">
+        <div class="section-head">
+          <span class="eyebrow">PROGRAM FLOW</span>
+          <img class="program-flow-image" src="12-weeks-images/5.png" alt="進化版12週間カリキュラムの概要図" loading="lazy" />
+        </div>
+        <div class="timeline" style="margin-top: 0.8rem">
+          <details>
+            <summary>
+              <span class="week-label">Week 0</span>
+              <span class="week-title">発音記号動画の確認</span>
+            </summary>
+            <p>音の出し方を先に揃え、レッスン開始前の土台を作ります。</p>
+          </details>
+          <details>
+            <summary>
+              <span class="week-label">Week 1</span>
+              <span class="week-title">EPT Basic 受験（1回目）</span>
+            </summary>
+            <p>現状の発音を数値化し、最初に鍛えるべき音を明確化します。</p>
+          </details>
+          <details>
+            <summary>
+              <span class="week-label">Week 2-4</span>
+              <span class="week-title">グループレッスン ×3（まりあ）</span>
+            </summary>
+            <p>100〜120分で基礎音を集中トレーニング。ライブ添削つきです。</p>
+          </details>
+          <details>
+            <summary>
+              <span class="week-label">Week 5</span>
+              <span class="week-title">1-on-1コーチング ×1（EIGHT）</span>
+            </summary>
+            <p>練習の回し方を最適化し、後半戦の学習設計を個別に調整します。</p>
+          </details>
+          <details>
+            <summary>
+              <span class="week-label">Week 6-8</span>
+              <span class="week-title">グループレッスン ×3（まりあ）</span>
+            </summary>
+            <p>前半で見つけた弱点を潰し、再現性を上げるフェーズです。</p>
+          </details>
+          <details>
+            <summary>
+              <span class="week-label">Week 9-12</span>
+              <span class="week-title">仕上げフェーズ</span>
+            </summary>
+            <p>EPT対策、まりあ1-on-1、EIGHT最終コーチング、EPT 2回目で締めます。</p>
+          </details>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="section-head">
+          <span class="eyebrow">SUPPORT</span>
+          <h2>学習が止まらない安心サポート</h2>
+          <p>忙しい週があっても遅れを取り戻せる仕組みを、講座内に組み込んでいます。</p>
+        </div>
+        <div class="support-grid">
+          <article class="support-card">
+            <strong>復習ツール（EIMARI DICTIONARY）</strong>
+            <p>課題・アーカイブを一か所で見直せる専用ツール。必要なレッスンをすぐ検索できます。</p>
+            <div class="support-inline-cta">
+              <p>
+                サンプルはZoomセッションでご体験いただけます。15分のショートコーチングへぜひお越しください。
+              </p>
+              <a href="https://www.jicoo.com/t/eimari/e/1Lt6yoymAH9X" target="_blank" rel="noopener noreferrer"
+                >15分ショートコーチングを予約する</a
+              >
+              <p class="small-note">※ MISSION 09 : 猛トレコーチングの際にご質問いただく形も可能です。</p>
+            </div>
+          </article>
+          <article class="support-card">
+            <strong>予習動画・復習素材</strong>
+            <p>発音記号動画と課題ページを提供。迷った時に戻れる導線を整えています。</p>
+            <iframe
+              src="https://www.youtube.com/embed/aZ_V7WPP8ms"
+              title="予習動画サンプル"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            ></iframe>
+          </article>
+          <article class="support-card">
+            <strong>アーカイブ共有</strong>
+            <p>Zoom開催のレッスンはアーカイブ配布。欠席時でも進行に追いつけますし、レッスンで得た気づきを何度も確認できます。</p>
+            <iframe
+              src="https://www.youtube.com/embed/kPQ0iStYApE"
+              title="アーカイブ共有サンプル"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            ></iframe>
+          </article>
+          <article class="support-card">
+            <strong>コミュニティ参加</strong>
+            <p>卒業後も在籍可能なSlackコミュニティに招待。継続学習をサポートします。</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="schedule" class="card">
+        <div class="section-head">
+          <span class="eyebrow">CLASS SCHEDULE</span>
+          <h2>今募集中のクラス</h2>
+          <p>先にクラス枠を押さえてから、詳細カリキュラムを確認する流れがおすすめです。</p>
+        </div>
+        <div class="class-grid">
+          <article class="class-card">
+            <div class="class-top">
+              <p>FRIDAY</p>
+              <span class="status low">残席わずか</span>
+            </div>
+            <h3>金曜21時クラス</h3>
+            <p>金曜日21:00スタート<br />※ 初回レッスン予定日：2026年4月24日（金）</p>
+            <a
+              href="https://mosh.jp/services/cdbda261116343b49d4cce0a77700ecc?openExternalBrowser=1"
+              target="_blank"
+              rel="noopener noreferrer"
+              >金曜クラスに申し込む</a
+            >
+          </article>
+          <article class="class-card">
+            <div class="class-top">
+              <p>SUNDAY</p>
+              <span class="status">募集中</span>
+            </div>
+            <h3>日曜13時クラス</h3>
+            <p>日曜日13:00スタート<br />※ 初回レッスン予定日：2026年4月26日（日）</p>
+            <a
+              href="https://mosh.jp/services/cdbda261116343b49d4cce0a77700ecc?openExternalBrowser=1"
+              target="_blank"
+              rel="noopener noreferrer"
+              >日曜クラスで申し込む</a
+            >
+          </article>
+        </div>
+        <article class="note-card" style="margin-top: 0.75rem">
+          <p>NOTE</p>
+          <p style="margin-top: 0.45rem">
+            日曜クラスは金曜クラス日程に対して<strong>+2日</strong>のスケジュールです。予定が合わない場合、それぞれのクラスに振替も可能です。
+          </p>
+          <p class="small-note">※参加者が定員を超える場合、振替時の添削は提供できません。</p>
+        </article>
+      </section>
+
+      <section class="card">
+        <div class="section-head">
+          <span class="eyebrow">PRICE</span>
+          <h2>料金プラン</h2>
+          <p>猛トレ参加者向けの特別案内価格です。</p>
+          <p style="font-size: 0.78rem; color: #5c5c52">※鬼キャンへの参加をせず、SOUND DESIGN LABに申し込むことも可能です。</p>
+        </div>
+        <div class="price-grid">
+          <article class="price-card">
+            <div class="price-top">
+              <p>PLAN 01</p>
+              <span class="status low">まず試したい方向け</span>
+            </div>
+            <h3>見学プラン</h3>
+            <p class="amount">14,800<span>円（税込）</span></p>
+            <ul>
+              <li>レッスンアーカイブ視聴</li>
+              <li>スライド閲覧</li>
+              <li>課題ページ閲覧権利</li>
+              <li>後日アップグレード可能（差額対応）</li>
+              <li>視聴期限：共有日から14日間</li>
+            </ul>
+            <a
+              href="https://mosh.jp/services/f8cec8bbd01a4941abbddb5f7f24e2d3?openExternalBrowser=1"
+              target="_blank"
+              rel="noopener noreferrer"
+              >見学クラスに申し込む</a
+            >
+          </article>
+
+          <article class="price-card">
+            <div class="price-top">
+              <p>PLAN 02</p>
+              <span class="status">本気で改善したい方向け</span>
+            </div>
+            <h3>スタンダードプラン</h3>
+            <p class="amount">94,950<span>円（税込）</span></p>
+            <div class="split">
+              <small>4分割払いもOK</small>
+              <strong>月額 23,738円</strong>
+              <p class="split-note">※割り切れない金額の端数調整のため、一括払いよりも2円高くなっています。</p>
+            </div>
+            <ul>
+              <li>見学プランの全機能</li>
+              <li>まりあグループレッスン6回</li>
+              <li>EPT対策レッスン1回</li>
+              <li>まりあ1-on-1レッスン1回</li>
+              <li>EIGHT 1-on-1コーチング2回</li>
+              <li>EPT Basic受験サポート（2回）</li>
+              <li class="bonus-item">（特典）EIGHT 1-on-1コーチング（週1回）🎁</li>
+              <li class="bonus-note">※ 元々予定している2回と合わせて全12回となります。</li>
+            </ul>
+          </article>
+        </div>
+        <div class="price-cta-row">
+          <a
+            class="price-cta-btn"
+            href="https://mosh.jp/services/cdbda261116343b49d4cce0a77700ecc?openExternalBrowser=1"
+            target="_blank"
+            rel="noopener noreferrer"
+            >金曜コースで申し込む</a
+          >
+          <a
+            class="price-cta-btn"
+            href="https://mosh.jp/services/cdbda261116343b49d4cce0a77700ecc?openExternalBrowser=1"
+            target="_blank"
+            rel="noopener noreferrer"
+            >日曜コースで申し込む</a
+          >
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="section-head">
+          <span class="eyebrow">FAQ</span>
+          <h2>よくある質問</h2>
+        </div>
+        <div class="faq-list">
+          <details>
+            <summary>どんな人におすすめですか？</summary>
+            <p>発音学習に初めて挑戦する方に最適です。英語レベルは問いませんが、中学英文法の基礎理解があると学習効率が上がります。</p>
+          </details>
+          <details>
+            <summary>12週間で本当に伸びますか？</summary>
+            <p>毎週のレッスンに積極的に参加し、レッスン外でも課題にしっかりと取り組むことで伸びます。必要な学習の量は個別で異なるため、学習計画を明確にしておくのがおすすめです。</p>
+          </details>
+          <details>
+            <summary>欠席した場合はどうなりますか？</summary>
+            <p>グループレッスンはアーカイブ共有があり、提出課題でリカバー可能です。1-on-1はやむを得ない事情がある場合は別日調整を行います。</p>
+          </details>
+          <details>
+            <summary>独学経験者にも向いていますか？</summary>
+            <p>向いています。独学で曖昧になりやすい「優先順位」と「修正ポイント」を明確化し、伸びに直結する練習に絞れます。</p>
+          </details>
+          <details>
+            <summary>忙しい週があってもついていけますか？</summary>
+            <p>アーカイブ・課題ページ・コーチングでリカバーしやすい設計です。遅れを最小化する復習の回し方もサポートします。</p>
+          </details>
+        </div>
+      </section>
+
+      <section class="card final">
+        <div class="section-head">
+          <span class="eyebrow">START NOW</span>
+          <h2>発音の土台を、12週間で整えよう</h2>
+          <p>まずは参加しやすいクラス枠を押さえて、12週間の学習リズムをスタートさせましょう。</p>
+        </div>
+        <a
+          class="btn primary"
+          href="https://mosh.jp/services/cdbda261116343b49d4cce0a77700ecc?openExternalBrowser=1"
+          target="_blank"
+          rel="noopener noreferrer"
+          >金曜クラスに申し込む</a
+        >
+        <a
+          class="btn secondary"
+          href="https://mosh.jp/services/cdbda261116343b49d4cce0a77700ecc?openExternalBrowser=1"
+          target="_blank"
+          rel="noopener noreferrer"
+          style="margin-top: 0.7rem"
+          >日曜クラスに申し込む</a
+        >
+        <a
+          class="btn oni-btn"
+          href="https://ei-ma-ri.studio.site/oni-camp"
+          target="_blank"
+          rel="noopener noreferrer"
+          style="margin-top: 0.7rem"
+          >鬼キャンの詳細を見る</a
+        >
+      </section>
+    </main>
+  </body>
+</html>
