@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SOUND DESIGN LAB FAQ | EiMARi</title>
+    <meta
+      name="description"
+      content="SOUND DESIGN LABのよくある質問をまとめたページです。レッスン時間、振替、欠席時の対応、子育て中の参加方法などを確認できます。"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #f6f6f1;
+        --paper: #fffefa;
+        --ink: #111111;
+        --muted: #5a5a52;
+        --line: #141414;
+        --lime: #dbff32;
+        --lime-soft: #f2ffb3;
+        --shadow: 6px 6px 0 var(--lime);
+        --radius: 16px;
+        --phone-width: 430px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        background:
+          radial-gradient(circle at top left, rgba(219, 255, 50, 0.18), transparent 18%),
+          linear-gradient(180deg, #fbfbf7 0%, var(--bg) 100%);
+        color: var(--ink);
+        font-family: "Zen Kaku Gothic New", sans-serif;
+      }
+
+      body {
+        padding: 0 0 7rem;
+      }
+
+      .page {
+        width: min(var(--phone-width), calc(100% - 1rem));
+        margin: 0 auto;
+      }
+
+      .topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.6rem;
+        margin: 0.55rem auto 0;
+        padding: 0.85rem 0.9rem;
+        width: min(var(--phone-width), calc(100% - 1rem));
+        border: 2px solid var(--line);
+        border-radius: 999px;
+        background: rgba(255, 254, 250, 0.92);
+        backdrop-filter: blur(10px);
+      }
+
+      .brand {
+        font-family: "Montserrat", sans-serif;
+        font-size: 0.95rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        color: var(--ink);
+        text-decoration: none;
+      }
+
+      .topbar a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.55rem 0.85rem;
+        border: 2px solid var(--line);
+        border-radius: 999px;
+        background: var(--lime);
+        color: var(--ink);
+        font-size: 0.84rem;
+        font-weight: 700;
+        text-decoration: none;
+      }
+
+      section {
+        margin-top: 0.95rem;
+      }
+
+      .card {
+        border: 2px solid var(--line);
+        border-radius: var(--radius);
+        background: var(--paper);
+        padding: 1rem;
+        box-shadow: var(--shadow);
+      }
+
+      .tag-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+      }
+
+      .tag {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.22rem 0.5rem;
+        border: 1.5px solid var(--line);
+        border-radius: 999px;
+        background: #fff;
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+      }
+
+      .hero h1 {
+        margin: 0.9rem 0 0;
+        font-family: "Montserrat", sans-serif;
+        font-size: 1.9rem;
+        line-height: 1.04;
+        letter-spacing: -0.03em;
+      }
+
+      .hero h1 span {
+        display: block;
+        margin-top: 0.35rem;
+        font-family: "Zen Kaku Gothic New", sans-serif;
+        font-size: 1.08rem;
+        line-height: 1.42;
+      }
+
+      .hero p {
+        margin: 0.95rem 0 0;
+        line-height: 1.72;
+      }
+
+      .schedule-grid {
+        display: grid;
+        gap: 0.9rem;
+      }
+
+      .schedule-card {
+        border: 0;
+        border-radius: 18px;
+        background: #f3f4ea;
+        padding: 0.95rem;
+      }
+
+      .schedule-card.friday-theme {
+        background:
+          linear-gradient(135deg, rgba(116, 238, 206, 0.18) 0%, rgba(255, 255, 255, 0) 42%),
+          linear-gradient(180deg, #f4fffb 0%, #ebfbf6 100%);
+      }
+
+      .schedule-card.friday-theme h3 {
+        color: #178d77;
+      }
+
+      .schedule-card.sunday-theme {
+        background:
+          linear-gradient(135deg, rgba(219, 255, 50, 0.26) 0%, rgba(255, 255, 255, 0) 40%),
+          linear-gradient(180deg, #fcfff0 0%, #f5fadf 100%);
+      }
+
+      .schedule-card.sunday-theme h3 {
+        color: #7aa300;
+      }
+
+      .schedule-card h3 {
+        margin: 0;
+        font-size: 1.05rem;
+        line-height: 1.4;
+      }
+
+      .schedule-card > p {
+        margin: 0.45rem 0 0;
+        line-height: 1.68;
+        color: var(--muted);
+      }
+
+      .schedule-thumb {
+        width: 100%;
+        margin-top: 0.7rem;
+        border: 2px solid var(--line);
+        border-radius: 12px;
+        display: block;
+        background: #fff;
+      }
+
+      .schedule-card.friday-theme .schedule-thumb {
+        border-color: #56cdb5;
+      }
+
+      .schedule-card.sunday-theme .schedule-thumb {
+        border-color: #c9eb52;
+      }
+
+      .schedule-caption {
+        margin: 0.45rem 0 0;
+        font-size: 0.8rem;
+        line-height: 1.6;
+        color: var(--muted);
+      }
+
+      .timeline {
+        margin-top: 0.8rem;
+        display: grid;
+        gap: 0.62rem;
+      }
+
+      .week-card {
+        border: 2px solid var(--line);
+        border-radius: 14px;
+        background: #fff;
+        overflow: hidden;
+      }
+
+      .week-card summary {
+        list-style: none;
+        cursor: pointer;
+        padding: 0.88rem 2.35rem 0.88rem 0.88rem;
+        position: relative;
+      }
+
+      .week-card summary::-webkit-details-marker {
+        display: none;
+      }
+
+      .week-card summary::after {
+        content: "+";
+        position: absolute;
+        right: 0.82rem;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 1.15rem;
+        font-weight: 700;
+      }
+
+      .week-card[open] summary::after {
+        content: "-";
+      }
+
+      .week-label {
+        display: block;
+        font-size: 0.88rem;
+        font-weight: 700;
+        line-height: 1.5;
+      }
+
+      .week-title {
+        display: block;
+        margin-top: 0.18rem;
+        font-size: 1rem;
+        font-weight: 800;
+        line-height: 1.45;
+      }
+
+      .week-card p {
+        margin: 0;
+        padding: 0 0.88rem 0.88rem;
+        color: var(--muted);
+        line-height: 1.68;
+      }
+
+      .schedule-footnote {
+        margin-top: 0.85rem;
+        font-size: 0.84rem;
+        line-height: 1.68;
+        color: var(--muted);
+      }
+
+      .section-head {
+        margin-bottom: 0.8rem;
+      }
+
+      .section-head .eyebrow {
+        display: inline-block;
+        padding: 0.16rem 0.5rem;
+        border: 1.5px solid var(--line);
+        background: var(--lime);
+        font-size: 0.72rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+      }
+
+      .section-head h2 {
+        margin: 0.55rem 0 0;
+        font-size: 1.55rem;
+        line-height: 1.18;
+      }
+
+      .section-head p {
+        margin: 0.6rem 0 0;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      .faq-list {
+        display: grid;
+        gap: 0.72rem;
+      }
+
+      .faq-list details {
+        border: 2px solid var(--line);
+        border-radius: 14px;
+        background: #fff;
+        overflow: hidden;
+      }
+
+      .faq-list summary {
+        list-style: none;
+        cursor: pointer;
+        padding: 0.95rem 2.5rem 0.95rem 0.95rem;
+        position: relative;
+        font-weight: 700;
+        line-height: 1.58;
+      }
+
+      .faq-list summary::-webkit-details-marker {
+        display: none;
+      }
+
+      .faq-list summary::after {
+        content: "+";
+        position: absolute;
+        right: 0.9rem;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 1.15rem;
+      }
+
+      .faq-list details[open] summary::after {
+        content: "-";
+      }
+
+      .faq-list p {
+        margin: 0;
+        padding: 0 0.95rem 0.95rem;
+        color: var(--muted);
+        line-height: 1.72;
+      }
+
+      .note-card {
+        border: 2px solid var(--line);
+        border-radius: 14px;
+        background: var(--lime-soft);
+        padding: 0.95rem;
+      }
+
+      .note-card p {
+        margin: 0;
+        line-height: 1.72;
+      }
+
+      .note-card p + p {
+        margin-top: 0.45rem;
+      }
+
+      .small-note {
+        font-size: 0.82rem;
+        color: var(--muted);
+      }
+
+      .cta-row {
+        margin-top: 0.95rem;
+        display: grid;
+        gap: 0.65rem;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        min-height: 48px;
+        padding: 0.75rem 1rem;
+        border: 2px solid var(--line);
+        border-radius: 999px;
+        font-weight: 700;
+        text-decoration: none;
+      }
+
+      .btn.primary {
+        background: var(--line);
+        color: #fff;
+      }
+
+      .btn.secondary {
+        background: var(--lime);
+        color: var(--ink);
+      }
+
+      .floating-cta {
+        position: fixed;
+        left: 50%;
+        bottom: 0.75rem;
+        z-index: 30;
+        transform: translateX(-50%);
+        width: min(var(--phone-width), calc(100% - 1rem));
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.5rem;
+        padding: 0.55rem;
+        border: 2px solid var(--line);
+        border-radius: 18px;
+        background: rgba(255, 254, 250, 0.96);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 12px 24px rgba(17, 17, 17, 0.12);
+      }
+
+      .floating-cta .btn {
+        min-height: 38px;
+        padding: 0.5rem 0.7rem;
+        font-size: 0.84rem;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="index.html">SOUND DESIGN LAB</a>
+      <a href="index.html">講座ページへ</a>
+    </header>
+
+    <main class="page">
+      <section class="card hero">
+        <div class="tag-row">
+          <span class="tag">FAQ</span>
+          <span class="tag">SPRING 2026</span>
+        </div>
+        <h1>
+          よくある質問
+          <span>受講前に気になりやすいポイントを、先にまとめて確認できます。</span>
+        </h1>
+        <p>
+          レッスン時間、振替のしやすさ、欠席時のフォロー、子育て中の参加スタイルなど、
+          SOUND DESIGN LABについてよくいただくご質問をまとめました。
+        </p>
+      </section>
+
+      <section class="card">
+        <div class="section-head">
+          <span class="eyebrow">FAQ</span>
+          <h2>よくいただく質問</h2>
+          <p>詳細は＋をタップしてご確認ください。</p>
+        </div>
+        <div class="faq-list">
+          <details>
+            <summary>レッスンの時間はどれくらいですか？</summary>
+            <p>
+              Sound Design Labの1回のレッスンは、基本的に約2時間です。本編100〜120分に加えて、最後に任意参加のQ&amp;Aがあります。
+            </p>
+            <p>
+              金：21:00〜23:00ごろ<br />
+              日：13:00〜15:00ごろ
+            </p>
+            <p>
+              Q&amp;Aは数分で終わることもあれば、内容によっては数十分になることもありますが、基本的には2時間ほどで終了します。
+            </p>
+          </details>
+
+          <details>
+            <summary>子育て中でも参加できますか？途中入退室やカメラOFFは大丈夫ですか？</summary>
+            <p>
+              大丈夫です。子育て中の方も多く参加されることを前提に、途中入退室OK、カメラON・OFFも自由でご参加いただけます。
+            </p>
+            <p>
+              たとえば「寝かしつけ中は耳だけ参加して、落ち着いたらカメラをONにする」といった形でも問題ありません。無理のない参加スタイルで進めていただけます。
+            </p>
+          </details>
+
+          <details>
+            <summary>振替はどのくらい自由にできますか？</summary>
+            <p>
+              振替は、回数は何回でもOKです。参加・欠席の場合はともに10分前を目処にお知らせください。
+            </p>
+            <p>
+              ただし、当日の時点で参加者数に余裕がない場合は、振替自体はできても添削の提供が難しいことがあります。
+            </p>
+            <p>
+              確実に添削つきで参加したい場合は、お申し込み時のクラスでお越しいただくようお願い申し上げます。
+            </p>
+            <p>
+              あるいはレッスン終了後のQ&amp;Aセッションタイムで、レッスン中に確認したいと思った単語やフレーズの添削を希望ください。時間の許す限り対応可能です。
+            </p>
+          </details>
+
+          <details>
+            <summary>仕事が長引いた場合に当日の連絡で別のクラスへ振替できますか？</summary>
+            <p>
+              可能です。例えば金曜に申し込んだうえで、仕事の都合で参加が難しくなった場合に、日曜クラスへの振替をご相談いただけます。
+            </p>
+            <p>
+              ただし、当日の時点で参加者数に余裕がない場合は、振替自体はできても添削の提供が難しいことがあります。
+            </p>
+            <p>
+              その場合はレッスン終了後のQ&amp;Aセッションタイムで、レッスン中に確認したいと思った単語やフレーズの添削を希望ください。時間の許す限り対応可能です。
+            </p>
+          </details>
+          <details>
+            <summary>欠席した場合はどうなりますか？</summary>
+            <p>
+              グループレッスンはアーカイブ共有があり、提出課題でリカバー可能です。欠席した週も、レッスン内容を追いかけやすい設計になっています。
+            </p>
+            <p>
+              もちろん別のクラスに振り替えていただくことも可能です。
+            </p>
+          </details>
+
+          <details>
+            <summary>12週間で本当に伸びますか？</summary>
+            <p>
+              毎週のレッスンに積極的に参加し、レッスン外でも課題にしっかりと取り組むことで伸びます。必要な学習量は個別で異なるため、学習計画を明確にしておくのがおすすめです。
+            </p>
+          </details>
+
+          <details>
+            <summary>独学経験者にも向いていますか？</summary>
+            <p>
+              向いています。独学で曖昧になりやすい「優先順位」と「修正ポイント」を整理し、伸びに直結する練習に絞って取り組みやすくなります。
+            </p>
+          </details>
+
+          <details>
+            <summary>どんな人におすすめですか？</summary>
+            <p>
+              発音学習に初めて挑戦する方に特におすすめです。英語レベルは問いませんが、中学英文法の基礎理解があると学習効率が上がります。
+            </p>
+          </details>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="section-head">
+          <span class="eyebrow">SCHEDULE</span>
+          <h2>スケジュールまとめ</h2>
+        </div>
+        <div class="schedule-grid">
+          <article id="friday-schedule" class="schedule-card friday-theme">
+            <h3>金曜21時クラス</h3>
+            <p>金曜日21:00〜23:00ごろ。初回レッスン予定日は2026年4月24日（金）です。</p>
+            <img class="schedule-thumb" src="Sozai/friday.png" alt="金曜クラスのスケジュール一覧" loading="lazy" />
+            <div class="timeline">
+              <details class="week-card">
+                <summary>
+                  <span class="week-label">Week 0｜2026/4/1（水）〜4/23（木）</span>
+                  <span class="week-title">スタート前準備</span>
+                </summary>
+                <p>EPT Basicの受験と、発音記号動画の確認を進める期間です。</p>
+              </details>
+              <details class="week-card">
+                <summary>
+                  <span class="week-label">Week 1｜2026/4/24（金）</span>
+                  <span class="week-title">母音レッスン</span>
+                </summary>
+                <p>最初のグループレッスンで、母音の土台を整えます。</p>
+              </details>
+              <details class="week-card">
+                <summary>
+                  <span class="week-label">Week 2｜2026/5/1（金）</span>
+                  <span class="week-title">二重母音・破裂音</span>
+                </summary>
+                <p>二重母音と破裂音を中心に、ズレやすい音を整理します。</p>
+              </details>
+              <details class="week-card">
+                <summary>
+                  <span class="week-label">Week 3｜2026/5/8（金）</span>
+                  <span class="week-title">強勢（英語らしさ）</span>
+                </summary>
+                <p>英語らしさを作る強勢を集中的に扱います。</p>
+              </details>
+              <details class="week-card">
+                <summary>
+                  <span class="week-label">Week 4｜2026/5/9（土）〜5/21（木）</span>
+                  <span class="week-title">1-on-1コーチング＋復習テスト</span>
+                </summary>
+                <p>前半3週間の学びを整理し、後半戦に向けて学習リズムを作ります。</p>
+              </details>
+              <details class="week-card">
+                <summary>
+                  <span class="week-label">Week 5｜2026/5/22（金）</span>
+                  <span class="week-title">子音レッスン（前半）</span>
+                </summary>
+                <p>子音をメインに扱う前半回です。</p>
+              </details>
+              <details class="week-card">
+                <summary>
+                  <span class="week-label">Week 6｜2026/5/29（金）</span>
+                  <span class="week-title">子音レッスン（後半）</span>
+                </summary>
+                <p>前週で扱わなかった子音を続けて仕上げます。</p>
+              </details>
+              <details class="week-card">
+                <summary>
+                  <span class="week-label">Week 7｜2026/6/5（金）</span>
+                  <span class="week-title">総まとめ</span>
+                </summary>
+                <p>ここまでの内容を振り返り、弱点を最終調整します。</p>
+              </details>
+              <details class="week-card">
+                <summary>
+                  <span class="week-label">Week 8｜2026/6/6（土）〜6/18（木）</span>
+                  <span class="week-title">1-on-1コーチング＋総合レビュー</span>
+                </summary>
+                <p>まりあ1-on-1に向けて、集中的に仕上げる期間です。</p>
+              </details>
+              <details class="week-card">
+                <summary>
+                  <span class="week-label">Week 9｜2026/6/19（金）</span>
+                  <span class="week-title">EPT対策グループレッスン</span>
+                </summary>
+                <p>本番を想定した総仕上げを行います。</p>
+              </details>
+              <details class="week-card">
+                <summary>
+                  <span class="week-label">Week 10｜2026/6/26（金）</span>
+                  <span class="week-title">まりあ 1-on-1レッスン</span>
+                </summary>
+                <p>予約制で、個別の発音課題をピンポイントで調整します。</p>
+              </details>
+              <details class="week-card">
+                <summary>
+                  <span class="week-label">Week 11｜2026/6/29（月）以降</span>
+                  <span class="week-title">EIGHT 1-on-1コーチング</span>
+                </summary>
+                <p>3か月の振り返りと、次の学習プラン設計を行います。</p>
+              </details>
+              <details class="week-card">
+                <summary>
+                  <span class="week-label">Week 12｜2026/7/3（金）〜</span>
+                  <span class="week-title">EPT Basic 受験</span>
+                </summary>
+                <p>最終測定で成長を可視化します。</p>
+              </details>
+            </div>
+            <p class="schedule-caption">上記は現在予定しているスケジュールです。進捗に応じて内容が変更になる可能性がございます。</p>
+          </article>
+
+          <article id="sunday-schedule" class="schedule-card sunday-theme">
+            <h3>日曜13時クラス</h3>
+            <p>日曜日13:00〜15:00ごろ。初回レッスン予定日は2026年4月26日（日）です。</p>
+            <img class="schedule-thumb" src="Sozai/sunday.png" alt="日曜クラスのスケジュール一覧" loading="lazy" />
+            <div class="timeline">
+              <details class="week-card">
+                <summary>
+                  <span class="week-label">Week 0｜2026/4/3（金）〜4/25（土）</span>
+                  <span class="week-title">スタート前準備</span>
+                </summary>
+                <p>EPT Basicの受験と、発音記号動画の確認を進める期間です。</p>
+              </details>
+              <details class="week-card">
+                <summary>
+                  <span class="week-label">Week 1｜2026/4/26（日）</span>
+                  <span class="week-title">母音レッスン</span>
+                </summary>
+                <p>最初のグループレッスンで、母音の土台を整えます。</p>
+              </details>
+              <details class="week-card">
+                <summary>
+                  <span class="week-label">Week 2｜2026/5/3（日）</span>
+                  <span class="week-title">二重母音・破裂音</span>
+                </summary>
+                <p>二重母音と破裂音を中心に、ズレやすい音を整理します。</p>
+              </details>
+              <details class="week-card">
+                <summary>
+                  <span class="week-label">Week 3｜2026/5/10（日）</span>
+                  <span class="week-title">強勢（英語らしさ）</span>
+                </summary>
+                <p>英語らしさを作る強勢を集中的に扱います。</p>
+              </details>
+              <details class="week-card">
+                <summary>
+                  <span class="week-label">Week 4｜2026/5/11（月）〜5/23（土）</span>
+                  <span class="week-title">1-on-1コーチング＋復習テスト</span>
+                </summary>
+                <p>前半3週間の学びを整理し、後半戦に向けて学習リズムを作ります。</p>
+              </details>
+              <details class="week-card">
+                <summary>
+                  <span class="week-label">Week 5｜2026/5/24（日）</span>
+                  <span class="week-title">子音レッスン（前半）</span>
+                </summary>
+                <p>子音をメインに扱う前半回です。</p>
+              </details>
+              <details class="week-card">
+                <summary>
+                  <span class="week-label">Week 6｜2026/5/31（日）</span>
+                  <span class="week-title">子音レッスン（後半）</span>
+                </summary>
+                <p>前週で扱わなかった子音を続けて仕上げます。</p>
+              </details>
+              <details class="week-card">
+                <summary>
+                  <span class="week-label">Week 7｜2026/6/7（日）</span>
+                  <span class="week-title">総まとめ</span>
+                </summary>
+                <p>ここまでの内容を振り返り、弱点を最終調整します。</p>
+              </details>
+              <details class="week-card">
+                <summary>
+                  <span class="week-label">Week 8｜2026/6/8（月）〜6/20（土）</span>
+                  <span class="week-title">1-on-1コーチング＋総合レビュー</span>
+                </summary>
+                <p>まりあ1-on-1に向けて、集中的に仕上げる期間です。</p>
+              </details>
+              <details class="week-card">
+                <summary>
+                  <span class="week-label">Week 9｜2026/6/21（日）</span>
+                  <span class="week-title">EPT対策グループレッスン</span>
+                </summary>
+                <p>本番を想定した総仕上げを行います。</p>
+              </details>
+              <details class="week-card">
+                <summary>
+                  <span class="week-label">Week 10｜2026/6/28（日）</span>
+                  <span class="week-title">まりあ 1-on-1レッスン</span>
+                </summary>
+                <p>予約制で、個別の発音課題をピンポイントで調整します。</p>
+              </details>
+              <details class="week-card">
+                <summary>
+                  <span class="week-label">Week 11｜2026/7/1（水）以降</span>
+                  <span class="week-title">EIGHT 1-on-1コーチング</span>
+                </summary>
+                <p>3か月の振り返りと、次の学習プラン設計を行います。</p>
+              </details>
+              <details class="week-card">
+                <summary>
+                  <span class="week-label">Week 12｜2026/7/5（日）〜</span>
+                  <span class="week-title">EPT Basic 受験</span>
+                </summary>
+                <p>最終測定で成長を可視化します。</p>
+              </details>
+            </div>
+          </article>
+        </div>
+        <p class="schedule-footnote">日曜クラスは金曜クラス日程に対してプラス2日の進行です。進捗や募集状況により、日程は前後する場合があります。</p>
+      </section>
+    </main>
+    <div class="floating-cta">
+      <a
+        class="btn primary"
+        href="https://mosh.jp/services/cd2b8b1f65c8422987461fc9837e1b64?openExternalBrowser=1"
+        target="_blank"
+        rel="noopener noreferrer"
+        >金曜クラスに申し込む</a
+      >
+      <a
+        class="btn secondary"
+        href="https://mosh.jp/services/cdbda261116343b49d4cce0a77700ecc?openExternalBrowser=1"
+        target="_blank"
+        rel="noopener noreferrer"
+        >日曜クラスに申し込む</a
+      >
+    </div>
+  </body>
+</html>
