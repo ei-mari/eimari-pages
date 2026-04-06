@@ -1,0 +1,2130 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>母音バスターズ＋鬼キャン参加者専用オファー</title>
+    <meta
+      name="description"
+      content="母音バスターズと鬼キャンに参加した方向けの特別オファーページです。12週間で発音の土台を定着させる SOUND DESIGN LAB の日曜クラスをご案内します。"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #f6f6f1;
+        --paper: #fffefa;
+        --ink: #111111;
+        --muted: #5a5a52;
+        --line: #141414;
+        --lime: #dbff32;
+        --lime-soft: #f2ffb3;
+        --shadow: 6px 6px 0 var(--lime);
+        --radius: 16px;
+        --phone-width: 430px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        background:
+          radial-gradient(circle at top left, rgba(219, 255, 50, 0.18), transparent 18%),
+          linear-gradient(180deg, #fbfbf7 0%, var(--bg) 100%);
+        color: var(--ink);
+        font-family: "Zen Kaku Gothic New", sans-serif;
+      }
+
+      body {
+        padding: 0;
+      }
+
+      .page {
+        width: min(var(--phone-width), calc(100% - 1rem));
+        margin: 0 auto;
+      }
+
+      .topbar {
+        position: sticky;
+        top: 0.5rem;
+        z-index: 20;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.6rem;
+        margin: 0.55rem auto 0;
+        padding: 0.85rem 0.9rem;
+        width: min(var(--phone-width), calc(100% - 1rem));
+        border: 2px solid var(--line);
+        border-radius: 999px;
+        background: rgba(255, 254, 250, 0.92);
+        backdrop-filter: blur(10px);
+      }
+
+      .brand {
+        font-family: "Montserrat", sans-serif;
+        font-size: 0.95rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        color: var(--ink);
+        text-decoration: none;
+      }
+
+      .topbar a.cta-mini {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.55rem 0.85rem;
+        border: 2px solid var(--line);
+        border-radius: 999px;
+        background: var(--lime);
+        color: var(--ink);
+        font-size: 0.84rem;
+        font-weight: 700;
+        text-decoration: none;
+      }
+
+      section {
+        margin-top: 0.95rem;
+      }
+
+      .card {
+        border: 2px solid var(--line);
+        border-radius: var(--radius);
+        background: var(--paper);
+        padding: 1rem;
+        box-shadow: var(--shadow);
+      }
+
+      .label-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+      }
+
+      .tag {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.22rem 0.5rem;
+        border: 1.5px solid var(--line);
+        border-radius: 999px;
+        background: #fff;
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+      }
+
+      .tag.highlight {
+        background: var(--lime);
+      }
+
+      .hero {
+        padding: 1rem;
+      }
+
+      .hero h1 {
+        margin: 0.9rem 0 0;
+        font-family: "Montserrat", sans-serif;
+        font-size: 2rem;
+        line-height: 1.02;
+        letter-spacing: -0.03em;
+      }
+
+      .hero h1 span {
+        display: block;
+        margin-top: 0.3rem;
+        font-family: "Zen Kaku Gothic New", sans-serif;
+        font-size: 1.18rem;
+        line-height: 1.35;
+      }
+
+      .hero p {
+        margin: 0.95rem 0 0;
+        line-height: 1.72;
+      }
+
+      .hero-thumb {
+        width: 100%;
+        margin-top: 0.95rem;
+        border: 2px solid var(--line);
+        border-radius: 14px;
+        display: block;
+      }
+
+      .hero-embed-wrap {
+        margin-top: 0.95rem;
+        border: 2px solid var(--line);
+        border-radius: 14px;
+        overflow: hidden;
+        background: #fff;
+      }
+
+      .hero-embed {
+        width: 100%;
+        aspect-ratio: 16 / 10;
+        border: 0;
+        display: block;
+        background: #f2f2ec;
+      }
+
+      .hero-embed-credit {
+        margin-top: 0.55rem;
+        font-size: 0.82rem;
+        line-height: 1.6;
+        color: var(--muted);
+      }
+
+      .hero-embed-credit a {
+        color: var(--ink);
+        font-weight: 700;
+      }
+
+      .hero-embed-note {
+        margin-top: 0.7rem;
+        padding: 0.75rem 0.85rem;
+        border: 2px solid var(--line);
+        border-radius: 12px;
+        background: var(--lime-soft);
+        font-size: 0.88rem;
+        line-height: 1.65;
+      }
+
+      .collab-visual {
+        width: 100%;
+        margin-top: 0.7rem;
+        border: 2px solid var(--line);
+        border-radius: 12px;
+        display: block;
+      }
+
+      .collab-video {
+        width: 100%;
+        margin-top: 0.7rem;
+        border: 2px solid var(--line);
+        border-radius: 12px;
+        aspect-ratio: 16 / 9;
+      }
+
+      .collab-flow {
+        margin-top: 0.8rem;
+        display: grid;
+        gap: 0.55rem;
+      }
+
+      .collab-item {
+        border-top: 1px solid #dce78a;
+        padding-top: 0.65rem;
+      }
+
+      .collab-item p {
+        margin: 0;
+        line-height: 1.62;
+      }
+
+      .collab-lead {
+        margin: 0.72rem 0 0;
+        line-height: 1.66;
+      }
+
+      .collab-example {
+        margin-top: 0;
+        padding: 0.35rem 0.8rem;
+        border: 2px solid var(--line);
+        border-radius: 12px;
+        background: var(--lime-soft);
+      }
+
+      .collab-example-grid {
+        margin-top: 0.8rem;
+        display: grid;
+        gap: 0.6rem;
+      }
+
+      .collab-example p {
+        margin: 0;
+        line-height: 1.62;
+      }
+
+      .collab-example details {
+        padding: 0.52rem 0;
+      }
+
+      .collab-example summary {
+        list-style: none;
+        cursor: pointer;
+        position: relative;
+        padding: 0.18rem 1.8rem 0.18rem 0;
+        font-weight: 700;
+        line-height: 1.5;
+      }
+
+      .collab-example summary::-webkit-details-marker {
+        display: none;
+      }
+
+      .collab-example summary::after {
+        content: "+";
+        position: absolute;
+        right: 0.1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 1.12rem;
+        font-weight: 700;
+      }
+
+      .collab-example details[open] summary::after {
+        content: "-";
+      }
+
+      .collab-example .example-lines {
+        margin-top: 0.35rem;
+      }
+
+      .collab-example .example-lines p + p {
+        margin-top: 0.2rem;
+      }
+
+      .collab-highlight {
+        margin: 1.15rem auto 1rem;
+        padding: 0;
+        border: 0;
+        background: transparent;
+        width: fit-content;
+        padding-bottom: 0.08rem;
+        border-bottom: 6px solid var(--lime);
+        font-size: 1.32rem;
+        font-weight: 800;
+        line-height: 1.35;
+        text-align: left;
+        letter-spacing: 0.01em;
+      }
+
+      .collab-subtext {
+        margin: 0.28rem 0 0;
+        text-align: left;
+        line-height: 1.62;
+      }
+
+      .cta-row {
+        display: grid;
+        gap: 0.65rem;
+        margin-top: 1rem;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        min-height: 48px;
+        padding: 0.75rem 1rem;
+        border: 2px solid var(--line);
+        border-radius: 999px;
+        font-weight: 700;
+        text-decoration: none;
+      }
+
+      .btn.primary {
+        background: var(--line);
+        color: #fff;
+      }
+
+      .btn.secondary {
+        background: var(--lime);
+        color: var(--ink);
+      }
+
+      .oni-btn {
+        border: 2px solid #3a0f00;
+        background:
+          linear-gradient(180deg, #ffba3a 0%, #ff6a00 46%, #8f1a00 100%);
+        color: #fff7df;
+        text-shadow: 0 1px 0 rgba(0, 0, 0, 0.45);
+        box-shadow:
+          0 0 0 1px rgba(255, 199, 102, 0.35) inset,
+          0 9px 16px rgba(115, 23, 0, 0.38);
+      }
+
+      .oni-btn:hover {
+        filter: brightness(1.03);
+      }
+
+      .stat-grid,
+      .issue-grid,
+      .goal-grid,
+      .program-grid,
+      .support-grid,
+      .class-grid,
+      .price-grid {
+        display: grid;
+        gap: 0.75rem;
+      }
+
+      .stat-grid,
+      .issue-grid,
+      .goal-grid,
+      .program-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .goal-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .course-target-thumb {
+        width: 100%;
+        display: block;
+        margin: 0.85rem 0 1rem;
+        border: 2px solid var(--line);
+        border-radius: 14px;
+        background: #fff;
+      }
+
+      .mini-card,
+      .issue-card,
+      .goal-card,
+      .program-card,
+      .support-card,
+      .class-card,
+      .price-card,
+      .note-card {
+        border: 2px solid var(--line);
+        border-radius: 14px;
+        background: #fff;
+        padding: 0.9rem;
+      }
+
+      .price-card {
+        border: 0;
+        border-radius: 0;
+        background: transparent;
+        padding: 0;
+      }
+
+      .price-card::before {
+        display: none;
+      }
+
+      .mini-card p:first-child,
+      .program-card p:first-child,
+      .class-card p:first-child,
+      .note-card p:first-child {
+        margin: 0;
+        font-size: 0.73rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+      }
+
+      .mini-card h3,
+      .program-card h3,
+      .class-card h3,
+      .price-card h3 {
+        margin: 0.45rem 0 0;
+        font-size: 1rem;
+        line-height: 1.4;
+      }
+
+      .mini-card strong {
+        display: block;
+        margin-top: 0.35rem;
+        font-family: "Montserrat", sans-serif;
+        font-size: 1.15rem;
+      }
+
+      .mini-card a {
+        display: inline-flex;
+        margin-top: 0.55rem;
+        font-size: 0.82rem;
+        font-weight: 700;
+        color: var(--ink);
+      }
+
+      .section-head {
+        margin-bottom: 0.8rem;
+      }
+
+      .section-head .eyebrow {
+        display: inline-block;
+        padding: 0.16rem 0.5rem;
+        border: 1.5px solid var(--line);
+        background: var(--lime);
+        font-size: 0.72rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+      }
+
+      .section-head h2 {
+        margin: 0.55rem 0 0;
+        font-size: 1.55rem;
+        line-height: 1.18;
+      }
+
+      .section-head p {
+        margin: 0.6rem 0 0;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      .issue-card,
+      .goal-card,
+      .program-card,
+      .support-card,
+      .class-card,
+      .price-card,
+      .note-card {
+        position: relative;
+      }
+
+      .issue-card::before,
+      .goal-card::before,
+      .program-card::before,
+      .support-card::before,
+      .class-card::before,
+      .price-card::before {
+        content: "";
+        position: absolute;
+        top: 0.7rem;
+        right: 0.7rem;
+        width: 10px;
+        height: 10px;
+        border-radius: 999px;
+        background: var(--lime);
+        border: 1.5px solid var(--line);
+      }
+
+      .issue-card {
+        background: var(--lime-soft);
+      }
+
+      .goal-card {
+        padding: 0;
+        overflow: hidden;
+        background: var(--lime-soft);
+      }
+
+      .goal-card::before {
+        display: none;
+      }
+
+      .goal-card summary {
+        list-style: none;
+        cursor: pointer;
+        position: relative;
+        padding: 0.9rem 2.3rem 0.9rem 0.9rem;
+        font-weight: 700;
+        line-height: 1.5;
+      }
+
+      .goal-card summary::-webkit-details-marker {
+        display: none;
+      }
+
+      .goal-card summary::after {
+        content: "+";
+        position: absolute;
+        right: 0.85rem;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 1.18rem;
+        font-weight: 700;
+      }
+
+      .goal-card[open] summary::after {
+        content: "-";
+      }
+
+      .goal-card p {
+        margin: 0;
+        padding: 0 0.9rem 0.9rem;
+        line-height: 1.66;
+      }
+
+      .issue-card p,
+      .goal-card p,
+      .program-card p:last-child,
+      .support-card p,
+      .class-card p:last-of-type,
+      .price-card p,
+      .note-card p {
+        margin: 0;
+        line-height: 1.66;
+      }
+
+      .issue-card strong,
+      .goal-card strong,
+      .support-card strong {
+        display: block;
+        margin-bottom: 0.35rem;
+      }
+
+      .support-card {
+        padding: 0;
+        overflow: hidden;
+        background:
+          linear-gradient(180deg, #fffef8 0%, #f7f9ea 100%);
+        box-shadow: 5px 5px 0 rgba(219, 255, 50, 0.42);
+      }
+
+      .support-card summary {
+        list-style: none;
+        cursor: pointer;
+        position: relative;
+        padding: 0.95rem 2.8rem 0.95rem 0.95rem;
+        font-weight: 700;
+        line-height: 1.5;
+        background:
+          linear-gradient(135deg, rgba(219, 255, 50, 0.72) 0%, rgba(255, 255, 255, 0.9) 78%);
+      }
+
+      .support-card summary::-webkit-details-marker {
+        display: none;
+      }
+
+      .support-card summary::after {
+        content: "+";
+        position: absolute;
+        right: 0.85rem;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 1.18rem;
+        font-weight: 700;
+        width: 1.6rem;
+        height: 1.6rem;
+        border: 1.5px solid var(--line);
+        border-radius: 999px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #fffef8;
+      }
+
+      .support-card[open] summary::after {
+        content: "-";
+      }
+
+      .support-card .support-body {
+        padding: 0.95rem;
+        background: rgba(255, 255, 255, 0.78);
+      }
+
+      .support-card .support-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 0.75rem;
+        padding: 0.6rem 0.9rem;
+        border: 2px solid var(--line);
+        border-radius: 999px;
+        background: var(--lime);
+        color: var(--ink);
+        font-weight: 700;
+        text-decoration: none;
+      }
+
+      .faq-yellow-cta {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: fit-content;
+        max-width: 100%;
+        box-sizing: border-box;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 0.85rem;
+        padding: 0.68rem 0.95rem;
+        border: 2px solid #a7bf13;
+        border-radius: 999px;
+        background: linear-gradient(180deg, #f7ff86 0%, #e9f84f 58%, #d8ea2c 100%);
+        color: #2b2500;
+        text-decoration: none;
+        font-weight: 800;
+        text-align: center;
+        box-shadow:
+          0 0 0 1px rgba(255, 255, 255, 0.45) inset,
+          0 10px 20px rgba(182, 204, 37, 0.28);
+      }
+
+      .timeline-schedule-cta {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.45rem;
+        margin-top: 0.95rem;
+        padding: 0.88rem 1.15rem;
+        border: 2px solid var(--line);
+        border-radius: 999px;
+        background: linear-gradient(180deg, #edff70 0%, #dfff54 100%);
+        color: var(--ink);
+        font-weight: 800;
+        text-decoration: none;
+        box-shadow: 0 8px 18px rgba(197, 220, 77, 0.28);
+      }
+
+      .timeline-schedule-cta::after {
+        content: "›";
+        font-size: 1.05rem;
+        line-height: 1;
+      }
+
+      .audio-card audio {
+        width: 100%;
+      }
+
+      .before-after-list {
+        grid-template-columns: 1fr;
+      }
+
+      .ba-audio-group {
+        margin-top: 0.72rem;
+        display: grid;
+        gap: 0.65rem;
+      }
+
+      .ba-audio-item {
+        border: 0;
+        border-radius: 0;
+        background: transparent;
+        padding: 0;
+      }
+
+      .ba-audio-item.after {
+        background: transparent;
+      }
+
+      .ba-audio-label {
+        margin: 0 0 1.05rem;
+        font-size: 0.85rem;
+        font-weight: 700;
+        line-height: 1.4;
+      }
+
+      .audio-card .voice {
+        margin-top: 0.7rem;
+        font-size: 0.88rem;
+        color: var(--muted);
+      }
+
+      .ba-note {
+        margin: 0.75rem 0 0;
+        font-size: 0.82rem;
+        line-height: 1.62;
+        color: var(--muted);
+      }
+
+      .timeline {
+        display: grid;
+        gap: 0.7rem;
+      }
+
+      .timeline details {
+        border: 2px solid var(--line);
+        border-radius: 14px;
+        background: #fff;
+        overflow: hidden;
+      }
+
+      .timeline summary {
+        list-style: none;
+        cursor: pointer;
+        padding: 0.9rem 2.4rem 0.9rem 0.9rem;
+        position: relative;
+      }
+
+      .timeline summary::-webkit-details-marker {
+        display: none;
+      }
+
+      .timeline summary::after {
+        content: "+";
+        position: absolute;
+        right: 0.85rem;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 1.2rem;
+        font-weight: 700;
+      }
+
+      .timeline details[open] summary::after {
+        content: "-";
+      }
+
+      .timeline .week-label {
+        display: block;
+        font-size: 0.74rem;
+        font-weight: 800;
+        letter-spacing: 0.05em;
+        color: #49493f;
+      }
+
+      .timeline .week-title {
+        display: block;
+        margin-top: 0.25rem;
+        font-size: 0.98rem;
+        font-weight: 700;
+        line-height: 1.5;
+      }
+
+      .timeline details p {
+        margin: 0;
+        padding: 0 0.9rem 0.9rem;
+        line-height: 1.68;
+        color: var(--muted);
+      }
+
+      .timeline .inline-faq {
+        margin: 0 0.9rem 0.9rem;
+        border: 1.5px solid #d8debd;
+        border-radius: 12px;
+        background: #f8faef;
+        overflow: hidden;
+      }
+
+      .timeline .inline-faq summary {
+        padding: 0.72rem 2.2rem 0.72rem 0.8rem;
+        font-size: 0.92rem;
+        font-weight: 700;
+        color: var(--ink);
+      }
+
+      .timeline .inline-faq summary::after {
+        right: 0.75rem;
+        font-size: 1rem;
+      }
+
+      .timeline .inline-faq p {
+        padding: 0 0.8rem 0.8rem;
+        font-size: 0.92rem;
+        line-height: 1.7;
+      }
+
+      .timeline .inline-video {
+        width: calc(100% - 1.8rem);
+        margin: 0 0.9rem 0.9rem;
+        border: 2px solid var(--line);
+        border-radius: 12px;
+        aspect-ratio: 16 / 9;
+        display: block;
+        background: #f2f2ec;
+      }
+
+      .timeline .week-focus {
+        margin: 0 0.9rem 0.9rem;
+        padding: 0.85rem 0.9rem;
+        border: 2px solid var(--line);
+        border-radius: 14px;
+        background:
+          linear-gradient(135deg, rgba(219, 255, 50, 0.42) 0%, rgba(255, 255, 255, 0.92) 52%),
+          #fffefa;
+        box-shadow: 4px 4px 0 rgba(219, 255, 50, 0.55);
+      }
+
+      .timeline .week-focus-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.45rem;
+        margin-bottom: 0.55rem;
+      }
+
+      .timeline .week-focus-tag {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.32rem 0.7rem;
+        border: 1.5px solid var(--line);
+        border-radius: 999px;
+        background: var(--lime);
+        font-size: 0.84rem;
+        font-weight: 800;
+        line-height: 1;
+      }
+
+      .timeline .week-focus p {
+        margin: 0;
+        padding: 0;
+        color: var(--ink);
+        font-size: 0.93rem;
+        line-height: 1.7;
+      }
+
+      .schedule-panel {
+        margin-top: 1rem;
+        border-radius: 18px;
+        background:
+          linear-gradient(135deg, rgba(219, 255, 50, 0.26) 0%, rgba(255, 255, 255, 0) 40%),
+          linear-gradient(180deg, #fcfff0 0%, #f5fadf 100%);
+        padding: 0.95rem;
+      }
+
+      .schedule-panel .schedule-title {
+        margin: 0;
+        font-size: 1.05rem;
+        line-height: 1.4;
+        color: #7aa300;
+      }
+
+      .schedule-panel .schedule-lead {
+        margin: 0.45rem 0 0;
+        line-height: 1.68;
+        color: var(--muted);
+      }
+
+      .schedule-panel .timeline {
+        margin-top: 0.8rem;
+      }
+
+      .schedule-card {
+        border: 0;
+        border-radius: 18px;
+        background: #f3f4ea;
+        padding: 0.95rem;
+      }
+
+      .schedule-card.sunday-theme {
+        background:
+          linear-gradient(135deg, rgba(219, 255, 50, 0.26) 0%, rgba(255, 255, 255, 0) 40%),
+          linear-gradient(180deg, #fcfff0 0%, #f5fadf 100%);
+      }
+
+      .schedule-card.sunday-theme h3 {
+        color: #7aa300;
+      }
+
+      .schedule-card > p {
+        margin: 0.45rem 0 0;
+        line-height: 1.68;
+        color: var(--muted);
+      }
+
+      .schedule-thumb {
+        width: 100%;
+        margin: 0.9rem 0 0.95rem;
+        border: 2px solid #c9eb52;
+        border-radius: 12px;
+        display: block;
+        background: #fff;
+      }
+
+      .schedule-caption {
+        margin: 0.45rem 0 0;
+        font-size: 0.8rem;
+        line-height: 1.6;
+        color: var(--muted);
+      }
+
+      .support-card img,
+      .support-card iframe {
+        width: 100%;
+        margin-top: 0.7rem;
+        border: 2px solid var(--line);
+        border-radius: 12px;
+      }
+
+      .support-card iframe {
+        aspect-ratio: 16 / 9;
+      }
+
+      .support-inline-cta {
+        margin-top: 0.78rem;
+        padding: 0.75rem 0.8rem;
+        border: 2px solid var(--line);
+        border-radius: 12px;
+        background: var(--lime-soft);
+      }
+
+      .support-inline-cta p {
+        margin: 0;
+        font-size: 0.87rem;
+        line-height: 1.63;
+      }
+
+      .support-inline-cta a {
+        margin-top: 0.62rem;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        min-height: 44px;
+        padding: 0.62rem 0.8rem;
+        border: 2px solid var(--line);
+        border-radius: 999px;
+        background: #fff;
+        color: var(--ink);
+        text-decoration: none;
+        font-weight: 700;
+      }
+
+      .support-inline-cta .small-note {
+        margin: 0.45rem 0 0;
+        font-size: 0.74rem;
+        line-height: 1.55;
+        color: #5c5c52;
+      }
+
+      .support-grid {
+        gap: 0;
+      }
+
+      .support-grid > .support-card {
+        border: 0;
+        border-top: 1px solid #dce78a;
+        border-radius: 0;
+        background: transparent;
+        padding: 0.95rem 0.1rem;
+      }
+
+      .support-grid > .support-card:last-child {
+        border-bottom: 1px solid #dce78a;
+      }
+
+      .support-grid > .support-card::before {
+        display: none;
+      }
+
+      .support-grid .support-inline-cta {
+        margin-top: 0.72rem;
+        padding: 0.2rem 0;
+        border: 0;
+        border-radius: 0;
+        background: transparent;
+      }
+
+      .schedule-help {
+        margin-top: 0.95rem;
+        border: 1px solid #c8dcff;
+        border-radius: 18px;
+        background: #eef6ff;
+        overflow: hidden;
+      }
+
+      .schedule-help summary {
+        list-style: none;
+        cursor: pointer;
+        padding: 0.95rem 1.05rem;
+        font-size: 0.98rem;
+        font-weight: 800;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.8rem;
+      }
+
+      .schedule-help summary::-webkit-details-marker {
+        display: none;
+      }
+
+      .schedule-help summary::after {
+        content: "+";
+        flex: 0 0 auto;
+        width: 1.8rem;
+        height: 1.8rem;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 999px;
+        border: 1px solid #b6cdf7;
+        background: #fff;
+        font-size: 1.1rem;
+        line-height: 1;
+      }
+
+      .schedule-help[open] summary::after {
+        content: "−";
+      }
+
+      .schedule-help-body {
+        padding: 0 1.05rem 1rem;
+      }
+
+      .schedule-help-body p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      .support-shift-card {
+        margin-top: 0.78rem;
+        padding: 0.8rem;
+        border: 0;
+        border-radius: 14px;
+        background:
+          linear-gradient(180deg, #effdf8 0%, #e3f8f0 100%);
+      }
+
+      .support-shift-card p {
+        margin: 0;
+        font-size: 0.87rem;
+        line-height: 1.63;
+      }
+
+      .support-shift-card h3 {
+        margin: 0.75rem 0 0.28rem;
+        font-size: 1rem;
+        line-height: 1.45;
+      }
+
+      .support-shift-card .small-note {
+        margin-top: 0.55rem;
+        font-size: 0.74rem;
+        line-height: 1.55;
+        color: #5c5c52;
+      }
+
+      .program-flow-image {
+        width: 100%;
+        margin: 0.8rem 0;
+        border: 0;
+        border-radius: 0;
+        display: block;
+        background: transparent;
+      }
+
+      .program-start-note {
+        margin: -0.15rem 0 0.85rem;
+        font-size: 0.88rem;
+        line-height: 1.65;
+        color: var(--muted);
+      }
+
+      .class-top,
+      .price-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.5rem;
+      }
+
+      .price-summary {
+        padding-bottom: 0.8rem;
+        border-bottom: 2px solid var(--line);
+      }
+
+      .status {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.22rem 0.52rem;
+        border: 1.5px solid var(--line);
+        border-radius: 999px;
+        font-size: 0.7rem;
+        font-weight: 800;
+        background: var(--lime);
+      }
+
+      .status.low {
+        background: #fff;
+      }
+
+      .class-card a,
+      .price-card a {
+        margin-top: 0.8rem;
+        display: inline-flex;
+        color: var(--ink);
+        font-weight: 700;
+      }
+
+      .class-card small {
+        font-size: 0.78rem;
+        line-height: 1.5;
+        color: var(--muted);
+      }
+
+      .coupon-box {
+        margin-top: 0.8rem;
+        padding: 0.75rem 0.85rem;
+        border: 2px dashed var(--line);
+        border-radius: 14px;
+        background: linear-gradient(180deg, #fffdd8 0%, #f7ffbd 100%);
+      }
+
+      .coupon-box p {
+        margin: 0;
+        line-height: 1.6;
+      }
+
+      .coupon-label {
+        font-size: 0.76rem;
+        font-weight: 800;
+        letter-spacing: 0.06em;
+        color: #5a5700;
+      }
+
+      .coupon-line {
+        margin-top: 0.28rem !important;
+        font-size: 0.92rem;
+        color: var(--ink);
+      }
+
+      .coupon-pill {
+        display: inline-block;
+        margin: 0 0.2rem;
+        padding: 0.16rem 0.52rem;
+        border: 1.5px solid var(--line);
+        border-radius: 999px;
+        background: #fff;
+        font-family: "Montserrat", sans-serif;
+        font-size: 0.84rem;
+        font-weight: 800;
+        letter-spacing: 0.04em;
+        color: var(--ink);
+      }
+
+      .coupon-discount {
+        margin-top: 0.28rem !important;
+        font-size: 0.84rem;
+        color: var(--muted);
+      }
+
+      .price-cta-row {
+        margin-top: 0.8rem;
+        display: grid;
+        gap: 0.55rem;
+      }
+
+      .price-cta-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        min-height: 44px;
+        padding: 0.62rem 0.8rem;
+        border: 2px solid var(--line);
+        border-radius: 999px;
+        background: #fff;
+        color: var(--ink);
+        text-decoration: none;
+        font-weight: 700;
+      }
+
+      .price-cta-btn.oni-btn {
+        border-color: #a7bf13;
+        background: linear-gradient(180deg, #f7ff86 0%, #e9f84f 58%, #d8ea2c 100%);
+        color: #2b2500;
+        text-shadow: none;
+        box-shadow:
+          0 0 0 1px rgba(255, 255, 255, 0.45) inset,
+          0 10px 20px rgba(182, 204, 37, 0.28);
+      }
+
+      .price-cta-btn.oni-btn:hover {
+        filter: brightness(1.02);
+      }
+
+      .price-card ul {
+        margin: 0.8rem 0 0;
+        padding: 0;
+        list-style: none;
+        display: grid;
+        gap: 0.45rem;
+      }
+
+      .price-card li {
+        margin: 0;
+        padding: 0.68rem 0.78rem 0.68rem 2.05rem;
+        line-height: 1.55;
+        border: 2px solid rgba(17, 17, 17, 0.12);
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.88);
+        position: relative;
+      }
+
+      .price-card li::before {
+        content: "✓";
+        position: absolute;
+        left: 0.78rem;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 1rem;
+        height: 1rem;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.78rem;
+        font-weight: 800;
+        border-radius: 999px;
+        background: var(--lime);
+        color: var(--ink);
+      }
+
+      .price-card li.bonus-item {
+        font-weight: 700;
+      }
+
+      .price-card li.bonus-note {
+        margin-top: 0.15rem;
+        margin-left: -1.05rem;
+        list-style: none;
+        font-size: 0.76rem;
+        line-height: 1.55;
+        color: #57574d;
+      }
+
+      .amount {
+        margin-top: 0.7rem;
+        font-family: "Montserrat", sans-serif;
+        font-size: 2rem;
+        line-height: 1;
+      }
+
+      .amount-before {
+        margin-top: 0.5rem;
+        font-size: 0.95rem;
+        font-weight: 700;
+        color: var(--muted);
+      }
+
+      .amount-before s {
+        text-decoration-thickness: 2px;
+      }
+
+      .amount span {
+        font-family: "Zen Kaku Gothic New", sans-serif;
+        font-size: 0.88rem;
+        margin-left: 0.2rem;
+      }
+
+      .campaign-box {
+        margin-top: 0.9rem;
+        padding: 0.85rem 0.95rem;
+        border: 2px dashed var(--line);
+        border-radius: 14px;
+        background: linear-gradient(180deg, #fffdd6 0%, #f5ffb0 100%);
+      }
+
+      .campaign-box p {
+        margin: 0;
+        line-height: 1.65;
+      }
+
+      .campaign-kicker {
+        font-size: 0.78rem;
+        font-weight: 800;
+        letter-spacing: 0.06em;
+        color: #5a5700;
+      }
+
+      .campaign-title {
+        margin-top: 0.26rem !important;
+        font-size: 1rem;
+        font-weight: 800;
+        color: var(--ink);
+      }
+
+      .campaign-copy {
+        margin-top: 0.3rem !important;
+        color: var(--muted);
+      }
+
+      .campaign-price {
+        display: block;
+        margin-top: 0.38rem;
+        font-family: "Montserrat", sans-serif;
+        font-size: 1.8rem;
+        font-weight: 800;
+        line-height: 1.05;
+        color: var(--ink);
+      }
+
+      .campaign-price span {
+        font-family: "Zen Kaku Gothic New", sans-serif;
+        font-size: 0.88rem;
+        font-weight: 700;
+        margin-left: 0.2rem;
+      }
+
+      .split {
+        margin-top: 0.75rem;
+        padding: 0.8rem;
+        border: 2px solid var(--line);
+        border-radius: 12px;
+        background: var(--lime-soft);
+      }
+
+      .split small {
+        display: block;
+        font-size: 0.74rem;
+        font-weight: 800;
+        letter-spacing: 0.05em;
+      }
+
+      .split strong {
+        display: block;
+        margin-top: 0.22rem;
+        font-size: 1.2rem;
+      }
+
+      .split .split-note {
+        margin: 0.45rem 0 0;
+        font-size: 0.72rem;
+        line-height: 1.55;
+        color: #525248;
+      }
+
+      .payment-options {
+        display: grid;
+        gap: 0.55rem;
+        margin-top: 0.55rem;
+      }
+
+      .payment-option {
+        padding: 0;
+        border: 2px solid var(--line);
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.72);
+        overflow: hidden;
+      }
+
+      .payment-option summary {
+        list-style: none;
+        cursor: pointer;
+        padding: 0.72rem 0.8rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.7rem;
+      }
+
+      .payment-option summary::-webkit-details-marker {
+        display: none;
+      }
+
+      .payment-option summary::after {
+        content: "+";
+        flex: 0 0 auto;
+        width: 1.55rem;
+        height: 1.55rem;
+        border: 1.5px solid var(--line);
+        border-radius: 999px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #fffef8;
+        font-weight: 800;
+      }
+
+      .payment-option[open] summary::after {
+        content: "-";
+      }
+
+      .payment-option .label {
+        display: block;
+        font-size: 0.72rem;
+        font-weight: 800;
+        letter-spacing: 0.05em;
+        color: #4c4c43;
+      }
+
+      .payment-option .payment-body {
+        padding: 0 0.8rem 0.78rem;
+        border-top: 1.5px solid rgba(58, 15, 0, 0.08);
+      }
+
+      .payment-option .value {
+        display: block;
+        margin-top: 0.58rem;
+        font-size: 1.08rem;
+        font-weight: 800;
+        line-height: 1.35;
+      }
+
+      .payment-option .note {
+        margin-top: 0.28rem;
+        font-size: 0.72rem;
+        line-height: 1.55;
+        color: #525248;
+      }
+
+      .payment-option .note-emphasis {
+        font-weight: 800;
+        color: var(--ink);
+      }
+
+      .note-card {
+        background: var(--lime-soft);
+      }
+
+      .note-card .small-note {
+        margin-top: 0.45rem;
+        font-size: 0.76rem;
+        line-height: 1.55;
+        color: #5c5c52;
+      }
+
+      .faq-list {
+        display: grid;
+        gap: 0.7rem;
+      }
+
+      .faq-list details {
+        border: 2px solid var(--line);
+        border-radius: 14px;
+        background: #fff;
+        overflow: hidden;
+      }
+
+      .faq-list summary {
+        list-style: none;
+        cursor: pointer;
+        padding: 0.9rem 2.2rem 0.9rem 0.9rem;
+        position: relative;
+        font-weight: 700;
+        line-height: 1.5;
+      }
+
+      .faq-list summary::-webkit-details-marker {
+        display: none;
+      }
+
+      .faq-list summary::after {
+        content: "+";
+        position: absolute;
+        right: 0.9rem;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 1.15rem;
+      }
+
+      .faq-list details[open] summary::after {
+        content: "-";
+      }
+
+      .faq-list p {
+        margin: 0;
+        padding: 0 0.9rem 0.9rem;
+        color: var(--muted);
+        line-height: 1.68;
+      }
+
+      .faq-link {
+        margin-top: 0.85rem;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--ink);
+        font-weight: 700;
+        text-decoration: none;
+      }
+
+      .final {
+        text-align: left;
+      }
+
+      .final .btn {
+        margin-top: 0.9rem;
+      }
+
+    </style>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#top">SPECIAL OFFER</a>
+      <a
+        class="cta-mini"
+        href="https://mosh.jp/services/c1cdc0563d3a420b905ec33a3d895294?openExternalBrowser=1"
+        target="_blank"
+        rel="noopener noreferrer"
+        >クラスを見る</a
+      >
+    </header>
+
+    <main id="top" class="page">
+      <section class="card hero">
+        <div class="label-row">
+          <span class="tag">12 WEEKS</span>
+          <span class="tag">SPRING 2026</span>
+        </div>
+        <h1>
+          猛トレ、鬼キャンの次は、<br />
+          <span>12週間で定着へ。</span>
+        </h1>
+        <div class="hero-embed-wrap">
+          <iframe
+            class="hero-embed"
+            src="https://www.canva.com/design/DAHGE-3pfK0/KsvNShTnl-KSXf4cWYTStg/view?embed"
+            title="母音バスターズ＋鬼キャン参加者向け講座資料"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen="allowfullscreen"
+            allow="fullscreen"
+          ></iframe>
+        </div>
+        <p class="hero-embed-credit">
+          <a
+            href="https://canva.link/dmcrnqkkxd8me2v"
+            target="_blank"
+            rel="noopener noreferrer"
+            >SOUND DESIGN LAB｜2026春</a
+          >
+          by えいまり
+        </p>
+        <div class="cta-row">
+          <a
+            class="btn secondary"
+            href="https://canva.link/dmcrnqkkxd8me2v"
+            target="_blank"
+            rel="noopener noreferrer"
+            >講座資料を大きな画面で見る</a
+          >
+        </div>
+        <p class="hero-embed-note">
+          このページは、猛トレと鬼キャン参加者向けの特典としてご用意した12 WEEKS CHALLENGE（SOUND DESIGN LAB）の特別オファーです。
+        </p>
+      </section>
+
+      <section class="card">
+        <div class="section-head">
+          <span class="eyebrow">12 WEEKS CHALLENGE</span>
+          <h2>SOUND DESIGN LABとは？</h2>
+          <p>SOUND DESIGN LABは、母音バスターズと鬼キャンでつかんだ全体像をもとに、12週間かけて発音の土台を復習しながら定着させていく講座です。</p>
+        </div>
+        <img class="course-target-thumb" src="assets/target.png" alt="SOUND DESIGN LABの対象イメージ" loading="lazy" />
+        <div class="goal-grid">
+          <details class="goal-card">
+            <summary>何をどの順で練習するかが明確</summary>
+            <p>
+              母音 → 二重母音・破裂音 → 強勢 → 子音 → 総まとめ → 確認テスト（EPT basic）という流れで、
+              学ぶ順番がすでに決まっています。
+            </p>
+          </details>
+          <details class="goal-card">
+            <summary>質問しながら、細かい発音まで整えられる</summary>
+            <p>
+              グループレッスンで質問しながら復習できるだけでなく、まりあとEIGHTの1-on-1もあるため、
+              鬼キャンや母音バスターズで拾いきれなかった細かい発音まで整理しながら進められます。
+            </p>
+          </details>
+          <details class="goal-card">
+            <summary>鬼キャンに関する質問もし放題</summary>
+            <p>
+              鬼キャンや母音バスターズで見えた課題を、そのまま次の12週間につなげることで、復習と定着がしやすくなります。
+              分からなかった部分や確認したい点も、そのまま質問しながら整理して進められます。
+            </p>
+          </details>
+        </div>
+      </section>
+
+      <section id="price" class="card">
+        <div class="section-head">
+          <span class="eyebrow">PROGRAM FLOW</span>
+          <h2>12週間の動き</h2>
+          <img class="program-flow-image" src="assets/schedule.png" alt="進化版12週間カリキュラムの概要図" loading="lazy" />
+          <p class="program-start-note">以下に流れをまとめておりますのでご確認ください。</p>
+        </div>
+        <div class="timeline" style="margin-top: 0.8rem">
+          <details>
+            <summary>
+              <span class="week-label">Week 0</span>
+              <span class="week-title">発音記号動画の確認</span>
+            </summary>
+            <p>音の出し方を先に揃え、レッスン開始前の土台を作ります。LINE / メールで配信されるので毎日コツコツ学習が簡単にできます。</p>
+            <iframe
+              class="inline-video"
+              src="https://www.youtube.com/embed/aZ_V7WPP8ms"
+              title="発音記号動画サンプル"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            ></iframe>
+          </details>
+          <details>
+            <summary>
+              <span class="week-label">Week 0</span>
+              <span class="week-title">EPT Basic 受験（1回目）</span>
+            </summary>
+            <p>
+              EPT Basicは、英語発音の現状を数値で把握するためのテストです。
+              現状の発音を数値化し、最初に鍛えるべき音を明確化します。
+            </p>
+            <details class="inline-faq">
+              <summary>EPT basicとは？</summary>
+              <p>
+                EPT Basicは、英語発音の現状や変化を数値で把握するためのテストです。
+                1回目で現在地を確認し、2回目で12週間の成果を見える形で振り返ります。
+                詳細はこちら：
+                <a href="https://ept.or.jp/ept/" target="_blank" rel="noopener noreferrer">https://ept.or.jp/ept/</a>
+              </p>
+            </details>
+          </details>
+          <details>
+            <summary>
+              <span class="week-label">Week 1-3</span>
+              <span class="week-title">グループレッスン ×3（まりあ）</span>
+            </summary>
+            <p>100〜120分で集中トレーニング。ライブでの添削つきです。</p>
+            <div class="week-focus">
+              <div class="week-focus-tags">
+                <span class="week-focus-tag">母音</span>
+                <span class="week-focus-tag">強勢</span>
+              </div>
+              <p>という発音の鍵を徹底的に攻略します。</p>
+              <p style="margin-top: 0.55rem;">子音もカバー予定ですが、メインはWeek 5-7で実施します。</p>
+            </div>
+          </details>
+          <details>
+            <summary>
+              <span class="week-label">Week 4</span>
+              <span class="week-title">1-on-1コーチング ×1（EIGHT）</span>
+            </summary>
+            <p>練習の回し方を最適化し、後半戦の学習設計を個別に調整します。</p>
+            <div class="week-focus">
+              <p><strong>発音学習を最適化したい場合</strong><br />1週間 / 1ヶ月のスケジュールを共に立案します。</p>
+            </div>
+            <div class="week-focus">
+              <p><strong>発音学習以外の学習も行いたい場合</strong><br />教材選び（時にはオリジナル教材作りも）を行い、発音学習と連動した英語学習のプランニングを行います。</p>
+            </div>
+          </details>
+          <details>
+            <summary>
+              <span class="week-label">Week 5-7</span>
+              <span class="week-title">グループレッスン ×3（まりあ）</span>
+            </summary>
+            <p>前半で見つけた弱点を潰し、再現性を上げるフェーズです。</p>
+            <div class="week-focus">
+              <div class="week-focus-tags">
+                <span class="week-focus-tag">子音</span>
+              </div>
+              <p>を徹底的に学習します。母音・強勢も合わせて確認するので、ここでの学習を通して発音の基礎は完全に自分のものにしていただきます。</p>
+            </div>
+            <div class="week-focus">
+              <div class="week-focus-tags">
+                <span class="week-focus-tag">総まとめ</span>
+              </div>
+              <p>学んだ知識をしっかりと覚えられているかを確かめる総まとめも用意しています。</p>
+            </div>
+          </details>
+          <details>
+            <summary>
+              <span class="week-label">Week 8</span>
+              <span class="week-title">1-on-1コーチング ×1（EIGHT）</span>
+            </summary>
+            <p>ここまでの学習内容をふり返りながら、最後の仕上げフェーズに向けて学習設計を個別に調整します。</p>
+          </details>
+          <details>
+            <summary>
+              <span class="week-label">Week 9-12</span>
+              <span class="week-title">仕上げフェーズ</span>
+            </summary>
+            <p>EPT対策のグループレッスン、まりあとの1-on-1、EIGHT最終コーチング、EPTの2回目の受験で締めます。</p>
+            <details class="inline-faq">
+              <summary>EPT basicとは？</summary>
+              <p>
+                EPT Basicは、英語発音の現状や変化を数値で把握するためのテストです。
+                1回目で現在地を確認し、2回目で12週間の成果を見える形で振り返ります。
+                詳細はこちら：
+                <a href="https://ept.or.jp/ept/" target="_blank" rel="noopener noreferrer">https://ept.or.jp/ept/</a>
+              </p>
+            </details>
+            <details class="inline-faq">
+              <summary>まりあとの1-on-1では何をするの？</summary>
+              <p>
+                グループレッスンで学んだ内容をもとに、発音の癖や細かいズレを個別に確認します。
+                自分だけでは気づきにくい部分まで整理しながら、仕上げに向けて整えていく時間です。
+              </p>
+            </details>
+          </details>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="section-head">
+          <span class="eyebrow">SUPPORT</span>
+          <h2>クラス以外でも徹底サポート</h2>
+          <p>忙しい週があっても、復習と振替がしやすい仕組みを講座内に組み込んでいます。</p>
+        </div>
+        <div class="support-grid">
+          <details class="support-card">
+            <summary>01. オリジナル動画教材</summary>
+            <div class="support-body">
+              <p>えいまりオリジナルの動画教材をご用意しています。予習にも復習にも使える内容で、視聴期限は無期限です。</p>
+              <iframe
+                src="https://www.youtube.com/embed/aZ_V7WPP8ms"
+                title="予習動画サンプル"
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </details>
+          <details class="support-card">
+            <summary>02. オリジナル発音課題</summary>
+            <div class="support-body">
+              <img src="assets/homework_thumbnail.png" alt="オリジナル発音課題のサムネイル" loading="lazy" />
+              <p>レッスンの復習ができるオリジナルの発音課題をご用意しています。スマホだけでお手本や発音記号をチェックしながら進められる設計です。</p>
+            </div>
+          </details>
+          <details class="support-card">
+            <summary>03. アーカイブ共有</summary>
+            <div class="support-body">
+              <p>Zoom開催のレッスンはアーカイブ配布。欠席時でも進行に追いつけますし、レッスンで得た気づきを何度も確認できます。</p>
+              <iframe
+                src="https://www.youtube.com/embed/kPQ0iStYApE"
+                title="アーカイブ共有サンプル"
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </details>
+          <details class="support-card">
+            <summary>04. 復習ツール（EIMARI DICTIONARY）</summary>
+            <div class="support-body">
+              <p>課題・アーカイブを一か所で見直せる専用ツール。必要なレッスンをすぐ検索できます。</p>
+              <p style="margin-top: 0.7rem;">
+                サンプルはZoomセッションでご体験いただけます。15分のショートコーチングへぜひお越しください。
+              </p>
+              <a class="support-link" href="https://www.jicoo.com/t/eimari/e/1Lt6yoymAH9X" target="_blank" rel="noopener noreferrer"
+                >ショートコーチングを予約する</a
+              >
+            </div>
+          </details>
+          <details class="support-card">
+            <summary>05. 振替制度</summary>
+            <div class="support-body">
+              <p>ご予定が入って日曜日の参加が難しい場合は、金曜日クラスに振替で参加することも可能です。</p>
+              <div class="support-shift-card">
+                <img src="Sozai/friday.png" alt="金曜クラスのスケジュール一覧" loading="lazy" />
+                <h3>金曜クラスのスケジュール</h3>
+                <p>毎週金曜 21:00〜23:00ごろに開催しています。日曜クラスへの参加が難しい週の振替先としてご活用いただけます。</p>
+                <p class="small-note">
+                  ※ 金曜クラスは日曜クラスより少し先に進行します。回によっては振替先での添削提供方法が一部異なる場合がありますが、
+                  アーカイブも併用しながら進めていただけます。
+                </p>
+              </div>
+            </div>
+          </details>
+        </div>
+      </section>
+
+      <section id="schedule" class="card">
+        <div class="section-head">
+          <span class="eyebrow">CLASS SCHEDULE</span>
+          <h2>今回オファーするクラス</h2>
+        </div>
+        <div class="class-grid">
+          <article class="class-card">
+            <div class="class-top">
+              <p>SUNDAY</p>
+              <span class="status">今回のご案内クラス</span>
+            </div>
+            <h3>日曜13時クラス</h3>
+            <p>日曜日13:00スタート<br /><small>※ 初回レッスン予定日：2026年4月26日（日）</small></p>
+            <a
+              href="https://mosh.jp/services/c1cdc0563d3a420b905ec33a3d895294?openExternalBrowser=1"
+              target="_blank"
+              rel="noopener noreferrer"
+              >日曜クラスに申し込む</a
+            >
+          </article>
+        </div>
+        <article id="sunday-schedule" class="schedule-card sunday-theme" style="margin-top: 1rem">
+          <h3 class="schedule-title">日曜13時クラスの進行予定</h3>
+          <p class="schedule-lead">今回ご案内しているのは、日曜13:00スタートのクラスです。</p>
+          <img class="schedule-thumb" src="Sozai/sunday.png" alt="日曜クラスのスケジュール一覧" loading="lazy" />
+          <div class="timeline">
+            <details class="week-card">
+              <summary>
+                <span class="week-label">Week 0｜2026/4/3（金）〜4/25（土）</span>
+                <span class="week-title">スタート前準備</span>
+              </summary>
+              <p>EPT Basicの受験と、発音記号動画の確認を進める期間です。</p>
+            </details>
+            <details class="week-card">
+              <summary>
+                <span class="week-label">Week 1｜2026/4/26（日）</span>
+                <span class="week-title">母音レッスン</span>
+              </summary>
+              <p>最初のグループレッスンで、母音の土台を整えます。</p>
+            </details>
+            <details class="week-card">
+              <summary>
+                <span class="week-label">Week 2｜2026/5/3（日）</span>
+                <span class="week-title">二重母音・破裂音</span>
+              </summary>
+              <p>二重母音と破裂音を中心に、ズレやすい音を整理します。</p>
+            </details>
+            <details class="week-card">
+              <summary>
+                <span class="week-label">Week 3｜2026/5/10（日）</span>
+                <span class="week-title">強勢（英語らしさ）</span>
+              </summary>
+              <p>英語らしさを作る強勢を集中的に扱います。</p>
+            </details>
+            <details class="week-card">
+              <summary>
+                <span class="week-label">Week 4｜2026/5/11（月）〜5/23（土）</span>
+                <span class="week-title">1-on-1コーチング＋復習テスト</span>
+              </summary>
+              <p>前半3週間の学びを整理し、後半戦に向けて学習リズムを作ります。</p>
+            </details>
+            <details class="week-card">
+              <summary>
+                <span class="week-label">Week 5｜2026/5/24（日）</span>
+                <span class="week-title">子音レッスン（前半）</span>
+              </summary>
+              <p>子音をメインに扱う前半回です。</p>
+            </details>
+            <details class="week-card">
+              <summary>
+                <span class="week-label">Week 6｜2026/5/31（日）</span>
+                <span class="week-title">子音レッスン（後半）</span>
+              </summary>
+              <p>前週で扱わなかった子音を続けて仕上げます。</p>
+            </details>
+            <details class="week-card">
+              <summary>
+                <span class="week-label">Week 7｜2026/6/7（日）</span>
+                <span class="week-title">総まとめ</span>
+              </summary>
+              <p>ここまでの内容を振り返り、弱点を最終調整します。</p>
+            </details>
+            <details class="week-card">
+              <summary>
+                <span class="week-label">Week 8｜2026/6/8（月）〜6/20（土）</span>
+                <span class="week-title">1-on-1コーチング＋総合レビュー</span>
+              </summary>
+              <p>まりあ1-on-1に向けて、集中的に仕上げる期間です。</p>
+            </details>
+            <details class="week-card">
+              <summary>
+                <span class="week-label">Week 9｜2026/6/21（日）</span>
+                <span class="week-title">EPT対策グループレッスン</span>
+              </summary>
+              <p>本番を想定した総仕上げを行います。</p>
+            </details>
+            <details class="week-card">
+              <summary>
+                <span class="week-label">Week 10｜2026/6/28（日）</span>
+                <span class="week-title">まりあ 1-on-1レッスン</span>
+              </summary>
+              <p>予約制で、個別の発音課題をピンポイントで調整します。</p>
+            </details>
+            <details class="week-card">
+              <summary>
+                <span class="week-label">Week 11｜2026/7/1（水）以降</span>
+                <span class="week-title">EIGHT 1-on-1コーチング</span>
+              </summary>
+              <p>3か月の振り返りと、次の学習プラン設計を行います。</p>
+            </details>
+            <details class="week-card">
+              <summary>
+                <span class="week-label">Week 12｜2026/7/5（日）〜</span>
+                <span class="week-title">EPT Basic 受験</span>
+              </summary>
+              <p>最終測定で成長を可視化します。</p>
+            </details>
+          </div>
+          <p class="schedule-caption">上記は現在予定しているスケジュールです。進捗に応じて内容が変更になる可能性がございます。</p>
+          <details class="schedule-help">
+            <summary>日程が合わないんですが…</summary>
+            <div class="schedule-help-body">
+              <p>アーカイブ視聴で参加する見学プラン（特別価格 14,800円）もご用意しています。ミスマッチがないように直接ご案内しているため、ご希望の方はショートコーチングにお申し込みください。</p>
+              <a class="faq-yellow-cta" href="https://www.jicoo.com/t/eimari/e/1Lt6yoymAH9X" target="_blank" rel="noopener noreferrer">ショートコーチングに申し込む</a>
+            </div>
+          </details>
+        </article>
+      </section>
+
+      <section class="card">
+        <div class="section-head">
+          <span class="eyebrow">PRICE</span>
+          <h2>母音バスターズ＋鬼キャン参加者向けの特別案内</h2>
+        </div>
+        <div class="price-grid">
+          <article class="price-card">
+            <div class="price-summary">
+              <div class="price-top">
+                <p>ONI BUSTERS SPECIAL</p>
+                <span class="status">参加者限定価格</span>
+              </div>
+              <h3>スタンダードプラン</h3>
+              <p class="amount-before">通常価格 <s>104,950円（税込）</s></p>
+              <p class="amount">85,150<span>円（税込）</span></p>
+              <div class="campaign-box">
+                <p class="campaign-kicker">4/19（日）まで限定</p>
+                <p class="campaign-title">猛トレ＋鬼キャン参加費完全還元キャンペーン</p>
+                <p class="campaign-copy">
+                  <span class="campaign-price">75,850<span>円（税込）</span></span>
+                  にてご参加いただけます。
+                </p>
+              </div>
+            </div>
+            <div class="split">
+              <small>選べる3つのお支払い方法</small>
+              <div class="payment-options">
+                <details class="payment-option">
+                  <summary><span class="label">一括払い</span></summary>
+                  <div class="payment-body">
+                    <span class="value">75,850円（税込）</span>
+                  </div>
+                </details>
+                <details class="payment-option">
+                  <summary><span class="label">2回払い</span></summary>
+                  <div class="payment-body">
+                    <span class="value">37,925円 × 2回</span>
+                    <p class="note">※ 2回払いと一括払いの合計価格は同じです。</p>
+                  </div>
+                </details>
+                <details class="payment-option">
+                  <summary><span class="label">3回払い</span></summary>
+                  <div class="payment-body">
+                    <span class="value">25,500円 × 3回</span>
+                    <p class="note">※ 3回払いの場合、一括払いと総額が異なります。</p>
+                  </div>
+                </details>
+              </div>
+            </div>
+            <p class="amount-before" style="margin-top: 0.8rem">コースに含まれる内容</p>
+            <ul>
+              <li>まりあグループレッスン6回</li>
+              <li>EPT basic対策レッスン1回（まりあ担当）</li>
+              <li>まりあ1-on-1レッスン1回</li>
+              <li>EIGHT 1-on-1コーチング3回</li>
+              <li>EPT Basic受験サポート（2回）</li>
+              <li>コミュニティ（Slack）招待</li>
+              <li>Eimari Pass（優待イベントパス）</li>
+              <li>アーカイブ共有</li>
+              <li>レッスンスライド共有</li>
+              <li>課題ページ閲覧権利</li>
+            </ul>
+          </article>
+        </div>
+        <div class="price-cta-row">
+          <a
+            class="price-cta-btn oni-btn"
+            href="https://mosh.jp/services/c1cdc0563d3a420b905ec33a3d895294?openExternalBrowser=1"
+            target="_blank"
+            rel="noopener noreferrer"
+            >日曜クラスに申し込む</a
+          >
+        </div>
+      </section>
+
+      <section id="faq" class="card">
+        <div class="section-head">
+          <span class="eyebrow">FAQ</span>
+          <h2>よくある質問</h2>
+          <p>スケジュールや振替、欠席時のフォローなどを、このページ内でまとめて確認できます。</p>
+        </div>
+        <div class="faq-list">
+          <details>
+            <summary>レッスンの時間はどれくらいですか？</summary>
+            <p>日曜日は13:00〜15:00ごろを予定しております。</p>
+            <p>
+              Sound Design Labの1回のレッスンは、基本的に約2時間です。本編100〜120分に加えて、最後に任意参加のQ&amp;Aがあります。
+            </p>
+            <p>
+              Q&amp;Aは数分で終わることもあれば、内容によっては数十分になることもありますが、基本的には2時間ほどで終了します。
+            </p>
+          </details>
+
+          <details>
+            <summary>子育て中でも参加できますか？途中入退室やカメラOFFは大丈夫ですか？</summary>
+            <p>
+              大丈夫です。子育て中の方も多く参加されることを前提に、途中入退室OK、カメラON・OFFも自由でご参加いただけます。
+            </p>
+            <p>
+              たとえば「寝かしつけ中は耳だけ参加して、落ち着いたらカメラをONにする」といった形でも問題ありません。無理のない参加スタイルで進めていただけます。
+            </p>
+          </details>
+
+          <details>
+            <summary>振替はどのくらい自由にできますか？</summary>
+            <p>
+              振替は、回数は何回でもOKです。参加・欠席の場合はともに10分前を目処にお知らせください。
+            </p>
+            <p>
+              ただし、当日の時点で参加者数に余裕がない場合は、振替自体はできても添削の提供が難しいことがあります。
+            </p>
+            <p>
+              確実に添削つきで参加したい場合は、お申し込み時のクラスでお越しいただくようお願い申し上げます。
+            </p>
+            <p>
+              あるいはレッスン終了後のQ&amp;Aセッションタイムで、レッスン中に確認したいと思った単語やフレーズの添削を希望ください。時間の許す限り対応可能です。
+            </p>
+          </details>
+
+          <details>
+            <summary>仕事が長引いた場合に当日の連絡で振替できますか？</summary>
+            <p>
+              可能です。仕事やご家庭の都合でご参加予定のクラスが難しくなった場合は、もう一方のクラスへの振替をご相談いただけます。
+            </p>
+            <p>
+              ただし、当日の時点で参加者数に余裕がない場合は、振替自体はできても添削の提供が難しいことがあります。
+            </p>
+            <p>
+              その場合はレッスン終了後のQ&amp;Aセッションタイムで、レッスン中に確認したいと思った単語やフレーズの添削を希望ください。時間の許す限り対応可能です。
+            </p>
+          </details>
+
+          <details>
+            <summary>欠席した場合はどうなりますか？</summary>
+            <p>
+              グループレッスンはアーカイブ共有があり、提出課題でリカバー可能です。欠席した週も、レッスン内容を追いかけやすい設計になっています。
+            </p>
+            <p>もちろん別のクラスに振り替えていただくことも可能です。</p>
+          </details>
+
+          <details>
+            <summary>12週間で本当に伸びますか？</summary>
+            <p>
+              毎週のレッスンに積極的に参加し、レッスン外でも課題にしっかりと取り組むことで伸びます。必要な学習量は個別で異なるため、学習計画を明確にしておくのがおすすめです。
+            </p>
+          </details>
+
+          <details>
+            <summary>独学経験者にも向いていますか？</summary>
+            <p>
+              向いています。独学で曖昧になりやすい「優先順位」と「修正ポイント」を整理し、伸びに直結する練習に絞って取り組みやすくなります。
+            </p>
+          </details>
+
+          <details>
+            <summary>どんな人におすすめですか？</summary>
+            <p>
+              発音学習に初めて挑戦する方に特におすすめです。英語レベルは問いませんが、中学英文法の基礎理解があると学習効率が上がります。文法学習を同時並行で進めていた方は、EIGHTによる1-on-1サポートもご活用ください。
+            </p>
+          </details>
+
+          <details>
+            <summary>今回日程が合わない場合はどうすればいいですか？</summary>
+            <p>
+              アーカイブ視聴で参加する見学プラン（特別価格 14,800円）もご用意しています。ミスマッチがないように直接ご案内しているため、ご希望の方はショートコーチングにお申し込みください。
+            </p>
+            <a class="faq-yellow-cta" href="https://www.jicoo.com/t/eimari/e/1Lt6yoymAH9X" target="_blank" rel="noopener noreferrer">ショートコーチングに申し込む</a>
+          </details>
+        </div>
+      </section>
+
+      <section class="card final">
+        <div class="section-head">
+          <span class="eyebrow">START NOW</span>
+          <h2>日曜クラスで、ここから12週間を始める</h2>
+          <p>鬼キャンと母音バスターズでつかんだ発音の全体像を、ここから12週間で定着まで進めませんか？期間中は質問もし放題なので、これまでの学びもより深めることができます。</p>
+        </div>
+        <a
+          class="btn primary oni-btn"
+          href="https://mosh.jp/services/c1cdc0563d3a420b905ec33a3d895294?openExternalBrowser=1"
+          target="_blank"
+          rel="noopener noreferrer"
+          >日曜クラスに申し込む</a
+        >
+        <a
+          class="btn secondary"
+          href="https://canva.link/dmcrnqkkxd8me2v"
+          target="_blank"
+          rel="noopener noreferrer"
+          style="margin-top: 0.7rem"
+          >講座資料を確認する</a
+        >
+      </section>
+    </main>
+  </body>
+</html>
