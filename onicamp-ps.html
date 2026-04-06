@@ -551,7 +551,7 @@
       .goal-card strong,
       .support-card strong {
         display: block;
-        margin-bottom: 0.35rem;
+        margin-bottom: 1.1rem;
       }
 
       .support-card {
@@ -622,9 +622,11 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 100%;
-        box-sizing: border-box;
+        width: fit-content;
         margin-top: 0.85rem;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 0.35rem;
         padding: 0.68rem 0.95rem;
         border: 2px solid #a7bf13;
         border-radius: 999px;
@@ -1230,6 +1232,69 @@
         margin-left: 0.2rem;
       }
 
+      .campaign-box {
+        margin-top: 0.9rem;
+        padding: 0.85rem 0.95rem;
+        border: 2px dashed var(--line);
+        border-radius: 14px;
+        background: linear-gradient(180deg, #fffdd6 0%, #f5ffb0 100%);
+      }
+
+      .campaign-box p {
+        margin: 0;
+        line-height: 1.65;
+      }
+
+      .campaign-kicker {
+        font-size: 0.78rem;
+        font-weight: 800;
+        letter-spacing: 0.06em;
+        color: #5a5700;
+      }
+
+      .campaign-title {
+        margin-top: 0.26rem !important;
+        font-size: 1rem;
+        font-weight: 800;
+        color: var(--ink);
+      }
+
+      .campaign-copy {
+        margin-top: 0.3rem !important;
+        color: var(--muted);
+      }
+
+      .campaign-price {
+        display: block;
+        margin-top: 0.38rem;
+        font-family: "Montserrat", sans-serif;
+        font-size: 1.8rem;
+        font-weight: 800;
+        line-height: 1.05;
+        color: var(--ink);
+      }
+
+      .campaign-price span {
+        font-family: "Zen Kaku Gothic New", sans-serif;
+        font-size: 0.88rem;
+        font-weight: 700;
+        margin-left: 0.2rem;
+      }
+
+      .campaign-code {
+        display: inline-block;
+        margin: 0 0.2rem;
+        padding: 0.14rem 0.48rem;
+        border: 1.5px solid var(--line);
+        border-radius: 999px;
+        background: #fff;
+        font-family: "Montserrat", sans-serif;
+        font-size: 0.84rem;
+        font-weight: 800;
+        letter-spacing: 0.04em;
+        color: var(--ink);
+      }
+
       .split {
         margin-top: 0.75rem;
         padding: 0.8rem;
@@ -1432,7 +1497,7 @@
         <div class="hero-embed-wrap">
           <iframe
             class="hero-embed"
-            src="https://www.canva.com/design/DAHFL768wQc/x8g3ViGGrV8YxrCZNtxCEg/view?embed"
+            src="https://www.canva.com/design/DAHGCh9Usuo/qCdlqI9_j8ly7nopL1-FVA/view?embed"
             title="鬼キャン参加者向け講座資料"
             loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"
@@ -1440,10 +1505,19 @@
             allow="fullscreen"
           ></iframe>
         </div>
+        <p class="hero-embed-credit">
+          <a
+            href="https://www.canva.com/design/DAHGCh9Usuo/qCdlqI9_j8ly7nopL1-FVA/view?utm_content=DAHGCh9Usuo&utm_campaign=designshare&utm_medium=embeds&utm_source=link"
+            target="_blank"
+            rel="noopener noreferrer"
+            >SOUND DESIGN LAB｜2026春</a
+          >
+          by えいまり
+        </p>
         <div class="cta-row">
           <a
             class="btn secondary"
-            href="https://canva.link/zjajbx1zhbgw1wb"
+            href="https://canva.link/o0inf3p0kfyylil"
             target="_blank"
             rel="noopener noreferrer"
             >講座資料を大きな画面で見る</a
@@ -1656,7 +1730,7 @@
                 サンプルはZoomセッションでご体験いただけます。15分のショートコーチングへぜひお越しください。
               </p>
               <a class="support-link" href="https://www.jicoo.com/t/eimari/e/1Lt6yoymAH9X" target="_blank" rel="noopener noreferrer"
-                >ショートコーチングを予約する</a
+                >ショートコーチングを予約</a
               >
             </div>
           </details>
@@ -1801,7 +1875,7 @@
             <summary>日程が合わないんですが…</summary>
             <div class="schedule-help-body">
               <p>アーカイブ視聴で参加する見学プラン（特別価格 14,800円）もご用意しています。ミスマッチがないように直接ご案内しているため、ご希望の方はショートコーチングにお申し込みください。</p>
-              <a class="faq-yellow-cta" href="https://www.jicoo.com/t/eimari/e/1Lt6yoymAH9X" target="_blank" rel="noopener noreferrer">ショートコーチングに申し込む</a>
+              <a class="faq-yellow-cta" href="https://www.jicoo.com/t/eimari/e/1Lt6yoymAH9X" target="_blank" rel="noopener noreferrer">ショートコーチングを予約</a>
             </div>
           </details>
         </article>
@@ -1822,27 +1896,39 @@
               <h3>スタンダードプラン</h3>
               <p class="amount-before">通常価格 <s>104,950円（税込）</s></p>
               <p class="amount">85,150<span>円（税込）</span></p>
+              <div class="campaign-box">
+                <p class="campaign-kicker">4/19（日）まで限定</p>
+                <p class="campaign-title">鬼キャン参加費完全還元キャンペーン</p>
+                <p class="campaign-copy">
+                  クーポンコード <span class="campaign-code">oni258mns</span> 入力で
+                  <span class="campaign-price">79,150<span>円（税込）</span></span>
+                  にてお申し込みいただけます。
+                </p>
+              </div>
             </div>
             <div class="split">
-              <small>選べる3つのお支払い方法</small>
+              <small>クーポン適用時の選べる3つのお支払い方法</small>
               <div class="payment-options">
                 <details class="payment-option">
                   <summary><span class="label">一括払い</span></summary>
                   <div class="payment-body">
-                    <span class="value">85,150円（税込）</span>
+                    <span class="value">79,150円（税込）</span>
+                    <p class="note">※ 4/19（日）までにクーポンコードを入力した際の金額です。</p>
                   </div>
                 </details>
                 <details class="payment-option">
                   <summary><span class="label">2回払い</span></summary>
                   <div class="payment-body">
-                    <span class="value">42,575円 × 2回</span>
+                    <span class="value">39,575円 × 2回</span>
+                    <p class="note">※ 4/19（日）までにクーポンコードを入力した際の金額です。</p>
                     <p class="note">※ 2回払いと一括払いの合計価格は同じです。</p>
                   </div>
                 </details>
                 <details class="payment-option">
                   <summary><span class="label">3回払い</span></summary>
                   <div class="payment-body">
-                    <span class="value">29,000円 × 3回</span>
+                    <span class="value">27,000円 × 3回</span>
+                    <p class="note">※ 4/19（日）までにクーポンコードを入力した際の金額です。</p>
                     <p class="note">※ 3回払いの場合、一括払いと総額が異なります。</p>
                   </div>
                 </details>
@@ -1874,6 +1960,9 @@
         </div>
         <p class="small-note" style="margin-top: 0.7rem">
           ※ ご事情によりスタンダードでの参加が難しい場合は、別の参加方法も含めて個別にご案内可能です。
+        </p>
+        <p class="small-note">
+          ご不明点や詳細が気になる場合は、1-on-1発音診断の際にもお気軽にご相談ください。
         </p>
       </section>
 
@@ -1968,7 +2057,7 @@
             <p>
               アーカイブ視聴で参加する見学プラン（特別価格 14,800円）もご用意しています。ミスマッチがないように直接ご案内しているため、ご希望の方はショートコーチングにお申し込みください。
             </p>
-            <a class="faq-yellow-cta" href="https://www.jicoo.com/t/eimari/e/1Lt6yoymAH9X" target="_blank" rel="noopener noreferrer">ショートコーチングに申し込む</a>
+              <a class="faq-yellow-cta" href="https://www.jicoo.com/t/eimari/e/1Lt6yoymAH9X" target="_blank" rel="noopener noreferrer">ショートコーチングを予約</a>
           </details>
         </div>
       </section>
