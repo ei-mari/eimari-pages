@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>新設クラスアンケート | EiMARi</title>
+    <meta
+      name="description"
+      content="木曜クラス・日曜クラスの新設に関するアンケートページです。スケジュールを確認しながら希望を回答できます。"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #f7f7f3;
+        --paper: #fffef9;
+        --ink: #1a1a1a;
+        --muted: #5f6059;
+        --line: #171717;
+        --lime: #dcff33;
+        --mint: #8de7d1;
+        --soft: #eef4ef;
+        --radius: 18px;
+        --phone: 430px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        background:
+          radial-gradient(circle at top right, rgba(141, 231, 209, 0.18), transparent 24%),
+          linear-gradient(180deg, #fbfbf7 0%, #f2f5ef 100%);
+        color: var(--ink);
+        font-family: "Zen Kaku Gothic New", sans-serif;
+      }
+
+      body {
+        padding: 0 0 5.5rem;
+      }
+
+      main {
+        width: min(var(--phone), calc(100% - 1rem));
+        margin: 0 auto;
+      }
+
+      section {
+        margin-top: 0.9rem;
+      }
+
+      .card {
+        border: 2px solid var(--line);
+        border-radius: var(--radius);
+        background: var(--paper);
+        padding: 1rem;
+        box-shadow: 6px 6px 0 rgba(23, 23, 23, 0.08);
+      }
+
+      .hero {
+        padding-bottom: 1.1rem;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.2rem 0.55rem;
+        border: 1.5px solid var(--line);
+        border-radius: 999px;
+        background: var(--lime);
+        font-size: 0.72rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+      }
+
+      h1,
+      h2,
+      h3 {
+        margin: 0;
+      }
+
+      .hero h1 {
+        margin-top: 0.75rem;
+        font-family: "Montserrat", sans-serif;
+        font-size: 2rem;
+        line-height: 1.03;
+        letter-spacing: -0.04em;
+      }
+
+      .hero p,
+      .section-head p,
+      .field-note,
+      .result-card p {
+        margin: 0.8rem 0 0;
+        line-height: 1.72;
+        color: var(--muted);
+      }
+
+      .hero-grid,
+      .survey-actions {
+        display: grid;
+        gap: 0.75rem;
+        margin-top: 0.9rem;
+      }
+
+      .quick-card {
+        border: 1.5px solid rgba(23, 23, 23, 0.14);
+        border-radius: 16px;
+        padding: 0.9rem;
+        background: #fff;
+      }
+
+      .quick-card.thu {
+        background: linear-gradient(180deg, rgba(141, 231, 209, 0.24), #fff 58%);
+      }
+
+      .quick-card.sun {
+        background: linear-gradient(180deg, rgba(220, 255, 51, 0.25), #fff 58%);
+      }
+
+      .quick-card strong {
+        display: block;
+        font-size: 1rem;
+      }
+
+      .quick-card span {
+        display: block;
+        margin-top: 0.35rem;
+        color: var(--muted);
+      }
+
+      .quick-card img {
+        display: block;
+        width: calc(100% + 1.8rem);
+        margin: 0.8rem -0.9rem -0.9rem;
+        border-top: 1px solid rgba(23, 23, 23, 0.08);
+      }
+
+      .schedule-note {
+        margin-top: 0.85rem;
+        padding-top: 0.75rem;
+        border-top: 1px solid rgba(23, 23, 23, 0.12);
+        font-size: 0.84rem;
+        line-height: 1.65;
+        color: var(--muted);
+      }
+
+      .section-head {
+        margin-bottom: 0.85rem;
+      }
+
+      .section-head h2 {
+        margin-top: 0.55rem;
+        font-size: 1.5rem;
+        line-height: 1.16;
+      }
+
+      .tally-card {
+        border: 1.5px solid rgba(23, 23, 23, 0.14);
+        border-radius: 18px;
+        overflow: hidden;
+        background: #fff;
+      }
+
+      .tally-embed {
+        width: 100%;
+        min-height: 980px;
+        border: 0;
+        display: block;
+        background: #fff;
+      }
+
+      .survey-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        min-height: 52px;
+        padding: 0.9rem 1rem;
+        border: 2px solid var(--line);
+        border-radius: 999px;
+        background: var(--lime);
+        color: var(--ink);
+        text-decoration: none;
+        font-weight: 800;
+      }
+
+      .survey-link.secondary {
+        background: #fff;
+      }
+
+      .fallback-link {
+        margin-top: 0.85rem;
+      }
+
+      .floating-nav {
+        position: fixed;
+        left: 50%;
+        bottom: 0.85rem;
+        z-index: 20;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.65rem;
+        width: min(calc(100% - 1rem), var(--phone));
+        transform: translateX(-50%);
+      }
+
+      .floating-nav a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 48px;
+        padding: 0.8rem 0.9rem;
+        border: 2px solid var(--line);
+        border-radius: 999px;
+        text-decoration: none;
+        font-weight: 800;
+        color: var(--ink);
+        background: rgba(255, 254, 249, 0.95);
+        backdrop-filter: blur(8px);
+      }
+
+      .floating-nav a.primary {
+        background: var(--lime);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section class="card" id="survey">
+        <div class="section-head">
+          <span class="eyebrow">SURVEY</span>
+          <h2>新設クラスのアンケート</h2>
+          <p>
+            いよいよクラスのスタートが近づいてきましたが<br />
+            ・振替ができるクラスを増やすこと<br />
+            ・より少人数制でクラスを提供すること
+          </p>
+          <p>ができないかと考えクラス新設を検討しております。1分で終わるアンケートにぜひお答えください🙏</p>
+        </div>
+        <div class="tally-card" style="margin-top: 0.9rem;">
+          <iframe
+            class="tally-embed"
+            src="https://tally.so/embed/Me5Bl0?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+            title="新設クラスアンケート"
+            loading="lazy"
+          ></iframe>
+        </div>
+        <div class="fallback-link">
+          <a class="survey-link secondary" href="https://tally.so/r/Me5Bl0" target="_blank" rel="noopener noreferrer">うまく表示されない場合はこちら</a>
+        </div>
+      </section>
+
+      <section class="card hero" id="schedule" style="margin-top: 1rem;">
+        <span class="eyebrow">SCHEDULE</span>
+        <h1>スケジュール</h1>
+        <p>
+          クラスの新設にあたり、ご希望や参加しやすさを確認したいと考えています。木曜・日曜のスケジュールを見比べながら、無理なくご回答ください。
+        </p>
+        <div class="hero-grid">
+          <div class="quick-card thu">
+            <strong>木曜クラス</strong>
+            <span>18:00〜20:00 / 2026年4月30日（木）スタート予定</span>
+            <img src="Sozai/Thu.png" alt="木曜クラスのスケジュール画像" loading="lazy" />
+            <p class="schedule-note">⚡️はまりあ元帥によるレッスンを示しています。⚡️マークがついていないところはご都合の良いお日にちで日程調整をお願いします。</p>
+          </div>
+          <div class="quick-card sun">
+            <strong>日曜クラス</strong>
+            <span>10:00〜12:00 / 2026年5月3日（日）スタート予定</span>
+            <img src="Sozai/Sun.png" alt="日曜クラスのスケジュール画像" loading="lazy" />
+            <p class="schedule-note">⚡️はまりあ元帥によるレッスンを示しています。⚡️マークがついていないところはご都合の良いお日にちで日程調整をお願いします。</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <nav class="floating-nav" aria-label="固定ナビゲーション">
+      <a class="primary" href="#survey">アンケート回答</a>
+      <a href="#schedule">日程確認</a>
+    </nav>
+
+    <script async src="https://tally.so/widgets/embed.js"></script>
+  </body>
+</html>
