@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>特典 | EiMARi</title>
+    <meta
+      name="description"
+      content="日曜クラス向けの特典内容を紹介するページです。週1回、45分のEIGHTセッションについて確認できます。"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #f8faf7;
+        --paper: #fffefb;
+        --ink: #171717;
+        --muted: #61645d;
+        --line: #171717;
+        --sunday: #dcff33;
+        --mint: #8de7d1;
+        --radius: 18px;
+        --phone: 430px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        background:
+          radial-gradient(circle at top right, rgba(220, 255, 51, 0.14), transparent 24%),
+          linear-gradient(180deg, #fcfcf8 0%, #f2f6ee 100%);
+        color: var(--ink);
+        font-family: "Zen Kaku Gothic New", sans-serif;
+      }
+
+      body {
+        padding: 0 0 5.5rem;
+      }
+
+      main {
+        width: min(var(--phone), calc(100% - 1rem));
+        margin: 0 auto;
+      }
+
+      section {
+        margin-top: 0.9rem;
+      }
+
+      .card {
+        border: 2px solid var(--line);
+        border-radius: var(--radius);
+        background: var(--paper);
+        padding: 1rem;
+        box-shadow: 6px 6px 0 rgba(23, 23, 23, 0.08);
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.18rem 0.55rem;
+        border: 1.5px solid var(--line);
+        border-radius: 999px;
+        background: var(--sunday);
+        font-size: 0.72rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin: 0;
+      }
+
+      .hero h1 {
+        margin-top: 0.75rem;
+        font-family: "Montserrat", sans-serif;
+        font-size: 1.95rem;
+        line-height: 1.04;
+        letter-spacing: -0.04em;
+      }
+
+      .hero p,
+      .section-head p,
+      .benefit-card p,
+      .note {
+        margin-top: 0.8rem;
+        line-height: 1.72;
+        color: var(--muted);
+      }
+
+      .highlight {
+        margin-top: 0.95rem;
+        padding: 1rem;
+        border: 1.5px solid rgba(23, 23, 23, 0.12);
+        border-radius: 16px;
+        background: linear-gradient(180deg, rgba(220, 255, 51, 0.24), #fff 66%);
+      }
+
+      .highlight strong {
+        display: block;
+        font-family: "Montserrat", sans-serif;
+        font-size: 1.1rem;
+        line-height: 1.35;
+      }
+
+      .benefit-grid {
+        display: grid;
+        gap: 0.75rem;
+      }
+
+      .section-divider {
+        margin-top: 0.85rem;
+        margin-bottom: 0.9rem;
+        border-top: 1px solid rgba(23, 23, 23, 0.12);
+      }
+
+      .cta-block {
+        margin-top: 1rem;
+      }
+
+      .cta-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        min-height: 52px;
+        padding: 0.9rem 1rem;
+        border: 2px solid var(--line);
+        border-radius: 999px;
+        background: var(--sunday);
+        color: var(--ink);
+        text-decoration: none;
+        font-weight: 800;
+      }
+
+      .cta-note {
+        margin-top: 0.55rem;
+        font-size: 0.84rem;
+        line-height: 1.65;
+        color: var(--muted);
+      }
+
+      .benefit-card {
+        border: 1.5px solid rgba(23, 23, 23, 0.12);
+        border-radius: 16px;
+        background: #fff;
+        padding: 0.95rem;
+      }
+
+      .benefit-card h3 {
+        font-size: 1rem;
+        line-height: 1.45;
+      }
+
+      .benefit-number {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 1.9rem;
+        height: 1.9rem;
+        margin-right: 0.45rem;
+        border: 1.5px solid var(--line);
+        border-radius: 999px;
+        background: var(--mint);
+        font-size: 0.82rem;
+        font-weight: 800;
+      }
+
+      .note {
+        margin-top: 0;
+        font-size: 0.9rem;
+      }
+
+      .floating-nav {
+        position: fixed;
+        left: 50%;
+        bottom: 0.85rem;
+        z-index: 20;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.65rem;
+        width: min(calc(100% - 1rem), var(--phone));
+        transform: translateX(-50%);
+      }
+
+      .floating-nav a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 48px;
+        padding: 0.8rem 0.9rem;
+        border: 2px solid var(--line);
+        border-radius: 999px;
+        background: rgba(255, 254, 251, 0.95);
+        color: var(--ink);
+        text-decoration: none;
+        font-weight: 800;
+        backdrop-filter: blur(8px);
+      }
+
+      .floating-nav a.active {
+        background: var(--sunday);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section class="card hero">
+        <span class="eyebrow">BENEFIT</span>
+        <h1>特典</h1>
+        <p>
+          今シーズンご参加の皆さまには、通常のレッスンに加えて、EIGHTによる個別セッションを週1回・45分ご活用いただける特典をご用意しています。
+        </p>
+        <p>こちらは必須ではなく、必要な週に任意でご活用いただけるサポートです。</p>
+        <div class="highlight">
+          <strong>週1回、45分のEIGHTセッションを自由に利用可能</strong>
+          <p>学習の進め方、練習内容の整理、復習の回し方、弱点の確認など、その週に必要な内容に合わせて柔軟にお使いいただけます。</p>
+          <div class="cta-block">
+            <a
+              class="cta-button"
+              href="https://www.jicoo.com/t/eimari/e/15KuQfnS2k5m"
+              target="_blank"
+              rel="noopener noreferrer"
+              >コーチングを予約する</a
+            >
+            <p class="cta-note">同時に押さえることができる予約は1人1枠までです。</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="section-head">
+          <h2>活用イメージ</h2>
+          <p>そのときの状態や課題に合わせて、使い方を調整していただけます。</p>
+          <div class="section-divider" aria-hidden="true"></div>
+        </div>
+        <div class="benefit-grid">
+          <article class="benefit-card">
+            <h3><span class="benefit-number">1</span>学習計画の整理</h3>
+            <p>今週どこに時間を使うべきか、何を優先して練習すべきかを一緒に整理します。</p>
+          </article>
+
+          <article class="benefit-card">
+            <h3><span class="benefit-number">2</span>復習の回し方の確認</h3>
+            <p>レッスン内容をどの順番で復習すると定着しやすいか、アーカイブや課題の使い方も含めて確認できます。</p>
+          </article>
+
+          <article class="benefit-card">
+            <h3><span class="benefit-number">3</span>レッスン内フィードバックの整理</h3>
+            <p>グループレッスン内で受けたフィードバックを記録しております。そちらの結果を伝えた上で、今後の学習プランニングや復習を共に行います。</p>
+          </article>
+
+          <article class="benefit-card">
+            <h3><span class="benefit-number">4</span>弱点の言語化</h3>
+            <p>なんとなく苦手で終わらせず、どこが詰まりやすいのかを整理して次の練習につなげます。</p>
+          </article>
+
+          <article class="benefit-card">
+            <h3><span class="benefit-number">5</span>モチベーション維持</h3>
+            <p>学習リズムが崩れそうな週も、短い間隔で相談できることで継続しやすくなります。</p>
+          </article>
+        </div>
+        <div class="cta-block">
+          <a
+            class="cta-button"
+            href="https://www.jicoo.com/t/eimari/e/15KuQfnS2k5m"
+            target="_blank"
+            rel="noopener noreferrer"
+            >コーチングを予約する</a
+          >
+          <p class="cta-note">同時に押さえることができる予約は1人1枠までです。</p>
+        </div>
+      </section>
+
+      <section class="card">
+        <p class="note">
+          ご不明な点があります場合はLINEやSlackでお問い合わせください。
+        </p>
+      </section>
+    </main>
+
+    <nav class="floating-nav" aria-label="固定ナビゲーション">
+      <a href="class-comparison.html">スケジュール</a>
+      <a class="active" href="class-benefits.html">特典</a>
+    </nav>
+  </body>
+</html>
