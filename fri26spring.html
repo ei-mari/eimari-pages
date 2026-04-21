@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>金曜クラス向け振替スケジュール | EiMARi</title>
+    <meta
+      name="description"
+      content="金曜日クラスと日曜日クラスのレッスン日程を比較できるページです。各テーマごとの開催日を一覧で確認できます。"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #f8faf7;
+        --paper: #fffefb;
+        --ink: #171717;
+        --muted: #61645d;
+        --line: #171717;
+        --friday: #8de7d1;
+        --sunday: #dcff33;
+        --radius: 18px;
+        --phone: 430px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        background:
+          radial-gradient(circle at top right, rgba(141, 231, 209, 0.16), transparent 22%),
+          linear-gradient(180deg, #fcfcf8 0%, #f2f6ee 100%);
+        color: var(--ink);
+        font-family: "Zen Kaku Gothic New", sans-serif;
+      }
+
+      body {
+        padding: 0 0 5.5rem;
+      }
+
+      main {
+        width: min(var(--phone), calc(100% - 1rem));
+        margin: 0 auto;
+      }
+
+      section {
+        margin-top: 0.9rem;
+      }
+
+      .card {
+        border: 2px solid var(--line);
+        border-radius: var(--radius);
+        background: var(--paper);
+        padding: 1rem;
+        box-shadow: 6px 6px 0 rgba(23, 23, 23, 0.08);
+      }
+
+      .hero-thumb {
+        overflow: hidden;
+        padding: 0;
+      }
+
+      .hero-thumb img {
+        display: block;
+        width: 100%;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin: 0;
+      }
+
+      .comparison {
+        display: grid;
+        gap: 0.75rem;
+      }
+
+      .tip-card {
+        margin-top: 0.85rem;
+        border: 1.5px solid rgba(23, 23, 23, 0.12);
+        border-radius: 16px;
+        overflow: hidden;
+        background: #fff;
+      }
+
+      .tip-card summary {
+        list-style: none;
+        cursor: pointer;
+        position: relative;
+        padding: 0.9rem 2.6rem 0.9rem 0.95rem;
+        font-weight: 800;
+      }
+
+      .tip-card summary::-webkit-details-marker {
+        display: none;
+      }
+
+      .tip-card summary::after {
+        content: "+";
+        position: absolute;
+        right: 0.95rem;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 1.1rem;
+        font-weight: 700;
+      }
+
+      .tip-card[open] summary::after {
+        content: "-";
+      }
+
+      .tip-body {
+        padding: 0 0.95rem 0.95rem;
+        border-top: 1px solid rgba(23, 23, 23, 0.08);
+      }
+
+      .tip-body p {
+        margin: 0.75rem 0 0;
+        line-height: 1.72;
+        color: var(--muted);
+      }
+
+      .subsection-head {
+        margin-bottom: 0.85rem;
+      }
+
+      .subsection-head h2 {
+        font-size: 1.28rem;
+        line-height: 1.3;
+      }
+
+      .subsection-head p {
+        margin-top: 0.35rem;
+        color: var(--muted);
+        line-height: 1.65;
+      }
+
+      .row {
+        border: 1.5px solid rgba(23, 23, 23, 0.12);
+        border-radius: 16px;
+        overflow: hidden;
+        background: #fff;
+      }
+
+      .row-head {
+        display: grid;
+        gap: 0.28rem;
+        padding: 0.9rem 0.95rem;
+        border-bottom: 1px solid rgba(23, 23, 23, 0.08);
+        background: #fff;
+      }
+
+      .row-head h3 {
+        font-size: 1rem;
+        line-height: 1.45;
+        color: #b8302c;
+      }
+
+      .head-meta {
+        display: block;
+      }
+
+      .head-date {
+        font-family: "Montserrat", sans-serif;
+        font-size: 0.82rem;
+        font-weight: 700;
+        line-height: 1.4;
+        color: #b8302c;
+      }
+
+      .row-body {
+        display: grid;
+        gap: 0;
+      }
+
+      .date-card {
+        padding: 0.9rem 0.95rem;
+      }
+
+      .date-card + .date-card {
+        border-top: 1px solid rgba(23, 23, 23, 0.08);
+      }
+
+      .date-card strong {
+        display: inline-block;
+        font-size: 0.76rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+      }
+
+      .date-card p {
+        margin-top: 0.35rem;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 700;
+        line-height: 1.45;
+      }
+
+      .option-list {
+        margin-top: 0.4rem;
+        display: grid;
+        gap: 0.32rem;
+      }
+
+      .option-item {
+        display: block;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 700;
+        line-height: 1.45;
+      }
+
+      .date-card.friday {
+        background: linear-gradient(180deg, rgba(141, 231, 209, 0.26), rgba(255, 255, 255, 0.96));
+      }
+
+      .date-card.sunday {
+        background: linear-gradient(180deg, rgba(220, 255, 51, 0.24), rgba(255, 255, 255, 0.96));
+      }
+
+      .sub-note {
+        margin-top: 0.18rem;
+        font-size: 0.82rem;
+        line-height: 1.6;
+        color: var(--muted);
+      }
+
+      .outside-note {
+        margin-top: 0.6rem;
+        padding: 0 0.1rem;
+        font-size: 0.84rem;
+        line-height: 1.68;
+        color: var(--muted);
+      }
+
+      .floating-nav {
+        position: fixed;
+        left: 50%;
+        bottom: 0.85rem;
+        z-index: 20;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.65rem;
+        width: min(calc(100% - 1rem), var(--phone));
+        transform: translateX(-50%);
+      }
+
+      .floating-nav a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 48px;
+        padding: 0.8rem 0.9rem;
+        border: 2px solid var(--line);
+        border-radius: 999px;
+        background: rgba(255, 254, 251, 0.95);
+        color: var(--ink);
+        text-decoration: none;
+        font-weight: 800;
+        backdrop-filter: blur(8px);
+      }
+
+      .floating-nav a.active {
+        background: var(--sunday);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section class="card hero-thumb">
+        <img src="Sozai/schedule_202604.png" alt="2026年4月のスケジュールサムネイル" loading="lazy" />
+      </section>
+
+      <section class="card">
+        <div class="subsection-head">
+          <h2>金曜クラス向け振替スケジュール</h2>
+          <p>レッスンは予定している時刻です。進捗やQ&amp;Aによっては時間が前後する可能性があること、ご了承ください。またご予定が合わない場合は振替をご活用ください。</p>
+          <details class="tip-card">
+            <summary>💡振替方法について</summary>
+            <div class="tip-body">
+              <p>振替をご希望の場合は、Slack or LINEにてご連絡をください。開始の30分までは受付可能ですが、可能な限り早いタイミングでのご連絡をおねがいします。</p>
+            </div>
+          </details>
+        </div>
+        <div class="comparison">
+          <article class="row">
+            <div class="row-head">
+              <h3>❶ 母音レッスン</h3>
+              <div class="head-meta">
+                <span class="head-date">2026/4/24（金）21:00〜23:00</span>
+              </div>
+            </div>
+            <div class="row-body">
+              <div class="date-card sunday">
+                <strong>振替可能なクラス</strong>
+                <div class="option-list">
+                  <span class="option-item">2026/4/26（日）13:00〜15:00</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="row">
+            <div class="row-head">
+              <h3>❷ 二重母音・破裂音</h3>
+              <div class="head-meta">
+                <span class="head-date">2026/5/1（金）21:00〜23:00</span>
+              </div>
+            </div>
+            <div class="row-body">
+              <div class="date-card sunday">
+                <strong>振替可能なクラス</strong>
+                <div class="option-list">
+                  <span class="option-item">2026/5/3（日）13:00〜15:00</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="row">
+            <div class="row-head">
+              <h3>❸ 強勢（英語らしさ）</h3>
+              <div class="head-meta">
+                <span class="head-date">2026/5/8（金）21:00〜23:00</span>
+              </div>
+            </div>
+            <div class="row-body">
+              <div class="date-card sunday">
+                <strong>振替可能なクラス</strong>
+                <div class="option-list">
+                  <span class="option-item">2026/5/10（日）13:00〜15:00</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="row">
+            <div class="row-head">
+              <h3>❹ 子音レッスン（前半）</h3>
+              <div class="head-meta">
+                <span class="head-date">2026/5/22（金）21:00〜23:00</span>
+              </div>
+            </div>
+            <div class="row-body">
+              <div class="date-card sunday">
+                <strong>振替可能なクラス</strong>
+                <div class="option-list">
+                  <span class="option-item">2026/5/24（日）13:00〜15:00</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="row">
+            <div class="row-head">
+              <h3>❺ 子音レッスン（後半）</h3>
+              <div class="head-meta">
+                <span class="head-date">2026/5/29（金）21:00〜23:00</span>
+              </div>
+            </div>
+            <div class="row-body">
+              <div class="date-card sunday">
+                <strong>振替可能なクラス</strong>
+                <div class="option-list">
+                  <span class="option-item">2026/5/31（日）13:00〜15:00</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="row">
+            <div class="row-head">
+              <h3>❻ 総まとめ</h3>
+              <div class="head-meta">
+                <span class="head-date">2026/6/5（金）21:00〜23:00</span>
+              </div>
+            </div>
+            <div class="row-body">
+              <div class="date-card sunday">
+                <strong>振替可能なクラス</strong>
+                <div class="option-list">
+                  <span class="option-item">2026/6/7（日）13:00〜15:00</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="row">
+            <div class="row-head">
+              <h3>❼ EPT対策グループレッスン</h3>
+              <div class="head-meta">
+                <span class="head-date">2026/6/19（金）21:00〜23:00</span>
+              </div>
+            </div>
+            <div class="row-body">
+              <div class="date-card sunday">
+                <strong>振替可能なクラス</strong>
+                <div class="option-list">
+                  <span class="option-item">2026/6/21（日）13:00〜15:00</span>
+                </div>
+              </div>
+            </div>
+          </article>
+          <p class="outside-note">1-on-1レッスンは6/26（金）を予定しておりますが、別日の調整も可能です。日程調整を希望の方はLINE / Slackにてご連絡ください。</p>
+        </div>
+      </section>
+
+    </main>
+    <nav class="floating-nav" aria-label="固定ナビゲーション">
+      <a class="active" href="fri26spring.html">スケジュール</a>
+      <a href="class-benefits.html">特典</a>
+    </nav>
+  </body>
+</html>
