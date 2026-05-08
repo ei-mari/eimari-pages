@@ -201,6 +201,63 @@
         line-height: 1.55;
       }
 
+      .audio-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .audio-card {
+        display: grid;
+        gap: 8px;
+        padding: 10px;
+        border: 1px solid rgba(36, 120, 114, 0.18);
+        border-left: 4px solid var(--card-accent, var(--teal));
+        border-radius: var(--radius);
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(246, 241, 232, 0.88));
+        box-shadow: 0 8px 18px rgba(39, 31, 23, 0.05);
+      }
+
+      .audio-card.is-wide {
+        grid-column: 1 / -1;
+      }
+
+      .audio-card span {
+        color: #314b5a;
+        font-size: 0.82rem;
+        font-weight: 900;
+        line-height: 1.35;
+      }
+
+      .audio-card audio {
+        width: 100%;
+        accent-color: var(--accent);
+      }
+
+      .rate-controls {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 6px;
+      }
+
+      .rate-button {
+        min-height: 32px;
+        border: 1px solid rgba(49, 75, 90, 0.18);
+        border-radius: 999px;
+        background: #fff;
+        color: #314b5a;
+        cursor: pointer;
+        font-size: 0.78rem;
+        font-weight: 900;
+      }
+
+      .rate-button.is-active {
+        border-color: rgba(216, 68, 47, 0.35);
+        background: var(--accent);
+        color: #fff;
+        box-shadow: 0 6px 14px rgba(216, 68, 47, 0.16);
+      }
+
       .accordions {
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -308,6 +365,14 @@
           padding: 0 14px 14px;
         }
 
+        .audio-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .audio-card.is-wide {
+          grid-column: auto;
+        }
+
         .card-top {
           align-items: flex-start;
           flex-direction: column;
@@ -343,6 +408,24 @@
                 <p class="sentence">A: It takes effort.</p>
                 <p class="sentence">B: I can’t afford it.</p>
               </div>
+              <div class="audio-grid">
+                <div class="audio-card">
+                  <span>effort</span>
+                  <audio controls preload="metadata" src="assets/audio/01-effort.wav"></audio>
+                </div>
+                <div class="audio-card">
+                  <span>afford</span>
+                  <audio controls preload="metadata" src="assets/audio/02-afford.wav"></audio>
+                </div>
+                <div class="audio-card">
+                  <span>A: It takes effort.</span>
+                  <audio controls preload="metadata" src="assets/audio/03-it-takes-effort.wav"></audio>
+                </div>
+                <div class="audio-card">
+                  <span>B: I can’t afford it.</span>
+                  <audio controls preload="metadata" src="assets/audio/04-i-cant-afford-it.wav"></audio>
+                </div>
+              </div>
             </div>
             <div class="accordions">
               <details>
@@ -368,6 +451,20 @@
               </div>
               <div class="sentences">
                 <p class="sentence">She preferred the previous version.</p>
+              </div>
+              <div class="audio-grid">
+                <div class="audio-card">
+                  <span>prefer</span>
+                  <audio controls preload="metadata" src="assets/audio/05-prefer.wav"></audio>
+                </div>
+                <div class="audio-card">
+                  <span>previous</span>
+                  <audio controls preload="metadata" src="assets/audio/06-previous.wav"></audio>
+                </div>
+                <div class="audio-card is-wide">
+                  <span>She preferred the previous version.</span>
+                  <audio controls preload="metadata" src="assets/audio/07-she-preferred-the-previous-version.wav"></audio>
+                </div>
               </div>
             </div>
             <div class="accordions">
@@ -396,6 +493,24 @@
               <div class="sentences">
                 <p class="sentence">A: Which carrier do you use?</p>
                 <p class="sentence">B: She changed her career.</p>
+              </div>
+              <div class="audio-grid">
+                <div class="audio-card">
+                  <span>carrier</span>
+                  <audio controls preload="metadata" src="assets/audio/09-carrier.wav"></audio>
+                </div>
+                <div class="audio-card">
+                  <span>career</span>
+                  <audio controls preload="metadata" src="assets/audio/10-career.wav"></audio>
+                </div>
+                <div class="audio-card">
+                  <span>A: Which carrier do you use?</span>
+                  <audio controls preload="metadata" src="assets/audio/11-which-carrier-do-you-use.wav"></audio>
+                </div>
+                <div class="audio-card">
+                  <span>B: She changed her career.</span>
+                  <audio controls preload="metadata" src="assets/audio/12-she-changed-her-career.wav"></audio>
+                </div>
               </div>
             </div>
             <div class="accordions">
@@ -426,6 +541,24 @@
                 <p class="sentence">I’m a coffee addict.</p>
                 <p class="sentence">I’m addicted to coffee.</p>
               </div>
+              <div class="audio-grid">
+                <div class="audio-card">
+                  <span>addict（名詞）</span>
+                  <audio controls preload="metadata" src="assets/audio/13-addict-noun.wav"></audio>
+                </div>
+                <div class="audio-card">
+                  <span>addict（動詞）</span>
+                  <audio controls preload="metadata" src="assets/audio/14-addict-verb.wav"></audio>
+                </div>
+                <div class="audio-card">
+                  <span>I’m a coffee addict.</span>
+                  <audio controls preload="metadata" src="assets/audio/15-im-a-coffee-addict.wav"></audio>
+                </div>
+                <div class="audio-card">
+                  <span>I’m addicted to coffee.</span>
+                  <audio controls preload="metadata" src="assets/audio/16-im-addicted-to-coffee.wav"></audio>
+                </div>
+              </div>
             </div>
             <div class="accordions">
               <details>
@@ -452,6 +585,12 @@
               </div>
               <div class="sentences">
                 <p class="sentence">another important decision</p>
+              </div>
+              <div class="audio-grid">
+                <div class="audio-card is-wide">
+                  <span>another important decision</span>
+                  <audio controls preload="metadata" src="assets/audio/08-another-important-decision.wav"></audio>
+                </div>
               </div>
             </div>
             <div class="accordions">
@@ -483,6 +622,12 @@
                   well, like Africa.
                 </p>
                 <p class="note">二音節以上ある英単語は強勢を意識するんじゃ</p>
+              </div>
+              <div class="audio-grid">
+                <div class="audio-card is-wide">
+                  <span>It’s important to be specific when you describe an accident, especially in a place you don’t know well, like Africa.</span>
+                  <audio controls preload="metadata" src="assets/audio/17-important-specific-accident-africa.wav"></audio>
+                </div>
               </div>
             </div>
             <div class="accordions">
@@ -519,6 +664,12 @@
                 </p>
                 <p class="note">a recordは名詞の発音で、to recordは動詞の発音じゃ</p>
               </div>
+              <div class="audio-grid">
+                <div class="audio-card is-wide">
+                  <span>We found a record of every transaction, so we need to record your statement now.</span>
+                  <audio controls preload="metadata" src="assets/audio/18-record-transaction-statement.wav"></audio>
+                </div>
+              </div>
             </div>
             <div class="accordions">
               <details>
@@ -546,5 +697,33 @@
         </div>
       </section>
     </main>
+    <script>
+      document.querySelectorAll(".audio-card audio").forEach((audio) => {
+        audio.playbackRate = 1;
+
+        const controls = document.createElement("div");
+        controls.className = "rate-controls";
+
+        [
+          { rate: 0.5, label: "0.5" },
+          { rate: 0.75, label: "0.75" },
+          { rate: 1, label: "1.0" },
+        ].forEach(({ rate, label }) => {
+          const button = document.createElement("button");
+          button.type = "button";
+          button.className = "rate-button";
+          button.textContent = label;
+          if (rate === 1) button.classList.add("is-active");
+          button.addEventListener("click", () => {
+            audio.playbackRate = rate;
+            controls.querySelectorAll(".rate-button").forEach((item) => item.classList.remove("is-active"));
+            button.classList.add("is-active");
+          });
+          controls.appendChild(button);
+        });
+
+        audio.insertAdjacentElement("afterend", controls);
+      });
+    </script>
   </body>
 </html>
