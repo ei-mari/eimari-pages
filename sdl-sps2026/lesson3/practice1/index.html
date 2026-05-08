@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SOUND DESIGN LAB | Lesson 3 Practice 1</title>
+    <meta
+      name="description"
+      content="SOUND DESIGN LAB 第3回レッスン中に使う例文発音練習ページです。発音記号と日本語訳をアコーディオンで確認できます。"
+    />
+    <meta property="og:image" content="assets/practice-cat-hero-v2.png" />
+    <meta name="twitter:image" content="assets/practice-cat-hero-v2.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800;900&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #f2eadf;
+        --paper: #fffdf8;
+        --ink: #171412;
+        --muted: #71675e;
+        --line: #2b241e;
+        --accent: #d8442f;
+        --navy: #0b2138;
+        --gold: #b9892a;
+        --teal: #247872;
+        --panel: rgba(255, 253, 248, 0.86);
+        --shadow: 0 22px 58px rgba(39, 31, 23, 0.14);
+        --radius: 8px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background:
+          linear-gradient(90deg, rgba(43, 36, 30, 0.045) 1px, transparent 1px),
+          linear-gradient(180deg, rgba(43, 36, 30, 0.045) 1px, transparent 1px),
+          linear-gradient(180deg, #fffaf2 0%, var(--bg) 56%, #e9dfd3 100%);
+        background-size: 34px 34px, 34px 34px, auto;
+        color: var(--ink);
+        font-family: "Zen Kaku Gothic New", sans-serif;
+      }
+
+      button {
+        font: inherit;
+      }
+
+      .page {
+        width: min(100%, 1120px);
+        margin: 0 auto;
+        padding: 18px 14px 42px;
+      }
+
+      .hero {
+        overflow: hidden;
+        border: 1px solid rgba(43, 36, 30, 0.18);
+        border-radius: var(--radius);
+        background: #fff;
+        box-shadow: var(--shadow);
+      }
+
+      .hero img {
+        display: block;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+      }
+
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+      }
+
+      .board {
+        margin-top: 18px;
+        padding: 16px;
+        border: 1px solid rgba(43, 36, 30, 0.16);
+        border-radius: var(--radius);
+        background: var(--panel);
+        box-shadow: 0 16px 44px rgba(39, 31, 23, 0.09);
+      }
+
+      .board-head {
+        display: grid;
+        gap: 8px;
+        margin-bottom: 14px;
+        padding: 4px 2px 14px;
+        border-bottom: 1px solid rgba(43, 36, 30, 0.12);
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin: 0;
+      }
+
+      h1 {
+        font-family: "Inter", "Zen Kaku Gothic New", sans-serif;
+        font-size: clamp(1.7rem, 4.4vw, 3.4rem);
+        font-weight: 900;
+        letter-spacing: 0;
+        line-height: 1.02;
+      }
+
+      .lead {
+        color: var(--muted);
+        font-size: 0.96rem;
+        font-weight: 700;
+        line-height: 1.7;
+      }
+
+      .exercise-list {
+        display: grid;
+        gap: 14px;
+      }
+
+      .exercise-card {
+        position: relative;
+        overflow: hidden;
+        border: 1px solid rgba(43, 36, 30, 0.15);
+        border-radius: var(--radius);
+        background:
+          linear-gradient(145deg, rgba(255, 255, 255, 0.98), rgba(250, 244, 235, 0.9)),
+          #fff;
+        box-shadow: 0 8px 26px rgba(39, 31, 23, 0.07);
+      }
+
+      .exercise-card::before {
+        content: "";
+        position: absolute;
+        inset: 0 0 auto;
+        height: 6px;
+        background: var(--card-accent, var(--accent));
+      }
+
+      .exercise-main {
+        display: grid;
+        gap: 14px;
+        padding: 18px;
+      }
+
+      .card-top {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .number {
+        display: inline-grid;
+        place-items: center;
+        min-width: 42px;
+        height: 30px;
+        border: 1px solid rgba(43, 36, 30, 0.16);
+        border-radius: 999px;
+        background: rgba(255, 253, 248, 0.9);
+        color: var(--muted);
+        font-family: "Inter", sans-serif;
+        font-size: 0.74rem;
+        font-weight: 900;
+      }
+
+      .focus {
+        color: var(--card-accent, var(--accent));
+        font-family: "Inter", "Zen Kaku Gothic New", sans-serif;
+        font-size: 0.78rem;
+        font-weight: 900;
+        line-height: 1.35;
+        text-align: right;
+      }
+
+      .sentences {
+        display: grid;
+        gap: 8px;
+      }
+
+      .sentence {
+        font-family: "Inter", "Zen Kaku Gothic New", sans-serif;
+        font-size: clamp(1.45rem, 3.2vw, 2.35rem);
+        font-weight: 900;
+        letter-spacing: 0;
+        line-height: 1.16;
+      }
+
+      .note {
+        color: var(--muted);
+        font-size: 0.92rem;
+        font-weight: 800;
+        line-height: 1.55;
+      }
+
+      .accordions {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+        padding: 0 18px 18px;
+      }
+
+      details {
+        border: 1px solid rgba(43, 36, 30, 0.14);
+        border-radius: var(--radius);
+        background: rgba(255, 253, 248, 0.84);
+        overflow: hidden;
+      }
+
+      summary {
+        min-height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 0 13px;
+        color: var(--ink);
+        cursor: pointer;
+        font-size: 0.9rem;
+        font-weight: 900;
+        list-style: none;
+      }
+
+      summary::-webkit-details-marker {
+        display: none;
+      }
+
+      summary::after {
+        content: "+";
+        display: grid;
+        place-items: center;
+        width: 28px;
+        height: 28px;
+        flex: 0 0 auto;
+        border-radius: 50%;
+        background: var(--ink);
+        color: #fff;
+        font-family: "Inter", sans-serif;
+        font-size: 1rem;
+        font-weight: 900;
+      }
+
+      details[open] summary::after {
+        content: "-";
+      }
+
+      .detail-body {
+        display: grid;
+        gap: 8px;
+        padding: 12px 13px 14px;
+        border-top: 1px solid rgba(43, 36, 30, 0.1);
+        background: #fff8ef;
+      }
+
+      .ipa-line {
+        font-family: "Inter", "Zen Kaku Gothic New", sans-serif;
+        font-size: 1.04rem;
+        font-weight: 900;
+        line-height: 1.55;
+      }
+
+      .jp-line {
+        color: var(--ink);
+        font-size: 0.96rem;
+        font-weight: 800;
+        line-height: 1.7;
+      }
+
+      .accent-red {
+        --card-accent: var(--accent);
+      }
+
+      .accent-teal {
+        --card-accent: var(--teal);
+      }
+
+      .accent-gold {
+        --card-accent: var(--gold);
+      }
+
+      .accent-navy {
+        --card-accent: var(--navy);
+      }
+
+      @media (max-width: 720px) {
+        .page {
+          padding: 10px 9px 30px;
+        }
+
+        .board {
+          padding: 10px;
+        }
+
+        .exercise-main {
+          padding: 16px 14px;
+        }
+
+        .accordions {
+          grid-template-columns: 1fr;
+          padding: 0 14px 14px;
+        }
+
+        .card-top {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+
+        .focus {
+          text-align: left;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <section class="hero" aria-labelledby="page-title">
+        <img src="assets/practice-cat-hero-v2.png" alt="" />
+        <h1 class="sr-only" id="page-title">PRACTICE</h1>
+      </section>
+
+      <section class="board" aria-label="Practice 1">
+        <div class="board-head">
+          <p class="lead">
+            強勢を意識して音読をしましょう。特に意識してほしい発音記号はヒントとして用意しているので必要に応じて「発音記号を確認する」をタップしてね。
+          </p>
+        </div>
+
+        <div class="exercise-list">
+          <article class="exercise-card accent-red">
+            <div class="exercise-main">
+              <div class="card-top">
+                <span class="number">01</span>
+              </div>
+              <div class="sentences">
+                <p class="sentence">A: It takes effort.</p>
+                <p class="sentence">B: I can’t afford it.</p>
+              </div>
+            </div>
+            <div class="accordions">
+              <details>
+                <summary>発音記号を確認する</summary>
+                <div class="detail-body">
+                  <p class="ipa-line">can’t /kænt/</p>
+                </div>
+              </details>
+              <details>
+                <summary>日本語を確認する</summary>
+                <div class="detail-body">
+                  <p class="jp-line">A: それには努力が必要です。</p>
+                  <p class="jp-line">B: それを買う余裕がありません。</p>
+                </div>
+              </details>
+            </div>
+          </article>
+
+          <article class="exercise-card accent-teal">
+            <div class="exercise-main">
+              <div class="card-top">
+                <span class="number">02</span>
+              </div>
+              <div class="sentences">
+                <p class="sentence">She preferred the previous version.</p>
+              </div>
+            </div>
+            <div class="accordions">
+              <details>
+                <summary>発音記号を確認する</summary>
+                <div class="detail-body">
+                  <p class="ipa-line">prefer /prɪˈfɝ/</p>
+                  <p class="ipa-line">previous /ˈpri.vi.əs/</p>
+                  <p class="ipa-line">version /ˈvɝ.ʒən/</p>
+                </div>
+              </details>
+              <details>
+                <summary>日本語を確認する</summary>
+                <div class="detail-body">
+                  <p class="jp-line">彼女は前のバージョンのほうを好みました。</p>
+                </div>
+              </details>
+            </div>
+          </article>
+
+          <article class="exercise-card accent-gold">
+            <div class="exercise-main">
+              <div class="card-top">
+                <span class="number">03</span>
+              </div>
+              <div class="sentences">
+                <p class="sentence">A: Which carrier do you use?</p>
+                <p class="sentence">B: She changed her career.</p>
+              </div>
+            </div>
+            <div class="accordions">
+              <details>
+                <summary>発音記号を確認する</summary>
+                <div class="detail-body">
+                  <p class="ipa-line">carrier /ˈkɛr.i.ɚ/</p>
+                  <p class="ipa-line">career /kəˈrɪr/</p>
+                  <p class="ipa-line">changed /tʃeɪndʒd/</p>
+                </div>
+              </details>
+              <details>
+                <summary>日本語を確認する</summary>
+                <div class="detail-body">
+                  <p class="jp-line">A: どの通信会社を使っていますか。</p>
+                  <p class="jp-line">B: 彼女はキャリアを変えました。</p>
+                </div>
+              </details>
+            </div>
+          </article>
+
+          <article class="exercise-card accent-navy">
+            <div class="exercise-main">
+              <div class="card-top">
+                <span class="number">04</span>
+              </div>
+              <div class="sentences">
+                <p class="sentence">I’m a coffee addict.</p>
+                <p class="sentence">I’m addicted to coffee.</p>
+              </div>
+            </div>
+            <div class="accordions">
+              <details>
+                <summary>発音記号を確認する</summary>
+                <div class="detail-body">
+                  <p class="ipa-line">coffee addict /ˈkɑ.fi ˈæd.ɪkt/</p>
+                  <p class="ipa-line">addicted to coffee /əˈdɪk.təd tə ˈkɑ.fi/</p>
+                </div>
+              </details>
+              <details>
+                <summary>日本語を確認する</summary>
+                <div class="detail-body">
+                  <p class="jp-line">私はコーヒー中毒です。</p>
+                  <p class="jp-line">私はコーヒーにハマっています。</p>
+                </div>
+              </details>
+            </div>
+          </article>
+
+          <article class="exercise-card accent-red">
+            <div class="exercise-main">
+              <div class="card-top">
+                <span class="number">05</span>
+              </div>
+              <div class="sentences">
+                <p class="sentence">another important decision</p>
+              </div>
+            </div>
+            <div class="accordions">
+              <details>
+                <summary>発音記号を確認する</summary>
+                <div class="detail-body">
+                  <p class="ipa-line">another /əˈnʌðɚ/</p>
+                  <p class="ipa-line">important /ɪmˈpɔr.tənt/</p>
+                  <p class="ipa-line">decision /dɪˈsɪʒ.ən/</p>
+                </div>
+              </details>
+              <details>
+                <summary>日本語を確認する</summary>
+                <div class="detail-body">
+                  <p class="jp-line">もう一つの重要な決定</p>
+                </div>
+              </details>
+            </div>
+          </article>
+
+          <article class="exercise-card accent-teal">
+            <div class="exercise-main">
+              <div class="card-top">
+                <span class="number">06</span>
+              </div>
+              <div class="sentences">
+                <p class="sentence">
+                  👹 It’s important to be specific when you describe an accident, especially in a place you don’t know
+                  well, like Africa.
+                </p>
+                <p class="note">二音節以上ある英単語は強勢を意識するんじゃ</p>
+              </div>
+            </div>
+            <div class="accordions">
+              <details>
+                <summary>発音記号を確認する</summary>
+                <div class="detail-body">
+                  <p class="ipa-line">important /ɪmˈpɔr.tənt/</p>
+                  <p class="ipa-line">specific /spəˈsɪf.ɪk/</p>
+                  <p class="ipa-line">describe /dɪˈskraɪb/</p>
+                  <p class="ipa-line">accident /ˈæk.sə.dənt/</p>
+                  <p class="ipa-line">especially /ɪˈspɛʃ.ə.li/</p>
+                  <p class="ipa-line">Africa /ˈæf.rɪ.kə/</p>
+                </div>
+              </details>
+              <details>
+                <summary>日本語を確認する</summary>
+                <div class="detail-body">
+                  <p class="jp-line">
+                    よく知らない場所、たとえばアフリカのような場所で事故を説明するときは、具体的に話すことが大切です。
+                  </p>
+                </div>
+              </details>
+            </div>
+          </article>
+
+          <article class="exercise-card accent-gold">
+            <div class="exercise-main">
+              <div class="card-top">
+                <span class="number">07</span>
+              </div>
+              <div class="sentences">
+                <p class="sentence">
+                  👹 We found a record of every transaction, so we need to record your statement now.
+                </p>
+                <p class="note">a recordは名詞の発音で、to recordは動詞の発音じゃ</p>
+              </div>
+            </div>
+            <div class="accordions">
+              <details>
+                <summary>発音記号を確認する</summary>
+                <div class="detail-body">
+                  <p class="ipa-line">found /faʊnd/</p>
+                  <p class="ipa-line">record （名） /ˈrɛk.ɚd/</p>
+                  <p class="ipa-line">every /ˈɛv.ri/</p>
+                  <p class="ipa-line">transaction /trænˈzæk.ʃən/</p>
+                  <p class="ipa-line">so /soʊ/</p>
+                  <p class="ipa-line">record （動） /rɪˈkɔrd/</p>
+                  <p class="ipa-line">statement /ˈsteɪt.mənt/</p>
+                </div>
+              </details>
+              <details>
+                <summary>日本語を確認する</summary>
+                <div class="detail-body">
+                  <p class="jp-line">
+                    私たちはすべての取引記録を見つけたので、今あなたの供述を記録する必要があります。
+                  </p>
+                </div>
+              </details>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
