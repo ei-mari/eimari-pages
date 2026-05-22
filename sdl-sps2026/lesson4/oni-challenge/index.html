@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SOUND DESIGN LAB | Lesson 4 Oni Challenge</title>
+    <meta name="description" content="SOUND DESIGN LAB Lesson 4 鬼チャレ用モデル音声ページです。" />
+    <meta property="og:image" content="assets/oni-challenge-hero.png" />
+    <meta name="twitter:image" content="assets/oni-challenge-hero.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800;900&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #f1eadf;
+        --ink: #171412;
+        --muted: #74695f;
+        --accent: #d8442f;
+        --navy: #0b2138;
+        --gold: #b9892a;
+        --teal: #247872;
+        --panel: rgba(255, 253, 248, 0.88);
+        --shadow: 0 22px 58px rgba(39, 31, 23, 0.14);
+        --radius: 8px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        background:
+          linear-gradient(90deg, rgba(43, 36, 30, 0.045) 1px, transparent 1px),
+          linear-gradient(180deg, rgba(43, 36, 30, 0.045) 1px, transparent 1px),
+          linear-gradient(180deg, #fffaf2 0%, var(--bg) 56%, #e9dfd3 100%);
+        background-size: 34px 34px, 34px 34px, auto;
+        color: var(--ink);
+        font-family: "Zen Kaku Gothic New", sans-serif;
+      }
+
+      button {
+        font: inherit;
+      }
+
+      .page {
+        width: min(100%, 430px);
+        margin: 0 auto;
+        padding: 10px 9px 30px;
+      }
+
+      .hero {
+        overflow: hidden;
+        border: 1px solid rgba(43, 36, 30, 0.18);
+        border-radius: var(--radius);
+        background: #fff;
+        box-shadow: var(--shadow);
+      }
+
+      .hero img {
+        display: block;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+      }
+
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+      }
+
+      .board {
+        margin-top: 18px;
+        padding: 10px;
+        border: 1px solid rgba(43, 36, 30, 0.16);
+        border-radius: var(--radius);
+        background: var(--panel);
+        box-shadow: 0 16px 44px rgba(39, 31, 23, 0.09);
+      }
+
+      p {
+        margin: 0;
+      }
+
+      .challenge-list {
+        display: grid;
+        gap: 14px;
+      }
+
+      .challenge-card {
+        position: relative;
+        overflow: hidden;
+        border: 1px solid rgba(43, 36, 30, 0.15);
+        border-radius: var(--radius);
+        background:
+          linear-gradient(145deg, rgba(255, 255, 255, 0.98), rgba(250, 244, 235, 0.9)),
+          #fff;
+        box-shadow: 0 8px 26px rgba(39, 31, 23, 0.07);
+      }
+
+      .challenge-card::before {
+        content: "";
+        position: absolute;
+        inset: 0 0 auto;
+        height: 6px;
+        background: var(--card-accent, var(--accent));
+      }
+
+      .challenge-main {
+        display: grid;
+        gap: 12px;
+        padding: 16px 14px;
+      }
+
+      .speaker {
+        display: inline-grid;
+        width: fit-content;
+        min-height: 30px;
+        align-items: center;
+        padding: 0 12px;
+        border: 1px solid rgba(43, 36, 30, 0.16);
+        border-radius: 999px;
+        background: rgba(255, 253, 248, 0.9);
+        color: var(--muted);
+        font-family: "Inter", sans-serif;
+        font-size: 0.74rem;
+        font-weight: 900;
+      }
+
+      .sentence {
+        font-family: "Inter", "Zen Kaku Gothic New", sans-serif;
+        font-size: 1.34rem;
+        font-weight: 900;
+        letter-spacing: 0;
+        line-height: 1.22;
+      }
+
+      .audio-pair {
+        display: grid;
+        gap: 9px;
+      }
+
+      .audio-box {
+        display: grid;
+        gap: 8px;
+        padding: 12px;
+        border: 1px solid rgba(43, 36, 30, 0.12);
+        border-left: 4px solid var(--box-accent, var(--teal));
+        border-radius: var(--radius);
+        background: rgba(255, 253, 248, 0.82);
+      }
+
+      .audio-box.recommended {
+        --box-accent: var(--accent);
+        background: #fff6ec;
+      }
+
+      .audio-label {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        color: var(--ink);
+        font-family: "Inter", "Zen Kaku Gothic New", sans-serif;
+        font-size: 0.82rem;
+        font-weight: 900;
+        line-height: 1.35;
+      }
+
+      .badge {
+        display: inline-grid;
+        place-items: center;
+        min-height: 24px;
+        padding: 0 9px;
+        border-radius: 999px;
+        background: var(--accent);
+        color: white;
+        font-size: 0.7rem;
+      }
+
+      audio {
+        width: 100%;
+        height: 40px;
+      }
+
+      .speed-control {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 6px;
+      }
+
+      .speed-button {
+        min-height: 32px;
+        border: 1px solid rgba(49, 75, 90, 0.18);
+        border-radius: 999px;
+        background: #fff;
+        color: #314b5a;
+        cursor: pointer;
+        font-family: "Inter", sans-serif;
+        font-size: 0.74rem;
+        font-weight: 900;
+      }
+
+      .speed-button.is-active {
+        border-color: rgba(216, 68, 47, 0.35);
+        background: var(--accent);
+        color: #fff;
+        box-shadow: 0 6px 14px rgba(216, 68, 47, 0.16);
+      }
+
+      .notes {
+        padding: 0 14px 14px;
+      }
+
+      details {
+        border: 1px solid rgba(43, 36, 30, 0.14);
+        border-radius: var(--radius);
+        background: rgba(255, 253, 248, 0.84);
+        overflow: hidden;
+      }
+
+      summary {
+        min-height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 0 13px;
+        color: var(--ink);
+        cursor: pointer;
+        font-size: 0.9rem;
+        font-weight: 900;
+        list-style: none;
+      }
+
+      summary::-webkit-details-marker {
+        display: none;
+      }
+
+      summary::after {
+        content: "+";
+        display: grid;
+        place-items: center;
+        width: 28px;
+        height: 28px;
+        flex: 0 0 auto;
+        border-radius: 50%;
+        background: var(--ink);
+        color: #fff;
+        font-family: "Inter", sans-serif;
+        font-size: 1rem;
+        font-weight: 900;
+      }
+
+      details[open] summary::after {
+        content: "-";
+      }
+
+      .note-list {
+        display: grid;
+        gap: 8px;
+        padding: 12px 13px 14px;
+        border-top: 1px solid rgba(43, 36, 30, 0.1);
+        background: #fff8ef;
+      }
+
+      .note-line {
+        color: var(--ink);
+        font-size: 0.95rem;
+        font-weight: 800;
+        line-height: 1.75;
+      }
+
+      .ipa {
+        display: inline-flex;
+        align-items: center;
+        min-height: 28px;
+        margin: 0 3px;
+        padding: 1px 8px 2px;
+        border: 1px solid rgba(36, 120, 114, 0.2);
+        border-radius: 999px;
+        background: rgba(232, 250, 245, 0.92);
+        color: #173e43;
+        font-family: "Inter", "Arial", sans-serif;
+        font-size: 1.05rem;
+        font-weight: 900;
+        letter-spacing: 0;
+        line-height: 1.2;
+      }
+
+      .accent-red {
+        --card-accent: var(--accent);
+      }
+
+      .accent-teal {
+        --card-accent: var(--teal);
+      }
+
+      .accent-gold {
+        --card-accent: var(--gold);
+      }
+
+      .accent-navy {
+        --card-accent: var(--navy);
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <section class="hero" aria-labelledby="page-title">
+        <img src="assets/oni-challenge-hero.png" alt="" />
+        <h1 class="sr-only" id="page-title">Lesson 4 Oni Challenge</h1>
+      </section>
+
+      <section class="board" aria-label="Lesson 4 Oni Challenge">
+        <div class="challenge-list">
+          <article class="challenge-card accent-red">
+            <div class="challenge-main">
+              <span class="speaker">Speaker 1</span>
+              <p class="sentence">I heard you finally graduated from a local college in April.</p>
+              <div class="audio-pair">
+                <div class="audio-box">
+                  <p class="audio-label">ナチュラルなスピード</p>
+                  <audio controls preload="metadata" src="assets/audio/01-graduated-natural.wav"></audio>
+                </div>
+                <div class="audio-box recommended">
+                  <p class="audio-label">よりわかりやすい音声 <span class="badge">recommended!</span></p>
+                  <audio controls preload="metadata" src="assets/audio/01-graduated-recommended.wav"></audio>
+                </div>
+              </div>
+            </div>
+            <div class="notes">
+              <details>
+                <summary>発音メモを確認する</summary>
+                <div class="note-list">
+                  <p class="note-line">heard <span class="ipa">/hɝd/</span> : early bird のRよ！</p>
+                  <p class="note-line">finally <span class="ipa">/ˈfaɪnəli/</span> : fiナルじゃないよ</p>
+                  <p class="note-line">graduated <span class="ipa">/ˈɡrædʒuˌeɪtɪd/</span></p>
+                  <p class="note-line">local <span class="ipa">/ˈloʊkəl/</span> : 🌚 Dark Lだよ（お＋L）</p>
+                  <p class="note-line">college <span class="ipa">/ˈkɑlɪdʒ/</span></p>
+                  <p class="note-line">April <span class="ipa">/ˈeɪprəl/</span> : 🌚 Dark Lだよ（お＋L）</p>
+                </div>
+              </details>
+            </div>
+          </article>
+
+          <article class="challenge-card accent-teal">
+            <div class="challenge-main">
+              <span class="speaker">Speaker 2</span>
+              <p class="sentence">Yeah, and now I’m the new kid on the block at work.</p>
+              <div class="audio-pair">
+                <div class="audio-box">
+                  <p class="audio-label">ナチュラルなスピード</p>
+                  <audio controls preload="metadata" src="assets/audio/02-new-kid-natural.wav"></audio>
+                </div>
+                <div class="audio-box recommended">
+                  <p class="audio-label">よりわかりやすい音声 <span class="badge">recommended!</span></p>
+                  <audio controls preload="metadata" src="assets/audio/02-new-kid-recommended.wav"></audio>
+                </div>
+              </div>
+            </div>
+            <div class="notes">
+              <details>
+                <summary>発音メモを確認する</summary>
+                <div class="note-list">
+                  <p class="note-line">now <span class="ipa">/naʊ/</span></p>
+                  <p class="note-line">new <span class="ipa">/nu/</span></p>
+                  <p class="note-line">kid <span class="ipa">/kɪd/</span></p>
+                  <p class="note-line">block <span class="ipa">/blɑk/</span></p>
+                  <p class="note-line">work <span class="ipa">/wɝk/</span> : early bird のRよ！</p>
+                </div>
+              </details>
+            </div>
+          </article>
+
+          <article class="challenge-card accent-gold">
+            <div class="challenge-main">
+              <span class="speaker">Speaker 1</span>
+              <p class="sentence">How does it feel?</p>
+              <div class="audio-pair">
+                <div class="audio-box">
+                  <p class="audio-label">ナチュラルなスピード</p>
+                  <audio controls preload="metadata" src="assets/audio/03-how-does-it-feel-natural.wav"></audio>
+                </div>
+                <div class="audio-box recommended">
+                  <p class="audio-label">よりわかりやすい音声 <span class="badge">recommended!</span></p>
+                  <audio controls preload="metadata" src="assets/audio/03-how-does-it-feel-recommended.wav"></audio>
+                </div>
+              </div>
+            </div>
+            <div class="notes">
+              <details>
+                <summary>発音メモを確認する</summary>
+                <div class="note-list">
+                  <p class="note-line">feel <span class="ipa">/fil/</span> : イ系母音 x Dark Lだよ（わたり音のYを入れてみよう）</p>
+                </div>
+              </details>
+            </div>
+          </article>
+
+          <article class="challenge-card accent-navy">
+            <div class="challenge-main">
+              <span class="speaker">Speaker 2</span>
+              <p class="sentence">A little nervous, but I’m trying to stay relaxed and realistic.</p>
+              <div class="audio-pair">
+                <div class="audio-box">
+                  <p class="audio-label">ナチュラルなスピード</p>
+                  <audio controls preload="metadata" src="assets/audio/04-nervous-relaxed-natural.wav"></audio>
+                </div>
+                <div class="audio-box recommended">
+                  <p class="audio-label">よりわかりやすい音声 <span class="badge">recommended!</span></p>
+                  <audio controls preload="metadata" src="assets/audio/04-nervous-relaxed-recommended.wav"></audio>
+                </div>
+              </div>
+            </div>
+            <div class="notes">
+              <details>
+                <summary>発音メモを確認する</summary>
+                <div class="note-list">
+                  <p class="note-line">nervous <span class="ipa">/ˈnɝvəs/</span></p>
+                  <p class="note-line">relaxed <span class="ipa">/rɪˈlækst/</span></p>
+                  <p class="note-line">realistic <span class="ipa">/ˌriəˈlɪstɪk/</span></p>
+                </div>
+              </details>
+            </div>
+          </article>
+
+          <article class="challenge-card accent-red">
+            <div class="challenge-main">
+              <span class="speaker">Speaker 1</span>
+              <p class="sentence">Good. Just be reliable and get used to the regular routine.</p>
+              <div class="audio-pair">
+                <div class="audio-box">
+                  <p class="audio-label">ナチュラルなスピード</p>
+                  <audio controls preload="metadata" src="assets/audio/05-reliable-routine-natural.wav"></audio>
+                </div>
+                <div class="audio-box recommended">
+                  <p class="audio-label">よりわかりやすい音声 <span class="badge">recommended!</span></p>
+                  <audio controls preload="metadata" src="assets/audio/05-reliable-routine-recommended.wav"></audio>
+                </div>
+              </div>
+            </div>
+            <div class="notes">
+              <details>
+                <summary>発音メモを確認する</summary>
+                <div class="note-list">
+                  <p class="note-line">reliable <span class="ipa">/rɪˈlaɪəbəl/</span></p>
+                  <p class="note-line">regular <span class="ipa">/ˈrɛɡjələr/</span></p>
+                  <p class="note-line">routine <span class="ipa">/ruˈtin/</span> : 強勢はtinだよ</p>
+                </div>
+              </details>
+            </div>
+          </article>
+
+          <article class="challenge-card accent-teal">
+            <div class="challenge-main">
+              <span class="speaker">Speaker 2</span>
+              <p class="sentence">That’s the plan. I’m ready for real life. Still learning, but ready.</p>
+              <div class="audio-pair">
+                <div class="audio-box">
+                  <p class="audio-label">ナチュラルなスピード</p>
+                  <audio controls preload="metadata" src="assets/audio/06-real-life-natural.wav"></audio>
+                </div>
+                <div class="audio-box recommended">
+                  <p class="audio-label">よりわかりやすい音声 <span class="badge">recommended!</span></p>
+                  <audio controls preload="metadata" src="assets/audio/06-real-life-recommended.wav"></audio>
+                </div>
+              </div>
+            </div>
+            <div class="notes">
+              <details>
+                <summary>発音メモを確認する</summary>
+                <div class="note-list">
+                  <p class="note-line">plan <span class="ipa">/plæn/</span> または <span class="ipa">/plɛən/</span></p>
+                  <p class="note-line">real <span class="ipa">/riəl/</span> : 🌚 Dark Lだよ（お＋L）</p>
+                  <p class="note-line">still <span class="ipa">/stɪl/</span> : 🌚 Dark Lだよ（お＋L）</p>
+                  <p class="note-line">learning <span class="ipa">/ˈlɝnɪŋ/</span></p>
+                </div>
+              </details>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+    <script>
+      document.querySelectorAll(".audio-box").forEach((box, index) => {
+        const audio = box.querySelector("audio");
+        const speeds = ["0.25", "0.5", "0.75", "1"];
+        const storageKey = `lesson4OniChallengeSpeed-${index}`;
+        const savedSpeed = localStorage.getItem(storageKey) || "1";
+        const speedControl = document.createElement("div");
+
+        speedControl.className = "speed-control";
+        speedControl.setAttribute("aria-label", "再生速度");
+
+        speeds.forEach((speed) => {
+          const button = document.createElement("button");
+          button.className = "speed-button";
+          button.type = "button";
+          button.dataset.speed = speed;
+          button.textContent = speed === "1" ? "1.0" : speed;
+          button.addEventListener("click", () => setPlaybackSpeed(speed));
+          speedControl.appendChild(button);
+        });
+
+        audio.insertAdjacentElement("afterend", speedControl);
+
+        function setPlaybackSpeed(speed) {
+          audio.playbackRate = Number(speed);
+          localStorage.setItem(storageKey, speed);
+
+          speedControl.querySelectorAll(".speed-button").forEach((button) => {
+            const isActive = button.dataset.speed === speed;
+            button.classList.toggle("is-active", isActive);
+            button.setAttribute("aria-pressed", String(isActive));
+          });
+        }
+
+        audio.addEventListener("loadedmetadata", () => {
+          audio.playbackRate = Number(localStorage.getItem(storageKey) || savedSpeed);
+        });
+
+        setPlaybackSpeed(savedSpeed);
+      });
+    </script>
+  </body>
+</html>
