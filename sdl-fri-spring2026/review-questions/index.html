@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Review Questions | SOUND DESIGN LAB</title>
+    <style>
+      :root {
+        --bg: #f6f3ed;
+        --paper: #fffdfa;
+        --ink: #17130f;
+        --muted: #746b61;
+        --line: rgba(36, 29, 22, 0.13);
+        --blue: #1764d8;
+        --teal: #008f8d;
+        --gold: #d8a43a;
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        background:
+          radial-gradient(circle at 88% 0%, rgba(23, 100, 216, 0.13), transparent 34%),
+          radial-gradient(circle at 0% 95%, rgba(216, 164, 58, 0.15), transparent 38%),
+          var(--bg);
+        color: var(--ink);
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      .shell {
+        width: min(100%, 430px);
+        min-height: 100vh;
+        background: rgba(255, 253, 248, 0.9);
+      }
+
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        padding: 10px;
+        border-bottom: 1px solid var(--line);
+        background: rgba(255, 253, 248, 0.98);
+        box-shadow: 0 12px 28px rgba(35, 28, 20, 0.12);
+      }
+
+      .video-embed {
+        position: relative;
+        overflow: hidden;
+        padding-top: 75%;
+        border: 1px solid rgba(36, 29, 22, 0.16);
+        border-radius: 10px;
+        background: #101725;
+      }
+
+      .video-embed iframe {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      h2, p { margin: 0; }
+
+      main {
+        display: grid;
+        gap: 14px;
+        padding: 14px 12px 24px;
+      }
+
+      .section-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        padding: 4px 4px 0;
+      }
+
+      .section-head h2 {
+        font-size: 1rem;
+        font-weight: 950;
+        letter-spacing: 0.02em;
+      }
+
+      .count {
+        display: inline-flex;
+        align-items: center;
+        min-height: 28px;
+        padding: 4px 10px;
+        border-radius: 999px;
+        background: #17130f;
+        color: #fff;
+        font-size: 0.76rem;
+        font-weight: 950;
+      }
+
+      .intro {
+        margin: -2px 4px 1em;
+        color: var(--muted);
+        font-size: 0.86rem;
+        line-height: 1.65;
+      }
+
+      .question-list {
+        display: grid;
+        overflow: hidden;
+        border: 1px solid rgba(36, 29, 22, 0.13);
+        border-radius: 13px;
+        background: var(--paper);
+        box-shadow: 0 12px 30px rgba(35, 28, 20, 0.08);
+      }
+
+      details {
+        overflow: hidden;
+        border-bottom: 1px solid rgba(20, 33, 31, 0.1);
+        background: #fff;
+      }
+
+      details:last-child { border-bottom: 0; }
+
+      summary {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        padding: 14px;
+        background: linear-gradient(90deg, #f1fbf8, #fff7e8);
+        cursor: pointer;
+        font-size: 0.9rem;
+        font-weight: 950;
+        line-height: 1.5;
+        list-style: none;
+      }
+
+      summary::-webkit-details-marker { display: none; }
+      summary::after {
+        content: "+";
+        flex: 0 0 auto;
+        display: grid;
+        place-items: center;
+        width: 28px;
+        height: 28px;
+        border-radius: 999px;
+        background: #17130f;
+        color: #fff;
+        font-size: 1rem;
+        line-height: 1;
+      }
+
+      details[open] > summary::after { content: "-"; }
+
+      .answer {
+        display: grid;
+        gap: 10px;
+        padding: 14px;
+        color: #2a241f;
+        font-size: 0.92rem;
+        line-height: 1.72;
+      }
+
+      .answer-label {
+        display: inline-flex;
+        width: fit-content;
+        align-items: center;
+        min-height: 28px;
+        padding: 4px 10px;
+        border-radius: 999px;
+        background: rgba(216, 164, 58, 0.18);
+        color: #876012;
+        font-size: 0.78rem;
+        font-weight: 950;
+      }
+
+      .answer p { line-height: 1.75; }
+
+      .answer ol,
+      .answer ul {
+        display: grid;
+        gap: 7px;
+        margin: 0;
+        padding-left: 1.35em;
+      }
+
+      .answer li::marker { color: var(--teal); font-weight: 900; }
+
+      footer {
+        padding: 14px 16px 28px;
+        color: var(--muted);
+        font-size: 0.8rem;
+        text-align: center;
+      }
+
+      @media (min-width: 721px) {
+        body { align-items: flex-start; padding: 24px 18px; }
+        .shell {
+          min-height: auto;
+          overflow: hidden;
+          border: 1px solid rgba(36, 29, 22, 0.08);
+          border-radius: 14px;
+          box-shadow: 0 18px 42px rgba(35, 28, 20, 0.1);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="shell">
+      <header>
+        <div class="video-embed">
+          <iframe src="https://player.vimeo.com/video/1195533197?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="REVIEW QUESTIONS"></iframe>
+        </div>
+      </header>
+
+      <main>
+        <section>
+          <div class="section-head">
+            <h2>QUESTIONS</h2>
+            <span class="count">15 ITEMS</span>
+          </div>
+          <p class="intro">気になる問題の＋を押して、答えを確認してください。</p>
+
+          <div class="question-list">
+            <details>
+              <summary>Q1. 正しいPはどっち？</summary>
+              <div class="answer">
+                <span class="answer-label">答え</span>
+                <p>B（Aは不要な母音が入っている）</p>
+              </div>
+            </details>
+
+            <details>
+              <summary>Q2. 元帥がvery /ˈver.i/ を発音するよ。間違っていたら治し方のアドバイスをあげて！</summary>
+              <div class="answer">
+                <span class="answer-label">答え</span>
+                <ol>
+                  <li>vが日本語のべのようになっている!</li>
+                  <li>vは上と下の唇を離して発音しましょう！</li>
+                  <li>上の歯は下唇の内側に当て、空気を出して摩擦させたげなきゃ！</li>
+                </ol>
+              </div>
+            </details>
+
+            <details>
+              <summary>Q3. 元帥がbought /bɔt/ と発音するよ！どこが間違っている？</summary>
+              <div class="answer">
+                <span class="answer-label">答え</span>
+                <ol>
+                  <li>boughtの母音が二重母音（oʊ）になっているよ！</li>
+                  <li>/ɔ/（またはɑ）は顎を下げて発音してあげなきゃね！</li>
+                </ol>
+              </div>
+            </details>
+
+            <details>
+              <summary>Q4. 元帥がson /sʌn/ と発音するよ。何が間違っている？どう直したらいい？</summary>
+              <div class="answer">
+                <span class="answer-label">答え</span>
+                <ol>
+                  <li>/ʌ/が日本語の「お」のようになっているよ。</li>
+                  <li>/ʌ/は顎を下げず、口や舌をリラックスさせて、声だけを出そうね</li>
+                </ol>
+              </div>
+            </details>
+
+            <details>
+              <summary>Q5. 元帥がアルファベットを読むよ。何が間違えてる？</summary>
+              <div class="answer">
+                <span class="answer-label">答え</span>
+                <p>二重母音が出ていないよ！</p>
+                <ul>
+                  <li>A（eɪ）</li>
+                  <li>J（dʒeɪ）</li>
+                  <li>K（keɪ）</li>
+                  <li>O（oʊ）</li>
+                </ul>
+              </div>
+            </details>
+
+            <details>
+              <summary>Q6. 元帥がwhat time did you get back?と言うよ。どこを改善したらより良い発音になる？</summary>
+              <div class="answer">
+                <span class="answer-label">答え</span>
+                <p>what time / get back の/t/の後に母音が挿入しているよ。</p>
+                <p>子音の前にある破裂音（この場合はt）は基本的に破裂しないように、タイミングだけを残してあげるように発音すると良いよ！</p>
+              </div>
+            </details>
+
+            <details>
+              <summary>Q7. 元帥がstart /stɑrt/ と発音するよ。何が間違えている？</summary>
+              <div class="answer">
+                <span class="answer-label">答え</span>
+                <p>startの/ɑr/が/ɝ/になっているね。一度顎を下げて、その顎を戻して発音してあげてね！</p>
+              </div>
+            </details>
+
+            <details>
+              <summary>Q8. 元帥がbathroom /ˈbæθ.rum/ と発音するよ。何を間違えている？</summary>
+              <div class="answer">
+                <span class="answer-label">答え</span>
+                <p>/θ/が/s/になっているよ！</p>
+                <p>※ thの発音は舌を歯より前に出して、上の歯の犬歯ー犬歯を舌でカバーするように当て、空気を摩擦させて発音してね！</p>
+              </div>
+            </details>
+
+            <details>
+              <summary>Q9. 元帥がbird /bɝd/ と発音するよ。何を間違えてる？</summary>
+              <div class="answer">
+                <span class="answer-label">答え</span>
+                <p>/ɝ/で顎が下がっているよ！/ɝ/は顎を下げちゃダメ。口はアヒル口のように、唇の上を緊張させて発音しようね！</p>
+              </div>
+            </details>
+
+            <details>
+              <summary>Q10. 元帥がcoat /koʊt/ と発音するよ。何が間違えてる？</summary>
+              <div class="answer">
+                <span class="answer-label">答え</span>
+                <p>/oʊ/という二重母音になっていないよ！（/ɔ/になってる！）音色を変えてあげなくちゃね！</p>
+              </div>
+            </details>
+
+            <details>
+              <summary>Q11. 元帥がfull /fʊl/ と発音するよ。何が違う？</summary>
+              <div class="answer">
+                <span class="answer-label">答え</span>
+                <p>/ʊ/が/u/になってる！(foolのようになってる！）</p>
+                <p>/ʊ/は唇を前に突き出さないように、ウとオの間ぐらいの音がするはずだよ。（唇は少し丸めて、口の中ではオという意識で発音しよう）</p>
+              </div>
+            </details>
+
+            <details>
+              <summary>Q12. 元帥がhowと発音するよ。あってる？間違ってる？間違っていたら直してあげてね。</summary>
+              <div class="answer">
+                <span class="answer-label">答え</span>
+                <p>あってるよ！/aʊ/は/æʊ/と発音するアメリカ人もたくさんいるよ！</p>
+              </div>
+            </details>
+
+            <details>
+              <summary>Q13. 元帥がWas the train late?と言うよ。どこを間違えてる？</summary>
+              <div class="answer">
+                <span class="answer-label">答え</span>
+                <p>wasのzが出ていないね！thの前のsやzは落とさないよう気をつけてね！</p>
+              </div>
+            </details>
+
+            <details>
+              <summary>Q14. 元帥がsit /sɪt/ と発音するよ。何を間違えてる？</summary>
+              <div class="answer">
+                <span class="answer-label">答え</span>
+                <p>/ɪ/が/i/のようになっているよ！（seatって発音しちゃってるね！）</p>
+                <p>口の横は緊張させないように、ちょっとエよりで発音するとうまくいくよ！</p>
+              </div>
+            </details>
+
+            <details>
+              <summary>Q15. 元帥がfound out /faʊnd aʊt/ と発音するよ！何が間違えてる？</summary>
+              <div class="answer">
+                <span class="answer-label">答え</span>
+                <p>二重母音であるfound /aʊ/ が伸ばし棒のように発音されてる！</p>
+                <p>二重母音は音色を変えてあげなきゃね！</p>
+              </div>
+            </details>
+          </div>
+        </section>
+      </main>
+
+      <footer>SOUND DESIGN LAB</footer>
+    </div>
+    <script src="https://player.vimeo.com/api/player.js"></script>
+  </body>
+</html>
