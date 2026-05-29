@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SOUND DESIGN LAB | Lesson 5 Practice 2</title>
+    <meta name="description" content="SOUND DESIGN LAB 第5回レッスン用の音声コントラスト練習ページです。" />
+    <meta property="og:image" content="assets/lesson5-practice2-hero.png" />
+    <meta name="twitter:image" content="assets/lesson5-practice2-hero.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800;900&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #f1eadf;
+        --ink: #171412;
+        --muted: #74695f;
+        --accent: #d8442f;
+        --navy: #0b2138;
+        --gold: #b9892a;
+        --teal: #247872;
+        --panel: rgba(255, 253, 248, 0.88);
+        --shadow: 0 22px 58px rgba(39, 31, 23, 0.14);
+        --radius: 8px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        background:
+          linear-gradient(90deg, rgba(43, 36, 30, 0.045) 1px, transparent 1px),
+          linear-gradient(180deg, rgba(43, 36, 30, 0.045) 1px, transparent 1px),
+          linear-gradient(180deg, #fffaf2 0%, var(--bg) 56%, #e9dfd3 100%);
+        background-size: 34px 34px, 34px 34px, auto;
+        color: var(--ink);
+        font-family: "Zen Kaku Gothic New", sans-serif;
+      }
+
+      button {
+        font: inherit;
+      }
+
+      .page {
+        width: min(100%, 430px);
+        margin: 0 auto;
+        padding: 10px 9px 30px;
+      }
+
+      .hero {
+        overflow: hidden;
+        border: 1px solid rgba(43, 36, 30, 0.18);
+        border-radius: var(--radius);
+        background: #fff;
+        box-shadow: var(--shadow);
+      }
+
+      .hero img {
+        display: block;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+      }
+
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+      }
+
+      .board {
+        margin-top: 18px;
+        display: grid;
+        gap: 14px;
+        padding: 10px;
+        border: 1px solid rgba(43, 36, 30, 0.16);
+        border-radius: var(--radius);
+        background: var(--panel);
+        box-shadow: 0 16px 44px rgba(39, 31, 23, 0.09);
+      }
+
+      p {
+        margin: 0;
+      }
+
+      .set-card {
+        position: relative;
+        overflow: hidden;
+        border: 1px solid rgba(43, 36, 30, 0.15);
+        border-radius: var(--radius);
+        background:
+          linear-gradient(145deg, rgba(255, 255, 255, 0.98), rgba(250, 244, 235, 0.9)),
+          #fff;
+        box-shadow: 0 8px 26px rgba(39, 31, 23, 0.07);
+      }
+
+      .set-card::before {
+        content: "";
+        position: absolute;
+        inset: 0 0 auto;
+        height: 6px;
+        background: var(--card-accent, var(--accent));
+      }
+
+      .set-main {
+        display: grid;
+        gap: 12px;
+        padding: 16px 14px 14px;
+      }
+
+      .number {
+        display: inline-grid;
+        place-items: center;
+        width: 42px;
+        height: 30px;
+        border: 1px solid rgba(43, 36, 30, 0.16);
+        border-radius: 999px;
+        background: rgba(255, 253, 248, 0.9);
+        color: var(--muted);
+        font-family: "Inter", sans-serif;
+        font-size: 0.74rem;
+        font-weight: 900;
+      }
+
+      .set-title {
+        font-family: "Inter", "Zen Kaku Gothic New", sans-serif;
+        font-size: 1.35rem;
+        font-weight: 900;
+        letter-spacing: 0;
+        line-height: 1.2;
+      }
+
+      .word-list {
+        display: grid;
+        gap: 10px;
+      }
+
+      .word-item {
+        display: grid;
+        gap: 8px;
+        padding: 12px;
+        border: 1px solid rgba(43, 36, 30, 0.12);
+        border-left: 4px solid var(--card-accent, var(--teal));
+        border-radius: var(--radius);
+        background: rgba(255, 253, 248, 0.84);
+      }
+
+      .word-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+      }
+
+      .word {
+        font-family: "Inter", "Zen Kaku Gothic New", sans-serif;
+        font-size: 1.22rem;
+        font-weight: 900;
+        line-height: 1.1;
+      }
+
+      .point {
+        display: inline-grid;
+        place-items: center;
+        min-height: 28px;
+        padding: 0 9px;
+        border-radius: 999px;
+        background: var(--card-accent, var(--accent));
+        color: #fff;
+        font-family: "Inter", sans-serif;
+        font-size: 0.8rem;
+        font-weight: 900;
+      }
+
+      .ipa {
+        display: inline-flex;
+        width: fit-content;
+        max-width: 100%;
+        padding: 5px 8px;
+        border: 1px solid rgba(36, 120, 114, 0.2);
+        border-radius: var(--radius);
+        background: rgba(232, 250, 245, 0.92);
+        color: #173e43;
+        font-family: "Inter", "Arial", sans-serif;
+        font-size: 1rem;
+        font-weight: 900;
+        letter-spacing: 0;
+        line-height: 1.35;
+      }
+
+      .note {
+        color: var(--muted);
+        font-size: 0.9rem;
+        font-weight: 800;
+        line-height: 1.45;
+      }
+
+      audio {
+        width: 100%;
+        height: 40px;
+      }
+
+      .speed-control {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 6px;
+      }
+
+      .speed-button {
+        min-height: 32px;
+        border: 1px solid rgba(49, 75, 90, 0.18);
+        border-radius: 999px;
+        background: #fff;
+        color: #314b5a;
+        cursor: pointer;
+        font-family: "Inter", sans-serif;
+        font-size: 0.74rem;
+        font-weight: 900;
+      }
+
+      .speed-button.is-active {
+        border-color: rgba(216, 68, 47, 0.35);
+        background: var(--accent);
+        color: #fff;
+        box-shadow: 0 6px 14px rgba(216, 68, 47, 0.16);
+      }
+
+      .accent-red {
+        --card-accent: var(--accent);
+      }
+
+      .accent-teal {
+        --card-accent: var(--teal);
+      }
+
+      .accent-gold {
+        --card-accent: var(--gold);
+      }
+
+      .accent-navy {
+        --card-accent: var(--navy);
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <section class="hero" aria-labelledby="page-title">
+        <img src="assets/lesson5-practice2-hero.png" alt="" />
+        <h1 class="sr-only" id="page-title">Lesson 5 Practice 2</h1>
+      </section>
+
+      <section class="board" aria-label="Lesson 5 Practice 2">
+        <article class="set-card accent-red">
+          <div class="set-main">
+            <span class="number">#1</span>
+            <p class="set-title">pigeon / vision</p>
+            <div class="word-list">
+              <div class="word-item">
+                <div class="word-top"><p class="word">pigeon</p><span class="point">/dʒ/</span></div>
+                <p class="ipa">/ˈpɪdʒən/</p>
+                <audio controls preload="metadata" src="assets/audio/01-pigeon.wav"></audio>
+              </div>
+              <div class="word-item">
+                <div class="word-top"><p class="word">vision</p><span class="point">/ʒ/</span></div>
+                <p class="ipa">/ˈvɪʒən/</p>
+                <audio controls preload="metadata" src="assets/audio/02-vision.wav"></audio>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="set-card accent-teal">
+          <div class="set-main">
+            <span class="number">#2</span>
+            <p class="set-title">sheet / cheat / seat</p>
+            <div class="word-list">
+              <div class="word-item">
+                <div class="word-top"><p class="word">sheet</p><span class="point">/ʃ/</span></div>
+                <p class="ipa">/ʃit/</p>
+                <audio controls preload="metadata" src="assets/audio/03-sheet.wav"></audio>
+              </div>
+              <div class="word-item">
+                <div class="word-top"><p class="word">cheat</p><span class="point">/tʃ/</span></div>
+                <p class="ipa">/tʃit/</p>
+                <audio controls preload="metadata" src="assets/audio/04-cheat.wav"></audio>
+              </div>
+              <div class="word-item">
+                <div class="word-top"><p class="word">seat</p><span class="point">/s/</span></div>
+                <p class="ipa">/sit/</p>
+                <audio controls preload="metadata" src="assets/audio/05-seat.wav"></audio>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="set-card accent-gold">
+          <div class="set-main">
+            <span class="number">#3</span>
+            <p class="set-title">pleasure / pledger</p>
+            <div class="word-list">
+              <div class="word-item">
+                <div class="word-top"><p class="word">pleasure</p><span class="point">/ʒ/</span></div>
+                <p class="ipa">/ˈplɛʒɚ/</p>
+                <audio controls preload="metadata" src="assets/audio/06-pleasure.wav"></audio>
+              </div>
+              <div class="word-item">
+                <div class="word-top"><p class="word">pledger</p><span class="point">/dʒ/</span></div>
+                <p class="ipa">/ˈplɛdʒɚ/</p>
+                <audio controls preload="metadata" src="assets/audio/07-pledger.wav"></audio>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="set-card accent-navy">
+          <div class="set-main">
+            <span class="number">#4</span>
+            <p class="set-title">age / beige</p>
+            <div class="word-list">
+              <div class="word-item">
+                <div class="word-top"><p class="word">age</p><span class="point">/dʒ/</span></div>
+                <p class="ipa">/eɪdʒ/</p>
+                <audio controls preload="metadata" src="assets/audio/08-age.wav"></audio>
+              </div>
+              <div class="word-item">
+                <div class="word-top"><p class="word">beige</p><span class="point">/ʒ/</span></div>
+                <p class="ipa">/beɪʒ/</p>
+                <audio controls preload="metadata" src="assets/audio/09-beige.wav"></audio>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="set-card accent-red">
+          <div class="set-main">
+            <span class="number">#5</span>
+            <p class="set-title">manager / leisure / either / Caesar</p>
+            <div class="word-list">
+              <div class="word-item">
+                <div class="word-top"><p class="word">manager</p><span class="point">/dʒ/</span></div>
+                <p class="ipa">/ˈmænɪdʒɚ/</p>
+                <audio controls preload="metadata" src="assets/audio/12-manager.wav"></audio>
+              </div>
+              <div class="word-item">
+                <div class="word-top"><p class="word">leisure</p><span class="point">note</span></div>
+                <p class="ipa">/ˈliʒɚ/</p>
+                <p class="note">USは「レ」ジャーじゃないよ</p>
+                <audio controls preload="metadata" src="assets/audio/13-leisure.wav"></audio>
+              </div>
+              <div class="word-item">
+                <div class="word-top"><p class="word">either</p><span class="point">/ð/</span></div>
+                <p class="ipa">/ˈiðɚ/ または /ˈaɪðɚ/</p>
+                <audio controls preload="metadata" src="assets/audio/14-either.wav"></audio>
+              </div>
+              <div class="word-item">
+                <div class="word-top"><p class="word">Caesar</p><span class="point">/z/</span></div>
+                <p class="ipa">/ˈsizɚ/</p>
+                <audio controls preload="metadata" src="assets/audio/15-caesar.wav"></audio>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="set-card accent-teal">
+          <div class="set-main">
+            <span class="number">#6</span>
+            <p class="set-title">schedule / usual</p>
+            <div class="word-list">
+              <div class="word-item">
+                <div class="word-top"><p class="word">schedule</p><span class="point">/dʒ/</span></div>
+                <p class="ipa">/ˈskɛdʒuəl/</p>
+                <audio controls preload="metadata" src="assets/audio/10-schedule.wav"></audio>
+              </div>
+              <div class="word-item">
+                <div class="word-top"><p class="word">usual</p><span class="point">/ʒ/</span></div>
+                <p class="ipa">/ˈjuʒuəl/</p>
+                <audio controls preload="metadata" src="assets/audio/11-usual.wav"></audio>
+              </div>
+            </div>
+          </div>
+        </article>
+      </section>
+    </main>
+    <script>
+      document.querySelectorAll(".word-item").forEach((box, index) => {
+        const audio = box.querySelector("audio");
+        const speeds = ["0.25", "0.5", "0.75", "1"];
+        const storageKey = `lesson5Practice2Speed-${index}`;
+        const savedSpeed = localStorage.getItem(storageKey) || "1";
+        const speedControl = document.createElement("div");
+
+        speedControl.className = "speed-control";
+        speedControl.setAttribute("aria-label", "再生速度");
+
+        speeds.forEach((speed) => {
+          const button = document.createElement("button");
+          button.className = "speed-button";
+          button.type = "button";
+          button.dataset.speed = speed;
+          button.textContent = speed === "1" ? "1.0" : speed;
+          button.addEventListener("click", () => setPlaybackSpeed(speed));
+          speedControl.appendChild(button);
+        });
+
+        audio.insertAdjacentElement("afterend", speedControl);
+
+        function setPlaybackSpeed(speed) {
+          audio.playbackRate = Number(speed);
+          localStorage.setItem(storageKey, speed);
+
+          speedControl.querySelectorAll(".speed-button").forEach((button) => {
+            const isActive = button.dataset.speed === speed;
+            button.classList.toggle("is-active", isActive);
+            button.setAttribute("aria-pressed", String(isActive));
+          });
+        }
+
+        audio.addEventListener("loadedmetadata", () => {
+          audio.playbackRate = Number(localStorage.getItem(storageKey) || savedSpeed);
+        });
+
+        setPlaybackSpeed(savedSpeed);
+      });
+    </script>
+  </body>
+</html>
