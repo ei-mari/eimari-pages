@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="Lesson 5 practice thumbnail">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#071827"/>
+      <stop offset=".48" stop-color="#123c45"/>
+      <stop offset="1" stop-color="#f0b84b"/>
+    </linearGradient>
+    <radialGradient id="light" cx="64%" cy="42%" r="60%">
+      <stop offset="0" stop-color="#fff3b0" stop-opacity=".95"/>
+      <stop offset=".25" stop-color="#f68f45" stop-opacity=".42"/>
+      <stop offset="1" stop-color="#08131f" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="18" stdDeviation="14" flood-color="#000" flood-opacity=".35"/>
+    </filter>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <rect width="1600" height="900" fill="url(#light)"/>
+  <path d="M0 710 C260 585 460 790 720 640 C960 500 1100 660 1600 485 L1600 900 L0 900 Z" fill="#fff7df" opacity=".16"/>
+  <g fill="none" stroke="#f4ce75" stroke-width="4" opacity=".5">
+    <path d="M90 110 H1510 V790 H90 Z"/>
+    <path d="M125 145 H1475 V755 H125 Z"/>
+  </g>
+  <g filter="url(#shadow)">
+    <text x="800" y="286" text-anchor="middle" font-family="Arial Black, Arial, sans-serif" font-size="168" font-weight="900" fill="#fff5d2" stroke="#142535" stroke-width="10">PRACTICE</text>
+    <text x="800" y="286" text-anchor="middle" font-family="Arial Black, Arial, sans-serif" font-size="168" font-weight="900" fill="#fff5d2" stroke="#e7aa32" stroke-width="3">PRACTICE</text>
+    <text x="800" y="385" text-anchor="middle" font-family="Arial, sans-serif" font-size="54" font-weight="900" fill="#fffdf2">LESSON 5 MODEL AUDIO</text>
+  </g>
+  <g transform="translate(225 485)">
+    <rect width="1150" height="105" rx="18" fill="#fffdf2" opacity=".92"/>
+    <text x="54" y="68" font-family="Arial, sans-serif" font-size="38" font-weight="900" fill="#152938">joke / train / juice / logical / college</text>
+  </g>
+  <g transform="translate(250 635)" fill="#fffdf2" opacity=".94">
+    <circle cx="0" cy="0" r="18"/>
+    <circle cx="92" cy="0" r="18"/>
+    <circle cx="184" cy="0" r="18"/>
+    <circle cx="276" cy="0" r="18"/>
+    <circle cx="368" cy="0" r="18"/>
+    <circle cx="460" cy="0" r="18"/>
+    <circle cx="552" cy="0" r="18"/>
+  </g>
+</svg>
