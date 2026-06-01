@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>4EPT | Practice Questions Part 3</title>
+    <style>
+      :root {
+        --bg: #fff5f8;
+        --paper: #ffffff;
+        --ink: #2c1720;
+        --muted: #806674;
+        --green: #c72f67;
+        --green-dark: #8f1f49;
+        --green-soft: #ffe5ef;
+        --gold: #b98221;
+        --gold-soft: #fff3cc;
+        --red: #d94a40;
+        --line: rgba(199, 47, 103, 0.16);
+        --shadow: 0 16px 44px rgba(104, 35, 62, 0.12);
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background:
+          radial-gradient(circle at 90% 0%, rgba(255, 120, 169, 0.18), transparent 30%),
+          radial-gradient(circle at 0% 100%, rgba(201, 147, 32, 0.13), transparent 35%),
+          var(--bg);
+        color: var(--ink);
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif;
+      }
+
+      button, input { font: inherit; }
+      button { cursor: pointer; }
+      h1, h2, h3, p { margin: 0; }
+
+      .shell {
+        width: min(100%, 520px);
+        min-height: 100vh;
+        margin: 0 auto;
+        background: rgba(255, 255, 255, 0.9);
+        box-shadow: 0 18px 70px rgba(104, 35, 62, 0.13);
+      }
+
+      header, main, footer { padding: 16px; }
+      header {
+        display: grid;
+        gap: 14px;
+        padding-top: 18px;
+      }
+
+      .hero {
+        overflow: hidden;
+        margin: 0;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        background: #fff;
+        box-shadow: var(--shadow);
+      }
+
+      .hero img {
+        display: block;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+      }
+
+      .intro,
+      .section {
+        display: grid;
+        gap: 14px;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.96);
+        box-shadow: var(--shadow);
+      }
+
+      .intro { padding: 16px; }
+      .section { padding: 18px; }
+
+      .kicker {
+        width: max-content;
+        padding: 5px 10px;
+        border: 1px solid rgba(199, 47, 103, 0.18);
+        border-radius: 999px;
+        background: var(--green-soft);
+        color: var(--green);
+        font-size: 0.72rem;
+        font-weight: 900;
+        letter-spacing: 0.08em;
+      }
+
+      h1 {
+        font-size: 2rem;
+        line-height: 1.12;
+      }
+
+      .lead,
+      .note {
+        color: var(--muted);
+        font-size: 0.92rem;
+        line-height: 1.75;
+      }
+
+      .point {
+        padding: 12px 13px;
+        border: 1px solid rgba(199, 47, 103, 0.2);
+        border-left: 4px solid var(--green);
+        border-radius: 10px;
+        background: #fff0f6;
+        color: #6f203f;
+        font-size: 0.92rem;
+        font-weight: 760;
+        line-height: 1.72;
+      }
+
+      .quick-nav {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+      }
+
+      .quick-nav a {
+        display: grid;
+        min-height: 58px;
+        align-content: center;
+        gap: 2px;
+        padding: 12px;
+        border: 1px solid rgba(199, 47, 103, 0.14);
+        border-radius: 10px;
+        background: #fff9fb;
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .nav-label {
+        color: var(--green);
+        font-size: 0.74rem;
+        font-weight: 900;
+      }
+
+      .nav-title {
+        font-size: 0.9rem;
+        font-weight: 900;
+      }
+
+      main {
+        display: grid;
+        gap: 18px;
+        padding-bottom: 40px;
+      }
+
+      .section-num {
+        margin-bottom: 7px;
+        color: var(--green);
+        font-size: 0.78rem;
+        font-weight: 900;
+        letter-spacing: 0.08em;
+      }
+
+      h2 {
+        font-size: 1.2rem;
+        line-height: 1.3;
+      }
+
+      .quiz-list,
+      .repeat-list {
+        display: grid;
+        gap: 12px;
+      }
+
+      .quiz-card,
+      .repeat-card {
+        display: grid;
+        gap: 12px;
+        padding: 14px;
+        border: 1px solid rgba(199, 47, 103, 0.13);
+        border-radius: 12px;
+        background: #fffdfd;
+      }
+
+      .word-head {
+        display: grid;
+        gap: 7px;
+      }
+
+      .word-title {
+        font-size: 1.18rem;
+        font-weight: 950;
+        line-height: 1.35;
+      }
+
+      .listening-title {
+        font-weight: 500;
+      }
+
+      .word-no {
+        width: max-content;
+        padding: 5px 9px;
+        border: 1px solid rgba(199, 47, 103, 0.2);
+        border-radius: 999px;
+        background: var(--green-soft);
+        color: var(--green);
+        font-size: 0.74rem;
+        font-weight: 900;
+        letter-spacing: 0.06em;
+      }
+
+      .vowel-mark {
+        color: #d94a40;
+        font-weight: 950;
+      }
+
+      .audio-box {
+        display: grid;
+        gap: 8px;
+        padding: 10px;
+        border: 1px solid rgba(199, 47, 103, 0.14);
+        border-radius: 10px;
+        background: #fff3f7;
+      }
+
+      .audio-caption {
+        color: var(--green-dark);
+        font-size: 0.78rem;
+        font-weight: 900;
+      }
+
+      audio {
+        display: block;
+        width: 100%;
+        height: 32px;
+      }
+
+      .speed-controls {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 6px;
+      }
+
+      .speed-btn {
+        min-height: 32px;
+        border: 1px solid rgba(199, 47, 103, 0.2);
+        border-radius: 8px;
+        background: #fff;
+        color: var(--green);
+        font-size: 0.78rem;
+        font-weight: 900;
+      }
+
+      .speed-btn.is-active {
+        background: var(--green);
+        color: #fff;
+        border-color: var(--green);
+      }
+
+      .options {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+      }
+
+      .option {
+        min-height: 42px;
+        border: 1px solid rgba(199, 47, 103, 0.18);
+        border-radius: 10px;
+        background: #fff;
+        color: var(--ink);
+        font-size: 1rem;
+        font-weight: 950;
+      }
+
+      .option.is-correct {
+        border-color: var(--green);
+        background: var(--green);
+        color: #fff;
+      }
+
+      .option.is-wrong {
+        border-color: rgba(217, 74, 64, 0.4);
+        background: #fff0ee;
+        color: var(--red);
+      }
+
+      .feedback {
+        min-height: 28px;
+        color: var(--muted);
+        font-size: 0.9rem;
+        font-weight: 760;
+        line-height: 1.55;
+      }
+
+      .step-label {
+        width: fit-content;
+        max-width: 100%;
+        padding: 7px 10px;
+        border: 1px solid rgba(217, 74, 64, 0.22);
+        border-radius: 999px;
+        background: #fff0ee;
+        color: #c73731;
+        font-size: 0.84rem;
+        font-weight: 700;
+        line-height: 1.45;
+        overflow-wrap: anywhere;
+      }
+
+      .step-label.repeat-step {
+        margin-top: 12px;
+      }
+
+      details {
+        overflow: hidden;
+        border: 1px solid rgba(199, 47, 103, 0.13);
+        border-radius: 10px;
+        background: #fff;
+      }
+
+      summary {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+        padding: 11px 12px;
+        color: var(--green);
+        cursor: pointer;
+        font-size: 0.86rem;
+        font-weight: 700;
+        list-style: none;
+      }
+
+      summary::-webkit-details-marker { display: none; }
+      summary::after {
+        content: "+";
+        display: grid;
+        place-items: center;
+        width: 24px;
+        height: 24px;
+        flex: 0 0 24px;
+        border-radius: 50%;
+        background: var(--green-soft);
+      }
+
+      details[open] summary::after { content: "-"; }
+
+      .detail {
+        display: grid;
+        gap: 6px;
+        padding: 0 12px 12px;
+        color: var(--text);
+        font-size: 0.92rem;
+        line-height: 1.65;
+      }
+
+      .detail-row {
+        display: grid;
+        grid-template-columns: minmax(96px, max-content) 1fr;
+        gap: 10px;
+        padding-top: 7px;
+        border-top: 1px solid rgba(199, 47, 103, 0.1);
+      }
+
+      .detail-row:first-child { border-top: 0; }
+      .ipa { color: var(--gold); font-weight: 900; }
+      .jp { color: var(--muted); }
+
+      footer {
+        color: var(--muted);
+        font-size: 0.78rem;
+        text-align: center;
+      }
+
+      .back-top {
+        position: fixed;
+        right: 16px;
+        bottom: 16px;
+        display: grid;
+        place-items: center;
+        width: 44px;
+        height: 44px;
+        border: 1px solid rgba(199, 47, 103, 0.22);
+        border-radius: 50%;
+        background: #fff;
+        color: var(--green);
+        font-weight: 950;
+        text-decoration: none;
+        box-shadow: 0 10px 28px rgba(0, 0, 0, 0.2);
+      }
+
+      @media (min-width: 720px) {
+        body { padding: 24px 0; }
+        .shell { min-height: auto; border-radius: 18px; overflow: hidden; }
+      }
+
+      @media (max-width: 360px) {
+        header, main, footer { padding-left: 10px; padding-right: 10px; }
+        header { padding-top: 12px; }
+        .intro { padding: 13px; }
+        .section { padding: 13px; }
+        .quiz-card,
+        .repeat-card {
+          padding: 12px;
+        }
+        h1 { font-size: 1.68rem; }
+        h2 { font-size: 1.08rem; }
+        .word-title { font-size: 1.08rem; }
+        .quick-nav {
+          grid-template-columns: 1fr;
+        }
+        .options {
+          grid-template-columns: 1fr;
+        }
+        .speed-controls {
+          gap: 5px;
+        }
+        .speed-btn {
+          min-height: 34px;
+          padding: 4px 2px;
+          font-size: 0.74rem;
+        }
+        .detail-row {
+          grid-template-columns: 1fr;
+          gap: 4px;
+        }
+        .back-top {
+          right: 10px;
+          bottom: 10px;
+        }
+      }
+    </style>
+  </head>
+  <body id="top">
+    <div class="shell">
+      <header>
+        <figure class="hero">
+          <img src="./assets/ept-3.png" alt="Pronunciation exam practice questions part 3" />
+        </figure>
+        <section class="intro">
+          <span class="kicker">PRACTICE QUESTIONS #3</span>
+          <h1>EPT対策課題 #3</h1>
+          <p class="lead">クイズを解いた後、音声を真似して声に出して練習しましょう。</p>
+          <p class="point">今回は２つのSTEPを用意しております。それぞれに取り組みましょう！</p>
+          <nav class="quick-nav" aria-label="目次">
+            <a href="#quiz"><span class="nav-label">STEP 01</span><span class="nav-title">母音クイズ</span></a>
+            <a href="#listening"><span class="nav-label">STEP 02</span><span class="nav-title">リスニングクイズ</span></a>
+          </nav>
+        </section>
+      </header>
+
+      <main>
+        <section class="section" id="quiz">
+          <div>
+            <p class="section-num">STEP 01</p>
+            <h2>Listen and choose the vowel.</h2>
+          </div>
+          <p class="note">音声を聞いた後、単語に含まれる母音を選びましょう。全22問ご用意しています。</p>
+          <div class="quiz-list" id="quizList"></div>
+        </section>
+
+        <section class="section" id="listening">
+          <div>
+            <p class="section-num">STEP 02</p>
+            <h2>Listening Quiz</h2>
+          </div>
+          <p class="note">音声を聞いて、どちらの順番で読まれているかを選びましょう。</p>
+          <div class="quiz-list" id="listeningList"></div>
+        </section>
+      </main>
+
+      <footer>SOUND DESIGN LAB</footer>
+    </div>
+    <a class="back-top" href="#top" aria-label="一番上へ戻る">↑</a>
+
+    <script>
+      const wordAudios = {
+        wrong: "./assets/audio/01-wrong.wav",
+        long: "./assets/audio/02-long.wav",
+        been: "./assets/audio/03-been.wav",
+        bean: "./assets/audio/04-bean.wav",
+        hard: "./assets/audio/05-hard.wav",
+        heard: "./assets/audio/06-heard.wav",
+        walk: "./assets/audio/07-walk.wav",
+        work: "./assets/audio/08-work.wav",
+        pull: "./assets/audio/09-pull.wav",
+        pool: "./assets/audio/10-pool.wav",
+        learn: "./assets/audio/11-learn.wav",
+        lean: "./assets/audio/12-lean.wav",
+        delicious: "./assets/audio/13-delicious.wav",
+        "one forty": "./assets/audio/14-one-forty.wav",
+        "five forty": "./assets/audio/15-five-forty.wav",
+        "six thirty": "./assets/audio/16-six-thirty.wav",
+        color: "./assets/audio/17-color.wav",
+        collar: "./assets/audio/18-collar.wav",
+        block: "./assets/audio/19-block.wav",
+        black: "./assets/audio/20-black.wav",
+        Thursday: "./assets/audio/21-thursday.wav",
+        purple: "./assets/audio/22-purple.wav",
+      };
+
+      const words = [
+        { no: "01", word: "wrong", answer: "ɔ", ipa: "/rɔŋ/", jp: "間違った", options: ["ɔ", "oʊ", "aʊ", "全て違う"] },
+        { no: "02", word: "long", answer: "ɔ", ipa: "/lɔŋ/", jp: "長い", options: ["aʊ", "ɔ", "oʊ", "全て違う"] },
+        { no: "03", word: "been", answer: "/ɪ/ or /ɛ/", ipa: "/bɪn/ または /bɛn/", jp: "ずっと〜だった、行ったことがある", options: ["/i/ or /ɛ/", "/ɪ/ or /æ/", "/i/ or /æ/", "/ɪ/ or /ɛ/"] },
+        { no: "04", word: "bean", answer: "i", ipa: "/bin/", jp: "豆", options: ["i", "ɪ", "eɪ", "全て違う"] },
+        { no: "05", word: "hard", answer: "ɑr", ipa: "/hɑrd/", jp: "難しい、硬い", options: ["ɑr", "ɝ", "ɔ", "全て違う"] },
+        { no: "06", word: "heard", answer: "ɝ", ipa: "/hɝd/", jp: "hear の過去形、聞いた", options: ["ɝ", "ɔr", "ɑr", "全て違う"] },
+        { no: "07", word: "walk", answer: "/ɔ/ or /ɑ/", ipa: "/wɔk/ /wɑk/", jp: "歩く", options: ["/ɔ/ or /oʊ/", "/ɔ/ or /æ/", "/ɔ/ or /ɑ/", "/ɔ/ or /əl/"] },
+        { no: "08", word: "work", answer: "ɝ", ipa: "/wɝk/", jp: "働く、仕事", options: ["ɝ", "ɔ", "ɑr", "全て違う"] },
+        { no: "09", word: "pull", answer: "ʊ", ipa: "/pʊl/", jp: "引く", options: ["u", "ʊ", "ɔ", "全て違う"] },
+        { no: "10", word: "pool", answer: "u", ipa: "/pul/", jp: "プール", options: ["ʊ", "oʊ", "u", "全て違う"] },
+        { no: "11", word: "learn", answer: "ɝ", ipa: "/lɝn/", jp: "学ぶ", options: ["i", "ɑr", "ɝ", "全て違う"] },
+        { no: "12", word: "lean", answer: "i", ipa: "/lin/", jp: "もたれる、細い、脂肪の少ない", options: ["ɝ", "i", "ɪ", "全て違う"] },
+        { no: "13", word: "delicious", displayWord: "del<span class=\"vowel-mark\">i</span>c<span class=\"vowel-mark\">i</span>ous", answer: "ɪ", ipa: "/dɪˈlɪʃəs/", jp: "おいしい", options: ["i", "ɛ", "ɪ", "全て違う"], stepLabel: "01 色のついている箇所の正しい母音を選ぼう" },
+        { no: "14", word: "one forty", displayWord: "<span class=\"vowel-mark\">o</span>ne forty", answer: "ʌ", ipa: "/wʌn ˈfɔrti/", jp: "1時40分", options: ["ɑ", "ʌ", "ɔ", "全て違う"], stepLabel: "01 色のついている箇所の正しい母音を選ぼう" },
+        { no: "15", word: "five forty", displayWord: "five f<span class=\"vowel-mark\">or</span>ty", answer: "ɔr", ipa: "/faɪv ˈfɔrti/", jp: "5時40分", options: ["ɝ", "ɑr", "ɔr", "全て違う"], stepLabel: "01 色のついている箇所の正しい母音を選ぼう" },
+        { no: "16", word: "six thirty", displayWord: "six th<span class=\"vowel-mark\">ir</span>ty", answer: "ɝ", ipa: "/sɪks ˈθɝti/", jp: "6時30分", options: ["ɔr", "ɑr", "ɝ", "全て違う"], stepLabel: "01 色のついている箇所の正しい母音を選ぼう" },
+        { no: "17", word: "color", answer: "ʌ", ipa: "/ˈkʌlɚ/", jp: "色", options: ["ɑ", "ʌ", "ɔ", "全て違う"] },
+        { no: "18", word: "collar", answer: "ɑ", ipa: "/ˈkɑlɚ/", jp: "襟、首輪", options: ["ʌ", "ɔ", "ɑ", "全て違う"] },
+        { no: "19", word: "block", answer: "ɑ", ipa: "/blɑk/", jp: "ブロック、区画、妨げる", options: ["æ", "ʌ", "ɑ", "全て違う"] },
+        { no: "20", word: "black", answer: "æ", ipa: "/blæk/", jp: "黒い、黒", options: ["ɑ", "æ", "ʌ", "全て違う"] },
+        { no: "21", word: "Thursday", displayWord: "Th<span class=\"vowel-mark\">ur</span>sday", answer: "ɝ", ipa: "/ˈθɝzdeɪ/", jp: "木曜日", options: ["ɑr", "ɔr", "ɝ", "全て違う"], stepLabel: "01 色のついている箇所の正しい母音を選ぼう" },
+        { no: "22", word: "purple", answer: "ɝ", ipa: "/ˈpɝpəl/", jp: "紫", options: ["ɑr", "ɝ", "ʌ", "全て違う"] },
+      ];
+
+      const listeningQuestions = [
+        {
+          no: "Q1",
+          title: "どちらの順番で音声は読んでいる？",
+          src: "./assets/audio/listening-01-very-berry.wav",
+          options: ["very - berry", "berry - very"],
+          answer: "very - berry",
+          ipaRows: [
+            ["very", "/ˈvɛri/"],
+            ["berry", "/ˈbɛri/"],
+          ],
+        },
+        {
+          no: "Q2",
+          title: "どちらの順番で音声は読んでいる？",
+          src: "./assets/audio/listening-02-pass-path.wav",
+          options: ["pass, path", "path, pass"],
+          answer: "pass, path",
+          ipaRows: [
+            ["pass", "/pæs/"],
+            ["path", "/pæθ/"],
+          ],
+        },
+        {
+          no: "Q3",
+          title: "themselves - 正しく言っているのはどちら？",
+          src: "./assets/audio/listening-03-themselves.wav",
+          options: ["1回目", "2回目"],
+          answer: "1回目",
+          wrongMessage: "惜しい！vがbで読まれていました。",
+          ipaRows: [
+            ["themselves", "/ðəmˈsɛlvz/"],
+          ],
+        },
+        {
+          no: "Q4",
+          title: "どちらの順番で音声は読んでいる？",
+          src: "./assets/audio/listening-04-theme-seem.wav",
+          options: ["theme, seem", "seem, theme"],
+          answer: "seem, theme",
+          ipaRows: [
+            ["theme", "/θim/"],
+            ["seem", "/sim/"],
+          ],
+        },
+        {
+          no: "Q5",
+          title: "excuse - 正しく言っているのはどちら？",
+          src: "./assets/audio/listening-05-excuse.wav",
+          options: ["1回目", "2回目"],
+          answer: "2回目",
+          wrongMessage: "惜しい！excutes /ˈɛk.sə.kjuts/と言っていました。",
+          ipaRows: [
+            ["excuse（名）", "/ɪkˈskjus/"],
+            ["excuse（動）", "/ɪkˈskjuz/"],
+          ],
+        },
+        {
+          no: "Q6",
+          title: "voice - 正しく言っているのはどちら？",
+          src: "./assets/audio/listening-06-voice.wav",
+          options: ["1回目", "2回目"],
+          answer: "1回目",
+          wrongMessage: "惜しい！/v/を/b/で発音していました。",
+          ipaRows: [
+            ["voice", "/vɔɪs/"],
+          ],
+        },
+      ];
+
+      function audioBox(src, label) {
+        return `
+          <div class="audio-box">
+            <audio controls preload="metadata" src="${src}"></audio>
+            <div class="speed-controls" aria-label="再生速度">
+              <button class="speed-btn" type="button" data-speed="0.25">0.25</button>
+              <button class="speed-btn" type="button" data-speed="0.5">0.5</button>
+              <button class="speed-btn" type="button" data-speed="0.75">0.75</button>
+              <button class="speed-btn is-active" type="button" data-speed="1.0">1.0</button>
+            </div>
+          </div>
+        `;
+      }
+
+      function renderQuiz() {
+        document.getElementById("quizList").innerHTML = words.map((item) => `
+          <article class="quiz-card" data-answer="${item.answer}" ${item.wrongMessage ? `data-wrong-message="${item.wrongMessage}"` : ""}>
+            <div class="word-head">
+              <span class="word-no">${item.no}</span>
+              <p class="word-title">${item.displayWord || item.word}</p>
+            </div>
+            <p class="step-label">${item.stepLabel || "01 以下の中から正しい母音を選ぼう"}</p>
+            <div class="options" role="group" aria-label="${item.word} の母音を選ぶ">
+              ${item.options.map((option) => `<button class="option" type="button" data-option="${option}">${option}</button>`).join("")}
+            </div>
+            <p class="feedback" aria-live="polite"></p>
+            <p class="step-label repeat-step">02 音声を聞き、真似をして練習をしよう</p>
+            ${audioBox(wordAudios[item.word], "リピート練習")}
+            <details>
+              <summary>発音記号と日本語を確認する</summary>
+              <div class="detail">
+                <div class="detail-row"><strong>IPA</strong><span class="ipa">${item.ipa}</span></div>
+                <div class="detail-row"><strong>意味</strong><span class="jp">${item.jp}</span></div>
+              </div>
+            </details>
+          </article>
+        `).join("");
+      }
+
+      function renderListening() {
+        document.getElementById("listeningList").innerHTML = listeningQuestions.map((item) => `
+          <article class="quiz-card" data-answer="${item.answer}" ${item.wrongMessage ? `data-wrong-message="${item.wrongMessage}"` : ""}>
+            <div class="word-head">
+              <span class="word-no">${item.no}</span>
+              <p class="word-title listening-title">${item.title}</p>
+            </div>
+            ${audioBox(item.src, "リスニング音声")}
+            <details>
+              <summary>発音記号を確認する</summary>
+              <div class="detail">
+                ${item.ipaRows.map(([word, ipa]) => `<div class="detail-row"><strong>${word}</strong><span class="ipa">${ipa}</span></div>`).join("")}
+              </div>
+            </details>
+            <div class="options" role="group" aria-label="${item.title}">
+              ${item.options.map((option) => `<button class="option" type="button" data-option="${option}">${option}</button>`).join("")}
+            </div>
+            <p class="feedback" aria-live="polite"></p>
+          </article>
+        `).join("");
+      }
+
+      renderQuiz();
+      renderListening();
+
+      document.addEventListener("click", (event) => {
+        const option = event.target.closest(".option");
+        if (option) {
+          const card = option.closest(".quiz-card");
+          const answer = card.dataset.answer;
+          const isCorrect = option.dataset.option === answer;
+          card.querySelectorAll(".option").forEach((button) => {
+            button.classList.toggle("is-correct", button.dataset.option === answer && isCorrect);
+            button.classList.toggle("is-wrong", button === option && !isCorrect);
+          });
+          const isListening = card.closest("#listeningList");
+          card.querySelector(".feedback").textContent = isCorrect
+            ? (isListening ? "正解！次は音声を真似して正しく読んでみよう！" : `正解です！ ${card.querySelector(".word-title").textContent.trim()} の母音は ${answer} です。`)
+            : (isListening
+              ? (card.dataset.wrongMessage || `惜しい！もう一度音声を聞いてみましょう。`)
+              : `惜しい！「発音記号と日本語を確認する」をタップして答えを見た後、02へ進みましょう。`);
+        }
+
+        const speed = event.target.closest(".speed-btn");
+        if (speed) {
+          const box = speed.closest(".audio-box");
+          const audio = box.querySelector("audio");
+          audio.playbackRate = Number(speed.dataset.speed);
+          box.querySelectorAll(".speed-btn").forEach((button) => button.classList.remove("is-active"));
+          speed.classList.add("is-active");
+        }
+      });
+    </script>
+  </body>
+</html>
