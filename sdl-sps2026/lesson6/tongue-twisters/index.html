@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SOUND DESIGN LAB | Lesson 6 Tongue Twisters</title>
+    <meta name="description" content="SOUND DESIGN LAB 第6回レッスン用の早口言葉音声ページです。" />
+    <meta property="og:image" content="assets/tongue-twister-hero.png" />
+    <meta name="twitter:image" content="assets/tongue-twister-hero.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800;900&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #f1eadf;
+        --ink: #171412;
+        --muted: #74695f;
+        --accent: #d8442f;
+        --navy: #0b2138;
+        --gold: #b9892a;
+        --teal: #247872;
+        --panel: rgba(255, 253, 248, 0.88);
+        --shadow: 0 22px 58px rgba(39, 31, 23, 0.14);
+        --radius: 8px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        background:
+          linear-gradient(90deg, rgba(43, 36, 30, 0.045) 1px, transparent 1px),
+          linear-gradient(180deg, rgba(43, 36, 30, 0.045) 1px, transparent 1px),
+          linear-gradient(180deg, #fffaf2 0%, var(--bg) 56%, #e9dfd3 100%);
+        background-size: 34px 34px, 34px 34px, auto;
+        color: var(--ink);
+        font-family: "Zen Kaku Gothic New", sans-serif;
+      }
+
+      button {
+        font: inherit;
+      }
+
+      .page {
+        width: min(100%, 430px);
+        margin: 0 auto;
+        padding: 10px 9px 30px;
+      }
+
+      .hero {
+        overflow: hidden;
+        border: 1px solid rgba(43, 36, 30, 0.18);
+        border-radius: var(--radius);
+        background: #fff;
+        box-shadow: var(--shadow);
+      }
+
+      .hero img {
+        display: block;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+      }
+
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+      }
+
+      .board {
+        margin-top: 18px;
+        padding: 10px;
+        border: 1px solid rgba(43, 36, 30, 0.16);
+        border-radius: var(--radius);
+        background: var(--panel);
+        box-shadow: 0 16px 44px rgba(39, 31, 23, 0.09);
+      }
+
+      p {
+        margin: 0;
+      }
+
+      .twister-list {
+        display: grid;
+        gap: 14px;
+      }
+
+      .twister-card {
+        position: relative;
+        overflow: hidden;
+        border: 1px solid rgba(43, 36, 30, 0.15);
+        border-radius: var(--radius);
+        background:
+          linear-gradient(145deg, rgba(255, 255, 255, 0.98), rgba(250, 244, 235, 0.9)),
+          #fff;
+        box-shadow: 0 8px 26px rgba(39, 31, 23, 0.07);
+      }
+
+      .twister-card::before {
+        content: "";
+        position: absolute;
+        inset: 0 0 auto;
+        height: 6px;
+        background: var(--card-accent, var(--accent));
+      }
+
+      .twister-main {
+        display: grid;
+        gap: 12px;
+        padding: 16px 14px 14px;
+      }
+
+      .number {
+        display: inline-grid;
+        place-items: center;
+        width: 42px;
+        height: 30px;
+        border: 1px solid rgba(43, 36, 30, 0.16);
+        border-radius: 999px;
+        background: rgba(255, 253, 248, 0.9);
+        color: var(--muted);
+        font-family: "Inter", sans-serif;
+        font-size: 0.74rem;
+        font-weight: 900;
+      }
+
+      .phrase {
+        font-family: "Inter", "Zen Kaku Gothic New", sans-serif;
+        font-size: 1.32rem;
+        font-weight: 900;
+        letter-spacing: 0;
+        line-height: 1.24;
+      }
+
+      .audio-pair {
+        display: grid;
+        gap: 9px;
+      }
+
+      details {
+        border: 1px solid rgba(43, 36, 30, 0.14);
+        border-radius: var(--radius);
+        background: rgba(255, 253, 248, 0.84);
+        overflow: hidden;
+      }
+
+      summary {
+        min-height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 0 13px;
+        color: var(--ink);
+        cursor: pointer;
+        font-size: 0.9rem;
+        font-weight: 900;
+        list-style: none;
+      }
+
+      summary::-webkit-details-marker {
+        display: none;
+      }
+
+      summary::after {
+        content: "+";
+        display: grid;
+        place-items: center;
+        width: 28px;
+        height: 28px;
+        flex: 0 0 auto;
+        border-radius: 50%;
+        background: var(--ink);
+        color: #fff;
+        font-family: "Inter", sans-serif;
+        font-size: 1rem;
+        font-weight: 900;
+      }
+
+      details[open] summary::after {
+        content: "-";
+      }
+
+      .ipa-panel {
+        padding: 12px 13px 14px;
+        border-top: 1px solid rgba(32, 82, 128, 0.16);
+        background: linear-gradient(180deg, rgba(232, 244, 255, 0.96), rgba(220, 239, 250, 0.92));
+      }
+
+      .jp-panel {
+        padding: 12px 13px 14px;
+        border-top: 1px solid rgba(32, 82, 128, 0.16);
+        background: linear-gradient(180deg, rgba(232, 244, 255, 0.96), rgba(220, 239, 250, 0.92));
+      }
+
+      .ipa {
+        display: block;
+        color: #153b5c;
+        font-family: "Inter", "Arial", sans-serif;
+        font-size: 1.03rem;
+        font-weight: 900;
+        letter-spacing: 0;
+        line-height: 1.58;
+        overflow-wrap: anywhere;
+      }
+
+      .jp {
+        color: #153b5c;
+        font-size: 0.98rem;
+        font-weight: 800;
+        line-height: 1.65;
+      }
+
+      .audio-box {
+        display: grid;
+        gap: 8px;
+        padding: 12px;
+        border: 1px solid rgba(43, 36, 30, 0.12);
+        border-left: 4px solid var(--box-accent, var(--teal));
+        border-radius: var(--radius);
+        background: rgba(255, 253, 248, 0.82);
+      }
+
+      .audio-box.slow {
+        --box-accent: var(--gold);
+        background: #fff8ec;
+      }
+
+      .audio-label {
+        color: var(--ink);
+        font-family: "Inter", "Zen Kaku Gothic New", sans-serif;
+        font-size: 0.82rem;
+        font-weight: 900;
+        line-height: 1.35;
+      }
+
+      audio {
+        width: 100%;
+        height: 40px;
+      }
+
+      .speed-control {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 6px;
+      }
+
+      .speed-button {
+        min-height: 32px;
+        border: 1px solid rgba(49, 75, 90, 0.18);
+        border-radius: 999px;
+        background: #fff;
+        color: #314b5a;
+        cursor: pointer;
+        font-family: "Inter", sans-serif;
+        font-size: 0.74rem;
+        font-weight: 900;
+      }
+
+      .speed-button.is-active {
+        border-color: rgba(216, 68, 47, 0.35);
+        background: var(--accent);
+        color: #fff;
+        box-shadow: 0 6px 14px rgba(216, 68, 47, 0.16);
+      }
+
+      .accent-red {
+        --card-accent: var(--accent);
+      }
+
+      .accent-teal {
+        --card-accent: var(--teal);
+      }
+
+      .accent-gold {
+        --card-accent: var(--gold);
+      }
+
+      .accent-navy {
+        --card-accent: var(--navy);
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <section class="hero" aria-labelledby="page-title">
+        <img src="assets/tongue-twister-hero.png" alt="" />
+        <h1 class="sr-only" id="page-title">Lesson 6 Tongue Twisters</h1>
+      </section>
+
+      <section class="board" aria-label="Lesson 6 Tongue Twisters">
+        <div class="twister-list">
+          <article class="twister-card accent-red">
+            <div class="twister-main">
+              <span class="number">#1</span>
+              <p class="phrase">How much wood would a woodchuck chuck if a woodchuck could chuck wood?</p>
+              <details>
+                <summary>発音記号を確認する</summary>
+                <div class="ipa-panel">
+                  <p class="ipa">/haʊ mʌtʃ wʊd wʊd ə ˈwʊdˌtʃʌk tʃʌk ɪf ə ˈwʊdˌtʃʌk kʊd tʃʌk wʊd/</p>
+                </div>
+              </details>
+              <details>
+                <summary>日本語を確認する</summary>
+                <div class="jp-panel">
+                  <p class="jp">ウッドチャックが木を投げられるなら、どれくらい木を投げる？</p>
+                </div>
+              </details>
+              <div class="audio-pair">
+                <div class="audio-box">
+                  <p class="audio-label">normal</p>
+                  <audio controls preload="metadata" src="assets/audio/01-woodchuck-normal.wav"></audio>
+                </div>
+                <div class="audio-box slow">
+                  <p class="audio-label">slow</p>
+                  <audio controls preload="metadata" src="assets/audio/01-woodchuck-slow.wav"></audio>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="twister-card accent-teal">
+            <div class="twister-main">
+              <span class="number">#2</span>
+              <p class="phrase">Fuzzy Wuzzy was a bear. Fuzzy Wuzzy had no hair. Fuzzy Wuzzy wasn’t fuzzy, was he?</p>
+              <details>
+                <summary>発音記号を確認する</summary>
+                <div class="ipa-panel">
+                  <p class="ipa">/ˈfʌzi ˈwʌzi wəz ə bɛr/ /ˈfʌzi ˈwʌzi hæd noʊ hɛr/ /ˈfʌzi ˈwʌzi ˈwɑzənt ˈfʌzi, ˈwʌz hi/</p>
+                </div>
+              </details>
+              <details>
+                <summary>日本語を確認する</summary>
+                <div class="jp-panel">
+                  <p class="jp">ファジー・ワジーはクマだった。ファジー・ワジーには毛がなかった。ファジー・ワジーはふわふわじゃなかったよね？</p>
+                </div>
+              </details>
+              <div class="audio-pair">
+                <div class="audio-box">
+                  <p class="audio-label">normal</p>
+                  <audio controls preload="metadata" src="assets/audio/02-fuzzy-wuzzy-normal.wav"></audio>
+                </div>
+                <div class="audio-box slow">
+                  <p class="audio-label">slow</p>
+                  <audio controls preload="metadata" src="assets/audio/02-fuzzy-wuzzy-slow.wav"></audio>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="twister-card accent-gold">
+            <div class="twister-main">
+              <span class="number">#3</span>
+              <p class="phrase">Betty Botter bought a bit of butter but, she said, this butter’s bitter. If I put it in my batter, it’ll make my batter bitter.</p>
+              <details>
+                <summary>発音記号を確認する</summary>
+                <div class="ipa-panel">
+                  <p class="ipa">/ˈbɛti ˈbɑtɚ bɔt ə bɪt əv ˈbʌtɚ bʌt ʃi sɛd ðɪs ˈbʌtɚz ˈbɪtɚ. ɪf aɪ pʊt ɪt ɪn maɪ ˈbætɚ, ˈɪtəl meɪk maɪ ˈbætɚ ˈbɪtɚ/</p>
+                </div>
+              </details>
+              <details>
+                <summary>日本語を確認する</summary>
+                <div class="jp-panel">
+                  <p class="jp">ベティ・ボターは少しのバターを買った。でも彼女は「このバターは苦い。もし生地に入れたら、生地まで苦くなってしまう」と言った。</p>
+                </div>
+              </details>
+              <div class="audio-pair">
+                <div class="audio-box">
+                  <p class="audio-label">normal</p>
+                  <audio controls preload="metadata" src="assets/audio/03-betty-botter-normal.wav"></audio>
+                </div>
+                <div class="audio-box slow">
+                  <p class="audio-label">slow</p>
+                  <audio controls preload="metadata" src="assets/audio/03-betty-botter-slow.wav"></audio>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="twister-card accent-navy">
+            <div class="twister-main">
+              <span class="number">#4</span>
+              <p class="phrase">She sells seashells by the seashore.</p>
+              <details>
+                <summary>発音記号を確認する</summary>
+                <div class="ipa-panel">
+                  <p class="ipa">/ʃi sɛlz ˈsiˌʃɛlz baɪ ðə ˈsiˌʃɔr/</p>
+                </div>
+              </details>
+              <details>
+                <summary>日本語を確認する</summary>
+                <div class="jp-panel">
+                  <p class="jp">彼女は海岸で貝殻を売っている。</p>
+                </div>
+              </details>
+              <div class="audio-pair">
+                <div class="audio-box">
+                  <p class="audio-label">normal</p>
+                  <audio controls preload="metadata" src="assets/audio/04-seashells-normal.wav"></audio>
+                </div>
+                <div class="audio-box slow">
+                  <p class="audio-label">slow</p>
+                  <audio controls preload="metadata" src="assets/audio/04-seashells-slow.wav"></audio>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="twister-card accent-red">
+            <div class="twister-main">
+              <span class="number">#5</span>
+              <p class="phrase">Can you can a can as a canner can can a can?</p>
+              <details>
+                <summary>発音記号を確認する</summary>
+                <div class="ipa-panel">
+                  <p class="ipa">/kən ju ˈkæn ə ˈkæn əz ə ˈkænɚ kən ˈkæn ə ˈkæn/</p>
+                </div>
+              </details>
+              <details>
+                <summary>日本語を確認する</summary>
+                <div class="jp-panel">
+                  <p class="jp">缶詰職人が缶を缶詰にできるように、あなたも缶を缶詰にできますか？</p>
+                </div>
+              </details>
+              <div class="audio-pair">
+                <div class="audio-box">
+                  <p class="audio-label">normal</p>
+                  <audio controls preload="metadata" src="assets/audio/05-can-a-can-normal.wav"></audio>
+                </div>
+                <div class="audio-box slow">
+                  <p class="audio-label">slow</p>
+                  <audio controls preload="metadata" src="assets/audio/05-can-a-can-slow.wav"></audio>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="twister-card accent-teal">
+            <div class="twister-main">
+              <span class="number">#6</span>
+              <p class="phrase">Lesser leather never weathered wetter weather better.</p>
+              <details>
+                <summary>発音記号を確認する</summary>
+                <div class="ipa-panel">
+                  <p class="ipa">/ˈlɛsɚ ˈlɛðɚ ˈnɛvɚ ˈwɛðɚd ˈwɛtɚ ˈwɛðɚ ˈbɛtɚ/</p>
+                </div>
+              </details>
+              <details>
+                <summary>日本語を確認する</summary>
+                <div class="jp-panel">
+                  <p class="jp">質の低い革は、より濡れた天気にうまく耐えられなかった。</p>
+                </div>
+              </details>
+              <div class="audio-pair">
+                <div class="audio-box">
+                  <p class="audio-label">normal</p>
+                  <audio controls preload="metadata" src="assets/audio/06-lesser-leather-normal.wav"></audio>
+                </div>
+                <div class="audio-box slow">
+                  <p class="audio-label">slow</p>
+                  <audio controls preload="metadata" src="assets/audio/06-lesser-leather-slow.wav"></audio>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="twister-card accent-gold">
+            <div class="twister-main">
+              <span class="number">#7</span>
+              <p class="phrase">Pad kid poured curd pulled cod.</p>
+              <details>
+                <summary>発音記号を確認する</summary>
+                <div class="ipa-panel">
+                  <p class="ipa">/ˈpæd ˈkɪd ˈpɔrd ˈkɝd ˈpʊld ˈkɑd/</p>
+                </div>
+              </details>
+              <details>
+                <summary>日本語を確認する</summary>
+                <div class="jp-panel">
+                  <p class="jp">パッドを持った子どもがカードを注ぎ、タラを引っぱった。</p>
+                </div>
+              </details>
+              <div class="audio-pair">
+                <div class="audio-box">
+                  <p class="audio-label">normal</p>
+                  <audio controls preload="metadata" src="assets/audio/07-pad-kid-normal.wav"></audio>
+                </div>
+                <div class="audio-box slow">
+                  <p class="audio-label">slow</p>
+                  <audio controls preload="metadata" src="assets/audio/07-pad-kid-slow.wav"></audio>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="twister-card accent-navy">
+            <div class="twister-main">
+              <span class="number">#8</span>
+              <p class="phrase">The thieves thought that they thrilled the throne throughout Thursday.</p>
+              <details>
+                <summary>発音記号を確認する</summary>
+                <div class="ipa-panel">
+                  <p class="ipa">/ðə θivz θɔt ðət ðeɪ θrɪld ðə θroʊn θruˈaʊt ˈθɝzdeɪ/</p>
+                </div>
+              </details>
+              <details>
+                <summary>日本語を確認する</summary>
+                <div class="jp-panel">
+                  <p class="jp">泥棒たちは、木曜日の間ずっと王座をわくわくさせたと思った。</p>
+                </div>
+              </details>
+              <div class="audio-pair">
+                <div class="audio-box">
+                  <p class="audio-label">normal</p>
+                  <audio controls preload="metadata" src="assets/audio/08-thirty-three-thieves-normal.wav"></audio>
+                </div>
+                <div class="audio-box slow">
+                  <p class="audio-label">slow</p>
+                  <audio controls preload="metadata" src="assets/audio/08-thirty-three-thieves-slow.wav"></audio>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+    <script>
+      document.querySelectorAll(".audio-box").forEach((box, index) => {
+        const audio = box.querySelector("audio");
+        const speeds = ["0.25", "0.5", "0.75", "1"];
+        const storageKey = `lesson6TongueTwisterSpeed-${index}`;
+        const getSavedSpeed = () => {
+          try {
+            return localStorage.getItem(storageKey) || "1";
+          } catch {
+            return "1";
+          }
+        };
+        const saveSpeed = (speed) => {
+          try {
+            localStorage.setItem(storageKey, speed);
+          } catch {
+            // Keep the controls usable on file:// previews where storage can be blocked.
+          }
+        };
+        const savedSpeed = getSavedSpeed();
+        const speedControl = document.createElement("div");
+
+        speedControl.className = "speed-control";
+        speedControl.setAttribute("aria-label", "再生速度");
+
+        speeds.forEach((speed) => {
+          const button = document.createElement("button");
+          button.className = "speed-button";
+          button.type = "button";
+          button.dataset.speed = speed;
+          button.textContent = speed === "1" ? "1.0" : speed;
+          button.addEventListener("click", () => setPlaybackSpeed(speed));
+          speedControl.appendChild(button);
+        });
+
+        audio.insertAdjacentElement("afterend", speedControl);
+
+        function setPlaybackSpeed(speed) {
+          audio.playbackRate = Number(speed);
+          saveSpeed(speed);
+
+          speedControl.querySelectorAll(".speed-button").forEach((button) => {
+            const isActive = button.dataset.speed === speed;
+            button.classList.toggle("is-active", isActive);
+            button.setAttribute("aria-pressed", String(isActive));
+          });
+        }
+
+        audio.addEventListener("loadedmetadata", () => {
+          audio.playbackRate = Number(getSavedSpeed() || savedSpeed);
+        });
+
+        setPlaybackSpeed(savedSpeed);
+      });
+    </script>
+  </body>
+</html>
