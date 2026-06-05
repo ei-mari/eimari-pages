@@ -1,0 +1,799 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lesson 6 | States Route Game</title>
+  <meta name="description" content="A neighboring states route game starting from Washington.">
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #22324b;
+      --muted: #68758a;
+      --blue: #2278d4;
+      --blue-dark: #16549b;
+      --red: #f05255;
+      --green: #2fbf71;
+      --yellow: #ffd45a;
+      --paper: #fffdf7;
+      --line: #dbe7f5;
+      --shadow: 0 16px 38px rgba(34, 72, 112, .18);
+      font-family: "Avenir Next", "Helvetica Neue", Arial, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 12% 8%, rgba(255, 212, 90, .42), transparent 230px),
+        radial-gradient(circle at 88% 18%, rgba(80, 199, 247, .34), transparent 250px),
+        linear-gradient(145deg, #eaf7ff, #fff5d8 52%, #eaf7ff);
+    }
+
+    .phone {
+      width: min(100%, 430px);
+      min-height: 100vh;
+      margin: 0 auto;
+      background:
+        linear-gradient(180deg, rgba(255, 249, 224, .9), rgba(241, 250, 255, .98) 330px),
+        var(--paper);
+      box-shadow: 0 0 0 1px rgba(40, 104, 171, .12), 0 0 70px rgba(22, 84, 155, .14);
+      overflow: hidden;
+    }
+
+    .hero {
+      padding: 12px 12px 0;
+    }
+
+    .hero img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 8px;
+      box-shadow: 0 16px 34px rgba(31, 92, 153, .18);
+    }
+
+    @media (min-width: 760px) {
+      .phone {
+        width: min(100%, 760px);
+      }
+
+      .hero {
+        padding: 18px 18px 0;
+      }
+
+      main {
+        padding: 18px 18px 36px;
+      }
+
+      .game-card {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+        align-items: start;
+      }
+
+      .mini-roulette {
+        grid-column: 1 / -1;
+        margin-bottom: 0;
+      }
+
+      .select-row,
+      .team-panel,
+      .game-card > .section-title,
+      .moves,
+      .actions,
+      .history-box {
+        grid-column: 1 / -1;
+      }
+    }
+
+    main {
+      padding: 16px 14px 30px;
+    }
+
+    .intro,
+    .game-card {
+      background: rgba(255, 255, 255, .88);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: 0 8px 24px rgba(39, 92, 151, .1);
+    }
+
+    .intro {
+      margin-bottom: 14px;
+      padding: 14px;
+    }
+
+    h1 {
+      margin: 0;
+      color: var(--blue-dark);
+      font-size: 22px;
+      line-height: 1.15;
+      letter-spacing: 0;
+    }
+
+    .intro p {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .game-card {
+      padding: 15px;
+    }
+
+    .mini-roulette {
+      margin-bottom: 14px;
+      padding: 16px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.9), rgba(239, 248, 255, .96)),
+        #f9fbff;
+      border: 1px solid #c9e0f8;
+      border-radius: 8px;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.8), 0 12px 28px rgba(39, 92, 151, .12);
+    }
+
+    .mini-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 10px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .roulette-row {
+      display: grid;
+      gap: 12px;
+      align-items: stretch;
+    }
+
+    .dice-wheel {
+      display: grid;
+      place-items: center;
+      width: min(100%, 360px);
+      aspect-ratio: 1;
+      margin: 0 auto;
+      color: var(--blue-dark);
+      background:
+        conic-gradient(
+          #ff6b6b 0deg 60deg,
+          #ffd45a 60deg 120deg,
+          #52d187 120deg 180deg,
+          #55c7f7 180deg 240deg,
+          #8d7cf6 240deg 300deg,
+          #ff9b4a 300deg 360deg
+        );
+      border: 5px solid #fff;
+      border-radius: 50%;
+      box-shadow:
+        inset 0 0 0 8px rgba(255,255,255,.36),
+        0 14px 28px rgba(39, 92, 151, .22);
+      transition: transform 1.15s cubic-bezier(.15, .8, .18, 1);
+    }
+
+    .dice-result {
+      display: grid;
+      place-items: center;
+      width: 42%;
+      aspect-ratio: 1;
+      background: #fff;
+      border: 3px solid var(--yellow);
+      border-radius: 50%;
+      font-size: clamp(42px, 18vw, 86px);
+      font-weight: 900;
+      box-shadow: 0 8px 20px rgba(32, 85, 150, .18);
+    }
+
+    .spin-area {
+      display: grid;
+      width: min(100%, 360px);
+      margin: 0 auto;
+    }
+
+    .spin-btn {
+      min-height: 44px;
+      color: #fff;
+      background: linear-gradient(180deg, #39a2ff, var(--blue-dark));
+      border: 0;
+      box-shadow: 0 5px 0 #0d3c76;
+      font-size: 16px;
+    }
+
+    .spin-btn:active {
+      transform: translateY(2px);
+      box-shadow: 0 3px 0 #0d3c76;
+    }
+
+    .team-panel {
+      display: grid;
+      gap: 10px;
+      margin-bottom: 14px;
+      padding: 12px;
+      background:
+        radial-gradient(circle at 100% 0%, rgba(255, 212, 90, .35), transparent 110px),
+        linear-gradient(180deg, #ffffff, #f6fbff);
+      border: 1px solid #cfe3f8;
+      border-radius: 8px;
+      box-shadow: 0 10px 22px rgba(22, 84, 155, .12);
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 7px;
+    }
+
+    .team-btn {
+      min-height: 64px;
+      padding: 7px 5px;
+      color: var(--blue-dark);
+      background: #fff;
+      border: 1px solid #d4e5f8;
+      box-shadow: 0 5px 12px rgba(39, 92, 151, .08);
+    }
+
+    .team-btn.active {
+      color: #fff;
+      background:
+        radial-gradient(circle at 80% 14%, rgba(255, 212, 90, .5), transparent 38px),
+        linear-gradient(180deg, #39a2ff, var(--blue-dark));
+      border-color: var(--blue-dark);
+    }
+
+    .team-name {
+      display: block;
+      font-size: 12px;
+      line-height: 1.1;
+    }
+
+    .team-state {
+      display: block;
+      margin-top: 5px;
+      font-size: 10px;
+      line-height: 1.2;
+      overflow-wrap: anywhere;
+    }
+
+    .state-ipa {
+      display: inline-block;
+      margin-left: 5px;
+      font-size: .82em;
+      font-weight: 700;
+      opacity: .72;
+      line-height: 1.25;
+    }
+
+    .active-team {
+      padding: 12px;
+      color: #fff;
+      background:
+        radial-gradient(circle at 92% 12%, rgba(255, 212, 90, .38), transparent 82px),
+        linear-gradient(135deg, #2d93ed, var(--blue-dark));
+      border-radius: 8px;
+    }
+
+    .active-team-label {
+      display: block;
+      margin-bottom: 5px;
+      color: rgba(255, 255, 255, .82);
+      font-size: 12px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .active-team-state {
+      display: block;
+      font-size: clamp(26px, 8vw, 40px);
+      font-weight: 900;
+      line-height: 1.08;
+    }
+
+    .active-team-state .state-ipa {
+      color: rgba(255, 255, 255, .88);
+      font-size: .5em;
+    }
+
+    .inline-map {
+      display: block;
+      width: 100%;
+      margin-top: 12px;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border: 2px solid rgba(255, 255, 255, .72);
+      border-radius: 8px;
+      box-shadow: 0 8px 18px rgba(10, 49, 96, .22);
+    }
+
+    .select-row {
+      display: grid;
+      gap: 8px;
+      margin: 14px 0;
+    }
+
+    select {
+      width: 100%;
+      min-height: 48px;
+      padding: 0 12px;
+      color: var(--ink);
+      background: #fff;
+      border: 1px solid #cfe0f5;
+      border-radius: 8px;
+      font: inherit;
+      font-weight: 800;
+    }
+
+    .section-title {
+      margin: 16px 0 8px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .moves {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 8px;
+    }
+
+    button {
+      min-height: 46px;
+      border-radius: 8px;
+      font-family: inherit;
+      font-weight: 900;
+      letter-spacing: 0;
+      cursor: pointer;
+    }
+
+    .move-btn {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 0 13px;
+      color: var(--blue-dark);
+      background: linear-gradient(180deg, #ffffff, #f1f8ff);
+      border: 1px solid #d4e5f8;
+      font-size: 16px;
+      text-align: left;
+      box-shadow: 0 6px 14px rgba(39, 92, 151, .08);
+    }
+
+    .move-label {
+      min-width: 0;
+    }
+
+    .move-btn:disabled {
+      color: #9ba9bc;
+      background: #f4f7fb;
+      border-color: #e1e8f1;
+      box-shadow: none;
+      cursor: not-allowed;
+    }
+
+    .move-btn::after {
+      content: "GO";
+      flex: 0 0 auto;
+      display: grid;
+      place-items: center;
+      min-width: 38px;
+      height: 26px;
+      color: #fff;
+      background: linear-gradient(180deg, #43d980, var(--green));
+      border-radius: 8px;
+      font-size: 11px;
+    }
+
+    .move-btn:disabled::after {
+      background: #b9c6d5;
+    }
+
+    .move-btn:active {
+      transform: translateY(1px);
+    }
+
+    .empty {
+      padding: 12px;
+      color: var(--muted);
+      background: #f9fbff;
+      border: 1px dashed #cfdff2;
+      border-radius: 8px;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .actions .reset-team {
+      grid-column: 1 / -1;
+    }
+
+    .utility-btn {
+      color: var(--blue-dark);
+      background: #eef6ff;
+      border: 1px solid #cfe3f8;
+      font-size: 14px;
+    }
+
+    .utility-btn.start {
+      color: #fff;
+      background: var(--red);
+      border-color: var(--red);
+    }
+
+    .history-box {
+      margin-top: 14px;
+      padding: 12px;
+      background: #f9fbff;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+
+    .history {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      min-height: 31px;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      min-height: 31px;
+      padding: 0 10px;
+      color: #fff;
+      background: var(--blue);
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .chip .state-ipa {
+      margin-left: 4px;
+      color: rgba(255, 255, 255, .82);
+      font-size: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="phone">
+    <header class="hero">
+      <img src="assets/states-roulette-hero.png" alt="United States route practice">
+    </header>
+
+    <main>
+      <section class="intro" aria-labelledby="page-title">
+        <h1 id="page-title">Route Across America</h1>
+        <p>現在地に隣接している州だけに進めます。GOALを目指せ！</p>
+      </section>
+
+      <section class="game-card" aria-label="Neighboring states game">
+        <div class="mini-roulette" aria-label="1 to 6 roulette">
+          <div class="mini-title">
+            <span>Roulette</span>
+            <span>1 - 6</span>
+          </div>
+          <div class="roulette-row">
+            <div class="dice-wheel" id="diceWheel" aria-live="polite">
+              <span class="dice-result" id="diceResult">?</span>
+            </div>
+            <div class="spin-area">
+              <button class="spin-btn" id="spinBtn" type="button">SPIN</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="team-panel">
+          <div class="mini-title">
+            <span>Teams</span>
+            <span id="teamMoveCount">Moves left: 0</span>
+          </div>
+          <div class="team-grid" id="teamGrid" aria-label="Teams"></div>
+          <div class="active-team" aria-live="polite">
+            <span class="active-team-label" id="activeTeamLabel">Team 1</span>
+            <span class="active-team-state" id="activeTeamState">Washington</span>
+            <img class="inline-map" src="assets/states-roulette-hero.png" alt="United States map">
+          </div>
+        </div>
+
+        <label class="select-row">
+          <span class="section-title">選択中のチームの現在地を選ぶ</span>
+          <select id="stateSelect"></select>
+        </label>
+
+        <p class="section-title">移動できる州</p>
+        <div class="moves" id="moves"></div>
+
+        <div class="actions">
+          <button class="utility-btn start" id="nextTeamBtn" type="button">Next Team</button>
+          <button class="utility-btn" id="backBtn" type="button">Back One</button>
+          <button class="utility-btn reset-team" id="resetTeamBtn" type="button">Reset This Team</button>
+        </div>
+
+        <div class="history-box">
+          <p class="section-title">選択中のチームのRoute</p>
+          <div class="history" id="history"></div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    const neighbors = {
+      Alabama: ["Florida", "Georgia", "Mississippi", "Tennessee"],
+      Arizona: ["California", "Colorado", "Nevada", "New Mexico", "Utah"],
+      Arkansas: ["Louisiana", "Mississippi", "Missouri", "Oklahoma", "Tennessee", "Texas"],
+      California: ["Arizona", "Nevada", "Oregon"],
+      Colorado: ["Arizona", "Kansas", "Nebraska", "New Mexico", "Oklahoma", "Utah", "Wyoming"],
+      Connecticut: ["Massachusetts", "New York", "Rhode Island"],
+      Delaware: ["Maryland", "New Jersey", "Pennsylvania"],
+      Florida: ["Alabama", "Georgia"],
+      Georgia: ["Alabama", "Florida", "North Carolina", "South Carolina", "Tennessee"],
+      Idaho: ["Montana", "Nevada", "Oregon", "Utah", "Washington", "Wyoming"],
+      Illinois: ["Indiana", "Iowa", "Kentucky", "Missouri", "Wisconsin"],
+      Indiana: ["Illinois", "Kentucky", "Michigan", "Ohio"],
+      Iowa: ["Illinois", "Minnesota", "Missouri", "Nebraska", "South Dakota", "Wisconsin"],
+      Kansas: ["Colorado", "Missouri", "Nebraska", "Oklahoma"],
+      Kentucky: ["Illinois", "Indiana", "Missouri", "Ohio", "Tennessee", "Virginia", "West Virginia"],
+      Louisiana: ["Arkansas", "Mississippi", "Texas"],
+      Maine: ["New Hampshire"],
+      Maryland: ["Delaware", "Pennsylvania", "Virginia", "West Virginia"],
+      Massachusetts: ["Connecticut", "New Hampshire", "New York", "Rhode Island", "Vermont"],
+      Michigan: ["Indiana", "Ohio", "Wisconsin"],
+      Minnesota: ["Iowa", "North Dakota", "South Dakota", "Wisconsin"],
+      Mississippi: ["Alabama", "Arkansas", "Louisiana", "Tennessee"],
+      Missouri: ["Arkansas", "Illinois", "Iowa", "Kansas", "Kentucky", "Nebraska", "Oklahoma", "Tennessee"],
+      Montana: ["Idaho", "North Dakota", "South Dakota", "Wyoming"],
+      Nebraska: ["Colorado", "Iowa", "Kansas", "Missouri", "South Dakota", "Wyoming"],
+      Nevada: ["Arizona", "California", "Idaho", "Oregon", "Utah"],
+      "New Hampshire": ["Maine", "Massachusetts", "Vermont"],
+      "New Jersey": ["Delaware", "New York", "Pennsylvania"],
+      "New Mexico": ["Arizona", "Colorado", "Oklahoma", "Texas", "Utah"],
+      "New York": ["Connecticut", "Massachusetts", "New Jersey", "Pennsylvania", "Vermont"],
+      "North Carolina": ["Georgia", "South Carolina", "Tennessee", "Virginia"],
+      "North Dakota": ["Minnesota", "Montana", "South Dakota"],
+      Ohio: ["Indiana", "Kentucky", "Michigan", "Pennsylvania", "West Virginia"],
+      Oklahoma: ["Arkansas", "Colorado", "Kansas", "Missouri", "New Mexico", "Texas"],
+      Oregon: ["California", "Idaho", "Nevada", "Washington"],
+      Pennsylvania: ["Delaware", "Maryland", "New Jersey", "New York", "Ohio", "West Virginia"],
+      "Rhode Island": ["Connecticut", "Massachusetts"],
+      "South Carolina": ["Georgia", "North Carolina"],
+      "South Dakota": ["Iowa", "Minnesota", "Montana", "Nebraska", "North Dakota", "Wyoming"],
+      Tennessee: ["Alabama", "Arkansas", "Georgia", "Kentucky", "Mississippi", "Missouri", "North Carolina", "Virginia"],
+      Texas: ["Arkansas", "Louisiana", "New Mexico", "Oklahoma"],
+      Utah: ["Arizona", "Colorado", "Idaho", "Nevada", "New Mexico", "Wyoming"],
+      Vermont: ["Massachusetts", "New Hampshire", "New York"],
+      Virginia: ["Kentucky", "Maryland", "North Carolina", "Tennessee", "West Virginia"],
+      Washington: ["Idaho", "Oregon"],
+      "West Virginia": ["Kentucky", "Maryland", "Ohio", "Pennsylvania", "Virginia"],
+      Wisconsin: ["Illinois", "Iowa", "Michigan", "Minnesota"],
+      Wyoming: ["Colorado", "Idaho", "Montana", "Nebraska", "South Dakota", "Utah"]
+    };
+
+    const ipa = {
+      Alabama: "/ˌæləˈbæmə/",
+      Arizona: "/ˌɛrɪˈzoʊnə/",
+      Arkansas: "/ˈɑrkənsɔ/",
+      California: "/ˌkæləˈfɔrnjə/",
+      Colorado: "/ˌkɑləˈrædoʊ/",
+      Connecticut: "/kəˈnɛtɪkət/",
+      Delaware: "/ˈdɛləwɛr/",
+      Florida: "/ˈflɔrədə/",
+      Georgia: "/ˈdʒɔrdʒə/",
+      Idaho: "/ˈaɪdəhoʊ/",
+      Illinois: "/ˌɪləˈnɔɪ/",
+      Indiana: "/ˌɪndiˈænə/",
+      Iowa: "/ˈaɪəwə/",
+      Kansas: "/ˈkænzəs/",
+      Kentucky: "/kənˈtʌki/",
+      Louisiana: "/luˌiziˈænə/",
+      Maine: "/meɪn/",
+      Maryland: "/ˈmɛrələnd/",
+      Massachusetts: "/ˌmæsəˈtʃusəts/",
+      Michigan: "/ˈmɪʃɪɡən/",
+      Minnesota: "/ˌmɪnəˈsoʊtə/",
+      Mississippi: "/ˌmɪsəˈsɪpi/",
+      Missouri: "/mɪˈzʊri/",
+      Montana: "/mɑnˈtænə/",
+      Nebraska: "/nəˈbræskə/",
+      Nevada: "/nəˈvædə/",
+      "New Hampshire": "/nu ˈhæmpʃɚ/",
+      "New Jersey": "/nu ˈdʒɝzi/",
+      "New Mexico": "/nu ˈmɛksɪkoʊ/",
+      "New York": "/nu ˈjɔrk/",
+      "North Carolina": "/ˌnɔrθ kærəˈlaɪnə/",
+      "North Dakota": "/ˌnɔrθ dəˈkoʊtə/",
+      Ohio: "/oʊˈhaɪoʊ/",
+      Oklahoma: "/ˌoʊkləˈhoʊmə/",
+      Oregon: "/ˈɔrəɡən/",
+      Pennsylvania: "/ˌpɛnsəlˈveɪnjə/",
+      "Rhode Island": "/ˌroʊd ˈaɪlənd/",
+      "South Carolina": "/ˌsaʊθ kærəˈlaɪnə/",
+      "South Dakota": "/ˌsaʊθ dəˈkoʊtə/",
+      Tennessee: "/ˌtɛnəˈsi/",
+      Texas: "/ˈtɛksəs/",
+      Utah: "/ˈjutɑ/",
+      Vermont: "/vɚˈmɑnt/",
+      Virginia: "/vɚˈdʒɪnjə/",
+      Washington: "/ˈwɑʃɪŋtən/",
+      "West Virginia": "/ˌwɛst vɚˈdʒɪnjə/",
+      Wisconsin: "/wɪˈskɑnsən/",
+      Wyoming: "/waɪˈoʊmɪŋ/"
+    };
+
+    const teamGrid = document.getElementById("teamGrid");
+    const activeTeamLabel = document.getElementById("activeTeamLabel");
+    const activeTeamState = document.getElementById("activeTeamState");
+    const teamMoveCount = document.getElementById("teamMoveCount");
+    const stateSelect = document.getElementById("stateSelect");
+    const movesEl = document.getElementById("moves");
+    const historyEl = document.getElementById("history");
+    const diceWheel = document.getElementById("diceWheel");
+    const diceResult = document.getElementById("diceResult");
+    const spinBtn = document.getElementById("spinBtn");
+    const nextTeamBtn = document.getElementById("nextTeamBtn");
+    const backBtn = document.getElementById("backBtn");
+    const resetTeamBtn = document.getElementById("resetTeamBtn");
+    const states = Object.keys(neighbors).sort();
+    let activeTeam = 0;
+    const teamNames = ["Team A", "Team B", "Team C", "Team D"];
+    const teams = teamNames.map((name) => ({
+      name,
+      current: "Washington",
+      route: ["Washington"],
+      movesLeft: 0
+    }));
+    let diceRotation = 0;
+
+    function team() {
+      return teams[activeTeam];
+    }
+
+    function stateMarkup(state) {
+      return `${state}<span class="state-ipa">${ipa[state] || ""}</span>`;
+    }
+
+    function fillSelect() {
+      states.forEach((state) => {
+        const option = document.createElement("option");
+        option.value = state;
+        option.textContent = `${state} ${ipa[state] || ""}`;
+        stateSelect.appendChild(option);
+      });
+    }
+
+    function renderTeams() {
+      teamGrid.innerHTML = "";
+      teams.forEach((item, index) => {
+        const button = document.createElement("button");
+        button.className = "team-btn";
+        button.classList.toggle("active", index === activeTeam);
+        button.type = "button";
+        button.innerHTML = `<span class="team-name">${item.name}</span><span class="team-state">${stateMarkup(item.current)}</span>`;
+        button.addEventListener("click", () => {
+          activeTeam = index;
+          render();
+        });
+        teamGrid.appendChild(button);
+      });
+    }
+
+    function renderMoves() {
+      movesEl.innerHTML = "";
+      const nextStates = neighbors[team().current] || [];
+      if (!nextStates.length) {
+        const empty = document.createElement("div");
+        empty.className = "empty";
+        empty.textContent = "移動できる州がありません。";
+        movesEl.appendChild(empty);
+        return;
+      }
+      nextStates.forEach((state) => {
+        const button = document.createElement("button");
+        button.className = "move-btn";
+        button.type = "button";
+        button.innerHTML = `<span class="move-label">${stateMarkup(state)}</span>`;
+        button.disabled = team().movesLeft <= 0;
+        button.addEventListener("click", () => moveTo(state, true));
+        movesEl.appendChild(button);
+      });
+    }
+
+    function renderHistory() {
+      historyEl.innerHTML = "";
+      team().route.forEach((state) => {
+        const chip = document.createElement("span");
+        chip.className = "chip";
+        chip.innerHTML = stateMarkup(state);
+        historyEl.appendChild(chip);
+      });
+    }
+
+    function render() {
+      const item = team();
+      activeTeamLabel.textContent = item.name;
+      activeTeamState.innerHTML = stateMarkup(item.current);
+      stateSelect.value = item.current;
+      teamMoveCount.textContent = `Moves left: ${item.movesLeft}`;
+      renderTeams();
+      renderMoves();
+      renderHistory();
+    }
+
+    function moveTo(state, addRoute) {
+      const item = team();
+      item.current = state;
+      if (addRoute) {
+        item.route.push(state);
+        item.movesLeft = Math.max(0, item.movesLeft - 1);
+      }
+      render();
+    }
+
+    function nextTeam() {
+      activeTeam = (activeTeam + 1) % teams.length;
+      render();
+    }
+
+    function resetTeam() {
+      const item = team();
+      item.current = "Washington";
+      item.route = ["Washington"];
+      item.movesLeft = 0;
+      render();
+    }
+
+    function back() {
+      const item = team();
+      if (item.route.length <= 1) return;
+      item.route.pop();
+      item.current = item.route[item.route.length - 1];
+      item.movesLeft += 1;
+      render();
+    }
+
+    function spin() {
+      const number = Math.floor(Math.random() * 6) + 1;
+      diceResult.textContent = "...";
+      diceRotation += 720 + number * 60;
+      diceWheel.style.transform = `rotate(${diceRotation}deg)`;
+      window.setTimeout(() => {
+        diceResult.textContent = number;
+        team().movesLeft = number;
+        render();
+      }, 900);
+    }
+
+    fillSelect();
+    render();
+    stateSelect.addEventListener("change", () => {
+      const item = team();
+      item.current = stateSelect.value;
+      item.route = [item.current];
+      item.movesLeft = 0;
+      render();
+    });
+    spinBtn.addEventListener("click", spin);
+    nextTeamBtn.addEventListener("click", nextTeam);
+    backBtn.addEventListener("click", back);
+    resetTeamBtn.addEventListener("click", resetTeam);
+  </script>
+</body>
+</html>
