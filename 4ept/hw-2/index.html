@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>4EPT | Practice Questions Part 2</title>
+    <style>
+      :root {
+        --bg: #f5faf4;
+        --ink: #152219;
+        --text: #1c2a20;
+        --muted: #607368;
+        --gold: #c99320;
+        --gold-2: #7a5a13;
+        --green: #168447;
+        --green-2: #e5f5e9;
+        --line: rgba(22, 132, 71, 0.18);
+        --panel: #ffffff;
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background:
+          linear-gradient(135deg, rgba(22, 132, 71, 0.12), transparent 34%),
+          linear-gradient(215deg, rgba(201, 147, 32, 0.12), transparent 38%),
+          #f5faf4;
+        color: var(--text);
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif;
+      }
+
+      .shell {
+        width: min(100%, 520px);
+        min-height: 100vh;
+        margin: 0 auto;
+        background: rgba(255, 255, 255, 0.82);
+        box-shadow: 0 18px 70px rgba(22, 64, 36, 0.12);
+      }
+
+      header, main, footer { padding: 16px; }
+      header {
+        display: grid;
+        gap: 14px;
+        padding-top: 18px;
+      }
+
+      h1, h2, h3, p { margin: 0; }
+      .hero {
+        overflow: hidden;
+        margin: 0;
+        border: 1px solid rgba(22, 132, 71, 0.18);
+        border-radius: 12px;
+        background: #fdfefc;
+        box-shadow:
+          0 18px 42px rgba(22, 64, 36, 0.14),
+          0 0 0 5px rgba(255, 255, 255, 0.7);
+      }
+      .hero img {
+        display: block;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+      }
+
+      .intro, .section {
+        display: grid;
+        gap: 14px;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.96);
+        box-shadow:
+          0 14px 38px rgba(22, 64, 36, 0.1),
+          inset 0 1px 0 rgba(255, 255, 255, 0.8);
+      }
+      .intro { padding: 16px; }
+      .section { padding: 18px; }
+
+      .kicker {
+        width: max-content;
+        padding: 5px 10px;
+        border: 1px solid rgba(22, 132, 71, 0.18);
+        border-radius: 999px;
+        background: var(--green-2);
+        color: var(--green);
+        font-size: 0.72rem;
+        font-weight: 900;
+        letter-spacing: 0.08em;
+      }
+      h1 {
+        color: var(--ink);
+        font-size: 2rem;
+        line-height: 1.12;
+        text-shadow: none;
+      }
+      .lead, .note {
+        color: var(--muted);
+        font-size: 0.92rem;
+        line-height: 1.75;
+      }
+      .point {
+        padding: 12px 13px;
+        border: 1px solid rgba(22, 132, 71, 0.22);
+        border-left: 4px solid var(--green);
+        border-radius: 10px;
+        background: #edf8f0;
+        color: #214f32;
+        font-size: 0.92rem;
+        font-weight: 760;
+        line-height: 1.72;
+      }
+      .nav-heading {
+        color: var(--green);
+        font-size: 0.82rem;
+        font-weight: 950;
+        letter-spacing: 0.08em;
+      }
+      .quick-nav {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+      }
+      .quick-nav a {
+        display: grid;
+        min-height: 58px;
+        align-content: center;
+        gap: 2px;
+        padding: 12px;
+        border: 1px solid rgba(22, 132, 71, 0.14);
+        border-radius: 10px;
+        background: #f8fcf8;
+        color: inherit;
+        text-decoration: none;
+      }
+      .nav-label {
+        color: var(--green);
+        font-size: 0.74rem;
+        font-weight: 900;
+      }
+      .nav-title {
+        font-size: 0.9rem;
+        font-weight: 900;
+      }
+      main {
+        display: grid;
+        gap: 18px;
+        padding-bottom: 36px;
+      }
+      .section-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+      }
+      .section-num {
+        margin-bottom: 7px;
+        color: var(--green);
+        font-size: 0.78rem;
+        font-weight: 900;
+        letter-spacing: 0.08em;
+      }
+      h2 {
+        color: var(--ink);
+        font-size: 1.18rem;
+        line-height: 1.28;
+      }
+      .badge {
+        flex: 0 0 auto;
+        min-width: 58px;
+        padding: 6px 9px;
+        border: 1px solid rgba(22, 132, 71, 0.18);
+        border-radius: 999px;
+        background: var(--green-2);
+        color: var(--green);
+        font-size: 0.72rem;
+        font-weight: 900;
+        text-align: center;
+      }
+      .task-list {
+        display: grid;
+        gap: 10px;
+      }
+      .item {
+        display: grid;
+        gap: 9px;
+        padding: 13px;
+        border: 1px solid rgba(22, 132, 71, 0.12);
+        border-radius: 10px;
+        background: #fbfdfb;
+      }
+      .item-main {
+        color: var(--text);
+        font-size: 1.02rem;
+        font-weight: 900;
+        line-height: 1.45;
+      }
+      .item-no {
+        display: block;
+        margin-bottom: 3px;
+        color: var(--green);
+        font-size: 0.75rem;
+        font-weight: 900;
+        letter-spacing: 0.06em;
+      }
+      .audio-placeholder {
+        display: grid;
+        place-items: center;
+        min-height: 42px;
+        border: 1px dashed rgba(22, 132, 71, 0.25);
+        border-radius: 10px;
+        color: var(--muted);
+        font-size: 0.82rem;
+        font-weight: 800;
+      }
+      .item-audio {
+        display: grid;
+        gap: 8px;
+        padding: 9px;
+        border: 1px solid rgba(22, 132, 71, 0.13);
+        border-radius: 10px;
+        background: #f4faf5;
+      }
+      .item-audio audio {
+        display: block;
+        width: 100%;
+        height: 32px;
+      }
+      .speed-controls {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 6px;
+      }
+      .speed-btn {
+        min-height: 32px;
+        border: 1px solid rgba(22, 132, 71, 0.2);
+        border-radius: 8px;
+        background: #ffffff;
+        color: var(--green);
+        font: inherit;
+        font-size: 0.78rem;
+        font-weight: 900;
+        cursor: pointer;
+      }
+      .speed-btn.is-active {
+        background: var(--green);
+        color: #ffffff;
+        border-color: var(--green);
+      }
+      details {
+        overflow: hidden;
+        border: 1px solid rgba(22, 132, 71, 0.13);
+        border-radius: 10px;
+        background: #ffffff;
+      }
+      summary {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+        padding: 11px 12px;
+        color: var(--green);
+        cursor: pointer;
+        font-size: 0.86rem;
+        font-weight: 900;
+        list-style: none;
+      }
+      summary::-webkit-details-marker { display: none; }
+      summary::after {
+        content: "+";
+        display: grid;
+        place-items: center;
+        width: 24px;
+        height: 24px;
+        flex: 0 0 24px;
+        border-radius: 50%;
+        background: var(--green-2);
+      }
+      details[open] summary::after { content: "-"; }
+      .detail {
+        display: grid;
+        gap: 7px;
+        padding: 0 12px 12px;
+        color: var(--text);
+        font-size: 0.92rem;
+        line-height: 1.65;
+      }
+      .ipa-row {
+        display: grid;
+        grid-template-columns: minmax(72px, 0.8fr) minmax(0, 1.4fr);
+        gap: 10px;
+        padding: 7px 0;
+        border-top: 1px solid rgba(22, 132, 71, 0.1);
+      }
+      .ipa-row:first-child { border-top: 0; }
+      .word { color: var(--text); font-weight: 900; }
+      .ipa { color: var(--gold-2); font-weight: 800; }
+      .jp { color: var(--muted); }
+      .comparison-note {
+        color: var(--muted);
+        font-size: 0.82rem;
+        line-height: 1.55;
+      }
+      footer {
+        color: var(--muted);
+        font-size: 0.78rem;
+        text-align: center;
+      }
+      .back-top {
+        position: fixed;
+        right: 16px;
+        bottom: 16px;
+        display: grid;
+        place-items: center;
+        width: 44px;
+        height: 44px;
+        border: 1px solid rgba(22, 132, 71, 0.22);
+        border-radius: 50%;
+        background: #ffffff;
+        color: var(--green);
+        font-weight: 950;
+        text-decoration: none;
+        box-shadow: 0 10px 28px rgba(0, 0, 0, 0.28);
+      }
+      @media (min-width: 720px) {
+        body { padding: 24px 0; }
+        .shell { min-height: auto; border-radius: 18px; overflow: hidden; }
+      }
+    </style>
+  </head>
+  <body id="top">
+    <div class="shell">
+      <header>
+        <figure class="hero">
+          <img src="./assets/ept-2.png" alt="Pronunciation exam practice questions part 2" />
+        </figure>
+        <section class="intro">
+          <span class="kicker">PRACTICE QUESTIONS #2</span>
+          <h1>Practice Questions Part 2</h1>
+          <p class="lead">EPT basicに向けた発音チェック用の練習ページです。単語・ペア・フレーズを順番に声に出して練習しましょう。</p>
+          <p class="point">レッスンでは発音記号は表示せずにチェックします。発音記号のヒントなしでも言えるように、覚えてきてね！</p>
+          <p class="nav-heading">目次</p>
+          <nav class="quick-nav" aria-label="目次">
+            <a href="#q1"><span class="nav-label">QUESTION 01</span><span class="nav-title">Pairs & Words</span></a>
+            <a href="#q2"><span class="nav-label">QUESTION 02</span><span class="nav-title">Phrases</span></a>
+            <a href="#q3"><span class="nav-label">QUESTION 03</span><span class="nav-title">Extra Words</span></a>
+            <a href="#q4"><span class="nav-label">QUESTION 04</span><span class="nav-title">Extra Phrases</span></a>
+          </nav>
+        </section>
+      </header>
+
+      <main>
+        <section class="section" id="q1">
+          <div class="section-head">
+            <div>
+              <p class="section-num">QUESTION 01</p>
+              <h2>Read the pairs and words aloud.</h2>
+            </div>
+            <span class="badge">28 SETS</span>
+          </div>
+          <p class="note">ペアは左右の違いを意識し、単語は発音記号なしでも言えるように練習しましょう。</p>
+          <div class="task-list" id="list-one"></div>
+        </section>
+
+        <section class="section" id="q2">
+          <div class="section-head">
+            <div>
+              <p class="section-num">QUESTION 02</p>
+              <h2>Read the phrases aloud.</h2>
+            </div>
+            <span class="badge">6 ITEMS</span>
+          </div>
+          <p class="note">つながり・弱形・強勢を意識して、自然に読めるようにしましょう。</p>
+          <div class="task-list" id="list-two"></div>
+        </section>
+
+        <section class="section" id="q3">
+          <div class="section-head">
+            <div>
+              <p class="section-num">QUESTION 03</p>
+              <h2>Read the extra words aloud.</h2>
+            </div>
+            <span class="badge">14 ITEMS</span>
+          </div>
+          <p class="note">今までに習ったことを思い出して練習しましょう。</p>
+          <div class="task-list" id="list-three"></div>
+        </section>
+
+        <section class="section" id="q4">
+          <div class="section-head">
+            <div>
+              <p class="section-num">QUESTION 04</p>
+              <h2>Read the extra phrases aloud.</h2>
+            </div>
+            <span class="badge">5 ITEMS</span>
+          </div>
+          <p class="note">フレーズ全体のリズムと、単語同士のつながりを意識して読みましょう。</p>
+          <div class="task-list" id="list-four"></div>
+        </section>
+      </main>
+
+      <footer>SOUND DESIGN LAB</footer>
+    </div>
+    <a class="back-top" href="#top" aria-label="一番上へ戻る">↑</a>
+
+    <script>
+      const q1 = [
+        { text: "wrong, long", rows: [["wrong", "/rɔŋ/", "間違った"], ["long", "/lɔŋ/", "長い"]] },
+        { text: "been, bean", rows: [["been", "/bɪn/ または /bɛn/", "ずっと〜だった、行ったことがある"], ["bean", "/bin/", "豆"]] },
+        { text: "fear, hear", rows: [["fear", "/fɪr/", "恐怖、恐れる"], ["hear", "/hɪr/", "聞こえる、聞く"]] },
+        { text: "hard, heard", rows: [["hard", "/hɑrd/", "難しい、硬い"], ["heard", "/hɝd/", "hear の過去形、聞いた"]] },
+        { text: "walk, work", rows: [["walk", "/wɔk/ /wɑk/", "歩く"], ["work", "/wɝk/", "働く、仕事"]] },
+        { text: "pull, pool", rows: [["pull", "/pʊl/", "引く"], ["pool", "/pul/", "プール"]] },
+        { text: "very, berry", rows: [["very", "/ˈvɛri/", "とても"], ["berry", "/ˈbɛri/", "ベリー、木の実"]] },
+        { text: "learn, lean", rows: [["learn", "/lɝn/", "学ぶ"], ["lean", "/lin/", "もたれる、細い、脂肪の少ない"]] },
+        { text: "path, pass", rows: [["path", "/pæθ/", "道、小道"], ["pass", "/pæs/", "通る、合格する"]] },
+        { text: "themselves", rows: [["themselves", "/ðəmˈsɛlvz/", "彼ら自身、それら自身"]] },
+        { text: "Tuesday", rows: [["Tuesday", "/ˈtuzdeɪ/", "火曜日"]] },
+        { text: "February", rows: [["February", "/ˈfɛbjuˌɛri/", "2月"]] },
+        { text: "delicious", rows: [["delicious", "/dɪˈlɪʃəs/", "おいしい"]] },
+        { text: "theme", rows: [["theme", "/θim/", "テーマ"]] },
+        { text: "1:40 (one forty)", rows: [["one forty", "/wʌn ˈfɔrti/", "1時40分"]] },
+        { text: "5:40 (five forty)", rows: [["five forty", "/faɪv ˈfɔrti/", "5時40分"]] },
+        { text: "6:30 (six thirty)", rows: [["six thirty", "/sɪks ˈθɝti/", "6時30分"]] },
+        { text: "excuse", rows: [["excuse", "/ɪkˈskjus/", "言い訳、口実"], ["excuse", "/ɪkˈskjuz/", "許す、言い訳にする"]] },
+        { text: "regular", rows: [["regular", "/ˈrɛɡjəlɚ/", "普通の、定期的な"]] },
+        { text: "voice", rows: [["voice", "/vɔɪs/", "声"]] },
+        { text: "color, collar", rows: [["color", "/ˈkʌlɚ/", "色"], ["collar", "/ˈkɑlɚ/", "襟、首輪"]] },
+        { text: "block, black", rows: [["block", "/blɑk/", "ブロック、区画、妨げる"], ["black", "/blæk/", "黒い、黒"]] },
+        { text: "Thursday", rows: [["Thursday", "/ˈθɝzdeɪ/", "木曜日"]] },
+        { text: "zero", rows: [["zero", "/ˈzɪroʊ/", "ゼロ"]] },
+        { text: "April", rows: [["April", "/ˈeɪprəl/", "4月"]] },
+        { text: "purple", rows: [["purple", "/ˈpɝpəl/", "紫"]] },
+        { text: "sea, see", rows: [["sea", "/si/", "海"], ["see", "/si/", "見る、見える"]] },
+        { text: "exit", rows: [["exit", "/ˈɛɡzɪt/", "出口、出る"]] },
+      ];
+
+      const q2 = [
+        { text: "a glass of water", rows: [["a glass of water", "/ə ˈɡlæs əv ˈwɔtɚ/", "コップ一杯の水"]] },
+        { text: "top of the mountain", rows: [["top of the mountain", "/ˈtɑp əv ðə ˈmaʊntən/", "山の頂上"]] },
+        { text: "Christmas holiday", rows: [["Christmas holiday", "/ˈkrɪsməs ˈhɑləˌdeɪ/", "クリスマス休暇"]] },
+        { text: "sightseeing tour", rows: [["sightseeing tour", "/ˈsaɪtˌsiɪŋ ˈtɔr/ または /ˈsaɪtˌsiɪŋ ˈtʊr/", "観光ツアー"]] },
+        { text: "personal computer", rows: [["personal computer", "/ˈpɝsənəl kəmˈpjutɚ/", "パソコン、個人用コンピューター"]] },
+        { text: "beautiful flowers", rows: [["beautiful flowers", "/ˈbjutəfəl ˈflaʊɚz/", "美しい花々"]] },
+      ];
+
+      const q3 = [
+        { text: "January", rows: [["January", "/ˈdʒænjuˌɛri/", "1月"]] },
+        { text: "international", rows: [["international", "/ˌɪntɚˈnæʃənəl/", "国際的な"]] },
+        { text: "exam", rows: [["exam", "/ɪɡˈzɛəm/ /ɪɡˈzæm/", "試験"]] },
+        { text: "email", rows: [["email", "/ˈiˌmeɪl/", "メール"]] },
+        { text: "theater", rows: [["theater", "/ˈθiətɚ/", "劇場、映画館"]] },
+        { text: "koala", rows: [["koala", "/koʊˈɑlə/", "コアラ"]] },
+        { text: "coat, court", rows: [["coat", "/koʊt/", "コート、上着"], ["court", "/kɔrt/", "裁判所、コート"]] },
+        { text: "alive", rows: [["alive", "/əˈlaɪv/", "生きている"]] },
+        { text: "holiday", rows: [["holiday", "/ˈhɑləˌdeɪ/", "休日、祝日"]] },
+        { text: "another", rows: [["another", "/əˈnʌðɚ/", "もう一つの、別の"]] },
+        { text: "really", rows: [["really", "/ˈrɪli/", "本当に"]] },
+        { text: "sounds", rows: [["sounds", "/saʊndz/", "音、聞こえる、〜に思える"]] },
+        { text: "library", rows: [["library", "/ˈlaɪˌbrɛri/, /ˈlaɪˌbrəri/, /ˈlaɪˌbri/", "図書館"]] },
+        { text: "family", rows: [["family", "/ˈfæməli/ /ˈfæmli/", "家族"]] },
+      ];
+
+      const q4 = [
+        { text: "one of them", rows: [["one of them", "/ˈwʌn əv ðəm/", "彼らのうちの一人、それらのうちの一つ"]] },
+        { text: "a police officer", rows: [["a police officer", "/ə pəˈlis ˈɑfəsɚ/", "警察官"]] },
+        { text: "grocery shopping", rows: [["grocery shopping", "/ˈgroʊ ʃri/ または /ˈɡroʊsəri ˈʃɑpɪŋ/", "食料品の買い物"]] },
+        { text: "a little girl", rows: [["a little girl", "/ə ˈlɪtəl ˈɡɝl/", "小さな女の子"]] },
+        { text: "as soon as possible", rows: [["as soon as possible", "/əz ˈsun əz ˈpɑsəbəl/", "できるだけ早く"]] },
+      ];
+
+      const audioFiles = [
+        "01-wrong-long.m4a", "02-been-bean.m4a", "03-fear-hear.m4a", "04-hard-heard.m4a",
+        "05-walk-work.m4a", "06-pull-pool.m4a", "07-very-berry.m4a", "08-learn-lean.m4a",
+        "09-path-pass.m4a", "10-themselves.m4a", "11-tuesday.m4a", "12-february.m4a",
+        "13-delicious.m4a", "14-theme.m4a", "15-one-forty.m4a", "16-five-forty.m4a",
+        "17-six-thirty.m4a", "18-excuse.m4a", "19-regular.m4a", "20-voice.m4a",
+        "21-color-collar.m4a", "22-block-black.m4a", "23-thursday.m4a", "24-zero.m4a",
+        "25-april.m4a", "26-purple.m4a", "27-sea-see.m4a", "28-exit.m4a",
+        "29-a-glass-of-water.m4a", "30-top-of-the-mountain.m4a", "31-christmas-holiday.m4a",
+        "32-sightseeing-tour.m4a", "33-personal-computer.m4a", "34-beautiful-flowers.m4a",
+        "35-january.m4a", "36-international.m4a", "37-exam.m4a", "38-email.m4a",
+        "39-theater.m4a", "40-koala.m4a", "41-coat-court.m4a", "42-alive.m4a",
+        "43-holiday.m4a", "44-another.m4a", "45-really.m4a", "46-sounds.m4a",
+        "47-library.m4a", "48-family.m4a", "49-one-of-them.m4a", "50-a-police-officer.m4a",
+        "51-grocery-shopping.m4a", "52-a-little-girl.m4a", "53-as-soon-as-possible.m4a"
+      ];
+
+      [...q1, ...q2, ...q3, ...q4].forEach((item, index) => {
+        item.audio = `./assets/audio/${audioFiles[index]}`;
+      });
+
+      function render(targetId, items, start) {
+        const target = document.getElementById(targetId);
+        target.innerHTML = items.map((item, index) => {
+          const no = String(start + index).padStart(2, "0");
+          const rows = item.rows.map(([word, ipa, jp]) => `
+            <div class="ipa-row">
+              <span class="word">${word}</span>
+              <span><span class="ipa">${ipa}</span><br><span class="jp">${jp}</span></span>
+            </div>
+          `).join("");
+          const audio = item.audio ? `
+            <div class="item-audio">
+              <audio controls preload="metadata" src="${item.audio}"></audio>
+              <div class="speed-controls" aria-label="再生速度">
+                <button class="speed-btn" type="button" data-speed="0.25">0.25</button>
+                <button class="speed-btn" type="button" data-speed="0.5">0.5</button>
+                <button class="speed-btn" type="button" data-speed="0.75">0.75</button>
+                <button class="speed-btn is-active" type="button" data-speed="1.0">1.0</button>
+              </div>
+            </div>
+          ` : "";
+          return `
+            <article class="item">
+              <p class="item-main"><span class="item-no">${no}</span>${item.text}</p>
+              ${audio}
+              <details>
+                <summary>発音記号と日本語を確認する</summary>
+                <div class="detail">${rows}</div>
+              </details>
+            </article>
+          `;
+        }).join("");
+      }
+
+      render("list-one", q1, 1);
+      render("list-two", q2, 29);
+      render("list-three", q3, 35);
+      render("list-four", q4, 49);
+
+      document.addEventListener("click", (event) => {
+        const button = event.target.closest(".speed-btn");
+        if (!button) return;
+        const box = button.closest(".item-audio");
+        const audio = box.querySelector("audio");
+        audio.playbackRate = Number(button.dataset.speed);
+        box.querySelectorAll(".speed-btn").forEach((btn) => btn.classList.remove("is-active"));
+        button.classList.add("is-active");
+      });
+    </script>
+  </body>
+</html>

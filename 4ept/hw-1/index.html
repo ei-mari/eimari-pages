@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>4EPT | Practice Questions</title>
+    <style>
+      :root {
+        --bg: #071223;
+        --ink: #fff8df;
+        --text: #f8fbff;
+        --muted: #abc6e9;
+        --gold: #f7c955;
+        --gold-2: #fff0a8;
+        --line: rgba(255, 223, 126, 0.28);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background:
+          linear-gradient(125deg, rgba(214, 177, 91, 0.16), transparent 31%),
+          linear-gradient(205deg, rgba(83, 209, 224, 0.16), transparent 36%),
+          linear-gradient(160deg, #090b12 0%, #121925 42%, #071626 70%, #080910 100%);
+        color: var(--text);
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      body::before {
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        pointer-events: none;
+        content: "";
+        background:
+          linear-gradient(112deg, transparent 0 18%, rgba(255, 255, 255, 0.055) 18.3% 18.8%, transparent 19.2% 100%),
+          linear-gradient(112deg, transparent 0 64%, rgba(214, 177, 91, 0.09) 64.2% 64.7%, transparent 65.1% 100%),
+          linear-gradient(180deg, rgba(255, 255, 255, 0.045), transparent 42%);
+        opacity: 0.84;
+      }
+
+      .shell {
+        width: min(100%, 520px);
+        min-height: 100vh;
+        margin: 0 auto;
+        background: rgba(5, 9, 15, 0.46);
+        box-shadow: 0 0 90px rgba(0, 0, 0, 0.34);
+      }
+
+      header,
+      main,
+      footer {
+        padding: 16px;
+      }
+
+      header {
+        display: grid;
+        gap: 14px;
+        padding-top: 18px;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin: 0;
+      }
+
+      .hero {
+        overflow: hidden;
+        margin: 0;
+        border: 1px solid rgba(255, 239, 174, 0.42);
+        border-radius: 12px;
+        background: #061326;
+        box-shadow:
+          0 22px 64px rgba(0, 0, 0, 0.34),
+          0 0 28px rgba(83, 209, 224, 0.18);
+      }
+
+      .hero img {
+        display: block;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+      }
+
+      .intro {
+        display: grid;
+        gap: 14px;
+        padding: 16px;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        background:
+          linear-gradient(180deg, rgba(21, 31, 45, 0.95), rgba(6, 12, 21, 0.96)),
+          rgba(7, 22, 45, 0.82);
+      }
+
+      .kicker {
+        width: max-content;
+        padding: 5px 10px;
+        border: 1px solid rgba(255, 223, 126, 0.54);
+        border-radius: 999px;
+        background: rgba(247, 201, 85, 0.12);
+        color: var(--gold-2);
+        font-size: 0.72rem;
+        font-weight: 900;
+        letter-spacing: 0.08em;
+      }
+
+      h1 {
+        color: var(--ink);
+        font-size: 2.15rem;
+        line-height: 1.12;
+        text-shadow: 0 2px 0 rgba(3, 8, 20, 0.86);
+      }
+
+      .lead {
+        color: var(--muted);
+        font-size: 0.92rem;
+        line-height: 1.75;
+      }
+
+      .nav-heading {
+        margin-top: 2px;
+        color: var(--gold-2);
+        font-size: 0.82rem;
+        font-weight: 950;
+        letter-spacing: 0.08em;
+      }
+
+      .quick-nav {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 8px;
+      }
+
+      .quick-nav a {
+        display: grid;
+        min-height: 62px;
+        align-content: center;
+        gap: 2px;
+        padding: 12px;
+        border: 1px solid rgba(255, 223, 126, 0.26);
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.045);
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .nav-label {
+        color: var(--gold-2);
+        font-size: 0.74rem;
+        font-weight: 900;
+      }
+
+      .nav-title {
+        font-size: 0.9rem;
+        font-weight: 900;
+      }
+
+      main {
+        display: grid;
+        gap: 18px;
+        padding-bottom: 36px;
+      }
+
+      .section {
+        display: grid;
+        gap: 18px;
+        padding: 18px;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background:
+          linear-gradient(180deg, rgba(18, 28, 42, 0.94), rgba(7, 12, 22, 0.96)),
+          rgba(7, 22, 45, 0.82);
+        box-shadow:
+          0 18px 54px rgba(0, 0, 0, 0.26),
+          inset 0 1px 0 rgba(255, 255, 255, 0.06);
+      }
+
+      .section-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 4px;
+      }
+
+      .section-num {
+        margin-bottom: 7px;
+        color: var(--gold);
+        font-size: 0.78rem;
+        font-weight: 900;
+        letter-spacing: 0.08em;
+      }
+
+      h2 {
+        margin-top: 0;
+        color: var(--ink);
+        font-size: 1.18rem;
+        line-height: 1.28;
+      }
+
+      .badge {
+        flex: 0 0 auto;
+        min-width: 58px;
+        padding: 6px 9px;
+        border: 1px solid rgba(247, 201, 85, 0.42);
+        border-radius: 999px;
+        background: rgba(247, 201, 85, 0.13);
+        color: var(--gold-2);
+        font-size: 0.72rem;
+        font-weight: 900;
+        text-align: center;
+      }
+
+      .task-box {
+        display: grid;
+        gap: 18px;
+        padding: 0;
+        border: 0;
+        background: transparent;
+      }
+
+      .task-box > p {
+        padding: 11px 13px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-left: 3px solid rgba(247, 201, 85, 0.76);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.045);
+        color: var(--muted);
+        font-size: 0.9rem;
+        line-height: 1.7;
+      }
+
+      .practice-note {
+        display: grid;
+        gap: 9px;
+        padding: 17px 16px;
+        border: 1px solid rgba(247, 201, 85, 0.78);
+        border-left: 5px solid var(--gold);
+        border-radius: 13px;
+        background:
+          linear-gradient(160deg, rgba(247, 201, 85, 0.24), rgba(45, 169, 226, 0.12)),
+          rgba(8, 19, 36, 0.95);
+        box-shadow:
+          inset 0 1px 0 rgba(255, 255, 255, 0.16),
+          0 16px 34px rgba(247, 201, 85, 0.13);
+      }
+
+      .practice-note strong {
+        color: var(--gold-2);
+        font-size: 0.95rem;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      .practice-note p {
+        color: #fffaf0;
+        font-size: 1rem;
+        font-weight: 750;
+        line-height: 1.75;
+      }
+
+      .audio-card {
+        display: grid;
+        gap: 9px;
+        width: 100%;
+        padding: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.11);
+        border-radius: 8px;
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.025)),
+          rgba(3, 8, 18, 0.54);
+      }
+
+      .mini-player audio {
+        display: none;
+      }
+
+      .player-row {
+        display: grid;
+        grid-template-columns: 40px minmax(0, 1fr) 44px;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .play-button {
+        position: relative;
+        display: grid;
+        width: 40px;
+        height: 40px;
+        place-items: center;
+        border: 1px solid rgba(255, 223, 126, 0.48);
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.08);
+        cursor: pointer;
+      }
+
+      .play-button::before {
+        width: 0;
+        height: 0;
+        margin-left: 3px;
+        border-top: 8px solid transparent;
+        border-bottom: 8px solid transparent;
+        border-left: 12px solid var(--gold-2);
+        content: "";
+      }
+
+      .is-playing .play-button::before {
+        width: 13px;
+        height: 14px;
+        margin-left: 0;
+        border: 0;
+        background:
+          linear-gradient(90deg, var(--gold-2) 0 35%, transparent 35% 65%, var(--gold-2) 65% 100%);
+      }
+
+      .seek {
+        width: 100%;
+        accent-color: var(--gold);
+      }
+
+      .time {
+        color: rgba(248, 251, 255, 0.38);
+        font-size: 0.66rem;
+        font-variant-numeric: tabular-nums;
+        font-weight: 650;
+        text-align: right;
+      }
+
+      .speed-row {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 6px;
+        margin-top: 2px;
+      }
+
+      .speed-button {
+        min-height: 30px;
+        padding: 6px 4px;
+        border: 1px solid rgba(255, 223, 126, 0.22);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.045);
+        color: rgba(248, 251, 255, 0.82);
+        cursor: pointer;
+        font-size: 0.72rem;
+        font-weight: 900;
+      }
+
+      .speed-button[aria-pressed="true"] {
+        border-color: rgba(255, 240, 168, 0.72);
+        background: linear-gradient(180deg, rgba(255, 231, 140, 0.22), rgba(199, 141, 41, 0.14));
+        color: var(--gold-2);
+      }
+
+      .visually-hidden {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+        white-space: nowrap;
+      }
+
+      details {
+        overflow: hidden;
+        border: 1px solid rgba(255, 223, 126, 0.24);
+        border-radius: 10px;
+        background: rgba(2, 8, 20, 0.38);
+      }
+
+      summary {
+        cursor: pointer;
+        padding: 12px;
+        color: var(--gold-2);
+        font-size: 0.9rem;
+        font-weight: 900;
+        list-style: none;
+      }
+
+      summary::-webkit-details-marker {
+        display: none;
+      }
+
+      summary::after {
+        float: right;
+        color: var(--gold);
+        content: "+";
+        font-weight: 950;
+      }
+
+      details[open] summary::after {
+        content: "-";
+      }
+
+      details[open] summary {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .info-table,
+      .minimal-ipa-table {
+        width: 100%;
+        border-collapse: collapse;
+        background: rgba(255, 255, 255, 0.04);
+      }
+
+      .info-table td,
+      .info-table th,
+      .minimal-ipa-table td {
+        padding: 10px 9px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        color: var(--text);
+        font-size: 0.86rem;
+        line-height: 1.45;
+        text-align: left;
+        vertical-align: top;
+      }
+
+      .minimal-ipa-table td:first-child {
+        width: 42%;
+        font-weight: 850;
+      }
+
+      .ipa {
+        color: #ffffff;
+        font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+        font-weight: 800;
+      }
+
+      .mark {
+        display: inline;
+        min-height: 0;
+        padding: 0;
+        border: 0;
+        border-radius: 0;
+        background: transparent;
+        color: var(--gold);
+        box-shadow: none;
+        text-shadow: none;
+      }
+
+      .plain-answer {
+        padding: 10px 12px 12px;
+        color: var(--text);
+        font-size: 0.92rem;
+        line-height: 1.6;
+      }
+
+      .alphabet-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 8px;
+      }
+
+      .alphabet-card {
+        overflow: hidden;
+        border: 1px solid rgba(255, 223, 126, 0.28);
+        border-radius: 9px;
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.085), rgba(255, 255, 255, 0.035)),
+          rgba(3, 8, 18, 0.5);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
+      }
+
+      .alphabet-card.is-key {
+        border-color: rgba(247, 201, 85, 0.74);
+        background:
+          linear-gradient(160deg, rgba(247, 201, 85, 0.28), rgba(45, 169, 226, 0.22)),
+          rgba(6, 18, 36, 0.72);
+        box-shadow:
+          inset 0 1px 0 rgba(255, 255, 255, 0.18),
+          0 0 0 1px rgba(247, 201, 85, 0.08),
+          0 8px 22px rgba(247, 201, 85, 0.1);
+      }
+
+      .alphabet-card.is-key summary {
+        color: #fff3b8;
+        text-shadow: 0 0 12px rgba(247, 201, 85, 0.28);
+      }
+
+      .alphabet-card[open] {
+        grid-column: 1 / -1;
+      }
+
+      .alphabet-card summary {
+        display: grid;
+        min-height: 44px;
+        place-items: center;
+        padding: 0;
+        color: var(--gold-2);
+        font-size: 1.08rem;
+        font-weight: 950;
+        list-style: none;
+      }
+
+      .alphabet-card summary::before,
+      .alphabet-card summary::after {
+        content: none !important;
+      }
+
+      .alphabet-card summary::-webkit-details-marker {
+        display: none;
+      }
+
+      .alphabet-panel {
+        display: grid;
+        gap: 8px;
+        padding: 0 10px 10px;
+      }
+
+      .alphabet-ipa {
+        padding: 6px 0 8px;
+        color: var(--gold-2);
+        font-size: 1rem;
+        font-weight: 900;
+        text-align: left;
+      }
+
+      .pair-overview {
+        display: grid;
+        gap: 6px;
+        padding: 11px 13px;
+        border: 1px solid rgba(255, 223, 126, 0.18);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.035);
+        color: rgba(248, 251, 255, 0.9);
+        font-size: 0.86rem;
+        line-height: 1.5;
+      }
+
+      .pair-overview div {
+        display: grid;
+        grid-template-columns: 24px 1fr;
+        gap: 8px;
+      }
+
+      .pair-overview b {
+        color: var(--gold-2);
+      }
+
+      .pair-list {
+        display: grid;
+        gap: 11px;
+      }
+
+      .pair {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 46px minmax(0, 1fr);
+        grid-template-areas:
+          "top top top"
+          "left vs right"
+          "audio audio audio";
+        gap: 10px;
+        padding: 12px;
+        border: 1px solid rgba(255, 223, 126, 0.2);
+        border-radius: 8px;
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.025)),
+          rgba(6, 13, 25, 0.72);
+      }
+
+      .pair-top {
+        display: flex;
+        grid-area: top;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+      }
+
+      .num {
+        color: rgba(255, 240, 168, 0.86);
+        font-size: 0.76rem;
+        font-weight: 950;
+        letter-spacing: 0.06em;
+      }
+
+      .pair-hint {
+        padding: 3px 8px;
+        border: 1px solid rgba(83, 209, 224, 0.26);
+        border-radius: 999px;
+        background: rgba(83, 209, 224, 0.08);
+        color: #bfeffc;
+        font-size: 0.72rem;
+        font-weight: 900;
+      }
+
+      .pair-word {
+        display: grid;
+        min-height: 58px;
+        place-items: center;
+        border: 1px solid rgba(255, 223, 126, 0.24);
+        border-radius: 8px;
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.085), rgba(255, 255, 255, 0.035)),
+          rgba(3, 8, 18, 0.5);
+        color: #ffffff;
+        font-size: 1.15rem;
+        font-weight: 950;
+      }
+
+      .pair-word.left {
+        grid-area: left;
+      }
+
+      .pair-word.right {
+        grid-area: right;
+      }
+
+      .pair-vs {
+        display: grid;
+        grid-area: vs;
+        width: 46px;
+        min-height: 58px;
+        place-items: center;
+        color: var(--gold);
+        font-size: 0.74rem;
+        font-weight: 950;
+      }
+
+      .pair-audio,
+      .pair details {
+        grid-column: 1 / -1;
+        width: 100%;
+      }
+
+      .pair-audio {
+        grid-area: audio;
+      }
+
+      .word-list {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .word-item {
+        display: grid;
+        gap: 12px;
+        padding: 14px;
+        border: 1px solid rgba(255, 223, 126, 0.22);
+        border-radius: 10px;
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.025)),
+          rgba(6, 13, 25, 0.72);
+      }
+
+      .word-head {
+        display: flex;
+        align-items: baseline;
+        gap: 10px;
+      }
+
+      .word-title {
+        color: var(--gold-2);
+        font-size: clamp(1.7rem, 8vw, 2.35rem);
+        font-weight: 950;
+        line-height: 1.05;
+      }
+
+      .word-item .audio-card,
+      .word-item details {
+        width: 100%;
+      }
+
+      .word-item details > .ipa {
+        padding: 10px 12px 12px;
+        color: #ffffff;
+      }
+
+      .word-item .time {
+        color: rgba(248, 251, 255, 0.3);
+        font-size: 0.62rem;
+        font-weight: 600;
+      }
+
+      footer {
+        color: rgba(248, 251, 255, 0.58);
+        font-size: 0.76rem;
+        text-align: center;
+      }
+
+      .back-to-top {
+        position: fixed;
+        right: max(14px, calc((100vw - 520px) / 2 + 14px));
+        bottom: 16px;
+        z-index: 20;
+        display: grid;
+        width: 42px;
+        height: 42px;
+        place-items: center;
+        border: 1px solid rgba(255, 223, 126, 0.52);
+        border-radius: 999px;
+        background: rgba(7, 18, 35, 0.88);
+        color: var(--gold-2);
+        font-size: 1.1rem;
+        font-weight: 950;
+        text-decoration: none;
+        box-shadow: 0 10px 28px rgba(0, 0, 0, 0.32);
+        backdrop-filter: blur(10px);
+      }
+
+      @media (max-width: 560px) {
+        header,
+        main,
+        footer {
+          padding-inline: 14px;
+        }
+
+        .quick-nav {
+          grid-template-columns: 1fr;
+        }
+
+        .pair {
+          grid-template-columns: minmax(0, 1fr) 38px minmax(0, 1fr);
+        }
+
+        .pair-vs {
+          width: 38px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="shell">
+      <header id="top">
+        <figure class="hero">
+          <img src="./assets/pronunciation-exam-thumb.png" alt="Pronunciation Exam Practice Questions" />
+        </figure>
+
+        <section class="intro">
+          <div class="kicker">4EPT / EXAM PRACTICE</div>
+          <h1>Practice Questions</h1>
+          <p class="lead">
+            アルファベット、ミニマルペア、指定語句を順番に読み上げましょう。これまでに学んだことの復習とコース終了後に受講いただくEPT basicの対策に向けた課題です。
+          </p>
+
+          <div class="nav-heading">目次</div>
+          <nav class="quick-nav" aria-label="試験対策メニュー">
+            <a href="#listen"><span class="nav-label">01</span><span class="nav-title">Alphabet</span></a>
+            <a href="#minimal"><span class="nav-label">02</span><span class="nav-title">Minimal Pairs</span></a>
+            <a href="#words"><span class="nav-label">03</span><span class="nav-title">Words</span></a>
+          </nav>
+        </section>
+      </header>
+
+      <main>
+        <aside class="practice-note">
+          <strong>練習のポイント</strong>
+          <p>こちらにある単語・アルファベットは、発音記号のヒントなしでもレッスン内で正しく言えるように練習してください。</p>
+        </aside>
+
+        <section class="section" id="listen">
+          <div class="section-head">
+            <div>
+              <div class="section-num">QUESTION 01</div>
+              <h2>Read the alphabet aloud.</h2>
+            </div>
+            <span class="badge">READ</span>
+          </div>
+          <div class="task-box">
+            <p>ゆっくりでもOK。1文字ずつ、音の違いが伝わるように読みましょう。アルファベットをタップすると発音記号が表示されます。</p>
+            <div class="audio-card mini-player" data-player>
+              <div class="player-row">
+                <button class="play-button" type="button" aria-label="A〜Zを一気に再生"><span class="visually-hidden">Play</span></button>
+                <input class="seek" type="range" min="0" max="100" value="0" step="0.1" aria-label="A〜Zの再生位置" />
+                <span class="time" aria-live="off">0:00</span>
+              </div>
+              <audio preload="metadata" src="./assets/audio/alphabet.wav"></audio>
+            </div>
+            <div class="alphabet-grid" aria-label="Alphabet">
+              <details class="alphabet-card"><summary>A</summary><div class="alphabet-panel"><div class="alphabet-ipa">/eɪ/</div><div class="audio-card mini-player" data-player><div class="player-row"><button class="play-button" type="button" aria-label="Aを再生"><span class="visually-hidden">Play</span></button><input class="seek" type="range" min="0" max="100" value="0" step="0.1" aria-label="Aの再生位置" /><span class="time" aria-live="off">0:00</span></div><audio preload="metadata" src="./assets/audio/alphabet-A.mp3"></audio></div></div></details>
+              <details class="alphabet-card"><summary>B</summary><div class="alphabet-panel"><div class="alphabet-ipa">/bi/</div><div class="audio-card mini-player" data-player><div class="player-row"><button class="play-button" type="button" aria-label="Bを再生"><span class="visually-hidden">Play</span></button><input class="seek" type="range" min="0" max="100" value="0" step="0.1" aria-label="Bの再生位置" /><span class="time" aria-live="off">0:00</span></div><audio preload="metadata" src="./assets/audio/alphabet-B.mp3"></audio></div></div></details>
+              <details class="alphabet-card"><summary>C</summary><div class="alphabet-panel"><div class="alphabet-ipa">/si/</div><div class="audio-card mini-player" data-player><div class="player-row"><button class="play-button" type="button" aria-label="Cを再生"><span class="visually-hidden">Play</span></button><input class="seek" type="range" min="0" max="100" value="0" step="0.1" aria-label="Cの再生位置" /><span class="time" aria-live="off">0:00</span></div><audio preload="metadata" src="./assets/audio/alphabet-C.mp3"></audio></div></div></details>
+              <details class="alphabet-card"><summary>D</summary><div class="alphabet-panel"><div class="alphabet-ipa">/di/</div><div class="audio-card mini-player" data-player><div class="player-row"><button class="play-button" type="button" aria-label="Dを再生"><span class="visually-hidden">Play</span></button><input class="seek" type="range" min="0" max="100" value="0" step="0.1" aria-label="Dの再生位置" /><span class="time" aria-live="off">0:00</span></div><audio preload="metadata" src="./assets/audio/alphabet-D.mp3"></audio></div></div></details>
+              <details class="alphabet-card"><summary>E</summary><div class="alphabet-panel"><div class="alphabet-ipa">/i/</div><div class="audio-card mini-player" data-player><div class="player-row"><button class="play-button" type="button" aria-label="Eを再生"><span class="visually-hidden">Play</span></button><input class="seek" type="range" min="0" max="100" value="0" step="0.1" aria-label="Eの再生位置" /><span class="time" aria-live="off">0:00</span></div><audio preload="metadata" src="./assets/audio/alphabet-E.mp3"></audio></div></div></details>
+              <details class="alphabet-card"><summary>F</summary><div class="alphabet-panel"><div class="alphabet-ipa">/ɛf/</div><div class="audio-card mini-player" data-player><div class="player-row"><button class="play-button" type="button" aria-label="Fを再生"><span class="visually-hidden">Play</span></button><input class="seek" type="range" min="0" max="100" value="0" step="0.1" aria-label="Fの再生位置" /><span class="time" aria-live="off">0:00</span></div><audio preload="metadata" src="./assets/audio/alphabet-F.mp3"></audio></div></div></details>
+              <details class="alphabet-card"><summary>G</summary><div class="alphabet-panel"><div class="alphabet-ipa">/dʒi/</div><div class="audio-card mini-player" data-player><div class="player-row"><button class="play-button" type="button" aria-label="Gを再生"><span class="visually-hidden">Play</span></button><input class="seek" type="range" min="0" max="100" value="0" step="0.1" aria-label="Gの再生位置" /><span class="time" aria-live="off">0:00</span></div><audio preload="metadata" src="./assets/audio/alphabet-G.mp3"></audio></div></div></details>
+              <details class="alphabet-card"><summary>H</summary><div class="alphabet-panel"><div class="alphabet-ipa">/eɪtʃ/</div><div class="audio-card mini-player" data-player><div class="player-row"><button class="play-button" type="button" aria-label="Hを再生"><span class="visually-hidden">Play</span></button><input class="seek" type="range" min="0" max="100" value="0" step="0.1" aria-label="Hの再生位置" /><span class="time" aria-live="off">0:00</span></div><audio preload="metadata" src="./assets/audio/alphabet-H.mp3"></audio></div></div></details>
+              <details class="alphabet-card"><summary>I</summary><div class="alphabet-panel"><div class="alphabet-ipa">/aɪ/</div><div class="audio-card mini-player" data-player><div class="player-row"><button class="play-button" type="button" aria-label="Iを再生"><span class="visually-hidden">Play</span></button><input class="seek" type="range" min="0" max="100" value="0" step="0.1" aria-label="Iの再生位置" /><span class="time" aria-live="off">0:00</span></div><audio preload="metadata" src="./assets/audio/alphabet-I.mp3"></audio></div></div></details>
+              <details class="alphabet-card is-key"><summary>J</summary><div class="alphabet-panel"><div class="alphabet-ipa">/dʒeɪ/</div><div class="audio-card mini-player" data-player><div class="player-row"><button class="play-button" type="button" aria-label="Jを再生"><span class="visually-hidden">Play</span></button><input class="seek" type="range" min="0" max="100" value="0" step="0.1" aria-label="Jの再生位置" /><span class="time" aria-live="off">0:00</span></div><audio preload="metadata" src="./assets/audio/alphabet-J.mp3"></audio></div></div></details>
+              <details class="alphabet-card is-key"><summary>K</summary><div class="alphabet-panel"><div class="alphabet-ipa">/keɪ/</div><div class="audio-card mini-player" data-player><div class="player-row"><button class="play-button" type="button" aria-label="Kを再生"><span class="visually-hidden">Play</span></button><input class="seek" type="range" min="0" max="100" value="0" step="0.1" aria-label="Kの再生位置" /><span class="time" aria-live="off">0:00</span></div><audio preload="metadata" src="./assets/audio/alphabet-K.mp3"></audio></div></div></details>
+              <details class="alphabet-card"><summary>L</summary><div class="alphabet-panel"><div class="alphabet-ipa">/ɛl/</div><div class="audio-card mini-player" data-player><div class="player-row"><button class="play-button" type="button" aria-label="Lを再生"><span class="visually-hidden">Play</span></button><input class="seek" type="range" min="0" max="100" value="0" step="0.1" aria-label="Lの再生位置" /><span class="time" aria-live="off">0:00</span></div><audio preload="metadata" src="./assets/audio/alphabet-L.mp3"></audio></div></div></details>
+              <details class="alphabet-card is-key"><summary>M</summary><div class="alphabet-panel"><div class="alphabet-ipa">/ɛm/</div><div class="audio-card mini-player" data-player><div class="player-row"><button class="play-button" type="button" aria-label="Mを再生"><span class="visually-hidden">Play</span></button><input class="seek" type="range" min="0" max="100" value="0" step="0.1" aria-label="Mの再生位置" /><span class="time" aria-live="off">0:00</span></div><audio preload="metadata" src="./assets/audio/alphabet-M.mp3"></audio></div></div></details>
+              <details class="alphabet-card is-key"><summary>N</summary><div class="alphabet-panel"><div class="alphabet-ipa">/ɛn/</div><div class="audio-card mini-player" data-player><div class="player-row"><button class="play-button" type="button" aria-label="Nを再生"><span class="visually-hidden">Play</span></button><input class="seek" type="range" min="0" max="100" value="0" step="0.1" aria-label="Nの再生位置" /><span class="time" aria-live="off">0:00</span></div><audio preload="metadata" src="./assets/audio/alphabet-N.mp3"></audio></div></div></details>
+              <details class="alphabet-card is-key"><summary>O</summary><div class="alphabet-panel"><div class="alphabet-ipa">/oʊ/</div><div class="audio-card mini-player" data-player><div class="player-row"><button class="play-button" type="button" aria-label="Oを再生"><span class="visually-hidden">Play</span></button><input class="seek" type="range" min="0" max="100" value="0" step="0.1" aria-label="Oの再生位置" /><span class="time" aria-live="off">0:00</span></div><audio preload="metadata" src="./assets/audio/alphabet-O.mp3"></audio></div></div></details>
+              <details class="alphabet-card"><summary>P</summary><div class="alphabet-panel"><div class="alphabet-ipa">/pi/</div><div class="audio-card mini-player" data-player><div class="player-row"><button class="play-button" type="button" aria-label="Pを再生"><span class="visually-hidden">Play</span></button><input class="seek" type="range" min="0" max="100" value="0" step="0.1" aria-label="Pの再生位置" /><span class="time" aria-live="off">0:00</span></div><audio preload="metadata" src="./assets/audio/alphabet-P.mp3"></audio></div></div></details>
+              <details class="alphabet-card"><summary>Q</summary><div class="alphabet-panel"><div class="alphabet-ipa">/kju/</div><div class="audio-card mini-player" data-player><div class="player-row"><button class="play-button" type="button" aria-label="Qを再生"><span class="visually-hidden">Play</span></button><input class="seek" type="range" min="0" max="100" value="0" step="0.1" aria-label="Qの再生位置" /><span class="time" aria-live="off">0:00</span></div><audio preload="metadata" src="./assets/audio/alphabet-Q.mp3"></audio></div></div></details>
+              <details class="alphabet-card is-key"><summary>R</summary><div class="alphabet-panel"><div class="alphabet-ipa">/ɑr/</div><div class="audio-card mini-player" data-player><div class="player-row"><button class="play-button" type="button" aria-label="Rを再生"><span class="visually-hidden">Play</span></button><input class="seek" type="range" min="0" max="100" value="0" step="0.1" aria-label="Rの再生位置" /><span class="time" aria-live="off">0:00</span></div><audio preload="metadata" src="./assets/audio/alphabet-R.mp3"></audio></div></div></details>
+              <details class="alphabet-card"><summary>S</summary><div class="alphabet-panel"><div class="alphabet-ipa">/ɛs/</div><div class="audio-card mini-player" data-player><div class="player-row"><button class="play-button" type="button" aria-label="Sを再生"><span class="visually-hidden">Play</span></button><input class="seek" type="range" min="0" max="100" value="0" step="0.1" aria-label="Sの再生位置" /><span class="time" aria-live="off">0:00</span></div><audio preload="metadata" src="./assets/audio/alphabet-S.mp3"></audio></div></div></details>
+              <details class="alphabet-card"><summary>T</summary><div class="alphabet-panel"><div class="alphabet-ipa">/ti/</div><div class="audio-card mini-player" data-player><div class="player-row"><button class="play-button" type="button" aria-label="Tを再生"><span class="visually-hidden">Play</span></button><input class="seek" type="range" min="0" max="100" value="0" step="0.1" aria-label="Tの再生位置" /><span class="time" aria-live="off">0:00</span></div><audio preload="metadata" src="./assets/audio/alphabet-T.mp3"></audio></div></div></details>
+              <details class="alphabet-card"><summary>U</summary><div class="alphabet-panel"><div class="alphabet-ipa">/ju/</div><div class="audio-card mini-player" data-player><div class="player-row"><button class="play-button" type="button" aria-label="Uを再生"><span class="visually-hidden">Play</span></button><input class="seek" type="range" min="0" max="100" value="0" step="0.1" aria-label="Uの再生位置" /><span class="time" aria-live="off">0:00</span></div><audio preload="metadata" src="./assets/audio/alphabet-U.mp3"></audio></div></div></details>
+              <details class="alphabet-card"><summary>V</summary><div class="alphabet-panel"><div class="alphabet-ipa">/vi/</div><div class="audio-card mini-player" data-player><div class="player-row"><button class="play-button" type="button" aria-label="Vを再生"><span class="visually-hidden">Play</span></button><input class="seek" type="range" min="0" max="100" value="0" step="0.1" aria-label="Vの再生位置" /><span class="time" aria-live="off">0:00</span></div><audio preload="metadata" src="./assets/audio/alphabet-V.mp3"></audio></div></div></details>
+              <details class="alphabet-card is-key"><summary>W</summary><div class="alphabet-panel"><div class="alphabet-ipa">/ˈdʌbəlju/</div><div class="audio-card mini-player" data-player><div class="player-row"><button class="play-button" type="button" aria-label="Wを再生"><span class="visually-hidden">Play</span></button><input class="seek" type="range" min="0" max="100" value="0" step="0.1" aria-label="Wの再生位置" /><span class="time" aria-live="off">0:00</span></div><audio preload="metadata" src="./assets/audio/alphabet-W.mp3"></audio></div></div></details>
+              <details class="alphabet-card"><summary>X</summary><div class="alphabet-panel"><div class="alphabet-ipa">/ɛks/</div><div class="audio-card mini-player" data-player><div class="player-row"><button class="play-button" type="button" aria-label="Xを再生"><span class="visually-hidden">Play</span></button><input class="seek" type="range" min="0" max="100" value="0" step="0.1" aria-label="Xの再生位置" /><span class="time" aria-live="off">0:00</span></div><audio preload="metadata" src="./assets/audio/alphabet-X.mp3"></audio></div></div></details>
+              <details class="alphabet-card"><summary>Y</summary><div class="alphabet-panel"><div class="alphabet-ipa">/waɪ/</div><div class="audio-card mini-player" data-player><div class="player-row"><button class="play-button" type="button" aria-label="Yを再生"><span class="visually-hidden">Play</span></button><input class="seek" type="range" min="0" max="100" value="0" step="0.1" aria-label="Yの再生位置" /><span class="time" aria-live="off">0:00</span></div><audio preload="metadata" src="./assets/audio/alphabet-Y.mp3"></audio></div></div></details>
+              <details class="alphabet-card is-key"><summary>Z</summary><div class="alphabet-panel"><div class="alphabet-ipa">/zi/</div><div class="audio-card mini-player" data-player><div class="player-row"><button class="play-button" type="button" aria-label="Zを再生"><span class="visually-hidden">Play</span></button><input class="seek" type="range" min="0" max="100" value="0" step="0.1" aria-label="Zの再生位置" /><span class="time" aria-live="off">0:00</span></div><audio preload="metadata" src="./assets/audio/alphabet-Z.mp3"></audio></div></div></details>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" id="minimal">
+          <div class="section-head">
+            <div>
+              <div class="section-num">QUESTION 02</div>
+              <h2>Read the minimal pairs aloud.</h2>
+            </div>
+            <span class="badge">PAIR</span>
+          </div>
+          <div class="task-box">
+            <p>左右の単語の母音・子音の違いを意識して、ペアごとに読みましょう。</p>
+            <div class="pair-overview" aria-label="ミニマルペア一覧">
+              <div><b>1</b><span>wrong - long</span></div>
+              <div><b>2</b><span>map - mop</span></div>
+              <div><b>3</b><span>win - wing</span></div>
+              <div><b>4</b><span>hard - heard</span></div>
+              <div><b>5</b><span>been - bean</span></div>
+              <div><b>6</b><span>couch - coach</span></div>
+              <div><b>7</b><span>work - walk</span></div>
+              <div><b>8</b><span>said - sad</span></div>
+            </div>
+            <div class="pair-list">
+              <div class="pair"><div class="pair-top"><b class="num">01</b><span class="pair-hint">r / l</span></div><span class="pair-word left">wrong</span><span class="pair-vs">vs</span><span class="pair-word right">long</span><div class="pair-audio"><div class="audio-card mini-player" data-player><div class="player-row"><button class="play-button" type="button" aria-label="wrong longを再生"><span class="visually-hidden">Play</span></button><input class="seek" type="range" min="0" max="100" value="0" step="0.1" aria-label="wrong longの再生位置" /><span class="time" aria-live="off">0:00</span></div><audio preload="metadata" src="./assets/audio/wrong-long.mp3"></audio></div></div><details><summary>発音記号を確認する</summary><table class="minimal-ipa-table"><tbody><tr><td>wrong</td><td class="ipa">/<span class="mark">r</span>ɔŋ/</td></tr><tr><td>long</td><td class="ipa">/<span class="mark">l</span>ɔŋ/</td></tr></tbody></table></details><details><summary>日本語を確認する</summary><table class="info-table"><tbody><tr><td>wrong</td><td>間違った</td><td>long</td><td>長い</td></tr></tbody></table></details></div>
+              <div class="pair"><div class="pair-top"><b class="num">02</b><span class="pair-hint">æ / ɑ</span></div><span class="pair-word left">map</span><span class="pair-vs">vs</span><span class="pair-word right">mop</span><div class="pair-audio"><div class="audio-card mini-player" data-player><div class="player-row"><button class="play-button" type="button" aria-label="map mopを再生"><span class="visually-hidden">Play</span></button><input class="seek" type="range" min="0" max="100" value="0" step="0.1" aria-label="map mopの再生位置" /><span class="time" aria-live="off">0:00</span></div><audio preload="metadata" src="./assets/audio/map-mop.mp3"></audio></div></div><details><summary>発音記号を確認する</summary><table class="minimal-ipa-table"><tbody><tr><td>map</td><td class="ipa">/m<span class="mark">æ</span>p/</td></tr><tr><td>mop</td><td class="ipa">/m<span class="mark">ɑ</span>p/</td></tr></tbody></table></details><details><summary>日本語を確認する</summary><table class="info-table"><tbody><tr><td>map</td><td>地図</td><td>mop</td><td>モップ</td></tr></tbody></table></details></div>
+              <div class="pair"><div class="pair-top"><b class="num">03</b><span class="pair-hint">n / ŋ</span></div><span class="pair-word left">win</span><span class="pair-vs">vs</span><span class="pair-word right">wing</span><div class="pair-audio"><div class="audio-card mini-player" data-player><div class="player-row"><button class="play-button" type="button" aria-label="win wingを再生"><span class="visually-hidden">Play</span></button><input class="seek" type="range" min="0" max="100" value="0" step="0.1" aria-label="win wingの再生位置" /><span class="time" aria-live="off">0:00</span></div><audio preload="metadata" src="./assets/audio/win-wing.mp3"></audio></div></div><details><summary>発音記号を確認する</summary><table class="minimal-ipa-table"><tbody><tr><td>win</td><td class="ipa">/wɪ<span class="mark">n</span>/</td></tr><tr><td>wing</td><td class="ipa">/wɪ<span class="mark">ŋ</span>/</td></tr></tbody></table></details><details><summary>日本語を確認する</summary><table class="info-table"><tbody><tr><td>win</td><td>勝つ</td><td>wing</td><td>翼</td></tr></tbody></table></details></div>
+              <div class="pair"><div class="pair-top"><b class="num">04</b><span class="pair-hint">ɑr / ɝ</span></div><span class="pair-word left">hard</span><span class="pair-vs">vs</span><span class="pair-word right">heard</span><div class="pair-audio"><div class="audio-card mini-player" data-player><div class="player-row"><button class="play-button" type="button" aria-label="hard heardを再生"><span class="visually-hidden">Play</span></button><input class="seek" type="range" min="0" max="100" value="0" step="0.1" aria-label="hard heardの再生位置" /><span class="time" aria-live="off">0:00</span></div><audio preload="metadata" src="./assets/audio/hard-heard.wav"></audio></div></div><details><summary>発音記号を確認する</summary><table class="minimal-ipa-table"><tbody><tr><td>hard</td><td class="ipa">/h<span class="mark">ɑr</span>d/</td></tr><tr><td>heard</td><td class="ipa">/h<span class="mark">ɝ</span>d/</td></tr></tbody></table></details><details><summary>日本語を確認する</summary><table class="info-table"><tbody><tr><td>hard</td><td>難しい、硬い</td><td>heard</td><td>聞いた</td></tr></tbody></table></details></div>
+              <div class="pair"><div class="pair-top"><b class="num">05</b><span class="pair-hint">ɪ / i</span></div><span class="pair-word left">been</span><span class="pair-vs">vs</span><span class="pair-word right">bean</span><div class="pair-audio"><div class="audio-card mini-player" data-player><div class="player-row"><button class="play-button" type="button" aria-label="been beanを再生"><span class="visually-hidden">Play</span></button><input class="seek" type="range" min="0" max="100" value="0" step="0.1" aria-label="been beanの再生位置" /><span class="time" aria-live="off">0:00</span></div><audio preload="metadata" src="./assets/audio/been-bean.wav"></audio></div></div><details><summary>発音記号を確認する</summary><table class="minimal-ipa-table"><tbody><tr><td>been</td><td class="ipa">/b<span class="mark">ɪ</span>n/ または /bɛn/</td></tr><tr><td>bean</td><td class="ipa">/b<span class="mark">i</span>n/</td></tr></tbody></table></details><details><summary>日本語を確認する</summary><table class="info-table"><tbody><tr><td>been</td><td>be動詞の過去分詞</td><td>bean</td><td>豆</td></tr></tbody></table></details></div>
+              <div class="pair"><div class="pair-top"><b class="num">06</b><span class="pair-hint">aʊ / oʊ</span></div><span class="pair-word left">couch</span><span class="pair-vs">vs</span><span class="pair-word right">coach</span><div class="pair-audio"><div class="audio-card mini-player" data-player><div class="player-row"><button class="play-button" type="button" aria-label="couch coachを再生"><span class="visually-hidden">Play</span></button><input class="seek" type="range" min="0" max="100" value="0" step="0.1" aria-label="couch coachの再生位置" /><span class="time" aria-live="off">0:00</span></div><audio preload="metadata" src="./assets/audio/couch-coach.mp3"></audio></div></div><details><summary>発音記号を確認する</summary><table class="minimal-ipa-table"><tbody><tr><td>couch</td><td class="ipa">/k<span class="mark">aʊ</span>tʃ/</td></tr><tr><td>coach</td><td class="ipa">/k<span class="mark">oʊ</span>tʃ/</td></tr></tbody></table></details><details><summary>日本語を確認する</summary><table class="info-table"><tbody><tr><td>couch</td><td>ソファ</td><td>coach</td><td>コーチ</td></tr></tbody></table></details></div>
+              <div class="pair"><div class="pair-top"><b class="num">07</b><span class="pair-hint">ɝ / ɔ</span></div><span class="pair-word left">work</span><span class="pair-vs">vs</span><span class="pair-word right">walk</span><div class="pair-audio"><div class="audio-card mini-player" data-player><div class="player-row"><button class="play-button" type="button" aria-label="work walkを再生"><span class="visually-hidden">Play</span></button><input class="seek" type="range" min="0" max="100" value="0" step="0.1" aria-label="work walkの再生位置" /><span class="time" aria-live="off">0:00</span></div><audio preload="metadata" src="./assets/audio/work-walk.mp3"></audio></div></div><details><summary>発音記号を確認する</summary><table class="minimal-ipa-table"><tbody><tr><td>work</td><td class="ipa">/w<span class="mark">ɝ</span>k/</td></tr><tr><td>walk</td><td class="ipa">/w<span class="mark">ɔ</span>k/</td></tr></tbody></table></details><details><summary>日本語を確認する</summary><table class="info-table"><tbody><tr><td>work</td><td>仕事、働く</td><td>walk</td><td>歩く</td></tr></tbody></table></details></div>
+              <div class="pair"><div class="pair-top"><b class="num">08</b><span class="pair-hint">ɛ / æ</span></div><span class="pair-word left">said</span><span class="pair-vs">vs</span><span class="pair-word right">sad</span><div class="pair-audio"><div class="audio-card mini-player" data-player><div class="player-row"><button class="play-button" type="button" aria-label="said sadを再生"><span class="visually-hidden">Play</span></button><input class="seek" type="range" min="0" max="100" value="0" step="0.1" aria-label="said sadの再生位置" /><span class="time" aria-live="off">0:00</span></div><audio preload="metadata" src="./assets/audio/said-sad.mp3"></audio></div></div><details><summary>発音記号を確認する</summary><table class="minimal-ipa-table"><tbody><tr><td>said</td><td class="ipa">/s<span class="mark">ɛ</span>d/</td></tr><tr><td>sad</td><td class="ipa">/s<span class="mark">æ</span>d/</td></tr></tbody></table></details><details><summary>日本語を確認する</summary><table class="info-table"><tbody><tr><td>said</td><td>言った</td><td>sad</td><td>悲しい</td></tr></tbody></table></details></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" id="words">
+          <div class="section-head">
+            <div>
+              <div class="section-num">QUESTION 03</div>
+              <h2>Read the words aloud.</h2>
+            </div>
+            <span class="badge">WORD</span>
+          </div>
+          <div class="task-box">
+            <p>以下の２つの単語を練習しましょう。<br>09 hungry<br>10 1:40（one forty）</p>
+            <div class="word-list">
+              <div class="word-item">
+                <div class="word-head"><b class="num">09</b><span class="word-title">hungry</span></div>
+                <div class="audio-card mini-player" data-player><div class="player-row"><button class="play-button" type="button" aria-label="hungryを再生"><span class="visually-hidden">Play</span></button><input class="seek" type="range" min="0" max="100" value="0" step="0.1" aria-label="hungryの再生位置" /><span class="time" aria-live="off">0:00</span></div><audio preload="metadata" src="./assets/audio/hungry.mp3"></audio></div>
+                <details><summary>発音記号を確認する</summary><div class="ipa plain-answer">/ˈhʌŋɡri/</div></details>
+                <details><summary>日本語を確認する</summary><div class="plain-answer">お腹が空いている</div></details>
+              </div>
+              <div class="word-item">
+                <div class="word-head"><b class="num">10</b><span class="word-title">1:40（one forty）</span></div>
+                <div class="audio-card mini-player" data-player><div class="player-row"><button class="play-button" type="button" aria-label="1:40を再生"><span class="visually-hidden">Play</span></button><input class="seek" type="range" min="0" max="100" value="0" step="0.1" aria-label="1:40の再生位置" /><span class="time" aria-live="off">0:00</span></div><audio preload="metadata" src="./assets/audio/one-forty.wav"></audio></div>
+                <details><summary>発音記号を確認する</summary><div class="ipa plain-answer">/wʌn ˈfɔrti/</div></details>
+                <details><summary>日本語を確認する</summary><div class="plain-answer">1時40分</div></details>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer>4EPT Pronunciation Exam Practice</footer>
+      <a class="back-to-top" href="#top" aria-label="一番上に戻る">↑</a>
+    </div>
+    <script>
+      const players = Array.from(document.querySelectorAll("[data-player]"));
+      const formatTime = (seconds) => {
+        if (!Number.isFinite(seconds)) return "0:00";
+        const mins = Math.floor(seconds / 60);
+        const secs = Math.floor(seconds % 60).toString().padStart(2, "0");
+        return `${mins}:${secs}`;
+      };
+
+      players.forEach((player) => {
+        const audio = player.querySelector("audio");
+        const button = player.querySelector(".play-button");
+        const seek = player.querySelector(".seek");
+        const time = player.querySelector(".time");
+        const label = button?.getAttribute("aria-label")?.replace("を再生", "") || "audio";
+        const speedRow = document.createElement("div");
+        const speedButtons = [
+          { rate: 0.25, label: "0.25x" },
+          { rate: 0.5, label: "0.5x" },
+          { rate: 0.75, label: "0.75x" },
+          { rate: 1, label: "1.0x" },
+        ].map(({ rate, label: speedLabel }) => {
+          const speedButton = document.createElement("button");
+          speedButton.type = "button";
+          speedButton.className = "speed-button";
+          speedButton.textContent = speedLabel;
+          speedButton.setAttribute("aria-label", `${label}の再生速度を${speedLabel}にする`);
+          speedButton.setAttribute("aria-pressed", rate === 1 ? "true" : "false");
+          speedButton.addEventListener("click", () => {
+            audio.playbackRate = rate;
+            speedButtons.forEach((item) => item.setAttribute("aria-pressed", String(item === speedButton)));
+          });
+          return speedButton;
+        });
+        speedRow.className = "speed-row";
+        speedButtons.forEach((speedButton) => speedRow.append(speedButton));
+        player.insertBefore(speedRow, audio);
+        audio.playbackRate = 1;
+
+        const update = () => {
+          const duration = audio.duration || 0;
+          seek.value = duration ? (audio.currentTime / duration) * 100 : 0;
+          time.textContent = formatTime(audio.currentTime);
+        };
+
+        button.addEventListener("click", () => {
+          if (audio.paused) {
+            players.forEach((otherPlayer) => {
+              const otherAudio = otherPlayer.querySelector("audio");
+              if (otherAudio !== audio) otherAudio.pause();
+            });
+            audio.play().catch(() => {});
+          } else {
+            audio.pause();
+          }
+        });
+
+        seek.addEventListener("input", () => {
+          const duration = audio.duration || 0;
+          if (duration) audio.currentTime = (seek.value / 100) * duration;
+        });
+
+        audio.addEventListener("loadedmetadata", update);
+        audio.addEventListener("timeupdate", update);
+        audio.addEventListener("play", () => {
+          player.classList.add("is-playing");
+          button.setAttribute("aria-label", `${label}を一時停止`);
+        });
+        audio.addEventListener("pause", () => {
+          player.classList.remove("is-playing");
+          button.setAttribute("aria-label", `${label}を再生`);
+        });
+        audio.addEventListener("ended", () => {
+          audio.currentTime = 0;
+          update();
+        });
+      });
+    </script>
+  </body>
+</html>
