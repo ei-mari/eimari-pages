@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>4EPT | Practice Questions Part 4</title>
+    <meta name="description" content="EPT対策課題 #4の練習ページです。" />
+    <meta property="og:image" content="./assets/ept-4.png" />
+    <meta name="twitter:image" content="./assets/ept-4.png" />
+    <style>
+      :root {
+        --bg: #fff7ed;
+        --paper: #ffffff;
+        --ink: #2a1607;
+        --muted: #7d6046;
+        --orange: #f26a16;
+        --orange-dark: #b93d08;
+        --orange-soft: #fff0de;
+        --gold: #c88718;
+        --gold-soft: #fff5cf;
+        --line: rgba(242, 106, 22, 0.18);
+        --shadow: 0 18px 54px rgba(141, 64, 12, 0.14);
+        --radius: 14px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background:
+          radial-gradient(circle at 92% 0%, rgba(255, 181, 57, 0.22), transparent 34%),
+          radial-gradient(circle at 0% 100%, rgba(242, 106, 22, 0.16), transparent 36%),
+          linear-gradient(180deg, #fffaf3 0%, var(--bg) 100%);
+        color: var(--ink);
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif;
+      }
+
+      button,
+      input {
+        font: inherit;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin: 0;
+      }
+
+      .shell {
+        width: min(100%, 520px);
+        min-height: 100vh;
+        margin: 0 auto;
+        background: rgba(255, 255, 255, 0.92);
+        box-shadow: 0 18px 70px rgba(141, 64, 12, 0.14);
+      }
+
+      header,
+      main,
+      footer {
+        padding: 16px;
+      }
+
+      header {
+        display: grid;
+        gap: 14px;
+        padding-top: 18px;
+      }
+
+      .hero {
+        overflow: hidden;
+        margin: 0;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        background: #fff;
+        box-shadow: var(--shadow);
+      }
+
+      .hero img {
+        display: block;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+      }
+
+      .intro,
+      .section {
+        display: grid;
+        gap: 14px;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: rgba(255, 255, 255, 0.96);
+        box-shadow: var(--shadow);
+      }
+
+      .intro {
+        padding: 16px;
+      }
+
+      .section {
+        padding: 18px;
+      }
+
+      .kicker {
+        width: max-content;
+        max-width: 100%;
+        padding: 6px 11px;
+        border: 1px solid rgba(242, 106, 22, 0.22);
+        border-radius: 999px;
+        background: var(--orange-soft);
+        color: var(--orange-dark);
+        font-size: 0.72rem;
+        font-weight: 900;
+        letter-spacing: 0.08em;
+      }
+
+      h1 {
+        font-size: 2rem;
+        line-height: 1.12;
+      }
+
+      .lead,
+      .note {
+        color: var(--muted);
+        font-size: 0.92rem;
+        line-height: 1.75;
+      }
+
+      .point {
+        padding: 12px 13px;
+        border: 1px solid rgba(242, 106, 22, 0.22);
+        border-left: 4px solid var(--orange);
+        border-radius: 10px;
+        background: #fff8ef;
+        color: #7a3108;
+        font-size: 0.92rem;
+        font-weight: 700;
+        line-height: 1.72;
+      }
+
+      .quick-nav {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+      }
+
+      .quick-nav a {
+        display: grid;
+        min-height: 58px;
+        align-content: center;
+        gap: 2px;
+        padding: 12px;
+        border: 1px solid rgba(242, 106, 22, 0.16);
+        border-radius: 10px;
+        background: #fffaf5;
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .nav-label {
+        color: var(--orange-dark);
+        font-size: 0.74rem;
+        font-weight: 900;
+      }
+
+      .nav-title {
+        font-size: 0.9rem;
+        font-weight: 900;
+      }
+
+      main {
+        display: grid;
+        gap: 18px;
+        padding-bottom: 40px;
+      }
+
+      .section-num {
+        margin-bottom: 7px;
+        color: var(--orange-dark);
+        font-size: 0.78rem;
+        font-weight: 900;
+        letter-spacing: 0.08em;
+      }
+
+      h2 {
+        font-size: 1.2rem;
+        line-height: 1.3;
+      }
+
+      .placeholder {
+        display: grid;
+        gap: 10px;
+        padding: 14px;
+        border: 1px dashed rgba(242, 106, 22, 0.35);
+        border-radius: 12px;
+        background: linear-gradient(135deg, #fffaf5, #fff2df);
+      }
+
+      .placeholder strong {
+        color: var(--orange-dark);
+        font-size: 1rem;
+      }
+
+      .pair-list {
+        display: grid;
+        gap: 12px;
+      }
+
+      .pair-card {
+        display: grid;
+        gap: 12px;
+        padding: 14px;
+        border: 1px solid rgba(242, 106, 22, 0.14);
+        border-radius: 12px;
+        background: #fffefe;
+      }
+
+      .pair-head {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        min-width: 0;
+      }
+
+      .pair-label {
+        flex: 0 0 auto;
+        padding: 5px 9px;
+        border-radius: 999px;
+        background: var(--orange-soft);
+        color: var(--orange-dark);
+        font-size: 0.72rem;
+        font-weight: 900;
+        letter-spacing: 0.06em;
+      }
+
+      .pair-text {
+        min-width: 0;
+        color: var(--ink);
+        font-size: 1.18rem;
+        font-weight: 900;
+        line-height: 1.35;
+        overflow-wrap: anywhere;
+      }
+
+      .audio-box {
+        display: grid;
+        gap: 9px;
+        padding: 11px;
+        border: 1px dashed rgba(242, 106, 22, 0.28);
+        border-radius: 12px;
+        background: #fff8ef;
+      }
+
+      audio {
+        width: 100%;
+      }
+
+      .speed-row {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 7px;
+      }
+
+      .speed-row button {
+        min-height: 36px;
+        border: 1px solid rgba(242, 106, 22, 0.22);
+        border-radius: 999px;
+        background: #fff;
+        color: var(--orange-dark);
+        font-size: 0.82rem;
+        font-weight: 900;
+      }
+
+      .speed-row button.is-active {
+        background: var(--orange);
+        color: #fff;
+      }
+
+      .missing-audio {
+        padding: 11px;
+        border: 1px dashed rgba(125, 96, 70, 0.24);
+        border-radius: 12px;
+        background: #fffaf5;
+        color: var(--muted);
+        font-size: 0.86rem;
+        font-weight: 800;
+      }
+
+      details {
+        overflow: hidden;
+        border: 1px solid rgba(242, 106, 22, 0.16);
+        border-radius: 12px;
+        background: linear-gradient(135deg, #fffdf9, #fff7ed);
+      }
+
+      summary {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        min-height: 54px;
+        padding: 14px;
+        color: var(--ink);
+        cursor: pointer;
+        font-size: 0.98rem;
+        font-weight: 800;
+        list-style: none;
+      }
+
+      summary::-webkit-details-marker {
+        display: none;
+      }
+
+      summary::after {
+        display: grid;
+        flex: 0 0 auto;
+        place-items: center;
+        width: 30px;
+        height: 30px;
+        border: 1px solid rgba(242, 106, 22, 0.25);
+        border-radius: 50%;
+        background: #fff;
+        color: var(--orange-dark);
+        content: "+";
+        font-size: 1.3rem;
+        font-weight: 900;
+        line-height: 1;
+      }
+
+      details[open] summary::after {
+        content: "-";
+      }
+
+      .details-body {
+        padding: 0 12px 12px;
+      }
+
+      .ipa-table {
+        width: 100%;
+        overflow: hidden;
+        border-collapse: collapse;
+        border: 1px solid rgba(242, 106, 22, 0.12);
+        border-radius: 10px;
+        background: #fff;
+      }
+
+      .ipa-table th,
+      .ipa-table td {
+        padding: 11px 12px;
+        border-bottom: 1px solid rgba(125, 96, 70, 0.13);
+        color: #5d675f;
+        text-align: left;
+        vertical-align: top;
+      }
+
+      .ipa-table th {
+        background: #fff0de;
+        color: #713208;
+        font-size: 0.84rem;
+        font-weight: 900;
+      }
+
+      .ipa-table tr:last-child td {
+        border-bottom: 0;
+      }
+
+      .audio-shell,
+      .quiz-shell,
+      .practice-shell {
+        display: grid;
+        gap: 12px;
+      }
+
+      .card {
+        display: grid;
+        gap: 12px;
+        padding: 14px;
+        border: 1px solid rgba(242, 106, 22, 0.14);
+        border-radius: 12px;
+        background: #fffefe;
+      }
+
+      .label {
+        width: fit-content;
+        padding: 5px 9px;
+        border-radius: 999px;
+        background: var(--orange-soft);
+        color: var(--orange-dark);
+        font-size: 0.74rem;
+        font-weight: 900;
+        letter-spacing: 0.06em;
+      }
+
+      footer {
+        color: var(--muted);
+        font-size: 0.78rem;
+        text-align: center;
+      }
+
+      .back-top {
+        position: fixed;
+        right: 16px;
+        bottom: 16px;
+        display: grid;
+        place-items: center;
+        width: 44px;
+        height: 44px;
+        border: 1px solid rgba(242, 106, 22, 0.25);
+        border-radius: 50%;
+        background: #fff;
+        color: var(--orange-dark);
+        font-weight: 950;
+        text-decoration: none;
+        box-shadow: 0 10px 28px rgba(83, 36, 6, 0.2);
+      }
+
+      @media (min-width: 720px) {
+        body {
+          padding: 24px 0;
+        }
+
+        .shell {
+          min-height: auto;
+          border-radius: 18px;
+          overflow: hidden;
+        }
+      }
+
+      @media (max-width: 360px) {
+        header,
+        main,
+        footer {
+          padding-left: 10px;
+          padding-right: 10px;
+        }
+
+        header {
+          padding-top: 12px;
+        }
+
+        .intro,
+        .section {
+          padding: 13px;
+        }
+
+        h1 {
+          font-size: 1.68rem;
+        }
+
+        h2 {
+          font-size: 1.08rem;
+        }
+
+        .quick-nav {
+          grid-template-columns: 1fr;
+        }
+
+        .pair-head {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+
+        .pair-text {
+          font-size: 1.04rem;
+        }
+
+        .back-top {
+          right: 10px;
+          bottom: 10px;
+        }
+      }
+    </style>
+  </head>
+  <body id="top">
+    <div class="shell">
+      <header>
+        <figure class="hero">
+          <img src="./assets/ept-4.png" alt="Pronunciation exam practice questions part 4" />
+        </figure>
+        <section class="intro">
+          <span class="kicker">PRACTICE QUESTIONS #4</span>
+          <h1>EPT対策課題 #4</h1>
+          <p class="lead">発音試験に向けて、ミニマルペアを聞きながら確認・練習できるページです。</p>
+          <p class="point">STEP 01はミニマルペア、STEP 02は単語練習です。音声を聞いた後、発音記号も確認しながら声に出して練習しましょう。</p>
+          <nav class="quick-nav" aria-label="目次">
+            <a href="#listen"><span class="nav-label">STEP 01</span><span class="nav-title">Minimal Pairs</span></a>
+            <a href="#practice"><span class="nav-label">STEP 02</span><span class="nav-title">Words</span></a>
+          </nav>
+        </section>
+      </header>
+
+      <main>
+        <section class="section" id="listen">
+          <div>
+            <p class="section-num">STEP 01</p>
+            <h2>MINIMAL PAIRS</h2>
+          </div>
+          <p class="note">似ている音のペアを確認しましょう。音声があるものはプレイヤーを表示しています。</p>
+          <div class="pair-list" id="minimalPairs"></div>
+        </section>
+
+        <section class="section" id="practice">
+          <div>
+            <p class="section-num">STEP 02</p>
+            <h2>Words</h2>
+          </div>
+          <p class="note">単語単位で確認しましょう。音声を聞いた後、発音記号も確認して練習してください。</p>
+          <div class="pair-list" id="wordList"></div>
+        </section>
+      </main>
+
+      <footer>SOUND DESIGN LAB</footer>
+    </div>
+    <a class="back-top" href="#top" aria-label="一番上へ戻る">↑</a>
+    <script>
+      const minimalPairs = [
+        ["think", "sink"],
+        ["farm", "form"],
+        ["bye", "buy"],
+        ["color", "collar"],
+        ["teach", "peach"],
+        ["play", "pray"],
+        ["hear", "here"],
+        ["low", "law"],
+        ["much", "match"],
+        ["V", "B"],
+        ["boat", "bought"],
+        ["wait", "wet"],
+        ["block", "black"],
+        ["hurt", "heart"],
+        ["end", "and"],
+        ["ship", "sheep"],
+        ["very", "berry"],
+        ["sea", "see"],
+        ["pain", "pen"],
+        ["rock", "lock"],
+        ["path", "pass"],
+        ["D", "B"],
+        ["work", "walk"],
+        ["not", "nut"],
+        ["off", "of"],
+        ["pull", "pool"],
+        ["fun", "fan"],
+        ["bowl", "ball"],
+        ["wrong", "long"],
+        ["map", "mop"],
+        ["win", "wing"],
+        ["shell", "sell"],
+        ["been", "bean"],
+        ["age", "edge"],
+        ["fear", "hear"],
+        ["couch", "coach"],
+        ["said", "sad"],
+        ["learn", "lean"],
+        ["best", "vest"],
+        ["seat", "sheet"],
+        ["no", "know"],
+        ["robber", "rubber"],
+        ["all", "owl"],
+        ["shot", "shout"],
+        ["G", "Z"],
+        ["dirty", "duty"],
+        ["coat", "court"],
+        ["sick", "thick"],
+        ["fry", "fly"],
+        ["she", "sea"],
+        ["far", "fur"],
+        ["light", "right"],
+        ["slow", "throw"],
+        ["force", "fourth"],
+        ["test", "taste"],
+        ["T", "P"],
+      ];
+
+      const audioSources = {
+        "think|sink": "./assets/audio/mov-pairs/01-think-sink.wav",
+        "farm|form": "./assets/audio/mov-pairs/02-farm-form.wav",
+        "bye|buy": "./assets/audio/mov-pairs/03-bye-buy.wav",
+        "color|collar": "../hw-2/assets/audio/21-color-collar.m4a",
+        "teach|peach": "./assets/audio/mov-pairs/04-teach-peach.wav",
+        "play|pray": "./assets/audio/mov-pairs/05-play-pray.wav",
+        "hear|here": "./assets/audio/mov-pairs/06-hear-here.wav",
+        "low|law": "./assets/audio/mov-pairs/07-low-law.wav",
+        "much|match": "./assets/audio/mov-pairs/08-much-match.wav",
+        "V|B": "./assets/audio/mov-pairs/09-v-b.wav",
+        "boat|bought": "./assets/audio/mov-pairs/10-boat-bought.wav",
+        "wait|wet": "./assets/audio/mov-pairs/11-wait-wet.wav",
+        "hurt|heart": "./assets/audio/mov-pairs/12-hurt-heart.wav",
+        "end|and": "./assets/audio/mov-pairs/13-end-and.wav",
+        "ship|sheep": "./assets/audio/mov-pairs/14-ship-sheep.wav",
+        "block|black": "../hw-2/assets/audio/22-block-black.m4a",
+        "very|berry": "../hw-2/assets/audio/07-very-berry.m4a",
+        "sea|see": "../hw-2/assets/audio/27-sea-see.m4a",
+        "pain|pen": "./assets/audio/mov-pairs/15-pain-pen.wav",
+        "rock|lock": "./assets/audio/mov-pairs/16-rock-lock.wav",
+        "path|pass": "../hw-2/assets/audio/09-path-pass.m4a",
+        "D|B": "./assets/audio/mov-pairs/17-d-b.wav",
+        "work|walk": "../hw-2/assets/audio/05-walk-work.m4a",
+        "not|nut": "./assets/audio/mov-pairs/18-not-nut.wav",
+        "off|of": "./assets/audio/off-of.wav",
+        "pull|pool": "../hw-2/assets/audio/06-pull-pool.m4a",
+        "fun|fan": "./assets/audio/mov-pairs/19-fun-fan.wav",
+        "bowl|ball": "./assets/audio/bowl-ball.wav",
+        "wrong|long": "../hw-2/assets/audio/01-wrong-long.m4a",
+        "map|mop": "../hw-1/assets/audio/map-mop.mp3",
+        "win|wing": "../hw-1/assets/audio/win-wing.mp3",
+        "shell|sell": "./assets/audio/shell-sell.wav",
+        "been|bean": "../hw-2/assets/audio/02-been-bean.m4a",
+        "age|edge": "./assets/audio/mov-pairs/20-age-edge.wav",
+        "fear|hear": "../hw-2/assets/audio/03-fear-hear.m4a",
+        "couch|coach": "../hw-1/assets/audio/couch-coach.mp3",
+        "said|sad": "../hw-1/assets/audio/said-sad.mp3",
+        "learn|lean": "../hw-2/assets/audio/08-learn-lean.m4a",
+        "best|vest": "./assets/audio/mov-pairs/21-best-vest.wav",
+        "seat|sheet": "./assets/audio/mov-pairs/22-seat-sheet.wav",
+        "no|know": "./assets/audio/mov-pairs/23-no-know.wav",
+        "robber|rubber": "./assets/audio/robber-rubber.wav",
+        "all|owl": "./assets/audio/mov-pairs/24-all-owl.wav",
+        "shot|shout": "./assets/audio/mov-pairs/25-shot-shout.wav",
+        "G|Z": "./assets/audio/mov-pairs/26-g-z.wav",
+        "dirty|duty": "./assets/audio/mov-pairs/27-dirty-duty.wav",
+        "coat|court": "../hw-2/assets/audio/41-coat-court.m4a",
+        "sick|thick": "./assets/audio/mov-pairs/28-sick-thick.wav",
+        "fry|fly": "./assets/audio/mov-pairs/29-fry-fly.wav",
+        "she|sea": "./assets/audio/mov-pairs/30-she-sea.wav",
+        "far|fur": "./assets/audio/mov-pairs/31-far-fur.wav",
+        "light|right": "./assets/audio/mov-pairs/32-light-right.wav",
+        "slow|throw": "./assets/audio/mov-pairs/33-slow-throw.wav",
+        "force|fourth": "./assets/audio/mov-pairs/34-force-fourth.wav",
+        "test|taste": "./assets/audio/mov-pairs/35-test-taste.wav",
+        "T|P": "./assets/audio/mov-pairs/36-t-p.wav",
+      };
+
+      const ipaMap = {
+        think: "/θɪŋk/",
+        sink: "/sɪŋk/",
+        farm: "/fɑrm/",
+        form: "/fɔrm/",
+        bye: "/baɪ/",
+        buy: "/baɪ/",
+        color: "/ˈkʌlɚ/",
+        collar: "/ˈkɑlɚ/",
+        teach: "/titʃ/",
+        peach: "/pitʃ/",
+        play: "/pleɪ/",
+        pray: "/preɪ/",
+        hear: "/hɪr/",
+        here: "/hɪr/",
+        low: "/loʊ/",
+        law: "/lɔ/",
+        much: "/mʌtʃ/",
+        match: "/mætʃ/",
+        V: "/vi/",
+        B: "/bi/",
+        boat: "/boʊt/",
+        bought: "/bɔt/ /bɑt/",
+        wait: "/weɪt/",
+        wet: "/wɛt/",
+        block: "/blɑk/",
+        black: "/blæk/",
+        hurt: "/hɝt/",
+        heart: "/hɑrt/",
+        end: "/ɛnd/",
+        and: "/ænd/ /ənd/",
+        ship: "/ʃɪp/",
+        sheep: "/ʃip/",
+        very: "/ˈvɛri/",
+        berry: "/ˈbɛri/",
+        sea: "/si/",
+        see: "/si/",
+        pain: "/peɪn/",
+        pen: "/pɛn/",
+        rock: "/rɑk/",
+        lock: "/lɑk/",
+        path: "/pæθ/",
+        pass: "/pæs/",
+        D: "/di/",
+        work: "/wɝk/",
+        walk: "/wɔk/ /wɑk/",
+        not: "/nɑt/",
+        nut: "/nʌt/",
+        off: "/ɔf/ /ɑf/",
+        of: "/ʌv/ /əv/",
+        pull: "/pʊl/",
+        pool: "/pul/",
+        fun: "/fʌn/",
+        fan: "/fæn/",
+        bowl: "/boʊl/",
+        ball: "/bɔl/",
+        wrong: "/rɔŋ/",
+        long: "/lɔŋ/",
+        map: "/mæp/",
+        mop: "/mɑp/",
+        win: "/wɪn/",
+        wing: "/wɪŋ/",
+        shell: "/ʃɛl/",
+        sell: "/sɛl/",
+        been: "/bɪn/ /bɛn/",
+        bean: "/bin/",
+        age: "/eɪdʒ/",
+        edge: "/ɛdʒ/",
+        fear: "/fɪr/",
+        couch: "/kaʊtʃ/",
+        coach: "/koʊtʃ/",
+        said: "/sɛd/",
+        sad: "/sæd/",
+        learn: "/lɝn/",
+        lean: "/lin/",
+        best: "/bɛst/",
+        vest: "/vɛst/",
+        seat: "/sit/",
+        sheet: "/ʃit/",
+        no: "/noʊ/",
+        know: "/noʊ/",
+        robber: "/ˈrɑbɚ/",
+        rubber: "/ˈrʌbɚ/",
+        all: "/ɔl/",
+        owl: "/aʊl/",
+        shot: "/ʃɑt/",
+        shout: "/ʃaʊt/",
+        G: "/dʒi/",
+        Z: "/zi/",
+        dirty: "/ˈdɝti/",
+        duty: "/ˈduti/",
+        coat: "/koʊt/",
+        court: "/kɔrt/",
+        sick: "/sɪk/",
+        thick: "/θɪk/",
+        fry: "/fraɪ/",
+        fly: "/flaɪ/",
+        she: "/ʃi/",
+        far: "/fɑr/",
+        fur: "/fɝ/",
+        light: "/laɪt/",
+        right: "/raɪt/",
+        slow: "/sloʊ/",
+        throw: "/θroʊ/",
+        force: "/fɔrs/",
+        fourth: "/fɔrθ/",
+        test: "/tɛst/",
+        taste: "/teɪst/",
+        T: "/ti/",
+        P: "/pi/",
+      };
+
+      const wordItems = [
+        "banana",
+        "health",
+        "girl",
+        "November",
+        "elementary",
+        "angry",
+        "travel",
+        "5:40",
+        "Thursday",
+        "orange",
+        "guitar",
+        "zero",
+        "question",
+        "New York",
+        "dark",
+        "April",
+        "Saturday",
+        "voice",
+        "manager",
+        "delicious",
+        "purple",
+        "English",
+        "chicken",
+        "6:30",
+        "better",
+        "exit",
+        "sorry",
+        "themselves",
+        "cookie",
+        "Japan",
+        "Tuesday",
+        "February",
+        "hungry",
+        "theme",
+        "yellow",
+        "1:40",
+        "excuse",
+        "regular",
+        "leisure",
+        "potato",
+        "world",
+        "volleyball",
+        "October",
+        "ask",
+        "6:15",
+        "trouble",
+        "message",
+        "white",
+        "their",
+        "rich",
+        "war",
+        "Australia",
+        "horse",
+        "famous",
+        "shower",
+        "together",
+        "both",
+        "cabbage",
+        "12:30",
+        "machine",
+        "alive",
+        "January",
+        "holiday",
+        "handsome",
+        "koala",
+        "another",
+        "theater",
+        "Asia",
+      ];
+
+      const wordAudioSources = {
+        banana: "./assets/audio/words/01-banana.wav",
+        health: "./assets/audio/words/02-health.wav",
+        girl: "./assets/audio/words/03-girl.wav",
+        November: "./assets/audio/words/04-november.wav",
+        elementary: "./assets/audio/words/05-elementary.wav",
+        angry: "./assets/audio/words/06-angry.wav",
+        travel: "./assets/audio/words/07-travel.wav",
+        "5:40": "../hw-2/assets/audio/16-five-forty.m4a",
+        Thursday: "../hw-2/assets/audio/23-thursday.m4a",
+        orange: "./assets/audio/words/08-orange.wav",
+        guitar: "./assets/audio/words/09-guitar.wav",
+        zero: "../hw-2/assets/audio/24-zero.m4a",
+        question: "./assets/audio/words/10-question.wav",
+        "New York": "./assets/audio/words/11-new-york.wav",
+        dark: "./assets/audio/words/12-dark.wav",
+        April: "../hw-2/assets/audio/25-april.m4a",
+        Saturday: "./assets/audio/words/13-saturday.wav",
+        voice: "../hw-2/assets/audio/20-voice.m4a",
+        manager: "./assets/audio/words/14-manager.wav",
+        delicious: "../hw-2/assets/audio/13-delicious.m4a",
+        purple: "../hw-2/assets/audio/26-purple.m4a",
+        English: "./assets/audio/words/15-english.wav",
+        chicken: "./assets/audio/words/16-chicken.wav",
+        "6:30": "../hw-2/assets/audio/17-six-thirty.m4a",
+        better: "./assets/audio/words/17-better.wav",
+        exit: "../hw-2/assets/audio/28-exit.m4a",
+        sorry: "./assets/audio/words/18-sorry.wav",
+        themselves: "../hw-2/assets/audio/10-themselves.m4a",
+        cookie: "./assets/audio/words/19-cookie.wav",
+        Japan: "./assets/audio/words/20-japan.wav",
+        Tuesday: "../hw-2/assets/audio/11-tuesday.m4a",
+        February: "../hw-2/assets/audio/12-february.m4a",
+        hungry: "../hw-1/assets/audio/hungry.mp3",
+        theme: "../hw-2/assets/audio/14-theme.m4a",
+        yellow: "./assets/audio/words/21-yellow.wav",
+        "1:40": "../hw-2/assets/audio/15-one-forty.m4a",
+        excuse: "../hw-2/assets/audio/18-excuse.m4a",
+        regular: "../hw-2/assets/audio/19-regular.m4a",
+        leisure: "./assets/audio/words/22-leisure.wav",
+        potato: "./assets/audio/words/23-potato.wav",
+        world: "./assets/audio/words/24-world.wav",
+        volleyball: "./assets/audio/words/25-volleyball.wav",
+        October: "./assets/audio/words/26-october.wav",
+        ask: "./assets/audio/words/27-ask.wav",
+        "6:15": "./assets/audio/words/28-6-15.wav",
+        trouble: "./assets/audio/words/29-trouble.wav",
+        message: "./assets/audio/words/30-message.wav",
+        white: "./assets/audio/words/31-white.wav",
+        their: "./assets/audio/words/32-their.wav",
+        rich: "./assets/audio/words/33-rich.wav",
+        war: "./assets/audio/words/34-war.wav",
+        Australia: "./assets/audio/words/35-australia.wav",
+        horse: "./assets/audio/words/36-horse.wav",
+        famous: "./assets/audio/words/37-famous.wav",
+        shower: "./assets/audio/words/38-shower.wav",
+        together: "./assets/audio/words/39-together.wav",
+        both: "./assets/audio/words/40-both.wav",
+        cabbage: "./assets/audio/words/41-cabbage.wav",
+        "12:30": "./assets/audio/words/42-12-30.wav",
+        machine: "./assets/audio/words/43-machine.wav",
+        alive: "../hw-2/assets/audio/42-alive.m4a",
+        January: "../hw-2/assets/audio/35-january.m4a",
+        holiday: "../hw-2/assets/audio/43-holiday.m4a",
+        handsome: "./assets/audio/words/44-handsome.wav",
+        koala: "../hw-2/assets/audio/40-koala.m4a",
+        another: "../hw-2/assets/audio/44-another.m4a",
+        theater: "../hw-2/assets/audio/39-theater.m4a",
+        Asia: "./assets/audio/words/45-asia.wav",
+      };
+
+      const wordIpaMap = {
+        banana: "/bəˈnænə/",
+        health: "/hɛlθ/",
+        girl: "/ɡɝl/",
+        November: "/noʊˈvɛmbɚ/",
+        elementary: "/ˌɛləˈmɛntri/ /ˌɛləˈmɛntəri/",
+        angry: "/ˈæŋɡri/",
+        travel: "/ˈtrævəl/",
+        "5:40": "/faɪv ˈfɔrti/",
+        Thursday: "/ˈθɝzdeɪ/",
+        orange: "/ˈɔrɪndʒ/ /ˈɑrɪndʒ/",
+        guitar: "/ɡɪˈtɑr/",
+        zero: "/ˈzɪroʊ/",
+        question: "/ˈkwɛstʃən/",
+        "New York": "/nu jɔrk/",
+        dark: "/dɑrk/",
+        April: "/ˈeɪprəl/",
+        Saturday: "/ˈsædɚdeɪ/",
+        voice: "/vɔɪs/",
+        manager: "/ˈmænɪdʒɚ/",
+        delicious: "/dɪˈlɪʃəs/",
+        purple: "/ˈpɝpəl/",
+        English: "/ˈɪŋɡlɪʃ/",
+        chicken: "/ˈtʃɪkɪn/",
+        "6:30": "/sɪks ˈθɝti/",
+        better: "/ˈbɛtɚ/",
+        exit: "/ˈɛɡzɪt/",
+        sorry: "/ˈsɑri/",
+        themselves: "/ðəmˈsɛlvz/",
+        cookie: "/ˈkʊki/",
+        Japan: "/dʒəˈpæn/",
+        Tuesday: "/ˈtuzdeɪ/",
+        February: "/ˈfɛbjuˌɛri/",
+        hungry: "/ˈhʌŋɡri/",
+        theme: "/θim/",
+        yellow: "/ˈjɛloʊ/",
+        "1:40": "/wʌn ˈfɔrti/",
+        excuse: "/ɪkˈskjus/ /ɪkˈskjuz/",
+        regular: "/ˈrɛɡjəlɚ/",
+        leisure: "/ˈliʒɚ/",
+        potato: "/pəˈteɪtoʊ/",
+        world: "/wɝld/",
+        volleyball: "/ˈvɑliˌbɔl/",
+        October: "/ɑkˈtoʊbɚ/",
+        ask: "/æsk/",
+        "6:15": "/sɪks fɪfˈtin/",
+        trouble: "/ˈtrʌbəl/",
+        message: "/ˈmɛsɪdʒ/",
+        white: "/waɪt/",
+        their: "/ðɛr/",
+        rich: "/rɪtʃ/",
+        war: "/wɔr/",
+        Australia: "/ɔˈstreɪljə/",
+        horse: "/hɔrs/",
+        famous: "/ˈfeɪməs/",
+        shower: "/ˈʃaʊɚ/",
+        together: "/təˈɡɛðɚ/",
+        both: "/boʊθ/",
+        cabbage: "/ˈkæbɪdʒ/",
+        "12:30": "/twɛlv ˈθɝti/",
+        machine: "/məˈʃin/",
+        alive: "/əˈlaɪv/",
+        January: "/ˈdʒænjuˌɛri/",
+        holiday: "/ˈhɑləˌdeɪ/",
+        handsome: "/ˈhænsəm/",
+        koala: "/koʊˈɑlə/",
+        another: "/əˈnʌðɚ/",
+        theater: "/ˈθiətɚ/",
+        Asia: "/ˈeɪʒə/",
+      };
+
+      function ipaRows(left, right) {
+        return [left, right]
+          .map((word) => `
+            <tr>
+              <td>${word}</td>
+              <td>${ipaMap[word] || ""}</td>
+            </tr>
+          `)
+          .join("");
+      }
+
+      function audioFor(left, right) {
+        const direct = `${left}|${right}`;
+        const reverse = `${right}|${left}`;
+        return audioSources[direct] || audioSources[reverse] || "";
+      }
+
+      function renderPairs() {
+        const target = document.getElementById("minimalPairs");
+        target.innerHTML = minimalPairs
+          .map(([left, right], index) => {
+            const no = String(index + 1).padStart(2, "0");
+            const src = audioFor(left, right);
+            return `
+              <article class="pair-card">
+                <div class="pair-head">
+                  <span class="pair-label">${no}</span>
+                  <p class="pair-text">${left} - ${right}</p>
+                </div>
+                ${
+                  src
+                    ? `<div class="audio-box">
+                        <audio controls preload="metadata" src="${src}"></audio>
+                        <div class="speed-row" aria-label="再生速度">
+                          <button type="button" data-speed="0.25">0.25</button>
+                          <button type="button" data-speed="0.5">0.5</button>
+                          <button type="button" data-speed="0.75">0.75</button>
+                          <button type="button" class="is-active" data-speed="1">1.0</button>
+                        </div>
+                      </div>`
+                    : `<div class="missing-audio">音声準備中</div>`
+                }
+                <details>
+                  <summary>発音記号を確認する</summary>
+                  <div class="details-body">
+                    <table class="ipa-table">
+                      <thead>
+                        <tr><th>Word</th><th>US IPA</th></tr>
+                      </thead>
+                      <tbody>${ipaRows(left, right)}</tbody>
+                    </table>
+                  </div>
+                </details>
+              </article>
+            `;
+          })
+          .join("");
+      }
+
+      function renderWords() {
+        const target = document.getElementById("wordList");
+        target.innerHTML = wordItems
+          .map((word, index) => {
+            const no = String(index + 1).padStart(2, "0");
+            const src = wordAudioSources[word] || "";
+            return `
+              <article class="pair-card">
+                <div class="pair-head">
+                  <span class="pair-label">${no}</span>
+                  <p class="pair-text">${word}</p>
+                </div>
+                ${
+                  src
+                    ? `<div class="audio-box">
+                        <audio controls preload="metadata" src="${src}"></audio>
+                        <div class="speed-row" aria-label="再生速度">
+                          <button type="button" data-speed="0.25">0.25</button>
+                          <button type="button" data-speed="0.5">0.5</button>
+                          <button type="button" data-speed="0.75">0.75</button>
+                          <button type="button" class="is-active" data-speed="1">1.0</button>
+                        </div>
+                      </div>`
+                    : `<div class="missing-audio">音声準備中</div>`
+                }
+                <details>
+                  <summary>発音記号を確認する</summary>
+                  <div class="details-body">
+                    <table class="ipa-table">
+                      <thead>
+                        <tr><th>Word</th><th>US IPA</th></tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>${word}</td>
+                          <td>${wordIpaMap[word] || ""}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </details>
+              </article>
+            `;
+          })
+          .join("");
+      }
+
+      renderPairs();
+      renderWords();
+
+      document.addEventListener("click", (event) => {
+        const button = event.target.closest("[data-speed]");
+        if (!button) return;
+        const box = button.closest(".audio-box");
+        const audio = box.querySelector("audio");
+        audio.playbackRate = Number(button.dataset.speed);
+        box.querySelectorAll("[data-speed]").forEach((item) => {
+          item.classList.toggle("is-active", item === button);
+        });
+      });
+    </script>
+  </body>
+</html>
