@@ -133,6 +133,14 @@
         line-height: 1.75;
       }
 
+      .text-highlight {
+        padding: 0 0.18em;
+        border-radius: 0.22em;
+        background: linear-gradient(180deg, transparent 48%, rgba(242, 106, 22, 0.26) 48%);
+        color: var(--orange-dark);
+        font-weight: 900;
+      }
+
       .point {
         padding: 12px 13px;
         border: 1px solid rgba(242, 106, 22, 0.22);
@@ -487,11 +495,11 @@
         <section class="intro">
           <span class="kicker">PRACTICE QUESTIONS #4</span>
           <h1>EPT対策課題 #4</h1>
-          <p class="lead">発音試験に向けて、ミニマルペアを聞きながら確認・練習できるページです。</p>
-          <p class="point">STEP 01はミニマルペア、STEP 02は単語練習です。音声を聞いた後、発音記号も確認しながら声に出して練習しましょう。</p>
+          <p class="lead">実際の試験に出た５セットの問題をまとめております。それぞれテストで出る確率が高いので、ぜひ全て<span class="text-highlight">発音記号なしで正しく読める</span>ように練習しましょう。</p>
+          <p class="point">SECTION 02はミニマルペア、SECTION 03は単語練習です。音声を聞いた後、発音記号も確認しながら声に出して練習しましょう。</p>
           <nav class="quick-nav" aria-label="目次">
-            <a href="#listen"><span class="nav-label">STEP 01</span><span class="nav-title">Minimal Pairs</span></a>
-            <a href="#practice"><span class="nav-label">STEP 02</span><span class="nav-title">Words</span></a>
+            <a href="#listen"><span class="nav-label">SECTION 02</span><span class="nav-title">Minimal Pairs</span></a>
+            <a href="#practice"><span class="nav-label">SECTION 03</span><span class="nav-title">Words</span></a>
           </nav>
         </section>
       </header>
@@ -499,20 +507,22 @@
       <main>
         <section class="section" id="listen">
           <div>
-            <p class="section-num">STEP 01</p>
+            <p class="section-num">SECTION 02</p>
             <h2>MINIMAL PAIRS</h2>
           </div>
-          <p class="note">似ている音のペアを確認しましょう。音声があるものはプレイヤーを表示しています。</p>
+          <p class="note">似ている音のペアを練習しましょう。試験を想定し、発音記号なしでも正しく区別して読めるようにしましょう。<br><br>（練習の時に発音記号を確認するのはもちろんOKです💡）</p>
           <div class="pair-list" id="minimalPairs"></div>
         </section>
 
         <section class="section" id="practice">
           <div>
-            <p class="section-num">STEP 02</p>
+            <p class="section-num">SECTION 03</p>
             <h2>Words</h2>
           </div>
-          <p class="note">単語単位で確認しましょう。音声を聞いた後、発音記号も確認して練習してください。</p>
-          <div class="pair-list" id="wordList"></div>
+          <div class="placeholder">
+            <strong>6/2（火）12:00にアンロック予定です。</strong>
+            <p class="note">改めてLINE / Slackでもご連絡いたしますが、まずはSECTION 02をご確認ください！</p>
+          </div>
         </section>
       </main>
 
@@ -541,9 +551,10 @@
         ["sea", "see"],
         ["pain", "pen"],
         ["rock", "lock"],
+        ["hard", "heard"],
         ["path", "pass"],
         ["D", "B"],
-        ["work", "walk"],
+        ["walk", "work"],
         ["not", "nut"],
         ["off", "of"],
         ["pull", "pool"],
@@ -565,6 +576,7 @@
         ["robber", "rubber"],
         ["all", "owl"],
         ["shot", "shout"],
+        ["pour", "poor"],
         ["G", "Z"],
         ["dirty", "duty"],
         ["coat", "court"],
@@ -602,13 +614,14 @@
         "rock|lock": "./assets/audio/mov-pairs/16-rock-lock.wav",
         "path|pass": "../hw-2/assets/audio/09-path-pass.m4a",
         "D|B": "./assets/audio/mov-pairs/17-d-b.wav",
-        "work|walk": "../hw-2/assets/audio/05-walk-work.m4a",
+        "walk|work": "../hw-2/assets/audio/05-walk-work.m4a",
         "not|nut": "./assets/audio/mov-pairs/18-not-nut.wav",
         "off|of": "./assets/audio/off-of.wav",
         "pull|pool": "../hw-2/assets/audio/06-pull-pool.m4a",
         "fun|fan": "./assets/audio/mov-pairs/19-fun-fan.wav",
         "bowl|ball": "./assets/audio/bowl-ball.wav",
         "wrong|long": "../hw-2/assets/audio/01-wrong-long.m4a",
+        "hard|heard": "../hw-2/assets/audio/04-hard-heard.m4a",
         "map|mop": "../hw-1/assets/audio/map-mop.mp3",
         "win|wing": "../hw-1/assets/audio/win-wing.mp3",
         "shell|sell": "./assets/audio/shell-sell.wav",
@@ -627,6 +640,7 @@
         "G|Z": "./assets/audio/mov-pairs/26-g-z.wav",
         "dirty|duty": "./assets/audio/mov-pairs/27-dirty-duty.wav",
         "coat|court": "../hw-2/assets/audio/41-coat-court.m4a",
+        "pour|poor": "./assets/audio/mov-pairs/new/pour-poor.wav",
         "sick|thick": "./assets/audio/mov-pairs/28-sick-thick.wav",
         "fry|fly": "./assets/audio/mov-pairs/29-fry-fly.wav",
         "she|sea": "./assets/audio/mov-pairs/30-she-sea.wav",
@@ -667,6 +681,8 @@
         black: "/blæk/",
         hurt: "/hɝt/",
         heart: "/hɑrt/",
+        heard: "/hɝd/",
+        hard: "/hɑrd/",
         end: "/ɛnd/",
         and: "/ænd/ /ənd/",
         ship: "/ʃɪp/",
@@ -731,6 +747,8 @@
         duty: "/ˈduti/",
         coat: "/koʊt/",
         court: "/kɔrt/",
+        pour: "/pɔr/",
+        poor: "/pʊr/ /pɔr/",
         sick: "/sɪk/",
         thick: "/θɪk/",
         fry: "/fraɪ/",
@@ -1070,7 +1088,6 @@
       }
 
       renderPairs();
-      renderWords();
 
       document.addEventListener("click", (event) => {
         const button = event.target.closest("[data-speed]");
