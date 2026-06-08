@@ -519,10 +519,8 @@
             <p class="section-num">SECTION 03</p>
             <h2>Words</h2>
           </div>
-          <div class="placeholder">
-            <strong>6/2（火）12:00にアンロック予定です。</strong>
-            <p class="note">改めてLINE / Slackでもご連絡いたしますが、まずはSECTION 02をご確認ください！</p>
-          </div>
+          <p class="note">試験で出やすい単語を確認しましょう。音声があるものはプレイヤーを表示しています。</p>
+          <div class="pair-list" id="wordList"></div>
         </section>
       </main>
 
@@ -1088,6 +1086,7 @@
       }
 
       renderPairs();
+      renderWords();
 
       document.addEventListener("click", (event) => {
         const button = event.target.closest("[data-speed]");
