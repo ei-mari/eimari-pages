@@ -1,0 +1,395 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lesson 6 | Vowel Length Listening Quiz</title>
+  <meta name="description" content="Vowel length listening quiz for SOUND DESIGN LAB lesson 6.">
+  <style>
+    :root {
+      color-scheme: light;
+      --blue: #0069d9;
+      --blue-dark: #07346f;
+      --blue-soft: #e9f4ff;
+      --yellow: #ffd51f;
+      --pink: #f41f67;
+      --ink: #10213d;
+      --muted: #63718a;
+      --line: #cfe3fa;
+      --paper: #ffffff;
+      --shadow: 0 18px 42px rgba(4, 45, 105, .18);
+      font-family: "Avenir Next", "Helvetica Neue", Arial, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 16% 4%, rgba(255, 213, 31, .36), transparent 260px),
+        radial-gradient(circle at 90% 18%, rgba(244, 31, 103, .18), transparent 260px),
+        linear-gradient(180deg, #dff1ff 0%, #f6fbff 44%, #fff 100%);
+    }
+
+    .page {
+      width: min(100%, 430px);
+      min-height: 100vh;
+      margin: 0 auto;
+      padding: 10px 9px 30px;
+      background: rgba(255, 255, 255, .58);
+      box-shadow: 0 0 0 1px rgba(0, 105, 217, .08);
+    }
+
+    .hero {
+      overflow: hidden;
+      border: 1px solid rgba(7, 52, 111, .16);
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: var(--shadow);
+    }
+
+    .hero img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+    }
+
+    .intro {
+      margin: 14px 0;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255,255,255,.9);
+      box-shadow: 0 10px 24px rgba(4, 45, 105, .08);
+    }
+
+    h1 {
+      margin: 0;
+      color: var(--blue-dark);
+      font-size: 22px;
+      line-height: 1.16;
+      letter-spacing: 0;
+    }
+
+    .intro p {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.65;
+    }
+
+    .quiz-list {
+      display: grid;
+      gap: 13px;
+    }
+
+    .quiz-card {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.98), rgba(238, 247, 255, .92)),
+        var(--paper);
+      box-shadow: 0 10px 26px rgba(4, 45, 105, .09);
+    }
+
+    .card-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 13px;
+      background: linear-gradient(90deg, rgba(0,105,217,.1), rgba(255,213,31,.18));
+      border-bottom: 1px solid var(--line);
+    }
+
+    .num {
+      display: inline-grid;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      flex: 0 0 auto;
+      color: #fff;
+      background: var(--blue-dark);
+      border-radius: 8px;
+      font-weight: 900;
+    }
+
+    .card-body {
+      display: grid;
+      gap: 11px;
+      padding: 13px;
+    }
+
+    audio {
+      width: 100%;
+    }
+
+    .speed-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 7px;
+    }
+
+    .speed-btn {
+      min-height: 34px;
+      border: 1px solid #b9d5f3;
+      border-radius: 8px;
+      color: var(--blue-dark);
+      background: #fff;
+      font: inherit;
+      font-size: 12px;
+      font-weight: 900;
+      cursor: pointer;
+    }
+
+    .speed-btn.active {
+      color: #fff;
+      border-color: var(--blue);
+      background: var(--blue);
+      box-shadow: inset 0 0 0 2px rgba(255, 255, 255, .25);
+    }
+
+    .choices {
+      display: grid;
+      gap: 8px;
+    }
+
+    .choice {
+      min-height: 48px;
+      padding: 0 12px;
+      border: 1px solid #cfe0f5;
+      border-radius: 8px;
+      color: var(--ink);
+      background: #fff;
+      font: inherit;
+      font-size: 15px;
+      font-weight: 900;
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .choice.selected {
+      border-color: var(--blue);
+      background: var(--blue-soft);
+      box-shadow: inset 0 0 0 2px rgba(0, 105, 217, .18);
+    }
+
+    .choice.correct {
+      border-color: #20a65d;
+      background: #e9fff2;
+    }
+
+    .choice.wrong {
+      border-color: var(--pink);
+      background: #fff0f5;
+    }
+
+    details {
+      border: 1px solid #d7e6f7;
+      border-radius: 8px;
+      background: #fff;
+      overflow: hidden;
+    }
+
+    summary {
+      min-height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 0 12px;
+      color: var(--blue-dark);
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 900;
+      list-style: none;
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    summary::after {
+      content: "+";
+      display: grid;
+      place-items: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 8px;
+      color: var(--blue-dark);
+      background: var(--yellow);
+      font-weight: 900;
+    }
+
+    details[open] summary::after {
+      content: "-";
+    }
+
+    .hint-panel {
+      display: grid;
+      gap: 7px;
+      padding: 10px 12px 12px;
+      border-top: 1px solid #d7e6f7;
+      background: #f7fbff;
+    }
+
+    .ipa-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 10px;
+      color: #153b5c;
+      font-size: 14px;
+      font-weight: 900;
+      line-height: 1.45;
+    }
+
+    .ipa {
+      color: var(--pink);
+      font-family: "Arial", sans-serif;
+      overflow-wrap: anywhere;
+    }
+
+    .feedback {
+      min-height: 22px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    @media (min-width: 760px) {
+      .page {
+        width: min(100%, 760px);
+        padding: 16px 16px 40px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="hero">
+      <img src="assets/images/vowel-length-hero.png" alt="Listening Quiz Vowel Length">
+    </header>
+
+    <main>
+      <section class="intro">
+        <h1>Vowel Length Listening Quiz</h1>
+        <p>音声を聞いて、どちらの順番で読まれたかを選ぼう。</p>
+      </section>
+
+      <section class="quiz-list" id="quizList" aria-label="Vowel length quiz"></section>
+    </main>
+  </div>
+
+  <script>
+    const questions = [
+      { id: 1, first: "advice", second: "advise", ipa1: "/ədˈvaɪs/", ipa2: "/ədˈvaɪz/", answer: "ab", audio: "assets/audio/1.mp3" },
+      { id: 2, first: "eyes", second: "ice", ipa1: "/aɪz/", ipa2: "/aɪs/", answer: "ab", audio: "assets/audio/2.mp3" },
+      { id: 3, first: "knees", second: "niece", ipa1: "/niz/", ipa2: "/nis/", answer: "ab", audio: "assets/audio/3.mp3" },
+      { id: 4, first: "mate", second: "made", ipa1: "/meɪt/", ipa2: "/meɪd/", answer: "ab", audio: "assets/audio/4.mp3" },
+      { id: 5, first: "had", second: "hat", ipa1: "/hæd/", ipa2: "/hæt/", answer: "ab", audio: "assets/audio/5.mp3" },
+      { id: 6, first: "bet", second: "bed", ipa1: "/bɛt/", ipa2: "/bɛd/", answer: "ab", audio: "assets/audio/6.mp3" },
+      { id: 7, first: "have", second: "half", ipa1: "/hæv/", ipa2: "/hæf/", answer: "ab", audio: "assets/audio/7.mp3" },
+      { id: 8, first: "life", second: "live", ipa1: "/laɪf/", ipa2: "/laɪv/", answer: "ab", audio: "assets/audio/8.mp3" },
+      { id: 9, first: "dock", second: "dog", ipa1: "/dɑk/", ipa2: "/dɔɡ/", answer: "ab", audio: "assets/audio/9.mp3" },
+      { id: 10, first: "duck", second: "Doug", ipa1: "/dʌk/", ipa2: "/dʌɡ/", answer: "ba", audio: "assets/audio/10.mp3" }
+    ];
+
+    const quizList = document.getElementById("quizList");
+
+    function audioMarkup(q) {
+      return `
+        <audio controls preload="metadata" src="${q.audio}"></audio>
+        <div class="speed-row" aria-label="Playback speed">
+          <button class="speed-btn" type="button" data-rate="0.25">0.25</button>
+          <button class="speed-btn" type="button" data-rate="0.5">0.5</button>
+          <button class="speed-btn" type="button" data-rate="0.75">0.75</button>
+          <button class="speed-btn active" type="button" data-rate="1">1.0</button>
+        </div>
+      `;
+    }
+
+    function answerLabel(q) {
+      return q.answer === "ab" ? `${q.first} → ${q.second}` : `${q.second} → ${q.first}`;
+    }
+
+    function choiceButtons(q) {
+      const choices = [
+        { value: "ab", label: `${q.first} → ${q.second}` },
+        { value: "ba", label: `${q.second} → ${q.first}` }
+      ];
+      if (Math.random() > 0.5) choices.reverse();
+      return choices.map((item) => (
+        `<button class="choice" type="button" data-choice="${item.value}">${item.label}</button>`
+      )).join("");
+    }
+
+    function render() {
+      quizList.innerHTML = "";
+      questions.forEach((q) => {
+        const card = document.createElement("article");
+        card.className = "quiz-card";
+        card.dataset.id = q.id;
+        card.innerHTML = `
+          <div class="card-head">
+            <span class="num">Q${q.id}</span>
+          </div>
+          <div class="card-body">
+            ${audioMarkup(q)}
+            <details>
+              <summary>発音記号のヒント</summary>
+              <div class="hint-panel">
+                <div class="ipa-row"><span>${q.first}</span><span class="ipa">${q.ipa1}</span></div>
+                <div class="ipa-row"><span>${q.second}</span><span class="ipa">${q.ipa2}</span></div>
+              </div>
+            </details>
+            <div class="choices" role="group" aria-label="Question ${q.id} choices">
+              ${choiceButtons(q)}
+            </div>
+            <div class="feedback" aria-live="polite"></div>
+          </div>
+        `;
+        quizList.appendChild(card);
+      });
+    }
+
+    quizList.addEventListener("click", (event) => {
+      const speed = event.target.closest(".speed-btn");
+      if (speed) {
+        const card = speed.closest(".quiz-card");
+        const audio = card.querySelector("audio");
+        audio.playbackRate = Number(speed.dataset.rate);
+        card.querySelectorAll(".speed-btn").forEach((btn) => {
+          btn.classList.toggle("active", btn === speed);
+        });
+        return;
+      }
+
+      const choice = event.target.closest(".choice");
+      const card = event.target.closest(".quiz-card");
+      if (!choice || !card) return;
+      const id = Number(card.dataset.id);
+      const q = questions.find((item) => item.id === id);
+      const selected = choice.dataset.choice;
+      const correct = selected === q.answer;
+
+      card.querySelectorAll(".choice").forEach((btn) => {
+        btn.classList.toggle("selected", btn === choice);
+        btn.classList.toggle("correct", btn.dataset.choice === q.answer);
+        btn.classList.toggle("wrong", btn.dataset.choice === selected && !correct);
+      });
+      card.querySelector(".feedback").textContent = correct
+        ? "正解！"
+        : "惜しい！もう一度聞いてみよう。";
+    });
+
+    render();
+  </script>
+</body>
+</html>
