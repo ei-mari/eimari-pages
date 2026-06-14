@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Car Society | 4EPT Homework SP</title>
-  <meta name="description" content="4EPT homework special reading page: Car Society.">
+  <title>4EPT Homework SP</title>
+  <meta name="description" content="4EPT homework special reading pages.">
   <style>
     :root {
       color-scheme: light;
@@ -49,6 +49,37 @@
       border-radius: 10px;
       background: rgba(255, 255, 255, .86);
       box-shadow: var(--shadow);
+    }
+
+    .tabs {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+      margin-bottom: 14px;
+      padding: 6px;
+      border: 1px solid rgba(18, 48, 79, .12);
+      border-radius: 10px;
+      background: rgba(255, 255, 255, .72);
+      box-shadow: 0 10px 24px rgba(18, 48, 79, .08);
+    }
+
+    .tab-btn {
+      min-height: 44px;
+      border: 1px solid transparent;
+      border-radius: 8px;
+      color: var(--navy);
+      background: transparent;
+      font: inherit;
+      font-size: 14px;
+      font-weight: 900;
+      cursor: pointer;
+    }
+
+    .tab-btn.active {
+      color: #fff;
+      border-color: var(--navy);
+      background: linear-gradient(135deg, var(--navy), var(--blue));
+      box-shadow: 0 8px 18px rgba(18, 48, 79, .18);
     }
 
     .hero-images {
@@ -265,22 +296,27 @@
 </head>
 <body>
   <div class="page">
+    <nav class="tabs" aria-label="Homework tags">
+      <button class="tab-btn active" type="button" data-tag="tag1">Tag 1</button>
+      <button class="tab-btn" type="button" data-tag="tag2">Tag 2</button>
+    </nav>
+
     <header class="hero">
-      <div class="hero-images" aria-label="Car Society thumbnails">
-        <img src="assets/images/car-1.jpeg" alt="Driver holding a steering wheel">
-        <img src="assets/images/car-2.jpeg" alt="Car on a road at dusk">
-        <img src="assets/images/car-3.jpeg" alt="Busy city traffic in Japan">
+      <div class="hero-images" id="heroImages" aria-label="Homework thumbnails">
+        <img src="assets/images/car-1.jpeg" alt="">
+        <img src="assets/images/car-2.jpeg" alt="">
+        <img src="assets/images/car-3.jpeg" alt="">
       </div>
       <div class="title-block">
         <div class="eyebrow">4EPT Homework SP</div>
-        <h1>Car Society</h1>
-        <p class="period">2026年3月 〜 2026年6月</p>
+        <h1 id="pageTitle">Car Society</h1>
+        <p class="period" id="pagePeriod">2026年3月 〜 2026年6月</p>
         <p class="lead">音声を聞きながら、1文ずつリーディング練習をしよう。</p>
       </div>
     </header>
 
     <section class="text-card" aria-label="Reading passage">
-      <p>In Japan, cars are essential for daily life. Iconic brands like Toyota and Honda, known for their reliable vehicles and advanced technologies such as hybrid engines and automated driving systems, are widely used. Cities such as Tokyo, Osaka, and Nagoya are bustling hubs where millions drive cars known for their dependability and innovation. Japan is one of the world's top producers of cars, with over 5 million sold annually. Alongside cars, the Shinkansen represents advanced transportation. Drivers follow strict regulations to ensure safety on highways and city streets. The Toyota Prius, famous for being eco-friendly, remains popular. Kei cars, small and fuel-efficient, are common on crowded city roads. Japan's automotive landscape blends tradition with innovation, where cars are not just convenient but also culturally significant.</p>
+      <p id="passageText"></p>
     </section>
 
     <section class="practice" aria-label="Sentence audio practice">
@@ -293,26 +329,64 @@
   </div>
 
   <script>
-    const sentences = [
-      "In Japan, cars are essential for daily life.",
-      "Iconic brands like Toyota and Honda, known for their reliable vehicles and advanced technologies such as hybrid engines and automated driving systems, are widely used.",
-      "Cities such as Tokyo, Osaka, and Nagoya are bustling hubs where millions drive cars known for their dependability and innovation.",
-      "Japan is one of the world's top producers of cars, with over 5 million sold annually.",
-      "Alongside cars, the Shinkansen represents advanced transportation.",
-      "Drivers follow strict regulations to ensure safety on highways and city streets.",
-      "The Toyota Prius, famous for being eco-friendly, remains popular.",
-      "Kei cars, small and fuel-efficient, are common on crowded city roads.",
-      "Japan's automotive landscape blends tradition with innovation, where cars are not just convenient but also culturally significant."
-    ];
+    const tags = {
+      tag1: {
+        title: "Car Society",
+        period: "2026年3月 〜 2026年6月",
+        images: [
+          ["assets/images/car-1.jpeg", "Driver holding a steering wheel"],
+          ["assets/images/car-2.jpeg", "Car on a road at dusk"],
+          ["assets/images/car-3.jpeg", "Busy city traffic in Japan"]
+        ],
+        audio: { normal: "normal", slow: "slow" },
+        sentences: [
+          "In Japan, cars are essential for daily life.",
+          "Iconic brands like Toyota and Honda, known for their reliable vehicles and advanced technologies such as hybrid engines and automated driving systems, are widely used.",
+          "Cities such as Tokyo, Osaka, and Nagoya are bustling hubs where millions drive cars known for their dependability and innovation.",
+          "Japan is one of the world's top producers of cars, with over 5 million sold annually.",
+          "Alongside cars, the Shinkansen represents advanced transportation.",
+          "Drivers follow strict regulations to ensure safety on highways and city streets.",
+          "The Toyota Prius, famous for being eco-friendly, remains popular.",
+          "Kei cars, small and fuel-efficient, are common on crowded city roads.",
+          "Japan's automotive landscape blends tradition with innovation, where cars are not just convenient but also culturally significant."
+        ]
+      },
+      tag2: {
+        title: "Uncle Robert",
+        period: "Tag 2",
+        images: [
+          ["assets/images/uncle-1.jpeg", "Hiker standing beside a lake"],
+          ["assets/images/uncle-2.jpeg", "Dog and cat in a yard"],
+          ["assets/images/uncle-3.jpeg", "Red electric guitar"]
+        ],
+        audio: { normal: "tag2-normal", slow: "tag2-slow" },
+        sentences: [
+          "Uncle Robert, who was born in 1965, lived in Riverton, a small town.",
+          "His loyal companions included Max, the dog, Whiskers, the cat, and three chirpy birds: Tweety, Polly, and Charlie.",
+          "During the summers, he took us on thrilling trips.",
+          "We ventured into the waters of Lake Johnson for fishing, enjoyed picnics in Greenfield Park, and hiked the trails of Blue Mountain.",
+          "Uncle Robert loved to tell us about his travels to faraway places like Paris, Tokyo, and Rio de Janeiro.",
+          "A talented musician, he mastered the guitar, piano, and harmonica.",
+          "His fondness for \"Yesterday\" by The Beatles was evident.",
+          "Though he passed away last year, his memory resonates within us, cherished and enduring.",
+          "His laughter still stays with us, bringing warmth even on the coldest days."
+        ]
+      }
+    };
 
+    let activeTag = "tag1";
+    const heroImages = document.getElementById("heroImages");
+    const pageTitle = document.getElementById("pageTitle");
+    const pagePeriod = document.getElementById("pagePeriod");
+    const passageText = document.getElementById("passageText");
     const sentenceList = document.getElementById("sentenceList");
 
     function padNumber(number) {
       return String(number).padStart(2, "0");
     }
 
-    function playerMarkup(kind, label, number) {
-      const file = `assets/audio/${kind}/sentence-${padNumber(number)}.mp3`;
+    function playerMarkup(folder, label, number) {
+      const file = `assets/audio/${folder}/sentence-${padNumber(number)}.mp3`;
       return `
         <div class="player">
           <div class="player-title">${label}</div>
@@ -328,7 +402,15 @@
     }
 
     function render() {
-      sentenceList.innerHTML = sentences.map((sentence, index) => {
+      const tag = tags[activeTag];
+      pageTitle.textContent = tag.title;
+      pagePeriod.textContent = tag.period;
+      passageText.textContent = tag.sentences.join(" ");
+      heroImages.innerHTML = tag.images.map(([src, alt]) => (
+        `<img src="${src}" alt="${alt}">`
+      )).join("");
+
+      sentenceList.innerHTML = tag.sentences.map((sentence, index) => {
         const number = index + 1;
         return `
           <article class="sentence-card">
@@ -337,13 +419,24 @@
               <p class="sentence">${sentence}</p>
             </div>
             <div class="players">
-              ${playerMarkup("normal", "Normal", number)}
-              ${playerMarkup("slow", "Slow", number)}
+              ${playerMarkup(tag.audio.normal, "Normal", number)}
+              ${playerMarkup(tag.audio.slow, "Slow", number)}
             </div>
           </article>
         `;
       }).join("");
     }
+
+    document.querySelectorAll(".tab-btn").forEach((button) => {
+      button.addEventListener("click", () => {
+        activeTag = button.dataset.tag;
+        document.querySelectorAll(".tab-btn").forEach((item) => {
+          item.classList.toggle("active", item === button);
+        });
+        render();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+    });
 
     sentenceList.addEventListener("click", (event) => {
       const button = event.target.closest(".speed-btn");
