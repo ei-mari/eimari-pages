@@ -36,9 +36,9 @@
     }
 
     .page {
-      width: min(100%, 980px);
+      width: min(100%, 430px);
       margin: 0 auto;
-      padding: 18px 12px 46px;
+      padding: 10px 8px 34px;
     }
 
     .hero {
@@ -124,6 +124,14 @@
       color: var(--muted);
       font-size: 14px;
       font-weight: 800;
+    }
+
+    .guidance {
+      margin: 0;
+      color: #334155;
+      font-size: 13px;
+      font-weight: 800;
+      line-height: 1.7;
     }
 
     .lead {
@@ -223,7 +231,7 @@
 
     .players {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: 1fr;
       gap: 10px;
     }
 
@@ -271,11 +279,38 @@
       background: var(--blue);
     }
 
-    @media (max-width: 680px) {
-      .page {
-        padding: 10px 8px 30px;
-      }
+    .top-btn {
+      position: fixed;
+      right: max(12px, calc((100vw - 430px) / 2 + 12px));
+      bottom: 14px;
+      z-index: 20;
+      display: grid;
+      place-items: center;
+      width: 46px;
+      height: 46px;
+      border: 1px solid rgba(255, 255, 255, .6);
+      border-radius: 50%;
+      color: #fff;
+      background: linear-gradient(135deg, var(--navy), var(--blue));
+      box-shadow: 0 12px 24px rgba(18, 48, 79, .28);
+      font-size: 24px;
+      font-weight: 900;
+      line-height: 1;
+      cursor: pointer;
+    }
 
+    .top-btn:active {
+      transform: translateY(1px);
+    }
+
+    @media (min-width: 431px) {
+      body {
+        background:
+          linear-gradient(90deg, #dce8f1 0, #f7f9fb calc(50% - 215px), #f7f9fb calc(50% + 215px), #dce8f1 100%);
+      }
+    }
+
+    @media (max-width: 680px) {
       .hero {
         padding: 10px;
       }
@@ -288,17 +323,14 @@
         padding: 14px;
       }
 
-      .players {
-        grid-template-columns: 1fr;
-      }
     }
   </style>
 </head>
 <body>
   <div class="page">
     <nav class="tabs" aria-label="Homework tags">
-      <button class="tab-btn active" type="button" data-tag="tag1">Tag 1</button>
-      <button class="tab-btn" type="button" data-tag="tag2">Tag 2</button>
+      <button class="tab-btn active" type="button" data-tag="tag1">HW 1</button>
+      <button class="tab-btn" type="button" data-tag="tag2">HW 2</button>
     </nav>
 
     <header class="hero">
@@ -311,7 +343,7 @@
         <div class="eyebrow">4EPT Homework SP</div>
         <h1 id="pageTitle">Car Society</h1>
         <p class="period" id="pagePeriod">2026年3月 〜 2026年6月</p>
-        <p class="lead">音声を聞きながら、1文ずつリーディング練習をしよう。</p>
+        <p class="guidance">まずは音声を活用せずに音読に挑戦しましょう。その後音声を確認しギャップを埋めながら練習してください！</p>
       </div>
     </header>
 
@@ -322,10 +354,12 @@
     <section class="practice" aria-label="Sentence audio practice">
       <div class="section-head">
         <h2>Sentence Practice</h2>
-        <p>NormalとSlowを聞き比べて、必要に応じて再生速度を調整できます。</p>
+        <p>好きな方の音声を活用し練習しましょう。気になる単語は発音記号を調べてOKです。</p>
       </div>
       <div class="sentence-list" id="sentenceList"></div>
     </section>
+
+    <button class="top-btn" type="button" id="topBtn" aria-label="Back to top">↑</button>
   </div>
 
   <script>
@@ -353,7 +387,7 @@
       },
       tag2: {
         title: "Uncle Robert",
-        period: "Tag 2",
+        period: "2026年3月 〜 2026年6月",
         images: [
           ["assets/images/uncle-1.jpeg", "Hiker standing beside a lake"],
           ["assets/images/uncle-2.jpeg", "Dog and cat in a yard"],
@@ -419,8 +453,8 @@
               <p class="sentence">${sentence}</p>
             </div>
             <div class="players">
-              ${playerMarkup(tag.audio.normal, "Normal", number)}
-              ${playerMarkup(tag.audio.slow, "Slow", number)}
+              ${playerMarkup(tag.audio.normal, "Speaker 1", number)}
+              ${playerMarkup(tag.audio.slow, "Speaker 2", number)}
             </div>
           </article>
         `;
@@ -447,6 +481,10 @@
       player.querySelectorAll(".speed-btn").forEach((item) => {
         item.classList.toggle("active", item === button);
       });
+    });
+
+    document.getElementById("topBtn").addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
     });
 
     render();
