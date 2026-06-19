@@ -232,6 +232,77 @@
         font-weight: 950;
       }
       .hidden { display: none; }
+      .lock-screen {
+        position: fixed;
+        inset: 0;
+        z-index: 20;
+        display: grid;
+        place-items: center;
+        padding: 20px;
+        background:
+          radial-gradient(circle at 18% 16%, rgba(245, 184, 75, 0.34), transparent 26%),
+          radial-gradient(circle at 86% 18%, rgba(107, 199, 240, 0.28), transparent 24%),
+          linear-gradient(180deg, #fff8ed 0%, #f8fbff 100%);
+      }
+      .lock-card {
+        width: min(100%, 360px);
+        padding: 22px;
+        border: 1px solid rgba(38, 49, 66, 0.12);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.94);
+        box-shadow: var(--shadow);
+      }
+      .lock-card h2 {
+        margin: 0 0 8px;
+        font-size: 24px;
+        line-height: 1.15;
+      }
+      .lock-card p {
+        margin: 0 0 16px;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.55;
+        font-weight: 800;
+      }
+      .lock-form {
+        display: grid;
+        gap: 10px;
+      }
+      .lock-form input {
+        width: 100%;
+        min-height: 46px;
+        padding: 0 13px;
+        border: 1px solid rgba(38, 49, 66, 0.18);
+        border-radius: 8px;
+        color: var(--ink);
+        background: #fff;
+        font: inherit;
+        font-size: 18px;
+        font-weight: 800;
+      }
+      .lock-form button {
+        min-height: 46px;
+        border: 0;
+        border-radius: 8px;
+        color: #1f2937;
+        background: linear-gradient(135deg, var(--rose), var(--gold));
+        font: inherit;
+        font-size: 14px;
+        font-weight: 950;
+        cursor: pointer;
+      }
+      .lock-error {
+        min-height: 18px;
+        color: #d33f49;
+        font-size: 12px;
+        font-weight: 900;
+      }
+      body.is-locked .shell,
+      body.is-locked .back-top {
+        filter: blur(5px);
+        pointer-events: none;
+        user-select: none;
+      }
       footer {
         padding: 16px 14px 84px;
         color: var(--muted);
@@ -246,7 +317,18 @@
       }
     </style>
   </head>
-  <body id="top">
+  <body id="top" class="is-locked">
+    <div class="lock-screen" id="lockScreen" role="dialog" aria-modal="true" aria-labelledby="lockTitle">
+      <div class="lock-card">
+        <h2 id="lockTitle">Password</h2>
+        <p>4EPT 課題ページを開くにはパスワードを入力してください。</p>
+        <form class="lock-form" id="lockForm">
+          <input id="passwordInput" type="password" autocomplete="current-password" inputmode="text" aria-label="パスワード">
+          <button type="submit">OPEN</button>
+          <div class="lock-error" id="lockError" aria-live="polite"></div>
+        </form>
+      </div>
+    </div>
     <div class="shell">
       <header>
         <figure class="hero">
@@ -291,74 +373,74 @@
     <a class="back-top" href="#top" aria-label="一番上へ戻る">↑</a>
     <script>
       const words = [
-        ["banana", "/bəˈnænə/", "../hw-4/assets/audio/words/01-banana.wav"],
-        ["health", "/hɛlθ/", "../hw-4/assets/audio/words/02-health.wav"],
-        ["girl", "/ɡɝl/", "../hw-4/assets/audio/words/03-girl.wav"],
-        ["November", "/noʊˈvɛmbɚ/", "../hw-4/assets/audio/words/04-november.wav"],
-        ["elementary", "/ˌɛləˈmɛntri/ /ˌɛləˈmɛntəri/", "../hw-4/assets/audio/words/05-elementary.wav"],
-        ["angry", "/ˈæŋɡri/", "../hw-4/assets/audio/words/06-angry.wav"],
-        ["travel", "/ˈtrævəl/", "../hw-4/assets/audio/words/07-travel.wav"],
-        ["5:40", "/faɪv ˈfɔrti/", "../hw-4/assets/audio/words/08-5-40.wav"],
-        ["Thursday", "/ˈθɝzdeɪ/", "../hw-4/assets/audio/words/09-thursday.wav"],
-        ["orange", "/ˈɔrɪndʒ/", "../hw-4/assets/audio/words/10-orange.wav"],
-        ["guitar", "/ɡɪˈtɑr/", "../hw-4/assets/audio/words/11-guitar.wav"],
-        ["zero", "/ˈzɪroʊ/", "../hw-4/assets/audio/words/12-zero.wav"],
-        ["question", "/ˈkwɛstʃən/", "../hw-4/assets/audio/words/13-question.wav"],
-        ["New York", "/nu jɔrk/", "../hw-4/assets/audio/words/14-new-york.wav"],
-        ["dark", "/dɑrk/", "../hw-4/assets/audio/words/15-dark.wav"],
-        ["April", "/ˈeɪprəl/", "../hw-4/assets/audio/words/16-april.wav"],
-        ["Saturday", "/ˈsætɚdeɪ/", "../hw-4/assets/audio/words/17-saturday.wav"],
-        ["voice", "/vɔɪs/", "../hw-4/assets/audio/words/18-voice.wav"],
-        ["manager", "/ˈmænɪdʒɚ/", "../hw-4/assets/audio/words/19-manager.wav"],
-        ["delicious", "/dɪˈlɪʃəs/", "../hw-4/assets/audio/words/20-delicious.wav"],
-        ["purple", "/ˈpɝpəl/", "../hw-4/assets/audio/words/21-purple.wav"],
-        ["English", "/ˈɪŋɡlɪʃ/", "../hw-4/assets/audio/words/22-english.wav"],
-        ["chicken", "/ˈtʃɪkɪn/", "../hw-4/assets/audio/words/23-chicken.wav"],
-        ["6:30", "/sɪks ˈθɝti/", "../hw-4/assets/audio/words/24-6-30.wav"],
-        ["better", "/ˈbɛtɚ/", "../hw-4/assets/audio/words/25-better.wav"],
-        ["exit", "/ˈɛɡsɪt/ /ˈɛɡzɪt/", "../hw-4/assets/audio/words/26-exit.wav"],
-        ["sorry", "/ˈsɑri/", "../hw-4/assets/audio/words/27-sorry.wav"],
-        ["themselves", "/ðəmˈsɛlvz/", "../hw-4/assets/audio/words/28-themselves.wav"],
-        ["cookie", "/ˈkʊki/", "../hw-4/assets/audio/words/29-cookie.wav"],
-        ["Japan", "/dʒəˈpæn/", "../hw-4/assets/audio/words/30-japan.wav"],
-        ["Tuesday", "/ˈtuzdeɪ/", "../hw-4/assets/audio/words/31-tuesday.wav"],
-        ["February", "/ˈfɛbjuˌɛri/", "../hw-4/assets/audio/words/32-february.wav"],
-        ["hungry", "/ˈhʌŋɡri/", "../hw-4/assets/audio/words/33-hungry.wav"],
-        ["theme", "/θim/", "../hw-4/assets/audio/words/34-theme.wav"],
-        ["yellow", "/ˈjɛloʊ/", "../hw-4/assets/audio/words/35-yellow.wav"],
-        ["1:40", "/wʌn ˈfɔrti/", "../hw-4/assets/audio/words/36-1-40.wav"],
-        ["excuse", "/ɪkˈskjus/ /ɪkˈskjuz/", "../hw-4/assets/audio/words/37-excuse.wav"],
-        ["regular", "/ˈrɛɡjəlɚ/", "../hw-4/assets/audio/words/38-regular.wav"],
-        ["leisure", "/ˈliʒɚ/", "../hw-4/assets/audio/words/39-leisure.wav"],
-        ["potato", "/pəˈteɪtoʊ/", "../hw-4/assets/audio/words/40-potato.wav"],
-        ["world", "/wɝld/", "../hw-4/assets/audio/words/41-world.wav"],
-        ["volleyball", "/ˈvɑliˌbɔl/", "../hw-4/assets/audio/words/42-volleyball.wav"],
-        ["October", "/ɑkˈtoʊbɚ/", "../hw-4/assets/audio/words/43-october.wav"],
-        ["ask", "/æsk/", "../hw-4/assets/audio/words/44-ask.wav"],
-        ["6:15", "/sɪks fɪfˈtin/", "../hw-4/assets/audio/words/45-6-15.wav"],
-        ["trouble", "/ˈtrʌbəl/", "../hw-4/assets/audio/words/46-trouble.wav"],
-        ["message", "/ˈmɛsɪdʒ/", "../hw-4/assets/audio/words/47-message.wav"],
-        ["white", "/waɪt/", "../hw-4/assets/audio/words/48-white.wav"],
-        ["their", "/ðɛr/", "../hw-4/assets/audio/words/49-their.wav"],
-        ["rich", "/rɪtʃ/", "../hw-4/assets/audio/words/50-rich.wav"],
-        ["war", "/wɔr/", "../hw-4/assets/audio/words/51-war.wav"],
-        ["Australia", "/ɔˈstreɪljə/", "../hw-4/assets/audio/words/52-australia.wav"],
-        ["horse", "/hɔrs/", "../hw-4/assets/audio/words/53-horse.wav"],
-        ["famous", "/ˈfeɪməs/", "../hw-4/assets/audio/words/54-famous.wav"],
-        ["shower", "/ˈʃaʊɚ/", "../hw-4/assets/audio/words/55-shower.wav"],
-        ["together", "/təˈɡɛðɚ/", "../hw-4/assets/audio/words/56-together.wav"],
-        ["both", "/boʊθ/", "../hw-4/assets/audio/words/57-both.wav"],
-        ["cabbage", "/ˈkæbɪdʒ/", "../hw-4/assets/audio/words/58-cabbage.wav"],
-        ["12:30", "/twɛlv ˈθɝti/", "../hw-4/assets/audio/words/59-12-30.wav"],
-        ["machine", "/məˈʃin/", "../hw-4/assets/audio/words/60-machine.wav"],
-        ["alive", "/əˈlaɪv/", "../hw-4/assets/audio/words/61-alive.wav"],
-        ["January", "/ˈdʒænjuˌɛri/", "../hw-4/assets/audio/words/62-january.wav"],
-        ["holiday", "/ˈhɑləˌdeɪ/", "../hw-4/assets/audio/words/63-holiday.wav"],
-        ["handsome", "/ˈhænsəm/", "../hw-4/assets/audio/words/64-handsome.wav"],
-        ["koala", "/koʊˈɑlə/", "../hw-4/assets/audio/words/65-koala.wav"],
-        ["another", "/əˈnʌðɚ/", "../hw-4/assets/audio/words/66-another.wav"],
-        ["theater", "/ˈθiətɚ/", "../hw-4/assets/audio/words/67-theater.wav"],
-        ["Asia", "/ˈeɪʒə/", "../hw-4/assets/audio/words/68-asia.wav"]
+        ["banana", "/bəˈnænə/", "./assets/audio/words/01-banana.wav"],
+        ["health", "/hɛlθ/", "./assets/audio/words/02-health.wav"],
+        ["girl", "/ɡɝl/", "./assets/audio/words/03-girl.wav"],
+        ["November", "/noʊˈvɛmbɚ/", "./assets/audio/words/04-november.wav"],
+        ["elementary", "/ˌɛləˈmɛntri/ /ˌɛləˈmɛntəri/", "./assets/audio/words/05-elementary.wav"],
+        ["angry", "/ˈæŋɡri/", "./assets/audio/words/06-angry.wav"],
+        ["travel", "/ˈtrævəl/", "./assets/audio/words/07-travel.wav"],
+        ["5:40", "/faɪv ˈfɔrti/", "./assets/audio/words/08-5-40.wav"],
+        ["Thursday", "/ˈθɝzdeɪ/", "./assets/audio/words/09-thursday.wav"],
+        ["orange", "/ˈɔrɪndʒ/", "./assets/audio/words/10-orange.wav"],
+        ["guitar", "/ɡɪˈtɑr/", "./assets/audio/words/11-guitar.wav"],
+        ["zero", "/ˈzɪroʊ/", "./assets/audio/words/12-zero.wav"],
+        ["question", "/ˈkwɛstʃən/", "./assets/audio/words/13-question.wav"],
+        ["New York", "/nu jɔrk/", "./assets/audio/words/14-new-york.wav"],
+        ["dark", "/dɑrk/", "./assets/audio/words/15-dark.wav"],
+        ["April", "/ˈeɪprəl/", "./assets/audio/words/16-april.wav"],
+        ["Saturday", "/ˈsætɚdeɪ/", "./assets/audio/words/17-saturday.wav"],
+        ["voice", "/vɔɪs/", "./assets/audio/words/18-voice.wav"],
+        ["manager", "/ˈmænɪdʒɚ/", "./assets/audio/words/19-manager.wav"],
+        ["delicious", "/dɪˈlɪʃəs/", "./assets/audio/words/20-delicious.wav"],
+        ["purple", "/ˈpɝpəl/", "./assets/audio/words/21-purple.wav"],
+        ["English", "/ˈɪŋɡlɪʃ/", "./assets/audio/words/22-english.wav"],
+        ["chicken", "/ˈtʃɪkɪn/", "./assets/audio/words/23-chicken.wav"],
+        ["6:30", "/sɪks ˈθɝti/", "./assets/audio/words/24-6-30.wav"],
+        ["better", "/ˈbɛtɚ/", "./assets/audio/words/25-better.wav"],
+        ["exit", "/ˈɛɡsɪt/ /ˈɛɡzɪt/", "./assets/audio/words/26-exit.wav"],
+        ["sorry", "/ˈsɑri/", "./assets/audio/words/27-sorry.wav"],
+        ["themselves", "/ðəmˈsɛlvz/", "./assets/audio/words/28-themselves.wav"],
+        ["cookie", "/ˈkʊki/", "./assets/audio/words/29-cookie.wav"],
+        ["Japan", "/dʒəˈpæn/", "./assets/audio/words/30-japan.wav"],
+        ["Tuesday", "/ˈtuzdeɪ/", "./assets/audio/words/31-tuesday.wav"],
+        ["February", "/ˈfɛbjuˌɛri/", "./assets/audio/words/32-february.wav"],
+        ["hungry", "/ˈhʌŋɡri/", "./assets/audio/words/33-hungry.wav"],
+        ["theme", "/θim/", "./assets/audio/words/34-theme.wav"],
+        ["yellow", "/ˈjɛloʊ/", "./assets/audio/words/35-yellow.wav"],
+        ["1:40", "/wʌn ˈfɔrti/", "./assets/audio/words/36-1-40.wav"],
+        ["excuse", "/ɪkˈskjus/ /ɪkˈskjuz/", "./assets/audio/words/37-excuse.wav"],
+        ["regular", "/ˈrɛɡjəlɚ/", "./assets/audio/words/38-regular.wav"],
+        ["leisure", "/ˈliʒɚ/", "./assets/audio/words/39-leisure.wav"],
+        ["potato", "/pəˈteɪtoʊ/", "./assets/audio/words/40-potato.wav"],
+        ["world", "/wɝld/", "./assets/audio/words/41-world.wav"],
+        ["volleyball", "/ˈvɑliˌbɔl/", "./assets/audio/words/42-volleyball.wav"],
+        ["October", "/ɑkˈtoʊbɚ/", "./assets/audio/words/43-october.wav"],
+        ["ask", "/æsk/", "./assets/audio/words/44-ask.wav"],
+        ["6:15", "/sɪks fɪfˈtin/", "./assets/audio/words/45-6-15.wav"],
+        ["trouble", "/ˈtrʌbəl/", "./assets/audio/words/46-trouble.wav"],
+        ["message", "/ˈmɛsɪdʒ/", "./assets/audio/words/47-message.wav"],
+        ["white", "/waɪt/", "./assets/audio/words/48-white.wav"],
+        ["their", "/ðɛr/", "./assets/audio/words/49-their.wav"],
+        ["rich", "/rɪtʃ/", "./assets/audio/words/50-rich.wav"],
+        ["war", "/wɔr/", "./assets/audio/words/51-war.wav"],
+        ["Australia", "/ɔˈstreɪljə/", "./assets/audio/words/52-australia.wav"],
+        ["horse", "/hɔrs/", "./assets/audio/words/53-horse.wav"],
+        ["famous", "/ˈfeɪməs/", "./assets/audio/words/54-famous.wav"],
+        ["shower", "/ˈʃaʊɚ/", "./assets/audio/words/55-shower.wav"],
+        ["together", "/təˈɡɛðɚ/", "./assets/audio/words/56-together.wav"],
+        ["both", "/boʊθ/", "./assets/audio/words/57-both.wav"],
+        ["cabbage", "/ˈkæbɪdʒ/", "./assets/audio/words/58-cabbage.wav"],
+        ["12:30", "/twɛlv ˈθɝti/", "./assets/audio/words/59-12-30.wav"],
+        ["machine", "/məˈʃin/", "./assets/audio/words/60-machine.wav"],
+        ["alive", "/əˈlaɪv/", "./assets/audio/words/61-alive.wav"],
+        ["January", "/ˈdʒænjuˌɛri/", "./assets/audio/words/62-january.wav"],
+        ["holiday", "/ˈhɑləˌdeɪ/", "./assets/audio/words/63-holiday.wav"],
+        ["handsome", "/ˈhænsəm/", "./assets/audio/words/64-handsome.wav"],
+        ["koala", "/koʊˈɑlə/", "./assets/audio/words/65-koala.wav"],
+        ["another", "/əˈnʌðɚ/", "./assets/audio/words/66-another.wav"],
+        ["theater", "/ˈθiətɚ/", "./assets/audio/words/67-theater.wav"],
+        ["Asia", "/ˈeɪʒə/", "./assets/audio/words/68-asia.wav"]
       ];
 
       const phrases = [
@@ -486,6 +568,30 @@
       document.getElementById("wordsList").innerHTML = words.map((item, index) => card(item, index)).join("");
       document.getElementById("phrasesList").innerHTML = phrases.map((item, index) => card(item, index)).join("");
       document.getElementById("sentencesList").innerHTML = sentences.map((item, index) => card(item, index)).join("");
+
+      const lockScreen = document.getElementById("lockScreen");
+      const lockForm = document.getElementById("lockForm");
+      const passwordInput = document.getElementById("passwordInput");
+      const lockError = document.getElementById("lockError");
+      const unlock = () => {
+        document.body.classList.remove("is-locked");
+        lockScreen.classList.add("hidden");
+        sessionStorage.setItem("task1Unlocked", "true");
+      };
+      if (sessionStorage.getItem("task1Unlocked") === "true") {
+        unlock();
+      } else {
+        passwordInput.focus();
+      }
+      lockForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        if (passwordInput.value === "e2026") {
+          unlock();
+          return;
+        }
+        lockError.textContent = "パスワードが違います。";
+        passwordInput.select();
+      });
 
       document.addEventListener("click", (event) => {
         const tab = event.target.closest("[data-tab]");
