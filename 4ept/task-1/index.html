@@ -1,0 +1,512 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>4EPT | 課題1</title>
+    <style>
+      * { box-sizing: border-box; }
+      :root {
+        --ink: #263142;
+        --muted: #667287;
+        --line: rgba(38, 49, 66, 0.12);
+        --paper: #fffdf8;
+        --gold: #f5b84b;
+        --rose: #ff8f82;
+        --green: #76d49a;
+        --blue: #6bc7f0;
+        --shadow: 0 18px 42px rgba(38, 49, 66, 0.12);
+      }
+      body {
+        margin: 0;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at 12% 10%, rgba(245, 184, 75, 0.32), transparent 28%),
+          radial-gradient(circle at 92% 14%, rgba(107, 199, 240, 0.25), transparent 26%),
+          linear-gradient(180deg, #fff8ed 0%, #f8fbff 52%, #fff7ef 100%);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+      .shell {
+        width: min(100%, 430px);
+        min-height: 100vh;
+        margin: 0 auto;
+        background: rgba(255, 255, 255, 0.78);
+        box-shadow: 0 0 70px rgba(38, 49, 66, 0.14);
+      }
+      .hero { padding: 14px 14px 0; }
+      .hero img {
+        width: 100%;
+        display: block;
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+        border-radius: 8px;
+        box-shadow: var(--shadow);
+      }
+      .intro { padding: 18px 18px 12px; }
+      .kicker {
+        margin: 0 0 8px;
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 900;
+        letter-spacing: 0;
+        text-transform: uppercase;
+      }
+      h1 {
+        margin: 0;
+        font-size: 34px;
+        line-height: 1;
+        letter-spacing: 0;
+      }
+      .lead {
+        margin: 12px 0 0;
+        color: #48566a;
+        font-size: 14px;
+        line-height: 1.65;
+        font-weight: 700;
+      }
+      .tabs {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 7px;
+        padding: 10px 14px 12px;
+        position: sticky;
+        top: 0;
+        z-index: 4;
+        background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(255,255,255,0.86));
+        backdrop-filter: blur(14px);
+        border-bottom: 1px solid var(--line);
+      }
+      .tab {
+        min-height: 42px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #fff;
+        color: #596579;
+        font-size: 12px;
+        font-weight: 950;
+        cursor: pointer;
+      }
+      .tab.is-active {
+        border-color: transparent;
+        color: #1f2937;
+        background: linear-gradient(135deg, var(--rose), var(--gold));
+      }
+      .section-title {
+        padding: 18px 14px 8px;
+      }
+      .section-title p {
+        margin: 0 0 4px;
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 900;
+        text-transform: uppercase;
+      }
+      .section-title h2 {
+        margin: 0;
+        font-size: 24px;
+        line-height: 1.1;
+      }
+      .list {
+        display: grid;
+        gap: 12px;
+        padding: 10px 14px 30px;
+      }
+      .card {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.92);
+        box-shadow: 0 14px 30px rgba(38, 49, 66, 0.08);
+        overflow: hidden;
+      }
+      .card-head {
+        display: grid;
+        grid-template-columns: 40px 1fr;
+        gap: 12px;
+        align-items: center;
+        padding: 15px;
+      }
+      .num {
+        width: 40px;
+        height: 40px;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        color: #1f2937;
+        background: linear-gradient(135deg, var(--blue), var(--green));
+        font-size: 14px;
+        font-weight: 950;
+      }
+      .text {
+        margin: 0;
+        font-size: 19px;
+        line-height: 1.25;
+        font-weight: 850;
+      }
+      .body {
+        display: grid;
+        gap: 8px;
+        padding: 0 15px 15px 67px;
+      }
+      .audio-box {
+        display: grid;
+        gap: 9px;
+        padding: 12px;
+        border: 1px solid rgba(38, 49, 66, 0.1);
+        border-radius: 8px;
+        background: #fff;
+      }
+      audio { width: 100%; }
+      .speed-row {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 6px;
+      }
+      .speed-row button {
+        min-height: 34px;
+        border: 1px solid rgba(38, 49, 66, 0.12);
+        border-radius: 8px;
+        background: #fff7ed;
+        color: #4a5668;
+        font-size: 12px;
+        font-weight: 900;
+        cursor: pointer;
+      }
+      .speed-row button.is-active {
+        border-color: transparent;
+        background: linear-gradient(135deg, var(--rose), var(--gold));
+        color: #1f2937;
+      }
+      details {
+        border: 1px solid rgba(38, 49, 66, 0.1);
+        border-radius: 8px;
+        background: #f7fbff;
+        overflow: hidden;
+      }
+      summary {
+        cursor: pointer;
+        list-style: none;
+        padding: 12px 13px;
+        color: #344256;
+        font-size: 13px;
+        font-weight: 900;
+      }
+      summary::-webkit-details-marker { display: none; }
+      summary::after {
+        content: "+";
+        float: right;
+        color: var(--muted);
+        font-weight: 950;
+      }
+      details[open] summary::after { content: "-"; }
+      .detail-body {
+        border-top: 1px solid rgba(38, 49, 66, 0.08);
+        padding: 12px 13px 13px;
+        color: #526072;
+        font-size: 14px;
+        line-height: 1.55;
+        background: rgba(255, 255, 255, 0.62);
+      }
+      .category-chip {
+        display: inline-block;
+        margin-top: 8px;
+        padding: 4px 8px;
+        border-radius: 999px;
+        background: #fff4df;
+        color: #8a5a16;
+        font-size: 11px;
+        font-weight: 900;
+      }
+      .back-top {
+        position: fixed;
+        right: max(12px, calc((100vw - 430px) / 2 + 12px));
+        bottom: 14px;
+        width: 46px;
+        height: 46px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        color: #1f2937;
+        background: linear-gradient(135deg, var(--rose), var(--gold));
+        box-shadow: 0 14px 28px rgba(38, 49, 66, 0.2);
+        text-decoration: none;
+        font-weight: 950;
+      }
+      .hidden { display: none; }
+      footer {
+        padding: 16px 14px 84px;
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 900;
+        text-align: center;
+      }
+      @media (max-width: 360px) {
+        h1 { font-size: 30px; }
+        .text { font-size: 17px; }
+        .body { padding-left: 15px; }
+      }
+    </style>
+  </head>
+  <body id="top">
+    <div class="shell">
+      <header>
+        <figure class="hero">
+          <img src="./assets/ept-4.png" alt="4EPT 課題1">
+        </figure>
+        <section class="intro">
+          <p class="kicker">4EPT Homework</p>
+          <h1>課題1</h1>
+          <p class="lead">Words / Phrases / Sentences をまとめた音読練習ページです。まずは英語だけを見て音読しましょう。その後、音声や発音記号を活用してください。</p>
+        </section>
+      </header>
+      <nav class="tabs" aria-label="課題カテゴリ">
+        <button class="tab is-active" type="button" data-tab="words">WORDS</button>
+        <button class="tab" type="button" data-tab="phrases">PHRASES</button>
+        <button class="tab" type="button" data-tab="sentences">SENTENCES</button>
+      </nav>
+      <main>
+        <section data-panel="words">
+          <div class="section-title">
+            <p>SECTION 03</p>
+            <h2>Words</h2>
+          </div>
+          <div class="list" id="wordsList"></div>
+        </section>
+        <section class="hidden" data-panel="phrases">
+          <div class="section-title">
+            <p>Lesson 07</p>
+            <h2>Phrases</h2>
+          </div>
+          <div class="list" id="phrasesList"></div>
+        </section>
+        <section class="hidden" data-panel="sentences">
+          <div class="section-title">
+            <p>Lesson 07</p>
+            <h2>Sentences</h2>
+          </div>
+          <div class="list" id="sentencesList"></div>
+        </section>
+      </main>
+      <footer>SOUND DESIGN LAB</footer>
+    </div>
+    <a class="back-top" href="#top" aria-label="一番上へ戻る">↑</a>
+    <script>
+      const words = [
+        ["banana", "/bəˈnænə/", "../hw-4/assets/audio/words/01-banana.wav"],
+        ["health", "/hɛlθ/", "../hw-4/assets/audio/words/02-health.wav"],
+        ["girl", "/ɡɝl/", "../hw-4/assets/audio/words/03-girl.wav"],
+        ["November", "/noʊˈvɛmbɚ/", "../hw-4/assets/audio/words/04-november.wav"],
+        ["elementary", "/ˌɛləˈmɛntri/ /ˌɛləˈmɛntəri/", "../hw-4/assets/audio/words/05-elementary.wav"],
+        ["angry", "/ˈæŋɡri/", "../hw-4/assets/audio/words/06-angry.wav"],
+        ["travel", "/ˈtrævəl/", "../hw-4/assets/audio/words/07-travel.wav"],
+        ["5:40", "/faɪv ˈfɔrti/", "../hw-4/assets/audio/words/08-5-40.wav"],
+        ["Thursday", "/ˈθɝzdeɪ/", "../hw-4/assets/audio/words/09-thursday.wav"],
+        ["orange", "/ˈɔrɪndʒ/", "../hw-4/assets/audio/words/10-orange.wav"],
+        ["guitar", "/ɡɪˈtɑr/", "../hw-4/assets/audio/words/11-guitar.wav"],
+        ["zero", "/ˈzɪroʊ/", "../hw-4/assets/audio/words/12-zero.wav"],
+        ["question", "/ˈkwɛstʃən/", "../hw-4/assets/audio/words/13-question.wav"],
+        ["New York", "/nu jɔrk/", "../hw-4/assets/audio/words/14-new-york.wav"],
+        ["dark", "/dɑrk/", "../hw-4/assets/audio/words/15-dark.wav"],
+        ["April", "/ˈeɪprəl/", "../hw-4/assets/audio/words/16-april.wav"],
+        ["Saturday", "/ˈsætɚdeɪ/", "../hw-4/assets/audio/words/17-saturday.wav"],
+        ["voice", "/vɔɪs/", "../hw-4/assets/audio/words/18-voice.wav"],
+        ["manager", "/ˈmænɪdʒɚ/", "../hw-4/assets/audio/words/19-manager.wav"],
+        ["delicious", "/dɪˈlɪʃəs/", "../hw-4/assets/audio/words/20-delicious.wav"],
+        ["purple", "/ˈpɝpəl/", "../hw-4/assets/audio/words/21-purple.wav"],
+        ["English", "/ˈɪŋɡlɪʃ/", "../hw-4/assets/audio/words/22-english.wav"],
+        ["chicken", "/ˈtʃɪkɪn/", "../hw-4/assets/audio/words/23-chicken.wav"],
+        ["6:30", "/sɪks ˈθɝti/", "../hw-4/assets/audio/words/24-6-30.wav"],
+        ["better", "/ˈbɛtɚ/", "../hw-4/assets/audio/words/25-better.wav"],
+        ["exit", "/ˈɛɡsɪt/ /ˈɛɡzɪt/", "../hw-4/assets/audio/words/26-exit.wav"],
+        ["sorry", "/ˈsɑri/", "../hw-4/assets/audio/words/27-sorry.wav"],
+        ["themselves", "/ðəmˈsɛlvz/", "../hw-4/assets/audio/words/28-themselves.wav"],
+        ["cookie", "/ˈkʊki/", "../hw-4/assets/audio/words/29-cookie.wav"],
+        ["Japan", "/dʒəˈpæn/", "../hw-4/assets/audio/words/30-japan.wav"],
+        ["Tuesday", "/ˈtuzdeɪ/", "../hw-4/assets/audio/words/31-tuesday.wav"],
+        ["February", "/ˈfɛbjuˌɛri/", "../hw-4/assets/audio/words/32-february.wav"],
+        ["hungry", "/ˈhʌŋɡri/", "../hw-4/assets/audio/words/33-hungry.wav"],
+        ["theme", "/θim/", "../hw-4/assets/audio/words/34-theme.wav"],
+        ["yellow", "/ˈjɛloʊ/", "../hw-4/assets/audio/words/35-yellow.wav"],
+        ["1:40", "/wʌn ˈfɔrti/", "../hw-4/assets/audio/words/36-1-40.wav"],
+        ["excuse", "/ɪkˈskjus/ /ɪkˈskjuz/", "../hw-4/assets/audio/words/37-excuse.wav"],
+        ["regular", "/ˈrɛɡjəlɚ/", "../hw-4/assets/audio/words/38-regular.wav"],
+        ["leisure", "/ˈliʒɚ/", "../hw-4/assets/audio/words/39-leisure.wav"],
+        ["potato", "/pəˈteɪtoʊ/", "../hw-4/assets/audio/words/40-potato.wav"],
+        ["world", "/wɝld/", "../hw-4/assets/audio/words/41-world.wav"],
+        ["volleyball", "/ˈvɑliˌbɔl/", "../hw-4/assets/audio/words/42-volleyball.wav"],
+        ["October", "/ɑkˈtoʊbɚ/", "../hw-4/assets/audio/words/43-october.wav"],
+        ["ask", "/æsk/", "../hw-4/assets/audio/words/44-ask.wav"],
+        ["6:15", "/sɪks fɪfˈtin/", "../hw-4/assets/audio/words/45-6-15.wav"],
+        ["trouble", "/ˈtrʌbəl/", "../hw-4/assets/audio/words/46-trouble.wav"],
+        ["message", "/ˈmɛsɪdʒ/", "../hw-4/assets/audio/words/47-message.wav"],
+        ["white", "/waɪt/", "../hw-4/assets/audio/words/48-white.wav"],
+        ["their", "/ðɛr/", "../hw-4/assets/audio/words/49-their.wav"],
+        ["rich", "/rɪtʃ/", "../hw-4/assets/audio/words/50-rich.wav"],
+        ["war", "/wɔr/", "../hw-4/assets/audio/words/51-war.wav"],
+        ["Australia", "/ɔˈstreɪljə/", "../hw-4/assets/audio/words/52-australia.wav"],
+        ["horse", "/hɔrs/", "../hw-4/assets/audio/words/53-horse.wav"],
+        ["famous", "/ˈfeɪməs/", "../hw-4/assets/audio/words/54-famous.wav"],
+        ["shower", "/ˈʃaʊɚ/", "../hw-4/assets/audio/words/55-shower.wav"],
+        ["together", "/təˈɡɛðɚ/", "../hw-4/assets/audio/words/56-together.wav"],
+        ["both", "/boʊθ/", "../hw-4/assets/audio/words/57-both.wav"],
+        ["cabbage", "/ˈkæbɪdʒ/", "../hw-4/assets/audio/words/58-cabbage.wav"],
+        ["12:30", "/twɛlv ˈθɝti/", "../hw-4/assets/audio/words/59-12-30.wav"],
+        ["machine", "/məˈʃin/", "../hw-4/assets/audio/words/60-machine.wav"],
+        ["alive", "/əˈlaɪv/", "../hw-4/assets/audio/words/61-alive.wav"],
+        ["January", "/ˈdʒænjuˌɛri/", "../hw-4/assets/audio/words/62-january.wav"],
+        ["holiday", "/ˈhɑləˌdeɪ/", "../hw-4/assets/audio/words/63-holiday.wav"],
+        ["handsome", "/ˈhænsəm/", "../hw-4/assets/audio/words/64-handsome.wav"],
+        ["koala", "/koʊˈɑlə/", "../hw-4/assets/audio/words/65-koala.wav"],
+        ["another", "/əˈnʌðɚ/", "../hw-4/assets/audio/words/66-another.wav"],
+        ["theater", "/ˈθiətɚ/", "../hw-4/assets/audio/words/67-theater.wav"],
+        ["Asia", "/ˈeɪʒə/", "../hw-4/assets/audio/words/68-asia.wav"]
+      ];
+
+      const phrases = [
+        ["go for a walk", "/ɡoʊ fər ə wɔk/", "散歩に行く", "../../sdl-sps2026/lesson07/assets/audio/go-for-a-walk.mp3", "SET 1"],
+        ["a glass of water", "/ə ɡlæs əv ˈwɔt̬ɚ/", "コップ一杯の水", "../../sdl-sps2026/lesson07/assets/audio/a-glass-of-water.mp3", "SET 1"],
+        ["at the airport", "/ət ði ˈɛrˌpɔrt/", "空港で", "../../sdl-sps2026/lesson07/assets/audio/at-the-airport.mp3", "SET 1"],
+        ["by the way", "/baɪ ðə weɪ/", "ところで", "../../sdl-sps2026/lesson07/assets/audio/by-the-way.mp3", "SET 1"],
+        ["in the morning", "/ɪn ðə ˈmɔrnɪŋ/", "朝に", "../../sdl-sps2026/lesson07/assets/audio/in-the-morning.mp3", "SET 1"],
+        ["one of them", "/ˈwʌn əv ðɛm/", "彼らのうちの一人 / それらのうちの一つ", "../../sdl-sps2026/lesson07/assets/audio/one-of-them.mp3", "SET 1"],
+        ["a police officer", "/ə pəˈlis ˈɔfəsɚ/", "警察官", "../../sdl-sps2026/lesson07/assets/audio/a-police-officer.mp3", "SET 1"],
+        ["at the library", "/ət ðə ˈlaɪˌbrɛri/", "図書館で", "../../sdl-sps2026/lesson07/assets/audio/at-the-library.mp3", "SET 1"],
+        ["just a little thing", "/dʒʌst ə ˈlɪt̬əl θɪŋ/", "ほんの小さなこと", "../../sdl-sps2026/lesson07/assets/audio/just-a-little-thing.mp3", "SET 1"],
+        ["answering machine", "/ˈænsərɪŋ məˌʃin/", "留守番電話", "../../sdl-sps2026/lesson07/assets/audio/answering-machine.mp3", "SET 2"],
+        ["tomorrow morning", "/təˈmɑroʊ ˈmɔrnɪŋ/", "明日の朝", "../../sdl-sps2026/lesson07/assets/audio/tomorrow-morning.mp3", "SET 2"],
+        ["personal computer", "/ˈpɝsənəl kəmˈpjut̬ɚ/", "パソコン", "../../sdl-sps2026/lesson07/assets/audio/personal-computer.mp3", "SET 2"],
+        ["New Year holidays", "/ˌnu ˈjɪr ˈhɑlədeɪz/", "年末年始の休暇", "../../sdl-sps2026/lesson07/assets/audio/new-year-holidays.mp3", "SET 2"],
+        ["a phone call", "/ə foʊn kɔl/", "電話", "../../sdl-sps2026/lesson07/assets/audio/a-phone-call.mp3", "SET 2"],
+        ["grocery shopping", "/ˈɡroʊsəri ˈʃɑpɪŋ/", "食料品の買い物", "../../sdl-sps2026/lesson07/assets/audio/grocery-shopping.mp3", "SET 2"],
+        ["a little girl", "/ə ˈlɪt̬əl ɡɝl/", "小さな女の子", "../../sdl-sps2026/lesson07/assets/audio/a-little-girl.mp3", "SET 2"],
+        ["special performance", "/ˈspɛʃəl pɚˈfɔrməns/", "特別公演", "../../sdl-sps2026/lesson07/assets/audio/special-performance.mp3", "SET 2"],
+        ["the international airport", "/ði ˌɪntɚˈnæʃənəl ˈɛrˌpɔrt/", "国際空港", "../../sdl-sps2026/lesson07/assets/audio/the-international-airport.mp3", "SET 2"],
+        ["have a good day", "/hæv ə ɡʊd deɪ/", "よい一日を", "../../sdl-sps2026/lesson07/assets/audio/have-a-good-day.mp3", "SET 3"],
+        ["back and forth", "/bæk ən fɔrθ/", "行ったり来たり / 前後に", "../../sdl-sps2026/lesson07/assets/audio/back-and-forth.mp3", "SET 3"],
+        ["beautiful flowers", "/ˈbjut̬əfəl ˈflaʊɚz/", "美しい花々", "../../sdl-sps2026/lesson07/assets/audio/beautiful-flowers.mp3", "SET 3"],
+        ["boys and girls", "/bɔɪz ən ɡɝlz/", "男の子たちと女の子たち", "../../sdl-sps2026/lesson07/assets/audio/boys-and-girls.mp3", "SET 3"],
+        ["looks good", "/lʊks ɡʊd/", "よさそう", "../../sdl-sps2026/lesson07/assets/audio/looks-good.mp3", "SET 3"],
+        ["man and woman", "/mæn ən ˈwʊmən/", "男性と女性", "../../sdl-sps2026/lesson07/assets/audio/man-and-woman.mp3", "SET 3"],
+        ["fantastic view", "/fænˈtæstɪk vju/", "素晴らしい眺め", "../../sdl-sps2026/lesson07/assets/audio/fantastic-view.mp3", "SET 3"],
+        ["black and white picture", "/blæk ən waɪt ˈpɪktʃɚ/", "白黒写真", "../../sdl-sps2026/lesson07/assets/audio/black-and-white-picture.mp3", "SET 3"],
+        ["a severe storm", "/ə səˈvɪr stɔrm/", "激しい嵐", "../../sdl-sps2026/lesson07/assets/audio/a-severe-storm.mp3", "SET 3"],
+        ["Christmas holiday", "/ˈkrɪsməs ˈhɑlədeɪ/", "クリスマス休暇", "../../sdl-sps2026/lesson07/assets/audio/christmas-holiday.mp3", "SET 4"],
+        ["at my office", "/ət maɪ ˈɑfəs/", "私のオフィスで", "../../sdl-sps2026/lesson07/assets/audio/at-my-office.mp3", "SET 4"],
+        ["open your heart", "/ˈoʊpən jʊr hɑrt/", "心を開く", "../../sdl-sps2026/lesson07/assets/audio/open-your-heart.mp3", "SET 4"],
+        ["pretty women", "/ˈprɪt̬i ˈwɪm.ɪn/", "きれいな女性たち", "../../sdl-sps2026/lesson07/assets/audio/pretty-women.mp3", "SET 4"],
+        ["heavy rain and strong wind", "/ˈhɛvi reɪn ən strɔŋ wɪnd/", "激しい雨と強い風", "../../sdl-sps2026/lesson07/assets/audio/heavy-rain-and-strong-wind.mp3", "SET 4"],
+        ["graduate from high school", "/ˈɡrædʒuˌeɪt frəm haɪ skul/", "高校を卒業する", "../../sdl-sps2026/lesson07/assets/audio/graduate-from-high-school.mp3", "SET 4"],
+        ["family relationship", "/ˈfæməli rɪˈleɪʃənˌʃɪp/", "家族関係", "../../sdl-sps2026/lesson07/assets/audio/family-relationship.mp3", "SET 4"],
+        ["do the homework", "/du ðə ˈhoʊmˌwɝk/", "宿題をする", "../../sdl-sps2026/lesson07/assets/audio/do-the-homework.mp3", "SET 4"],
+        ["pass the exam", "/pæs ði ɪɡˈzæm/", "試験に合格する", "../../sdl-sps2026/lesson07/assets/audio/pass-the-exam.mp3", "SET 4"],
+        ["as soon as possible", "/əz sun əz ˈpɑsəbəl/", "できるだけ早く", "../../sdl-sps2026/lesson07/assets/audio/as-soon-as-possible.mp3", "MIX 1"],
+        ["top of the mountain", "/tɑp əv ðə ˈmaʊntən/", "山の頂上", "../../sdl-sps2026/lesson07/assets/audio/top-of-the-mountain.mp3", "MIX 1"],
+        ["make an appointment", "/meɪk ən əˈpɔɪntmənt/", "予約をする", "../../sdl-sps2026/lesson07/assets/audio/make-an-appointment.mp3", "MIX 1"],
+        ["the broken window", "/ðə ˈbroʊkən ˈwɪndoʊ/", "壊れた窓", "../../sdl-sps2026/lesson07/assets/audio/the-broken-window.mp3", "MIX 1"],
+        ["sightseeing tour", "/ˈsaɪtˌsiɪŋ tʊr/ ( /tɔr/でもOK）", "観光ツアー", "../../sdl-sps2026/lesson07/assets/audio/sightseeing-tour.mp3", "MIX 2"],
+        ["personal question", "/ˈpɝsənəl ˈkwɛstʃən/", "個人的な質問", "../../sdl-sps2026/lesson07/assets/audio/personal-question.mp3", "MIX 2"],
+        ["draw a picture", "/drɔ ə ˈpɪktʃɚ/", "絵を描く", "../../sdl-sps2026/lesson07/assets/audio/draw-a-picture.mp3", "MIX 2"],
+        ["try it on", "/traɪ ɪt ɑn/", "試着する", "../../sdl-sps2026/lesson07/assets/audio/try-it-on.mp3", "MIX 2"],
+        ["send an Email", "/sɛnd ən ˈiˌmeɪl/", "メールを送る", "../../sdl-sps2026/lesson07/assets/audio/send-an-email.mp3", "MIX 2"]
+      ];
+
+      const sentences = [
+        ["Why don’t we have Chinese food for dinner?", "/waɪ doʊnt wi hæv ˌtʃaɪˈniz fud fər ˈdɪnɚ/", "夕食に中華料理を食べない？", "../../sdl-sps2026/lesson07/assets/sentence-audio/why-don-t-we-have-chinese-food-for-dinner.mp3", "SET 1"],
+        ["Chinese food? I’m not in the mood for that.", "/ˌtʃaɪˈniz fud/ /aɪm nɑt ɪn ðə mud fɚ ðæt/", "中華料理？今はそういう気分じゃないな。", "../../sdl-sps2026/lesson07/assets/sentence-audio/chinese-food-i-m-not-in-the-mood-for-that.mp3", "SET 1"],
+        ["Then, do you have anything in mind?", "/ðɛn du ju hæv ˈɛniˌθɪŋ ɪn maɪnd/", "じゃあ、何か考えているものはある？", "../../sdl-sps2026/lesson07/assets/sentence-audio/then-do-you-have-anything-in-mind.mp3", "SET 1"],
+        ["What kind of bag are you looking for?", "/wʌt kaɪnd əv bæɡ ɑr ju ˈlʊkɪŋ fɔr/", "どんなバッグを探しているの？", "../../sdl-sps2026/lesson07/assets/sentence-audio/what-kind-of-bag-are-you-looking-for.mp3", "SET 1"],
+        ["I’m looking for a small black one that I can use every day.", "/aɪm ˈlʊkɪŋ fɔr ə smɔl blæk wʌn ðət aɪ kən juz ˈɛvri deɪ/", "毎日使える小さな黒いものを探しています。", "../../sdl-sps2026/lesson07/assets/sentence-audio/i-m-looking-for-a-small-black-one-that-i-can-use-every-day.mp3", "SET 1"],
+        ["I’m home!", "/aɪm hoʊm/", "ただいま！", "../../sdl-sps2026/lesson07/assets/sentence-audio/i-m-home.mp3", "SET 2"],
+        ["Hey, how was your day?", "/heɪ haʊ wəz jʊr deɪ/", "ねえ、今日はどうだった？", "../../sdl-sps2026/lesson07/assets/sentence-audio/hey-how-was-your-day.mp3", "SET 2"],
+        ["It was great, I ran into John during lunch.", "/ɪt wəz ɡreɪt aɪ ræn ˈɪntu dʒɑn ˈdʊrɪŋ lʌntʃ/", "よかったよ。昼食中にジョンに偶然会ったんだ。", "../../sdl-sps2026/lesson07/assets/sentence-audio/it-was-great-i-ran-into-john-during-lunch.mp3", "SET 2"],
+        ["Oh, you did?", "/oʊ ju dɪd/", "あ、そうなの？", "../../sdl-sps2026/lesson07/assets/sentence-audio/oh-you-did.mp3", "SET 2"],
+        ["I’ll have a glass of water.", "/aɪl hæv ə ɡlæs əv ˈwɔt̬ɚ/", "水を一杯もらうね。", "../../sdl-sps2026/lesson07/assets/sentence-audio/i-ll-have-a-glass-of-water.mp3", "SET 2"],
+        ["Sure, no problem.", "/ʃʊr noʊ ˈprɑbləm/", "もちろん、いいよ。", "../../sdl-sps2026/lesson07/assets/sentence-audio/sure-no-problem.mp3", "SET 2"],
+        ["Would you like anything to drink?", "/wʊd ju laɪk ˈɛniˌθɪŋ tə drɪŋk/", "何か飲み物はいかがですか。", "../../sdl-sps2026/lesson07/assets/sentence-audio/would-you-like-anything-to-drink.mp3", "SET 3"],
+        ["Yes, what do you have?", "/jɛs wʌt du ju hæv/", "はい、何がありますか。", "../../sdl-sps2026/lesson07/assets/sentence-audio/yes-what-do-you-have.mp3", "SET 3"],
+        ["We have soda, water, and orange juice.", "/wi hæv ˈsoʊdə ˈwɔt̬ɚ ənd ˈɔrɪndʒ dʒus/", "ソーダ、水、オレンジジュースがあります。", "../../sdl-sps2026/lesson07/assets/sentence-audio/we-have-soda-water-and-orange-juice.mp3", "SET 3"],
+        ["How about ordering pizza delivery?", "/haʊ əˈbaʊt ˈɔrdɚɪŋ ˈpitsə dɪˈlɪvɚi/", "ピザの配達を頼むのはどう？", "../../sdl-sps2026/lesson07/assets/sentence-audio/how-about-ordering-pizza-delivery.mp3", "SET 3"],
+        ["Not bad at all.", "/nɑt bæd ət ɔl/", "全然悪くないね。", "../../sdl-sps2026/lesson07/assets/sentence-audio/not-bad-at-all.mp3", "SET 3"],
+        ["How’s the weather tomorrow?", "/haʊz ðə ˈwɛðɚ təˈmɑroʊ/", "明日の天気はどう？", "../../sdl-sps2026/lesson07/assets/sentence-audio/how-s-the-weather-tomorrow.mp3", "SET 4"],
+        ["The weather news said it’s going to be rainy.", "/ðə ˈwɛðɚ nuz sɛd ɪts ˈɡoʊɪŋ tə bi ˈreɪni/", "天気予報では雨になると言っていたよ。", "../../sdl-sps2026/lesson07/assets/sentence-audio/the-weather-news-said-it-s-going-to-be-rainy.mp3", "SET 4"],
+        ["I haven’t seen John in a long time! How is he doing?", "/aɪ ˈhævənt sin dʒɑn ɪn ə lɔŋ taɪm/ /haʊ ɪz hi ˈduɪŋ/", "ジョンに長い間会っていないな！彼は元気？", "../../sdl-sps2026/lesson07/assets/sentence-audio/i-haven-t-seen-john-in-a-long-time-how-is-he-doing.mp3", "SET 4"],
+        ["He is doing well. He just moved into a new apartment in Boston.", "/hi ɪz ˈduɪŋ wɛl/ /hi dʒʌst muvd ˈɪntu ə nu əˈpɑrtmənt ɪn ˈbɔstən/", "元気だよ。ボストンの新しいアパートに引っ越したばかりだよ。", "../../sdl-sps2026/lesson07/assets/sentence-audio/he-is-doing-well-he-just-moved-into-a-new-apartment-in-boston.mp3", "SET 4"],
+        ["What do you want for your birthday this year?", "/wʌt du ju wɑnt fər jʊr ˈbɝθˌdeɪ ðɪs jɪr/", "今年の誕生日には何が欲しい？", "../../sdl-sps2026/lesson07/assets/sentence-audio/what-do-you-want-for-your-birthday-this-year.mp3", "MIX 1"],
+        ["Let me think···· I would like to get a new bag.", "/lɛt mi θɪŋk/ /aɪ wʊd laɪk tə ɡɛt ə nu bæɡ/", "考えさせて……新しいバッグが欲しいな。", "../../sdl-sps2026/lesson07/assets/sentence-audio/let-me-think-i-would-like-to-get-a-new-bag.mp3", "MIX 1"],
+        ["That sounds really nice.", "/ðæt saʊndz ˈrɪəli naɪs/", "それはとてもいいね。", "../../sdl-sps2026/lesson07/assets/sentence-audio/that-sounds-really-nice.mp3", "MIX 1"],
+        ["Oh, no!", "/oʊ noʊ/", "あ、まずい！", "../../sdl-sps2026/lesson07/assets/sentence-audio/oh-no.mp3", "MIX 2"],
+        ["What’s wrong?", "/wʌts rɔŋ/", "どうしたの？", "../../sdl-sps2026/lesson07/assets/sentence-audio/what-s-wrong.mp3", "MIX 2"],
+        ["I’m supposed to go on a picnic tomorrow!", "/aɪm səˈpoʊzd tə ɡoʊ ɑn ə ˈpɪknɪk təˈmɑroʊ/", "明日ピクニックに行く予定だったんだ！", "../../sdl-sps2026/lesson07/assets/sentence-audio/i-m-supposed-to-go-on-a-picnic-tomorrow.mp3", "MIX 2"]
+      ];
+
+      function audioBox(src) {
+        if (!src) return "";
+        return `
+          <div class="audio-box">
+            <audio controls preload="metadata" src="${src}"></audio>
+            <div class="speed-row" aria-label="再生速度">
+              <button type="button" data-speed="0.25">0.25</button>
+              <button type="button" data-speed="0.5">0.5</button>
+              <button type="button" data-speed="0.75">0.75</button>
+              <button type="button" class="is-active" data-speed="1">1.0</button>
+            </div>
+          </div>
+        `;
+      }
+
+      function card(item, index, options = {}) {
+        const [text, ipa, japanese, src, group] = item;
+        const no = String(index + 1).padStart(2, "0");
+        const showJapanese = Boolean(japanese);
+        return `
+          <article class="card">
+            <div class="card-head">
+              <span class="num">${no}</span>
+              <div>
+                <p class="text">${text}</p>
+                ${group ? `<span class="category-chip">${group}</span>` : ""}
+              </div>
+            </div>
+            <div class="body">
+              ${audioBox(src)}
+              <details>
+                <summary>発音記号を確認する</summary>
+                <div class="detail-body">${ipa || "発音記号は後ほど追加します。"}</div>
+              </details>
+              ${showJapanese ? `
+                <details>
+                  <summary>日本語を確認する</summary>
+                  <div class="detail-body">${japanese}</div>
+                </details>
+              ` : ""}
+            </div>
+          </article>
+        `;
+      }
+
+      document.getElementById("wordsList").innerHTML = words.map((item, index) => card(item, index)).join("");
+      document.getElementById("phrasesList").innerHTML = phrases.map((item, index) => card(item, index)).join("");
+      document.getElementById("sentencesList").innerHTML = sentences.map((item, index) => card(item, index)).join("");
+
+      document.addEventListener("click", (event) => {
+        const tab = event.target.closest("[data-tab]");
+        if (tab) {
+          document.querySelectorAll("[data-tab]").forEach((item) => item.classList.toggle("is-active", item === tab));
+          document.querySelectorAll("[data-panel]").forEach((panel) => {
+            panel.classList.toggle("hidden", panel.dataset.panel !== tab.dataset.tab);
+          });
+          window.scrollTo({ top: 0, behavior: "smooth" });
+          return;
+        }
+
+        const button = event.target.closest("[data-speed]");
+        if (!button) return;
+        const box = button.closest(".audio-box");
+        const audio = box.querySelector("audio");
+        audio.playbackRate = Number(button.dataset.speed);
+        box.querySelectorAll("[data-speed]").forEach((item) => {
+          item.classList.toggle("is-active", item === button);
+        });
+      });
+    </script>
+  </body>
+</html>
