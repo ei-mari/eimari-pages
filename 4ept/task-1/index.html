@@ -232,77 +232,6 @@
         font-weight: 950;
       }
       .hidden { display: none; }
-      .lock-screen {
-        position: fixed;
-        inset: 0;
-        z-index: 20;
-        display: grid;
-        place-items: center;
-        padding: 20px;
-        background:
-          radial-gradient(circle at 18% 16%, rgba(245, 184, 75, 0.34), transparent 26%),
-          radial-gradient(circle at 86% 18%, rgba(107, 199, 240, 0.28), transparent 24%),
-          linear-gradient(180deg, #fff8ed 0%, #f8fbff 100%);
-      }
-      .lock-card {
-        width: min(100%, 360px);
-        padding: 22px;
-        border: 1px solid rgba(38, 49, 66, 0.12);
-        border-radius: 8px;
-        background: rgba(255, 255, 255, 0.94);
-        box-shadow: var(--shadow);
-      }
-      .lock-card h2 {
-        margin: 0 0 8px;
-        font-size: 24px;
-        line-height: 1.15;
-      }
-      .lock-card p {
-        margin: 0 0 16px;
-        color: var(--muted);
-        font-size: 13px;
-        line-height: 1.55;
-        font-weight: 800;
-      }
-      .lock-form {
-        display: grid;
-        gap: 10px;
-      }
-      .lock-form input {
-        width: 100%;
-        min-height: 46px;
-        padding: 0 13px;
-        border: 1px solid rgba(38, 49, 66, 0.18);
-        border-radius: 8px;
-        color: var(--ink);
-        background: #fff;
-        font: inherit;
-        font-size: 18px;
-        font-weight: 800;
-      }
-      .lock-form button {
-        min-height: 46px;
-        border: 0;
-        border-radius: 8px;
-        color: #1f2937;
-        background: linear-gradient(135deg, var(--rose), var(--gold));
-        font: inherit;
-        font-size: 14px;
-        font-weight: 950;
-        cursor: pointer;
-      }
-      .lock-error {
-        min-height: 18px;
-        color: #d33f49;
-        font-size: 12px;
-        font-weight: 900;
-      }
-      body.is-locked .shell,
-      body.is-locked .back-top {
-        filter: blur(5px);
-        pointer-events: none;
-        user-select: none;
-      }
       footer {
         padding: 16px 14px 84px;
         color: var(--muted);
@@ -317,18 +246,7 @@
       }
     </style>
   </head>
-  <body id="top" class="is-locked">
-    <div class="lock-screen" id="lockScreen" role="dialog" aria-modal="true" aria-labelledby="lockTitle">
-      <div class="lock-card">
-        <h2 id="lockTitle">Password</h2>
-        <p>4EPT 課題ページを開くにはパスワードを入力してください。</p>
-        <form class="lock-form" id="lockForm">
-          <input id="passwordInput" type="password" autocomplete="current-password" inputmode="text" aria-label="パスワード">
-          <button type="submit">OPEN</button>
-          <div class="lock-error" id="lockError" aria-live="polite"></div>
-        </form>
-      </div>
-    </div>
+  <body id="top">
     <div class="shell">
       <header>
         <figure class="hero">
@@ -568,30 +486,6 @@
       document.getElementById("wordsList").innerHTML = words.map((item, index) => card(item, index)).join("");
       document.getElementById("phrasesList").innerHTML = phrases.map((item, index) => card(item, index)).join("");
       document.getElementById("sentencesList").innerHTML = sentences.map((item, index) => card(item, index)).join("");
-
-      const lockScreen = document.getElementById("lockScreen");
-      const lockForm = document.getElementById("lockForm");
-      const passwordInput = document.getElementById("passwordInput");
-      const lockError = document.getElementById("lockError");
-      const unlock = () => {
-        document.body.classList.remove("is-locked");
-        lockScreen.classList.add("hidden");
-        sessionStorage.setItem("task1Unlocked", "true");
-      };
-      if (sessionStorage.getItem("task1Unlocked") === "true") {
-        unlock();
-      } else {
-        passwordInput.focus();
-      }
-      lockForm.addEventListener("submit", (event) => {
-        event.preventDefault();
-        if (passwordInput.value === "e2026") {
-          unlock();
-          return;
-        }
-        lockError.textContent = "パスワードが違います。";
-        passwordInput.select();
-      });
 
       document.addEventListener("click", (event) => {
         const tab = event.target.closest("[data-tab]");
