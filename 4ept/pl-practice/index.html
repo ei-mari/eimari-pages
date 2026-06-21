@@ -1,0 +1,1245 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>プライベートレッスン直前課題 | EPT Practice</title>
+    <meta name="description" content="プライベートレッスン前に確認するEPT発音課題です。" />
+    <style>
+      :root {
+        --bg: #fff7ed;
+        --paper: #ffffff;
+        --ink: #261407;
+        --muted: #765d47;
+        --accent: #f26a16;
+        --accent-dark: #aa3f08;
+        --soft: #fff1df;
+        --warn: #c22617;
+        --line: rgba(242, 106, 22, 0.2);
+        --shadow: 0 18px 54px rgba(141, 64, 12, 0.13);
+        --radius: 14px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        padding-bottom: 134px;
+        background:
+          radial-gradient(circle at 100% 0%, rgba(255, 181, 57, 0.22), transparent 34%),
+          radial-gradient(circle at 0% 100%, rgba(242, 106, 22, 0.15), transparent 34%),
+          linear-gradient(180deg, #fffaf3 0%, var(--bg) 100%);
+        color: var(--ink);
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif;
+      }
+
+      button {
+        font: inherit;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin: 0;
+      }
+
+      .shell {
+        width: min(100%, 540px);
+        min-height: 100vh;
+        margin: 0 auto;
+        background: rgba(255, 255, 255, 0.94);
+        box-shadow: 0 18px 70px rgba(141, 64, 12, 0.14);
+      }
+
+      header,
+      main,
+      footer {
+        padding: 16px;
+      }
+
+      header {
+        display: grid;
+        gap: 14px;
+        padding-top: 18px;
+      }
+
+      .intro,
+      .section,
+      .notice {
+        display: grid;
+        gap: 14px;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: rgba(255, 255, 255, 0.96);
+        box-shadow: var(--shadow);
+      }
+
+      .intro,
+      .notice {
+        padding: 16px;
+      }
+
+      .section {
+        padding: 18px;
+      }
+
+      .kicker {
+        width: max-content;
+        max-width: 100%;
+        padding: 6px 11px;
+        border: 1px solid rgba(242, 106, 22, 0.24);
+        border-radius: 999px;
+        background: var(--soft);
+        color: var(--accent-dark);
+        font-size: 0.72rem;
+        font-weight: 900;
+        letter-spacing: 0.08em;
+      }
+
+      h1 {
+        font-size: clamp(1.8rem, 8vw, 2.45rem);
+        line-height: 1.08;
+      }
+
+      h2 {
+        font-size: 1.22rem;
+        line-height: 1.3;
+      }
+
+      h3 {
+        font-size: 1rem;
+      }
+
+      .lead,
+      .note,
+      .notice li {
+        color: var(--muted);
+        font-size: 0.92rem;
+        line-height: 1.75;
+      }
+
+      .notice {
+        border-left: 5px solid var(--accent);
+        background: #fffaf4;
+      }
+
+      .notice strong,
+      .mark {
+        color: var(--accent-dark);
+        font-weight: 900;
+      }
+
+      .notice ul {
+        display: grid;
+        gap: 8px;
+        margin: 0;
+        padding-left: 1.2rem;
+      }
+
+      .warning {
+        border-color: rgba(194, 38, 23, 0.26);
+        border-left-color: var(--warn);
+        background: #fff7f3;
+      }
+
+      .warning .kicker {
+        border-color: rgba(194, 38, 23, 0.22);
+        background: #fff0ed;
+        color: var(--warn);
+      }
+
+      .checksheet {
+        display: grid;
+        gap: 12px;
+        padding: 16px;
+        border: 1px solid rgba(242, 106, 22, 0.24);
+        border-radius: var(--radius);
+        background: linear-gradient(180deg, #fffdf9, #fff7ee);
+        box-shadow: var(--shadow);
+      }
+
+      .check-grid {
+        display: grid;
+        gap: 9px;
+      }
+
+      .check-row {
+        display: grid;
+        grid-template-columns: 1fr auto auto auto;
+        gap: 8px;
+        align-items: center;
+        padding: 10px;
+        border: 1px solid rgba(242, 106, 22, 0.16);
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.86);
+      }
+
+      .check-name {
+        display: grid;
+        gap: 2px;
+        min-width: 0;
+      }
+
+      .check-name strong {
+        font-size: 0.94rem;
+        line-height: 1.35;
+      }
+
+      .check-name span {
+        color: var(--muted);
+        font-size: 0.78rem;
+        font-weight: 800;
+      }
+
+      #checksheetPanel .check-name span {
+        display: none;
+      }
+
+      #checksheetPanel .check-row.is-ipa-open .check-name span {
+        display: block;
+      }
+
+      .ipa-toggle {
+        min-height: 34px;
+        padding: 0 12px;
+        border: 1px solid rgba(242, 106, 22, 0.18);
+        border-radius: 999px;
+        background: #fff8ef;
+        color: var(--accent-dark);
+        font-size: 0.76rem;
+        font-weight: 900;
+        white-space: nowrap;
+      }
+
+      .check-row.is-ipa-open .ipa-toggle {
+        border-color: rgba(170, 63, 8, 0.24);
+        background: #fff1df;
+        color: var(--accent-dark);
+      }
+
+      .check-action {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+        min-width: 34px;
+        min-height: 34px;
+        color: var(--accent-dark);
+        font-size: 0.82rem;
+        font-weight: 900;
+      }
+
+      .check-action input {
+        width: 22px;
+        height: 22px;
+        margin: 0;
+        accent-color: var(--accent);
+      }
+
+      .check-action.is-alert {
+        color: var(--warn);
+      }
+
+      .check-action.is-alert input {
+        accent-color: var(--warn);
+      }
+
+      .tab-switch {
+        position: fixed;
+        left: max(12px, calc((100vw - 540px) / 2 + 12px));
+        right: max(12px, calc((100vw - 540px) / 2 + 12px));
+        bottom: 12px;
+        z-index: 20;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+        padding: 8px;
+        border: 1px solid rgba(242, 106, 22, 0.18);
+        border-radius: 999px;
+        background: #fff8ef;
+        box-shadow: 0 16px 36px rgba(141, 64, 12, 0.18);
+      }
+
+      .tab-button {
+        min-height: 44px;
+        border: 0;
+        border-radius: 999px;
+        background: transparent;
+        color: var(--accent-dark);
+        font-weight: 900;
+      }
+
+      .tab-button.is-active {
+        background: var(--accent);
+        color: #fff;
+        box-shadow: 0 10px 20px rgba(242, 106, 22, 0.2);
+      }
+
+      .section-jump {
+        position: fixed;
+        left: max(12px, calc((100vw - 540px) / 2 + 12px));
+        right: max(12px, calc((100vw - 540px) / 2 + 12px));
+        bottom: 76px;
+        z-index: 19;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 6px;
+        padding: 7px;
+        border: 1px solid rgba(242, 106, 22, 0.14);
+        border-radius: 14px;
+        background: rgba(255, 250, 245, 0.96);
+        box-shadow: 0 12px 28px rgba(141, 64, 12, 0.13);
+      }
+
+      .section-jump[hidden] {
+        display: none;
+      }
+
+      .section-jump a {
+        display: grid;
+        place-items: center;
+        min-height: 36px;
+        border-radius: 10px;
+        background: #fff;
+        color: var(--accent-dark);
+        font-size: 0.74rem;
+        font-weight: 900;
+        text-decoration: none;
+      }
+
+      .tab-panel[hidden] {
+        display: none;
+      }
+
+      .check-summary {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 8px;
+      }
+
+      .check-tools {
+        display: flex;
+        justify-content: flex-end;
+      }
+
+      .hide-ipa-button {
+        min-height: 38px;
+        padding: 0 14px;
+        border: 1px solid rgba(242, 106, 22, 0.18);
+        border-radius: 999px;
+        background: #fff8ef;
+        color: var(--accent-dark);
+        font-size: 0.82rem;
+        font-weight: 900;
+      }
+
+      .show-request-button {
+        width: fit-content;
+        min-height: 38px;
+        padding: 0 14px;
+        border: 1px solid rgba(242, 106, 22, 0.18);
+        border-radius: 999px;
+        background: #fff8ef;
+        color: var(--accent-dark);
+        font-size: 0.82rem;
+        font-weight: 900;
+      }
+
+      .summary-card {
+        display: grid;
+        gap: 2px;
+        padding: 11px 9px;
+        border: 1px solid rgba(242, 106, 22, 0.16);
+        border-radius: 10px;
+        background: #fffaf5;
+        text-align: center;
+      }
+
+      .summary-card strong {
+        color: var(--accent-dark);
+        font-size: 1.1rem;
+      }
+
+      .summary-card span {
+        color: var(--muted);
+        font-size: 0.72rem;
+        font-weight: 900;
+      }
+
+      .check-section-list {
+        display: grid;
+        gap: 14px;
+      }
+
+      .gate-lock {
+        display: grid;
+        gap: 10px;
+        margin-top: 16px;
+        padding: 14px;
+        border: 1px dashed rgba(194, 38, 23, 0.28);
+        border-radius: 12px;
+        background: #fff7f3;
+        color: var(--warn);
+        font-weight: 900;
+        line-height: 1.65;
+      }
+
+      .practice-content[hidden],
+      .quick-nav[hidden],
+      .gate-lock[hidden],
+      .pl-info[hidden],
+      #importantGate[hidden] {
+        display: none;
+      }
+
+      .pl-info {
+        margin-top: 18px;
+      }
+
+      .quick-nav {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+        margin: 18px 0 22px;
+      }
+
+      .quick-nav a {
+        display: grid;
+        min-height: 58px;
+        align-content: center;
+        gap: 6px;
+        padding: 16px 12px;
+        border: 1px solid rgba(242, 106, 22, 0.16);
+        border-radius: 10px;
+        background: #fffaf5;
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .quick-contact {
+        display: grid;
+        min-height: 58px;
+        align-content: center;
+        gap: 3px;
+        padding: 16px 12px;
+        border: 1px solid rgba(242, 106, 22, 0.16);
+        border-radius: 10px;
+        background: #fffaf5;
+        color: var(--muted);
+        font-size: 0.82rem;
+        font-weight: 900;
+        line-height: 1.45;
+      }
+
+      .nav-label {
+        color: var(--accent-dark);
+        font-size: 0.74rem;
+        font-weight: 900;
+      }
+
+      .nav-title {
+        font-size: 0.9rem;
+        font-weight: 900;
+      }
+
+      main {
+        display: grid;
+        gap: 18px;
+        padding-bottom: 42px;
+      }
+
+      .section-head {
+        display: grid;
+        gap: 6px;
+      }
+
+      .section-title-row {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 12px;
+      }
+
+      .contact-note {
+        flex: 0 0 auto;
+        padding: 8px 10px;
+        border: 1px solid rgba(242, 106, 22, 0.18);
+        border-radius: 10px;
+        background: #fff8ef;
+        color: var(--muted);
+        font-size: 0.74rem;
+        font-weight: 900;
+        line-height: 1.35;
+        text-align: center;
+      }
+
+      .attention-note {
+        padding: 11px 12px;
+        border-left: 4px solid var(--warn);
+        border-radius: 10px;
+        background: #fff7f3;
+        color: var(--muted);
+        font-size: 0.9rem;
+        font-weight: 800;
+        line-height: 1.7;
+      }
+
+      #phrases,
+      #pairs {
+        margin-top: 18px;
+      }
+
+      .section-num {
+        color: var(--accent-dark);
+        font-size: 0.78rem;
+        font-weight: 900;
+        letter-spacing: 0.08em;
+      }
+
+      .card-list {
+        display: grid;
+        gap: 12px;
+      }
+
+      .practice-card {
+        display: grid;
+        gap: 12px;
+        padding: 14px;
+        border: 1px solid rgba(242, 106, 22, 0.18);
+        border-radius: 12px;
+        background: #fffdfa;
+      }
+
+      .card-top {
+        display: grid;
+        grid-template-columns: 44px 1fr;
+        gap: 12px;
+        align-items: center;
+      }
+
+      .number {
+        display: grid;
+        place-items: center;
+        min-height: 44px;
+        border-radius: 10px;
+        background: var(--soft);
+        color: var(--accent-dark);
+        font-weight: 900;
+      }
+
+      .item-text {
+        font-size: 1.05rem;
+        font-weight: 900;
+        line-height: 1.45;
+      }
+
+      .audio-box {
+        display: grid;
+        gap: 9px;
+        padding: 10px;
+        border: 1px solid rgba(242, 106, 22, 0.14);
+        border-radius: 10px;
+        background: #fff8ef;
+      }
+
+      audio {
+        width: 100%;
+      }
+
+      .speed-row {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 7px;
+      }
+
+      .speed-button {
+        min-width: 0;
+        padding: 8px 5px;
+        border: 1px solid rgba(242, 106, 22, 0.22);
+        border-radius: 999px;
+        background: #fff;
+        color: var(--accent-dark);
+        font-size: 0.82rem;
+        font-weight: 900;
+      }
+
+      .speed-button.is-active {
+        background: var(--accent);
+        color: #fff;
+      }
+
+      .missing-audio {
+        padding: 10px;
+        border: 1px dashed rgba(242, 106, 22, 0.3);
+        border-radius: 10px;
+        color: var(--muted);
+        font-size: 0.88rem;
+        font-weight: 800;
+      }
+
+      details {
+        border: 1px solid rgba(242, 106, 22, 0.18);
+        border-radius: 10px;
+        background: #fff;
+        overflow: hidden;
+      }
+
+      summary {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+        padding: 13px 14px;
+        cursor: pointer;
+        list-style: none;
+        color: var(--ink);
+        font-weight: 900;
+      }
+
+      summary::-webkit-details-marker {
+        display: none;
+      }
+
+      summary::after {
+        content: "+";
+        display: grid;
+        place-items: center;
+        flex: 0 0 auto;
+        width: 30px;
+        height: 30px;
+        border: 1px solid rgba(242, 106, 22, 0.26);
+        border-radius: 999px;
+        background: #fff8ef;
+        color: var(--accent-dark);
+        font-size: 1.2rem;
+      }
+
+      details[open] summary::after {
+        content: "-";
+      }
+
+      .detail-body {
+        display: grid;
+        gap: 10px;
+        padding: 0 14px 14px;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      .ipa-table {
+        width: 100%;
+        border-collapse: collapse;
+        overflow: hidden;
+        border-radius: 10px;
+        background: #fff;
+      }
+
+      .ipa-table th,
+      .ipa-table td {
+        padding: 11px 10px;
+        border-bottom: 1px solid rgba(42, 22, 7, 0.08);
+        text-align: left;
+        vertical-align: top;
+      }
+
+      .ipa-table th {
+        background: #fff1df;
+        color: var(--accent-dark);
+        font-size: 0.82rem;
+      }
+
+      .ipa-table tr:last-child td {
+        border-bottom: 0;
+      }
+
+      .top-button {
+        position: fixed;
+        right: max(14px, calc((100vw - 540px) / 2 + 14px));
+        bottom: 142px;
+        z-index: 10;
+        display: grid;
+        place-items: center;
+        width: 44px;
+        height: 44px;
+        border: 0;
+        border-radius: 999px;
+        background: var(--accent);
+        color: #fff;
+        box-shadow: 0 12px 28px rgba(141, 64, 12, 0.24);
+        font-size: 1.25rem;
+        font-weight: 900;
+      }
+
+      @media (max-width: 360px) {
+        header,
+        main,
+        footer {
+          padding-inline: 12px;
+        }
+
+        .section,
+        .intro,
+        .notice {
+          padding: 14px;
+        }
+
+        .quick-nav,
+        .check-summary {
+          grid-template-columns: 1fr;
+        }
+
+        .check-row {
+          grid-template-columns: 1fr auto auto;
+        }
+
+        .ipa-toggle {
+          grid-column: 1 / -1;
+          width: 100%;
+          min-height: 42px;
+          border-radius: 12px;
+          font-size: 0.82rem;
+          letter-spacing: 0;
+        }
+
+        .section-title-row {
+          display: grid;
+        }
+
+        .contact-note {
+          width: fit-content;
+        }
+
+        .card-top {
+          grid-template-columns: 38px 1fr;
+        }
+
+        .number {
+          min-height: 38px;
+        }
+
+        .section-jump a {
+          font-size: 0.7rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="shell">
+      <header>
+        <section class="intro">
+          <p class="kicker">プライベートレッスン PRACTICE</p>
+          <h1>プライベートレッスン直前確認課題</h1>
+          <p class="lead">まず発音記号を見ずに読み、その後で答えを確認しましょう。自分が知らなかった発音や、勘違いしていた発音を見つけることが目的です。</p>
+        </section>
+
+        <nav class="tab-switch" aria-label="page tabs">
+          <button class="tab-button is-active" type="button" data-tab-target="practicePanel">Practice</button>
+          <button class="tab-button" type="button" data-tab-target="checksheetPanel">Checksheet</button>
+        </nav>
+
+        <nav class="section-jump" aria-label="section shortcuts">
+          <a href="#words" data-jump-section="words">Section 03</a>
+          <a href="#phrases" data-jump-section="phrases">Section 05</a>
+          <a href="#pairs" data-jump-section="pairs">Section 02</a>
+        </nav>
+
+      </header>
+
+      <main>
+        <div class="tab-panel" id="practicePanel">
+          <section class="notice warning" id="importantGate">
+            <p class="kicker">IMPORTANT</p>
+            <h2>えいまりからの大切なお願い</h2>
+            <p class="note">えいまりからの大切なお願いです。全てご覧ください！全てにチェックが入ると、Practiceの課題が表示されます。</p>
+            <div class="check-grid">
+              <div class="check-row">
+                <div class="check-name"><strong>この課題を終わらせてからプライベートレッスンに参加します。</strong><span>課題完了がプライベートレッスン参加前の準備です。レッスンを最大限に活用するため、準備をしっかりと行います。</span></div>
+                <label class="check-action"><input type="checkbox" data-gate-check="finish-before-pl">OK</label>
+              </div>
+              <div class="check-row">
+                <div class="check-name"><strong>プライベートレッスンには本番のテストと同じように臨みます。</strong><span>プライベートレッスンは本番の試験を想定した形式で実施します。テストを受ける感覚で当日に臨みます。</span></div>
+                <label class="check-action"><input type="checkbox" data-gate-check="real-test-style">OK</label>
+              </div>
+              <div class="check-row">
+                <div class="check-name"><strong>プライベートレッスンでは、発音記号が表示されないことに同意します。</strong><span>発音記号のヒントなしでも読めるように、覚えてきてください。今回頑張ることで、今後の英語学習にも大きなプラスとなるはずです。</span></div>
+                <label class="check-action"><input type="checkbox" data-gate-check="no-ipa-hint">OK</label>
+              </div>
+              <div class="check-row">
+                <div class="check-name"><strong>発音記号を覚えていない状態で来ると、レッスンの時間が減ることを理解しました。</strong><span>「発音を矯正する」時間が減り、「どの発音記号を覚えていないか」のクイズの時間になってしまいます。その場合、添削をする時間が少なくなるため、発音記号は最大限に覚えて参加してください。</span></div>
+                <label class="check-action"><input type="checkbox" data-gate-check="time-warning">OK</label>
+              </div>
+              <div class="check-row">
+                <div class="check-name"><strong>プライベートレッスンで登場する単語は、普段の会話で使われる頻度の高い単語で覚えると役に立つと理解しました。</strong><span>なるべく多く記憶し、美しい発音で言えるように頑張りましょう。</span></div>
+                <label class="check-action"><input type="checkbox" data-gate-check="useful-words">OK</label>
+              </div>
+            </div>
+          </section>
+
+          <div class="gate-lock" id="gateLock">上のボックスを全てチェックすると、問題が表示されます。</div>
+
+          <div class="practice-content" id="practiceContent" hidden>
+          <section class="notice pl-info">
+            <p class="kicker">はじめに</p>
+            <p class="lead">チェックありがとうございました。プライベートレッスンでは以下のいずれかの問題が出題されます。</p>
+            <ul>
+              <li>単語 <strong>Section 3</strong></li>
+              <li>フレーズ <strong>Section 5</strong></li>
+              <li>ミニマルペア <strong>Section 2</strong></li>
+            </ul>
+            <p class="note">このうちどれがプライベートレッスンでチェックされるかはわかりません。発音記号を頭に入れてきてください。プライベートレッスン後、もう一度レッスンが必要であると判断された場合は、EPT試験の前にもう一度レッスンを受けてもらうか、特別課題に取り組んでもらいます。</p>
+            <button class="show-request-button" type="button" data-show-important>もう一度お願いを見る</button>
+          </section>
+
+          <nav class="quick-nav" aria-label="sections">
+            <a href="#words"><span class="nav-label">SECTION 03</span><span class="nav-title">単語</span></a>
+            <a href="#phrases"><span class="nav-label">SECTION 05</span><span class="nav-title">フレーズ</span></a>
+            <a href="#pairs"><span class="nav-label">SECTION 02</span><span class="nav-title">ミニマルペア</span></a>
+            <div class="quick-contact">ご質問はいつでも<br>Slack / LINEにて</div>
+          </nav>
+
+        <section class="section" id="words">
+          <div class="section-head">
+            <p class="section-num">SECTION 03</p>
+            <h2>単語</h2>
+            <p class="note">強勢や発音記号を意識して練習しましょう。まず発音記号を見ずに読み、必要に応じて音声を聞いた後、答えを確認してください。</p>
+            <p class="attention-note">レッスンではどれが登場するかは不明です。全ての単語で発音記号が思い浮かぶよう、練習をしてください。Checksheetもぜひご活用くださいね。</p>
+          </div>
+          <div class="card-list" id="wordList"></div>
+        </section>
+
+        <section class="section" id="phrases">
+          <div class="section-head">
+            <p class="section-num">SECTION 05</p>
+            <h2>フレーズ</h2>
+            <p class="note">フレーズ単位で自然に読めるように練習しましょう。発音記号は最後に確認してください。</p>
+          </div>
+          <div class="card-list" id="phraseList"></div>
+        </section>
+
+        <section class="section" id="pairs">
+          <div class="section-head">
+            <p class="section-num">SECTION 02</p>
+            <h2>ミニマルペア</h2>
+            <p class="note">似ている音のペアを発音記号なしで区別して読めるようにしましょう。</p>
+          </div>
+          <div class="card-list" id="pairList"></div>
+        </section>
+
+          </div>
+        </div>
+
+        <div class="tab-panel" id="checksheetPanel" hidden>
+          <section class="checksheet" aria-label="発音記号チェックシート">
+            <p class="kicker">CHECK SHEET</p>
+            <h2>一つずつチェックしよう</h2>
+            <p class="note">発音記号を見ずに読めたら <strong class="mark">OK</strong>、まだ怪しいものは <strong class="mark">!</strong> を押してください。</p>
+            <div class="check-summary" id="checkSummary"></div>
+            <div class="check-tools"><button class="hide-ipa-button" type="button" data-hide-all-ipa>発音記号を全て隠す</button></div>
+            <div class="check-section-list" id="checksheetList"></div>
+          </section>
+        </div>
+      </main>
+
+    </div>
+
+    <button class="top-button" type="button" data-top aria-label="一番上へ">↑</button>
+
+    <script>
+      const pairs = [
+        ["think", "sink"], ["farm", "form"], ["bye", "buy"], ["color", "collar"], ["teach", "peach"], ["play", "pray"], ["hear", "here"], ["low", "law"], ["much", "match"], ["V", "B"], ["boat", "bought"], ["wait", "wet"], ["block", "black"], ["hurt", "heart"], ["end", "and"],
+        ["ship", "sheep"], ["very", "berry"], ["sea", "see"], ["pain", "pen"], ["rock", "lock"], ["hard", "heard"], ["path", "pass"], ["D", "B"], ["walk", "work"], ["not", "nut"], ["off", "of"], ["pull", "pool"], ["fun", "fan"], ["bowl", "ball"],
+        ["wrong", "long"], ["map", "mop"], ["win", "wing"], ["shell", "sell"], ["been", "bean"], ["age", "edge"], ["fear", "hear"], ["couch", "coach"], ["said", "sad"], ["learn", "lean"],
+        ["best", "vest"], ["seat", "sheet"], ["no", "know"], ["robber", "rubber"], ["all", "owl"], ["shot", "shout"], ["pour", "poor"], ["G", "Z"], ["dirty", "duty"], ["coat", "court"], ["sick", "thick"], ["fry", "fly"], ["she", "sea"],
+        ["far", "fur"], ["light", "right"], ["slow", "throw"], ["force", "fourth"], ["test", "taste"], ["T", "P"]
+      ];
+
+      const pairAudio = {
+        "think|sink": "../hw-4/assets/audio/mov-pairs/01-think-sink.wav",
+        "farm|form": "../hw-4/assets/audio/mov-pairs/02-farm-form.wav",
+        "bye|buy": "../hw-4/assets/audio/mov-pairs/03-bye-buy.wav",
+        "color|collar": "../hw-2/assets/audio/21-color-collar.m4a",
+        "teach|peach": "../hw-4/assets/audio/mov-pairs/04-teach-peach.wav",
+        "play|pray": "../hw-4/assets/audio/mov-pairs/05-play-pray.wav",
+        "hear|here": "../hw-4/assets/audio/mov-pairs/06-hear-here.wav",
+        "low|law": "../hw-4/assets/audio/mov-pairs/07-low-law.wav",
+        "much|match": "../hw-4/assets/audio/mov-pairs/08-much-match.wav",
+        "V|B": "../hw-4/assets/audio/mov-pairs/09-v-b.wav",
+        "boat|bought": "../hw-4/assets/audio/mov-pairs/10-boat-bought.wav",
+        "wait|wet": "../hw-4/assets/audio/mov-pairs/11-wait-wet.wav",
+        "hurt|heart": "../hw-4/assets/audio/mov-pairs/12-hurt-heart.wav",
+        "end|and": "../hw-4/assets/audio/mov-pairs/13-end-and.wav",
+        "ship|sheep": "../hw-4/assets/audio/mov-pairs/14-ship-sheep.wav",
+        "block|black": "../hw-2/assets/audio/22-block-black.m4a",
+        "very|berry": "../hw-2/assets/audio/07-very-berry.m4a",
+        "sea|see": "../hw-2/assets/audio/27-sea-see.m4a",
+        "pain|pen": "../hw-4/assets/audio/mov-pairs/15-pain-pen.wav",
+        "rock|lock": "../hw-4/assets/audio/mov-pairs/16-rock-lock.wav",
+        "path|pass": "../hw-2/assets/audio/09-path-pass.m4a",
+        "D|B": "../hw-4/assets/audio/mov-pairs/17-d-b.wav",
+        "walk|work": "../hw-2/assets/audio/05-walk-work.m4a",
+        "not|nut": "../hw-4/assets/audio/mov-pairs/18-not-nut.wav",
+        "off|of": "../hw-4/assets/audio/off-of.wav",
+        "pull|pool": "../hw-2/assets/audio/06-pull-pool.m4a",
+        "fun|fan": "../hw-4/assets/audio/mov-pairs/19-fun-fan.wav",
+        "bowl|ball": "../hw-4/assets/audio/bowl-ball.wav",
+        "wrong|long": "../hw-2/assets/audio/01-wrong-long.m4a",
+        "hard|heard": "../hw-2/assets/audio/04-hard-heard.m4a",
+        "map|mop": "../hw-1/assets/audio/map-mop.mp3",
+        "win|wing": "../hw-1/assets/audio/win-wing.mp3",
+        "shell|sell": "../hw-4/assets/audio/shell-sell.wav",
+        "been|bean": "../hw-2/assets/audio/02-been-bean.m4a",
+        "age|edge": "../hw-4/assets/audio/mov-pairs/20-age-edge.wav",
+        "fear|hear": "../hw-2/assets/audio/03-fear-hear.m4a",
+        "couch|coach": "../hw-1/assets/audio/couch-coach.mp3",
+        "said|sad": "../hw-1/assets/audio/said-sad.mp3",
+        "learn|lean": "../hw-2/assets/audio/08-learn-lean.m4a",
+        "best|vest": "../hw-4/assets/audio/mov-pairs/21-best-vest.wav",
+        "seat|sheet": "../hw-4/assets/audio/mov-pairs/22-seat-sheet.wav",
+        "no|know": "../hw-4/assets/audio/mov-pairs/23-no-know.wav",
+        "robber|rubber": "../hw-4/assets/audio/robber-rubber.wav",
+        "all|owl": "../hw-4/assets/audio/mov-pairs/24-all-owl.wav",
+        "shot|shout": "../hw-4/assets/audio/mov-pairs/25-shot-shout.wav",
+        "G|Z": "../hw-4/assets/audio/mov-pairs/26-g-z.wav",
+        "dirty|duty": "../hw-4/assets/audio/mov-pairs/27-dirty-duty.wav",
+        "coat|court": "../hw-2/assets/audio/41-coat-court.m4a",
+        "pour|poor": "../hw-4/assets/audio/mov-pairs/new/pour-poor.wav",
+        "sick|thick": "../hw-4/assets/audio/mov-pairs/28-sick-thick.wav",
+        "fry|fly": "../hw-4/assets/audio/mov-pairs/29-fry-fly.wav",
+        "she|sea": "../hw-4/assets/audio/mov-pairs/30-she-sea.wav",
+        "far|fur": "../hw-4/assets/audio/mov-pairs/31-far-fur.wav",
+        "light|right": "../hw-4/assets/audio/mov-pairs/32-light-right.wav",
+        "slow|throw": "../hw-4/assets/audio/mov-pairs/33-slow-throw.wav",
+        "force|fourth": "../hw-4/assets/audio/mov-pairs/34-force-fourth.wav",
+        "test|taste": "../hw-4/assets/audio/mov-pairs/35-test-taste.wav",
+        "T|P": "../hw-4/assets/audio/mov-pairs/36-t-p.wav"
+      };
+
+      const ipa = {
+        think: "/θɪŋk/", sink: "/sɪŋk/", farm: "/fɑrm/", form: "/fɔrm/", bye: "/baɪ/", buy: "/baɪ/", color: "/ˈkʌlɚ/", collar: "/ˈkɑlɚ/", teach: "/titʃ/", peach: "/pitʃ/", play: "/pleɪ/", pray: "/preɪ/", hear: "/hɪr/", here: "/hɪr/", low: "/loʊ/", law: "/lɔ/", much: "/mʌtʃ/", match: "/mætʃ/", V: "/vi/", B: "/bi/", boat: "/boʊt/", bought: "/bɔt/ /bɑt/", wait: "/weɪt/", wet: "/wɛt/", block: "/blɑk/", black: "/blæk/", hurt: "/hɝt/", heart: "/hɑrt/", heard: "/hɝd/", hard: "/hɑrd/", end: "/ɛnd/", and: "/ænd/ /ənd/", ship: "/ʃɪp/", sheep: "/ʃip/", very: "/ˈvɛri/", berry: "/ˈbɛri/", sea: "/si/", see: "/si/", pain: "/peɪn/", pen: "/pɛn/", rock: "/rɑk/", lock: "/lɑk/", path: "/pæθ/", pass: "/pæs/", D: "/di/", work: "/wɝk/", walk: "/wɔk/ /wɑk/", not: "/nɑt/", nut: "/nʌt/", off: "/ɔf/ /ɑf/", of: "/ʌv/ /əv/", pull: "/pʊl/", pool: "/pul/", fun: "/fʌn/", fan: "/fæn/", bowl: "/boʊl/", ball: "/bɔl/", wrong: "/rɔŋ/", long: "/lɔŋ/", map: "/mæp/", mop: "/mɑp/", win: "/wɪn/", wing: "/wɪŋ/", shell: "/ʃɛl/", sell: "/sɛl/", been: "/bɪn/ /bɛn/", bean: "/bin/", age: "/eɪdʒ/", edge: "/ɛdʒ/", fear: "/fɪr/", couch: "/kaʊtʃ/", coach: "/koʊtʃ/", said: "/sɛd/", sad: "/sæd/", learn: "/lɝn/", lean: "/lin/", best: "/bɛst/", vest: "/vɛst/", seat: "/sit/", sheet: "/ʃit/", no: "/noʊ/", know: "/noʊ/", robber: "/ˈrɑbɚ/", rubber: "/ˈrʌbɚ/", all: "/ɔl/", owl: "/aʊl/", shot: "/ʃɑt/", shout: "/ʃaʊt/", G: "/dʒi/", Z: "/zi/", dirty: "/ˈdɝti/", duty: "/ˈduti/", coat: "/koʊt/", court: "/kɔrt/", pour: "/pɔr/", poor: "/pʊr/ /pɔr/", sick: "/sɪk/", thick: "/θɪk/", fry: "/fraɪ/", fly: "/flaɪ/", she: "/ʃi/", far: "/fɑr/", fur: "/fɝ/", light: "/laɪt/", right: "/raɪt/", slow: "/sloʊ/", throw: "/θroʊ/", force: "/fɔrs/", fourth: "/fɔrθ/", test: "/tɛst/", taste: "/teɪst/", T: "/ti/", P: "/pi/"
+      };
+
+      const words = ["banana","health","girl","November","elementary","angry","travel","5:40","Thursday","orange","guitar","zero","question","New York","dark","April","Saturday","voice","manager","delicious","purple","English","chicken","6:30","better","exit","sorry","themselves","cookie","Japan","Tuesday","February","hungry","theme","yellow","1:40","excuse","regular","leisure","potato","world","volleyball","October","ask","6:15","trouble","message","white","their","rich","war","Australia","horse","famous","shower","together","both","cabbage","12:30","machine","alive","January","holiday","handsome","koala","another","theater","Asia"];
+
+      const wordAudio = {
+        banana: "../hw-4/assets/audio/words/01-banana.mp3", health: "../hw-4/assets/audio/words/02-health.mp3", girl: "../hw-4/assets/audio/words/03-girl.mp3", November: "../hw-4/assets/audio/words/04-november.mp3", elementary: "../hw-4/assets/audio/words/05-elementary.mp3", angry: "../hw-4/assets/audio/words/06-angry.mp3", travel: "../hw-4/assets/audio/words/07-travel.mp3", "5:40": "../hw-4/assets/audio/words/08-5-40.mp3", Thursday: "../hw-4/assets/audio/words/09-thursday.mp3", orange: "../hw-4/assets/audio/words/10-orange.mp3", guitar: "../hw-4/assets/audio/words/11-guitar.mp3", zero: "../hw-4/assets/audio/words/12-zero.mp3", question: "../hw-4/assets/audio/words/13-question.mp3", "New York": "../hw-4/assets/audio/words/14-new-york.mp3", dark: "../hw-4/assets/audio/words/15-dark.mp3", April: "../hw-4/assets/audio/words/16-april.mp3", Saturday: "../hw-4/assets/audio/words/17-Saturday.mp3", voice: "../hw-4/assets/audio/words/18-voice.mp3", manager: "../hw-4/assets/audio/words/19-manager.mp3", delicious: "../hw-4/assets/audio/words/20-delicious.mp3", purple: "../hw-4/assets/audio/words/21-purple.mp3", English: "../hw-4/assets/audio/words/22-english.mp3", chicken: "../hw-4/assets/audio/words/23-chicken.mp3", "6:30": "../hw-4/assets/audio/words/24-six-thirty.mp3", better: "../hw-4/assets/audio/words/25-better.mp3", exit: "../hw-4/assets/audio/words/26-exit.mp3", sorry: "../hw-4/assets/audio/words/27-sorry.mp3", themselves: "../hw-4/assets/audio/words/28-themselves.mp3", cookie: "../hw-4/assets/audio/words/29-cookie.mp3", Japan: "../hw-4/assets/audio/words/30-Japan.mp3", Tuesday: "../hw-4/assets/audio/words/31-tuesday.mp3", February: "../hw-4/assets/audio/words/32-february.mp3", hungry: "../hw-4/assets/audio/words/33-hungry.mp3", theme: "../hw-4/assets/audio/words/34-theme.mp3", yellow: "../hw-4/assets/audio/words/35-yellow.mp3", "1:40": "../hw-4/assets/audio/words/36-one-forty.mp3", excuse: "../hw-4/assets/audio/words/37-excuse.mp3", regular: "../hw-4/assets/audio/words/38-regular.mp3", leisure: "../hw-4/assets/audio/words/39-leisure.mp3", potato: "../hw-4/assets/audio/words/40-potato.mp3", world: "../hw-4/assets/audio/words/41-world.mp3", volleyball: "../hw-4/assets/audio/words/42-volleyball.mp3", October: "../hw-4/assets/audio/words/43-october.mp3", ask: "../hw-4/assets/audio/words/44-ask.mp3", "6:15": "../hw-4/assets/audio/words/45-6-15.mp3", trouble: "../hw-4/assets/audio/words/46-trouble.mp3", message: "../hw-4/assets/audio/words/47-message.mp3", white: "../hw-4/assets/audio/words/48-white.mp3", their: "../hw-4/assets/audio/words/49-their.mp3", rich: "../hw-4/assets/audio/words/50-rich.mp3", war: "../hw-4/assets/audio/words/51-war.mp3", Australia: "../hw-4/assets/audio/words/52-australia.mp3", horse: "../hw-4/assets/audio/words/53-horse.mp3", famous: "../hw-4/assets/audio/words/54-famous.mp3", shower: "../hw-4/assets/audio/words/55-shower.mp3", together: "../hw-4/assets/audio/words/56-together.mp3", both: "../hw-4/assets/audio/words/57-both.mp3", cabbage: "../hw-4/assets/audio/words/58-cabbage.mp3", "12:30": "../hw-4/assets/audio/words/59-12-30.mp3", machine: "../hw-4/assets/audio/words/60-machine.mp3", alive: "../hw-4/assets/audio/words/61-alive.mp3", January: "../hw-4/assets/audio/words/62-january.mp3", holiday: "../hw-4/assets/audio/words/63-holiday.mp3", handsome: "../hw-4/assets/audio/words/64-handsome.mp3", koala: "../hw-4/assets/audio/words/65-koala.mp3", another: "../hw-4/assets/audio/words/66-another.mp3", theater: "../hw-4/assets/audio/words/67-theater.mp3", Asia: "../hw-4/assets/audio/words/68-Asia.mp3"
+      };
+
+      const wordIpa = {
+        banana: "/bəˈnænə/", health: "/hɛlθ/", girl: "/ɡɝl/", November: "/noʊˈvɛmbɚ/", elementary: "/ˌɛləˈmɛntri/ /ˌɛləˈmɛntəri/", angry: "/ˈæŋɡri/", travel: "/ˈtrævəl/", "5:40": "/faɪv ˈfɔrti/", Thursday: "/ˈθɝzdeɪ/", orange: "/ˈɔrɪndʒ/", guitar: "/ɡɪˈtɑr/", zero: "/ˈzɪroʊ/", question: "/ˈkwɛstʃən/", "New York": "/nu jɔrk/", dark: "/dɑrk/", April: "/ˈeɪprəl/", Saturday: "/ˈsætɚdeɪ/", voice: "/vɔɪs/", manager: "/ˈmænɪdʒɚ/", delicious: "/dɪˈlɪʃəs/", purple: "/ˈpɝpəl/", English: "/ˈɪŋɡlɪʃ/", chicken: "/ˈtʃɪkɪn/", "6:30": "/sɪks ˈθɝti/", better: "/ˈbɛtɚ/", exit: "/ˈɛɡsɪt/ /ˈɛɡzɪt/", sorry: "/ˈsɑri/", themselves: "/ðəmˈsɛlvz/", cookie: "/ˈkʊki/", Japan: "/dʒəˈpæn/", Tuesday: "/ˈtuzdeɪ/", February: "/ˈfɛbjuˌɛri/", hungry: "/ˈhʌŋɡri/", theme: "/θim/", yellow: "/ˈjɛloʊ/", "1:40": "/wʌn ˈfɔrti/", excuse: "/ɪkˈskjus/ /ɪkˈskjuz/", regular: "/ˈrɛɡjəlɚ/", leisure: "/ˈliʒɚ/", potato: "/pəˈteɪtoʊ/", world: "/wɝld/", volleyball: "/ˈvɑliˌbɔl/", October: "/ɑkˈtoʊbɚ/", ask: "/æsk/", "6:15": "/sɪks fɪfˈtin/", trouble: "/ˈtrʌbəl/", message: "/ˈmɛsɪdʒ/", white: "/waɪt/", their: "/ðɛr/", rich: "/rɪtʃ/", war: "/wɔr/", Australia: "/ɔˈstreɪljə/", horse: "/hɔrs/", famous: "/ˈfeɪməs/", shower: "/ˈʃaʊɚ/", together: "/təˈɡɛðɚ/", both: "/boʊθ/", cabbage: "/ˈkæbɪdʒ/", "12:30": "/twɛlv ˈθɝti/", machine: "/məˈʃin/", alive: "/əˈlaɪv/", January: "/ˈdʒænjuˌɛri/", holiday: "/ˈhɑləˌdeɪ/", handsome: "/ˈhænsəm/", koala: "/koʊˈɑlə/", another: "/əˈnʌðɚ/", theater: "/ˈθiətɚ/", Asia: "/ˈeɪʒə/"
+      };
+
+      const wordJa = {
+        banana: "バナナ", health: "健康", girl: "女の子", November: "11月", elementary: "初歩の / 小学校の", angry: "怒っている", travel: "旅行する / 旅行", "5:40": "5時40分", Thursday: "木曜日", orange: "オレンジ", guitar: "ギター", zero: "ゼロ", question: "質問", "New York": "ニューヨーク", dark: "暗い", April: "4月", Saturday: "土曜日", voice: "声", manager: "マネージャー / 管理者", delicious: "おいしい", purple: "紫", English: "英語 / 英語の", chicken: "鶏肉 / にわとり", "6:30": "6時30分", better: "より良い", exit: "出口 / 出る", sorry: "ごめんなさい / 残念な", themselves: "彼ら自身 / それら自身", cookie: "クッキー", Japan: "日本", Tuesday: "火曜日", February: "2月", hungry: "お腹が空いた", theme: "テーマ", yellow: "黄色", "1:40": "1時40分", excuse: "言い訳 / 許す", regular: "普通の / 定期的な", leisure: "余暇", potato: "じゃがいも", world: "世界", volleyball: "バレーボール", October: "10月", ask: "尋ねる / 頼む", "6:15": "6時15分", trouble: "問題 / 困難", message: "メッセージ", white: "白", their: "彼らの / それらの", rich: "裕福な / 豊かな", war: "戦争", Australia: "オーストラリア", horse: "馬", famous: "有名な", shower: "シャワー", together: "一緒に", both: "両方", cabbage: "キャベツ", "12:30": "12時30分", machine: "機械", alive: "生きている", January: "1月", holiday: "休暇 / 祝日", handsome: "ハンサムな", koala: "コアラ", another: "もう一つの / 別の", theater: "劇場 / 映画館", Asia: "アジア"
+      };
+
+      const phrases = ["go for a walk","as soon as possible","answering machine","a glass of water","tomorrow morning","have a good day","top of the mountain","at my office","Christmas holiday","back and forth","at the airport","make an appointment","by the way","personal computer","boys and girls","open your heart","beautiful flowers","New Year holidays","a phone call","the broken window","in the morning","looks good","pretty women","heavy rain and strong wind","sightseeing tour","a little girl","graduate from high school","grocery shopping","personal question","family relationship","one of them","man and woman","fantastic view","a police officer","draw a picture","special performance","do the homework","try it on","black and white picture","a severe storm","at the library","just a little thing","the international airport","pass the exam","send an Email"];
+
+      const phraseHints = {
+        "special performance": ["/ˈspɛʃəl pɚˈfɔrməns/", "特別公演"], "do the homework": ["/du ðə ˈhoʊmˌwɝk/", "宿題をする"], "try it on": ["/traɪ ɪt ɑn/", "試着する"], "black and white picture": ["/blæk ən waɪt ˈpɪktʃɚ/", "白黒写真"], "a severe storm": ["/ə səˈvɪr stɔrm/", "激しい嵐"], "at the library": ["/ət ðə ˈlaɪˌbrɛri/", "図書館で"], "just a little thing": ["/dʒʌst ə ˈlɪt̬əl θɪŋ/", "ほんの小さなこと"], "the international airport": ["/ði ˌɪntɚˈnæʃənəl ˈɛrˌpɔrt/", "国際空港"], "pass the exam": ["/pæs ði ɪɡˈzæm/", "試験に合格する"], "send an Email": ["/sɛnd ən ˈiˌmeɪl/", "メールを送る"], "go for a walk": ["/ɡoʊ fər ə wɔk/", "散歩に行く"], "as soon as possible": ["/əz sun əz ˈpɑsəbəl/", "できるだけ早く"], "answering machine": ["/ˈænsərɪŋ məˌʃin/", "留守番電話"], "a glass of water": ["/ə ɡlæs əv ˈwɔt̬ɚ/", "コップ一杯の水"], "tomorrow morning": ["/təˈmɑroʊ ˈmɔrnɪŋ/", "明日の朝"], "have a good day": ["/hæv ə ɡʊd deɪ/", "よい一日を"], "top of the mountain": ["/tɑp əv ðə ˈmaʊntən/", "山の頂上"], "at my office": ["/ət maɪ ˈɑfəs/", "私のオフィスで"], "Christmas holiday": ["/ˈkrɪsməs ˈhɑlədeɪ/", "クリスマス休暇"], "back and forth": ["/bæk ən fɔrθ/", "行ったり来たり / 前後に"], "at the airport": ["/ət ði ˈɛrˌpɔrt/", "空港で"], "make an appointment": ["/meɪk ən əˈpɔɪntmənt/", "予約をする"], "by the way": ["/baɪ ðə weɪ/", "ところで"], "personal computer": ["/ˈpɝsənəl kəmˈpjut̬ɚ/", "パソコン"], "boys and girls": ["/bɔɪz ən ɡɝlz/", "男の子たちと女の子たち"], "open your heart": ["/ˈoʊpən jʊr hɑrt/", "心を開く"], "beautiful flowers": ["/ˈbjut̬əfəl ˈflaʊɚz/", "美しい花々"], "New Year holidays": ["/ˌnu ˈjɪr ˈhɑlədeɪz/", "年末年始の休暇"], "a phone call": ["/ə foʊn kɔl/", "電話"], "the broken window": ["/ðə ˈbroʊkən ˈwɪndoʊ/", "壊れた窓"], "in the morning": ["/ɪn ðə ˈmɔrnɪŋ/", "朝に"], "looks good": ["/lʊks ɡʊd/", "よさそう"], "pretty women": ["/ˈprɪt̬i ˈwɪm.ɪn/", "きれいな女性たち"], "heavy rain and strong wind": ["/ˈhɛvi reɪn ən strɔŋ wɪnd/", "激しい雨と強い風"], "sightseeing tour": ["/ˈsaɪtˌsiɪŋ tʊr/ ( /tɔr/でもOK）", "観光ツアー"], "a little girl": ["/ə ˈlɪt̬əl ɡɝl/", "小さな女の子"], "graduate from high school": ["/ˈɡrædʒuˌeɪt frəm haɪ skul/", "高校を卒業する"], "grocery shopping": ["/ˈɡroʊsəri ˈʃɑpɪŋ/", "食料品の買い物"], "personal question": ["/ˈpɝsənəl ˈkwɛstʃən/", "個人的な質問"], "family relationship": ["/ˈfæməli rɪˈleɪʃənˌʃɪp/", "家族関係"], "one of them": ["/ˈwʌn əv ðɛm/", "彼らのうちの一人 / それらのうちの一つ"], "man and woman": ["/mæn ən ˈwʊmən/", "男性と女性"], "fantastic view": ["/fænˈtæstɪk vju/", "素晴らしい眺め"], "a police officer": ["/ə pəˈlis ˈɔfəsɚ/", "警察官"], "draw a picture": ["/drɔ ə ˈpɪktʃɚ/", "絵を描く"]
+      };
+
+      const sentenceItems = [
+        "Why don’t we have Chinese food for dinner?", "Chinese food? I’m not in the mood for that.", "Then, do you have anything in mind?", "What kind of bag are you looking for?", "I’m looking for a small black one that I can use every day.",
+        "I’m home!", "Hey, how was your day?", "It was great, I ran into John during lunch.", "Oh, you did?", "I’ll have a glass of water.", "Sure, no problem.",
+        "Would you like anything to drink?", "Yes, what do you have?", "We have soda, water, and orange juice.", "How about ordering pizza delivery?", "Not bad at all."
+      ];
+
+      const sentenceIpa = {
+        "Why don’t we have Chinese food for dinner?": "/waɪ doʊnt wi hæv ˌtʃaɪˈniz fud fər ˈdɪnɚ/", "Chinese food? I’m not in the mood for that.": "/ˌtʃaɪˈniz fud/ /aɪm nɑt ɪn ðə mud fɚ ðæt/", "Then, do you have anything in mind?": "/ðɛn du ju hæv ˈɛniˌθɪŋ ɪn maɪnd/", "What kind of bag are you looking for?": "/wʌt kaɪnd əv bæɡ ɑr ju ˈlʊkɪŋ fɔr/", "I’m looking for a small black one that I can use every day.": "/aɪm ˈlʊkɪŋ fɔr ə smɔl blæk wʌn ðət aɪ kən juz ˈɛvri deɪ/", "I’m home!": "/aɪm hoʊm/", "Hey, how was your day?": "/heɪ haʊ wəz jʊr deɪ/", "It was great, I ran into John during lunch.": "/ɪt wəz ɡreɪt aɪ ræn ˈɪntu dʒɑn ˈdʊrɪŋ lʌntʃ/", "Oh, you did?": "/oʊ ju dɪd/", "I’ll have a glass of water.": "/aɪl hæv ə ɡlæs əv ˈwɔt̬ɚ/", "Sure, no problem.": "/ʃʊr noʊ ˈprɑbləm/", "Would you like anything to drink?": "/wʊd ju laɪk ˈɛniˌθɪŋ tə drɪŋk/", "Yes, what do you have?": "/jɛs wʌt du ju hæv/", "We have soda, water, and orange juice.": "/wi hæv ˈsoʊdə ˈwɔt̬ɚ ənd ˈɔrɪndʒ dʒus/", "How about ordering pizza delivery?": "/haʊ əˈbaʊt ˈɔrdɚɪŋ ˈpitsə dɪˈlɪvɚi/", "Not bad at all.": "/nɑt bæd ət ɔl/"
+      };
+
+      function slugify(text) {
+        return text.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+      }
+
+      function audio(src) {
+        if (!src) return `<div class="missing-audio">音声準備中</div>`;
+        return `
+          <div class="audio-box">
+            <audio controls preload="metadata" src="${src}"></audio>
+            <div class="speed-row">
+              <button class="speed-button" type="button" data-speed="0.25">0.25</button>
+              <button class="speed-button" type="button" data-speed="0.5">0.5</button>
+              <button class="speed-button" type="button" data-speed="0.75">0.75</button>
+              <button class="speed-button is-active" type="button" data-speed="1">1.0</button>
+            </div>
+          </div>
+        `;
+      }
+
+      function ipaTable(rows) {
+        return `
+          <table class="ipa-table">
+            <thead><tr><th>Word</th><th>US IPA</th></tr></thead>
+            <tbody>${rows.map(([word, value]) => `<tr><td>${word}</td><td>${value || ""}</td></tr>`).join("")}</tbody>
+          </table>
+        `;
+      }
+
+      function card({ number, text, src, rows, japanese }) {
+        return `
+          <article class="practice-card">
+            <div class="card-top">
+              <div class="number">${number}</div>
+              <p class="item-text">${text}</p>
+            </div>
+            ${audio(src)}
+            <details>
+              <summary>発音記号を確認する</summary>
+              <div class="detail-body">${ipaTable(rows)}</div>
+            </details>
+            ${japanese ? `<details><summary>日本語を確認する</summary><div class="detail-body">${japanese}</div></details>` : ""}
+          </article>
+        `;
+      }
+
+      function render() {
+        document.getElementById("wordList").innerHTML = words.map((word, index) => card({
+          number: String(index + 1).padStart(2, "0"),
+          text: word,
+          src: wordAudio[word],
+          rows: [[word, wordIpa[word]]],
+          japanese: wordJa[word]
+        })).join("");
+
+        document.getElementById("phraseList").innerHTML = phrases.map((phrase, index) => {
+          const hint = phraseHints[phrase] || ["", ""];
+          return card({
+            number: String(index + 1).padStart(2, "0"),
+            text: phrase,
+            src: `https://ei-mari.github.io/eimari-pages/sdl-sps2026/lesson07-practice/assets/audio/${slugify(phrase)}.mp3`,
+            rows: [[phrase, hint[0]]],
+            japanese: hint[1]
+          });
+        }).join("");
+
+        document.getElementById("pairList").innerHTML = pairs.map(([left, right], index) => card({
+          number: String(index + 1).padStart(2, "0"),
+          text: `${left} - ${right}`,
+          src: pairAudio[`${left}|${right}`] || pairAudio[`${right}|${left}`],
+          rows: [[left, ipa[left]], [right, ipa[right]]]
+        })).join("");
+
+        bindSpeedButtons();
+      }
+
+      function bindSpeedButtons() {
+        document.querySelectorAll(".audio-box").forEach((box) => {
+          const audioEl = box.querySelector("audio");
+          box.querySelectorAll("[data-speed]").forEach((button) => {
+            button.addEventListener("click", () => {
+              audioEl.playbackRate = Number(button.dataset.speed);
+              box.querySelectorAll("[data-speed]").forEach((item) => item.classList.remove("is-active"));
+              button.classList.add("is-active");
+            });
+          });
+        });
+      }
+
+      function checkKey(section, index, type) {
+        return `${section}-${String(index + 1).padStart(3, "0")}-${type}`;
+      }
+
+      function formatCheckHint(value) {
+        if (!value) return "";
+        return value
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/\n/g, "<br>")
+          .replace(/\/\s+(?=\/)/g, "/<br>");
+      }
+
+      function checkRow(section, index, label, sublabel) {
+        return `
+          <div class="check-row">
+            <div class="check-name">
+              <strong>${label}</strong>
+              <span>${formatCheckHint(sublabel)}</span>
+            </div>
+            <button class="ipa-toggle" type="button" data-ipa-toggle>Hint</button>
+            <label class="check-action"><input type="checkbox" data-check="${checkKey(section, index, "ok")}">OK</label>
+            <label class="check-action is-alert"><input type="checkbox" data-check="${checkKey(section, index, "alert")}">!</label>
+          </div>
+        `;
+      }
+
+      function checkSection(title, section, items, formatter) {
+        const helperText = section === "pairs"
+          ? "音声を確認するときは、Practiceのタブをご活用ください。"
+          : "音声や日本語の意味を確認するときは、Practiceをご活用ください。";
+        return `
+          <section class="section" id="check-${section}">
+            <div class="section-head">
+              <p class="section-num">${section.toUpperCase()}</p>
+              <h2>${title}</h2>
+              <p class="note">${helperText}</p>
+            </div>
+            <div class="check-grid">
+              ${items.map((item, index) => {
+                const data = formatter(item, index);
+                return checkRow(section, index, data.label, data.sublabel);
+              }).join("")}
+            </div>
+          </section>
+        `;
+      }
+
+      function renderChecksheet() {
+        const list = document.getElementById("checksheetList");
+        list.innerHTML = [
+          checkSection("Section 03｜単語", "words", words, (word, index) => ({
+            label: `${String(index + 1).padStart(2, "0")} ${word}`,
+            sublabel: wordIpa[word] || "発音記号を確認"
+          })),
+          checkSection("Section 05｜フレーズ", "phrases", phrases, (phrase, index) => {
+            const hint = phraseHints[phrase] || ["発音記号を確認", ""];
+            return {
+              label: `${String(index + 1).padStart(2, "0")} ${phrase}`,
+              sublabel: hint[0]
+            };
+          }),
+          checkSection("Section 02｜ミニマルペア", "pairs", pairs, ([left, right], index) => ({
+            label: `${String(index + 1).padStart(2, "0")} ${left} - ${right}`,
+            sublabel: `${ipa[left] || ""}\n${ipa[right] || ""}`
+          }))
+        ].join("");
+      }
+
+      function updateCheckSummary() {
+        const boxes = [...document.querySelectorAll("[data-check]")];
+        const ok = boxes.filter((box) => box.dataset.check.endsWith("-ok") && box.checked).length;
+        const alert = boxes.filter((box) => box.dataset.check.endsWith("-alert") && box.checked).length;
+        const total = boxes.filter((box) => box.dataset.check.endsWith("-ok")).length;
+        document.getElementById("checkSummary").innerHTML = `
+          <div class="summary-card"><strong>${ok}</strong><span>OK</span></div>
+          <div class="summary-card"><strong>${alert}</strong><span>!</span></div>
+          <div class="summary-card"><strong>${total}</strong><span>TOTAL</span></div>
+        `;
+      }
+
+      function initChecks() {
+        document.querySelector("[data-hide-all-ipa]").addEventListener("click", () => {
+          document.querySelectorAll("#checksheetPanel .check-row.is-ipa-open").forEach((row) => {
+            row.classList.remove("is-ipa-open");
+            const button = row.querySelector("[data-ipa-toggle]");
+            if (button) button.textContent = "Hint";
+          });
+        });
+
+        document.querySelectorAll("[data-ipa-toggle]").forEach((button) => {
+          button.addEventListener("click", () => {
+            const row = button.closest(".check-row");
+            const isOpen = row.classList.toggle("is-ipa-open");
+            button.textContent = isOpen ? "Hide" : "Hint";
+          });
+        });
+
+        document.querySelectorAll("[data-check]").forEach((checkbox) => {
+          const key = `pl-practice-${checkbox.dataset.check}`;
+          checkbox.checked = localStorage.getItem(key) === "1";
+          checkbox.addEventListener("change", () => {
+            if (checkbox.checked) {
+              const pairedType = checkbox.dataset.check.endsWith("-ok") ? "alert" : "ok";
+              const pairedKey = checkbox.dataset.check.replace(/-(ok|alert)$/, `-${pairedType}`);
+              const pairedBox = document.querySelector(`[data-check="${pairedKey}"]`);
+              if (pairedBox) {
+                pairedBox.checked = false;
+                localStorage.removeItem(`pl-practice-${pairedKey}`);
+              }
+            }
+            if (checkbox.checked) {
+              localStorage.setItem(key, "1");
+            } else {
+              localStorage.removeItem(key);
+            }
+            updateCheckSummary();
+          });
+        });
+        updateCheckSummary();
+      }
+
+      function updateGate() {
+        const gateChecks = [...document.querySelectorAll("[data-gate-check]")];
+        const unlocked = gateChecks.every((checkbox) => checkbox.checked);
+        const importantGate = document.getElementById("importantGate");
+        const showButton = document.querySelector("[data-show-important]");
+        document.getElementById("practiceContent").hidden = !unlocked;
+        document.getElementById("gateLock").hidden = unlocked;
+        if (!unlocked) {
+          importantGate.hidden = false;
+          delete importantGate.dataset.forceOpen;
+          if (showButton) showButton.textContent = "もう一度お願いを見る";
+          return;
+        }
+        importantGate.hidden = importantGate.dataset.forceOpen !== "1";
+        if (showButton) {
+          showButton.textContent = importantGate.hidden ? "もう一度お願いを見る" : "お願いを閉じる";
+        }
+      }
+
+      function initGateChecks() {
+        document.querySelectorAll("[data-gate-check]").forEach((checkbox) => {
+          const key = `pl-practice-gate-${checkbox.dataset.gateCheck}`;
+          checkbox.checked = localStorage.getItem(key) === "1";
+          checkbox.addEventListener("change", () => {
+            if (checkbox.checked) {
+              localStorage.setItem(key, "1");
+            } else {
+              localStorage.removeItem(key);
+            }
+            updateGate();
+          });
+        });
+        document.querySelector("[data-show-important]").addEventListener("click", () => {
+          const importantGate = document.getElementById("importantGate");
+          if (importantGate.hidden) {
+            importantGate.dataset.forceOpen = "1";
+            importantGate.hidden = false;
+            document.querySelector("[data-show-important]").textContent = "お願いを閉じる";
+            importantGate.scrollIntoView({ behavior: "smooth", block: "start" });
+          } else {
+            delete importantGate.dataset.forceOpen;
+            importantGate.hidden = true;
+            document.querySelector("[data-show-important]").textContent = "もう一度お願いを見る";
+          }
+        });
+        updateGate();
+      }
+
+      function initTabs() {
+        document.querySelectorAll("[data-tab-target]").forEach((button) => {
+          button.addEventListener("click", () => {
+            document.querySelectorAll("[data-tab-target]").forEach((item) => item.classList.toggle("is-active", item === button));
+            document.querySelectorAll(".tab-panel").forEach((panel) => {
+              panel.hidden = panel.id !== button.dataset.tabTarget;
+            });
+            document.querySelectorAll("[data-jump-section]").forEach((link) => {
+              const section = link.dataset.jumpSection;
+              link.href = button.dataset.tabTarget === "checksheetPanel" ? `#check-${section}` : `#${section}`;
+            });
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          });
+        });
+      }
+
+      document.querySelector("[data-top]").addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+
+      render();
+      renderChecksheet();
+      initChecks();
+      initGateChecks();
+      initTabs();
+    </script>
+  </body>
+</html>
