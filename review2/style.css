@@ -147,6 +147,88 @@ body {
   box-shadow: 0 18px 42px rgba(32, 36, 50, 0.22);
 }
 
+.review-archive-section {
+  display: grid;
+  gap: 18px;
+  padding: 24px;
+  border: 1px solid rgba(190, 202, 226, 0.9);
+  border-radius: 16px;
+  background:
+    radial-gradient(circle at 0% 0%, rgba(255, 213, 166, 0.34), transparent 38%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(255, 250, 243, 0.98));
+  box-shadow: 0 18px 38px rgba(45, 55, 80, 0.13);
+}
+
+.review-archive-header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 14px;
+  align-items: center;
+}
+
+.review-archive-header h2,
+.review-archive-card h3,
+.review-archive-card p {
+  margin: 0;
+}
+
+.review-archive-header h2 {
+  color: #2d3854;
+  font-size: clamp(1.25rem, 3vw, 1.75rem);
+  letter-spacing: 0;
+}
+
+.review-archive-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.review-archive-card {
+  display: grid;
+  gap: 12px;
+  min-width: 0;
+  padding: 16px;
+  border: 1px solid #dce5f5;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 12px 28px rgba(58, 74, 112, 0.11);
+}
+
+.review-archive-card-header {
+  display: grid;
+  gap: 4px;
+}
+
+.review-archive-card h3 {
+  color: #9b5b12;
+  font-size: 1.18rem;
+  letter-spacing: 0;
+}
+
+.review-archive-card p {
+  color: #607195;
+  font-size: 0.92rem;
+  font-weight: 700;
+  line-height: 1.65;
+}
+
+.review-archive-video {
+  aspect-ratio: 16 / 9;
+  border-radius: 8px;
+}
+
+.review-archive-placeholder {
+  display: grid;
+  min-height: 180px;
+  place-items: center;
+  border: 1px dashed #d7e3fb;
+  border-radius: 8px;
+  background: #f7fbff;
+  color: #7a8cac;
+  font-weight: 900;
+}
+
 .review-sheet {
   display: grid;
   gap: 22px;

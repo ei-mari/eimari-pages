@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>EIMARI DICTIONARY | Review 2</title>
-    <link rel="stylesheet" href="./style.css?v=review2-q24-vowels" />
+    <link rel="stylesheet" href="./style.css?v=review2-archive-filter" />
   </head>
   <body class="has-fixed-footer review-page">
     <main class="app">
@@ -14,6 +14,56 @@
 
       <section class="review-hero" aria-label="Review Lesson">
         <img src="./assets/review-lesson.png" alt="REVIEW LESSON 復習しよう" />
+      </section>
+
+      <section id="reviewArchive" class="review-archive-section hidden" aria-label="アーカイブ">
+        <div class="review-archive-header">
+          <span class="review-tag rhythm">アーカイブ</span>
+          <h2>復習動画</h2>
+        </div>
+        <div class="review-archive-grid">
+          <article class="review-archive-card">
+            <div class="review-archive-card-header">
+              <h3>前編</h3>
+              <p>Q1-23までをカバーしています。</p>
+            </div>
+            <iframe
+              class="archive-iframe review-archive-video"
+              src="https://www.loom.com/embed/88621fa591a841f2a1190c9c516cae9d"
+              title="Review 2 前編"
+              allowfullscreen
+            ></iframe>
+            <a
+              class="archive-loom-fallback"
+              href="https://www.loom.com/share/88621fa591a841f2a1190c9c516cae9d"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Loomで開く
+            </a>
+          </article>
+
+          <article class="review-archive-card">
+            <div class="review-archive-card-header">
+              <h3>後編</h3>
+              <p>Q24-43までカバーしています。</p>
+            </div>
+            <iframe
+              class="archive-iframe review-archive-video"
+              src="https://www.loom.com/embed/993a5ff90e4d490bb184189cd2019f91"
+              title="Review 2 後編"
+              allowfullscreen
+            ></iframe>
+            <a
+              class="archive-loom-fallback"
+              href="https://www.loom.com/share/993a5ff90e4d490bb184189cd2019f91"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Loomで開く
+            </a>
+          </article>
+        </div>
       </section>
 
       <section class="review-sheet" aria-label="復習問題">
@@ -28,6 +78,9 @@
             リンキング
           </button>
           <button type="button" class="review-filter-btn" data-review-filter="リズム">リズム</button>
+          <button type="button" class="review-filter-btn" data-review-filter="アーカイブ">
+            アーカイブ
+          </button>
         </div>
         <p id="reviewEmpty" class="review-empty hidden">このタグの問題はまだありません。</p>
         <div id="reviewQuestions" class="review-questions"></div>
@@ -48,6 +101,6 @@
     </div>
 
     <script type="module" src="./footer-controls.js"></script>
-    <script type="module" src="./review2.js?v=review2-q24-vowels"></script>
+    <script type="module" src="./review2.js?v=review2-archive-filter"></script>
   </body>
 </html>

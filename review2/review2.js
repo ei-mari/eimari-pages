@@ -1199,6 +1199,7 @@ const reviewQuestions = [
 const reviewQuestionsEl = document.querySelector("#reviewQuestions");
 const reviewEmptyEl = document.querySelector("#reviewEmpty");
 const filterButtons = document.querySelectorAll(".review-filter-btn");
+const reviewArchiveEl = document.querySelector("#reviewArchive");
 const state = {
   activeFilter: "all",
 };
@@ -1475,6 +1476,14 @@ renderReviewQuestions();
 
 function renderReviewQuestions() {
   reviewQuestionsEl.innerHTML = "";
+  const isArchiveFilter = state.activeFilter === "アーカイブ";
+  reviewArchiveEl?.classList.toggle("hidden", !isArchiveFilter);
+
+  if (isArchiveFilter) {
+    reviewEmptyEl.classList.add("hidden");
+    return;
+  }
+
   const filteredQuestions = getFilteredQuestions();
   reviewEmptyEl.classList.toggle("hidden", filteredQuestions.length > 0);
 
