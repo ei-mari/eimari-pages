@@ -1608,7 +1608,7 @@ function renderReviewQuestions() {
       article.appendChild(renderPickItems(question.pickItems));
     }
 
-    article.prepend(tag, reference, title);
+    article.prepend(tag, title);
     if ((!question.hideAnswer && !question.noGlobalAnswer) || question.audio || question.detail) {
       const answerActions = document.createElement("div");
       answerActions.className = "review-answer-actions";
