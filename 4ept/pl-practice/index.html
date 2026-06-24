@@ -741,20 +741,20 @@
         </section>
 
         <nav class="tab-switch" aria-label="page tabs">
-          <button class="tab-button is-active" type="button" data-tab-target="practicePanel">Practice</button>
-          <button class="tab-button" type="button" data-tab-target="checksheetPanel">Checksheet</button>
+          <button class="tab-button" type="button" data-tab-target="practicePanel">Practice</button>
+          <button class="tab-button is-active" type="button" data-tab-target="checksheetPanel">Checksheet</button>
         </nav>
 
         <nav class="section-jump" aria-label="section shortcuts">
-          <a href="#words" data-jump-section="words">Section 03</a>
-          <a href="#phrases" data-jump-section="phrases">Section 05</a>
-          <a href="#pairs" data-jump-section="pairs">Section 02</a>
+          <a href="#check-words" data-jump-section="words">Section 03</a>
+          <a href="#check-phrases" data-jump-section="phrases">Section 05</a>
+          <a href="#check-pairs" data-jump-section="pairs">Section 02</a>
         </nav>
 
       </header>
 
       <main>
-        <div class="tab-panel" id="practicePanel">
+        <div class="tab-panel" id="practicePanel" hidden>
           <section class="notice warning" id="importantGate">
             <p class="kicker">IMPORTANT</p>
             <h2>えいまりからの大切なお願い</h2>
@@ -836,7 +836,7 @@
           </div>
         </div>
 
-        <div class="tab-panel" id="checksheetPanel" hidden>
+        <div class="tab-panel" id="checksheetPanel">
           <section class="checksheet" aria-label="発音記号チェックシート">
             <p class="kicker">CHECK SHEET</p>
             <h2>一つずつチェックしよう</h2>
