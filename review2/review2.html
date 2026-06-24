@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EIMARI DICTIONARY | Review 2</title>
+    <link rel="stylesheet" href="./style.css?v=review2-q24-vowels" />
+  </head>
+  <body class="has-fixed-footer review-page">
+    <main class="app">
+      <header class="header">
+        <img class="brand-image" src="./Thumbnail.png" alt="EIMARI DICTIONARY" />
+      </header>
+
+      <section class="review-hero" aria-label="Review Lesson">
+        <img src="./assets/review-lesson.png" alt="REVIEW LESSON 復習しよう" />
+      </section>
+
+      <section class="review-sheet" aria-label="復習問題">
+        <div class="review-filter" aria-label="問題タグ">
+          <button type="button" class="review-filter-btn active" data-review-filter="all">
+            すべて
+          </button>
+          <button type="button" class="review-filter-btn" data-review-filter="母音">母音</button>
+          <button type="button" class="review-filter-btn" data-review-filter="子音">子音</button>
+          <button type="button" class="review-filter-btn" data-review-filter="強勢">強勢</button>
+          <button type="button" class="review-filter-btn" data-review-filter="リンキング">
+            リンキング
+          </button>
+          <button type="button" class="review-filter-btn" data-review-filter="リズム">リズム</button>
+        </div>
+        <p id="reviewEmpty" class="review-empty hidden">このタグの問題はまだありません。</p>
+        <div id="reviewQuestions" class="review-questions"></div>
+      </section>
+    </main>
+
+    <div class="fixed-footer" aria-label="下部固定フッター">
+      <div class="fixed-footer-inner">
+        <div class="footer-scroll-row" aria-label="ページ移動">
+          <button type="button" class="mode-btn footer-scroll-btn" data-scroll-target="top">
+            一番上に移動
+          </button>
+          <button type="button" class="mode-btn footer-scroll-btn" data-scroll-target="bottom">
+            一番下に移動
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="./footer-controls.js"></script>
+    <script type="module" src="./review2.js?v=review2-q24-vowels"></script>
+  </body>
+</html>
