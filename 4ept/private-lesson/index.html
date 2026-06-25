@@ -1,0 +1,1237 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Private Lesson | Sound Check</title>
+    <meta name="description" content="Private Lesson前に確認する短い発音チェックページです。" />
+    <meta property="og:image" content="./assets/private-lesson.png" />
+    <meta name="twitter:image" content="./assets/private-lesson.png" />
+    <style>
+      :root {
+        --bg: #f6f1e6;
+        --paper: #fffaf0;
+        --panel: #ffffff;
+        --ink: #211a10;
+        --muted: #6f5f41;
+        --gold: #f4bf37;
+        --gold-2: #9b6b0d;
+        --line: rgba(128, 91, 21, 0.18);
+        --shadow: 0 14px 34px rgba(60, 44, 17, 0.12);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background:
+          radial-gradient(circle at 8% 0%, rgba(244, 191, 55, 0.22), transparent 28%),
+          radial-gradient(circle at 92% 12%, rgba(255, 223, 120, 0.2), transparent 28%),
+          linear-gradient(180deg, #fff9ec 0%, #f4ead6 100%);
+        color: var(--ink);
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif;
+      }
+
+      h1,
+      h2,
+      p {
+        margin: 0;
+      }
+
+      .shell {
+        width: min(100%, 520px);
+        min-height: 100vh;
+        margin: 0 auto;
+        background: var(--paper);
+        box-shadow: 0 0 60px rgba(98, 72, 30, 0.18);
+      }
+
+      header,
+      main,
+      footer {
+        padding: 16px;
+      }
+
+      header {
+        display: grid;
+        gap: 14px;
+        padding-top: 18px;
+      }
+
+      .hero {
+        overflow: hidden;
+        margin: 0;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #000;
+        box-shadow: var(--shadow);
+      }
+
+      .hero img {
+        display: block;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+      }
+
+      .intro,
+      .card,
+      .note {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--panel);
+        box-shadow: var(--shadow);
+      }
+
+      .intro {
+        display: grid;
+        gap: 10px;
+        padding: 16px;
+      }
+
+      .eyebrow {
+        width: max-content;
+        max-width: 100%;
+        padding: 6px 11px;
+        border: 1px solid rgba(244, 191, 55, 0.34);
+        border-radius: 999px;
+        background: #fff3c7;
+        color: var(--gold-2);
+        font-size: 0.72rem;
+        font-weight: 900;
+        letter-spacing: 0.08em;
+      }
+
+      h1 {
+        font-size: clamp(2.1rem, 11vw, 3.4rem);
+        line-height: 0.95;
+        letter-spacing: 0;
+        text-transform: uppercase;
+      }
+
+      .lead {
+        color: var(--muted);
+        font-size: 0.93rem;
+        font-weight: 700;
+        line-height: 1.7;
+      }
+
+      main {
+        display: grid;
+        gap: 12px;
+        padding-bottom: 156px;
+      }
+
+      .card {
+        display: grid;
+        grid-template-columns: 44px 1fr;
+        gap: 12px;
+        align-items: start;
+        padding: 15px;
+      }
+
+      .num {
+        display: grid;
+        place-items: center;
+        width: 44px;
+        height: 44px;
+        border: 1px solid rgba(255, 223, 120, 0.46);
+        border-radius: 50%;
+        background: linear-gradient(135deg, #ffdf78, #c58a12);
+        color: #171005;
+        font-size: 0.88rem;
+        font-weight: 950;
+        box-shadow: 0 10px 24px rgba(244, 191, 55, 0.24);
+      }
+
+      .card-body {
+        display: grid;
+        gap: 8px;
+        min-width: 0;
+      }
+
+      .label {
+        color: #946708;
+        font-size: 0.74rem;
+        font-weight: 950;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      h2 {
+        font-size: 1.1rem;
+        line-height: 1.35;
+      }
+
+      .answer {
+        width: 100%;
+        padding: 13px 14px;
+        border: 1px solid rgba(148, 103, 8, 0.2);
+        border-radius: 8px;
+        background: #fff7df;
+        color: #1f180d;
+        font-size: clamp(1.45rem, 7vw, 2.25rem);
+        font-weight: 950;
+        line-height: 1.05;
+        letter-spacing: 0;
+        overflow-wrap: anywhere;
+      }
+
+      .date-line {
+        font-size: 1.02rem;
+      }
+
+      .alphabet {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 8px;
+      }
+
+      .letter {
+        display: grid;
+        place-items: center;
+        min-height: 58px;
+        border: 1px solid rgba(255, 223, 120, 0.34);
+        border-radius: 8px;
+        background: linear-gradient(180deg, #fff3c7, #fffaf0);
+        color: #1f180d;
+        font-size: 2rem;
+        font-weight: 950;
+      }
+
+      .note {
+        display: grid;
+        gap: 8px;
+        padding: 14px;
+        border-left: 4px solid var(--gold);
+      }
+
+      .note strong {
+        color: #7d5608;
+      }
+
+      .note p {
+        color: var(--muted);
+        font-size: 0.9rem;
+        font-weight: 700;
+        line-height: 1.65;
+      }
+
+      .set-panel {
+        display: grid;
+        gap: 14px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #fff;
+        padding: 14px;
+        box-shadow: var(--shadow);
+      }
+
+      .set-title {
+        color: #7d5608;
+        font-size: 0.86rem;
+        font-weight: 950;
+        letter-spacing: 0.08em;
+      }
+
+      .tabs {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 7px;
+      }
+
+      .bottom-tabs {
+        margin-top: 24px;
+        padding-top: 16px;
+        border-top: 1px solid rgba(128, 91, 21, 0.14);
+      }
+
+      .tab-button {
+        min-height: 42px;
+        border: 1px solid rgba(148, 103, 8, 0.2);
+        border-radius: 8px;
+        background: #fffaf0;
+        color: #3a2a10;
+        font: inherit;
+        font-size: 0.78rem;
+        font-weight: 950;
+        cursor: pointer;
+      }
+
+      .tab-button.is-active {
+        border-color: rgba(148, 103, 8, 0.36);
+        background: linear-gradient(135deg, #ffdf78, #fff1bd);
+      }
+
+      .tab-button[disabled] {
+        color: rgba(58, 42, 16, 0.34);
+        cursor: default;
+      }
+
+      .section-block {
+        display: grid;
+        gap: 10px;
+        scroll-margin-top: 18px;
+      }
+
+      .section-block + .section-block {
+        margin-top: 24px;
+      }
+
+      .section-heading {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        padding-top: 34px;
+        border-top: 1px solid rgba(128, 91, 21, 0.14);
+      }
+
+      .section-heading h2 {
+        color: #211a10;
+        font-size: 0.94rem;
+        font-weight: 950;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+      }
+
+      .section-heading span {
+        color: var(--muted);
+        font-size: 0.72rem;
+        font-weight: 900;
+      }
+
+      .drill-list {
+        display: grid;
+        gap: 8px;
+      }
+
+      .drill-item {
+        display: grid;
+        gap: 8px;
+        border: 1px solid rgba(128, 91, 21, 0.16);
+        border-radius: 8px;
+        background: #fffdf7;
+        padding: 10px;
+      }
+
+      .drill-top {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 10px;
+        align-items: center;
+      }
+
+      .drill-text {
+        color: #211a10;
+        font-size: 1.16rem;
+        font-weight: 900;
+        line-height: 1.35;
+      }
+
+      .section-block:nth-child(3) .drill-text {
+        font-size: 1.08rem;
+      }
+
+      .hint-button {
+        min-width: 58px;
+        min-height: 34px;
+        border: 1px solid rgba(23, 73, 111, 0.2);
+        border-radius: 8px;
+        background: #eaf6ff;
+        color: #17496f;
+        font: inherit;
+        font-size: 0.76rem;
+        font-weight: 950;
+        cursor: pointer;
+      }
+
+      .hint-button.is-open {
+        background: #d7eeff;
+      }
+
+      .ipa-box {
+        display: none;
+        border-radius: 8px;
+        background: #f6fbff;
+        gap: 7px;
+        padding: 10px;
+        color: #17324a;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 0.92rem;
+        font-weight: 800;
+        line-height: 1.5;
+      }
+
+      .ipa-row {
+        display: block;
+      }
+
+      .drill-item.is-open .ipa-box {
+        display: grid;
+      }
+
+      .coming-soon {
+        border: 1px dashed rgba(128, 91, 21, 0.24);
+        border-radius: 8px;
+        background: #fffaf0;
+        padding: 16px;
+        color: var(--muted);
+        font-size: 0.9rem;
+        font-weight: 800;
+        line-height: 1.6;
+      }
+
+      footer {
+        padding-top: 0;
+        color: rgba(111, 95, 65, 0.78);
+        font-size: 0.76rem;
+        font-weight: 800;
+        text-align: center;
+      }
+
+      .section-nav {
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 20;
+        width: min(100%, 520px);
+        margin: 0 auto;
+        padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
+        border-top: 1px solid rgba(128, 91, 21, 0.18);
+        background: rgba(255, 250, 240, 0.96);
+        box-shadow: 0 -12px 30px rgba(60, 44, 17, 0.12);
+        backdrop-filter: blur(10px);
+      }
+
+      .lesson-timer {
+        position: fixed;
+        right: 0;
+        bottom: calc(61px + env(safe-area-inset-bottom));
+        left: 0;
+        z-index: 21;
+        width: min(100%, 520px);
+        margin: 0 auto;
+        padding: 9px 12px;
+        border-top: 1px solid rgba(128, 91, 21, 0.14);
+        border-bottom: 1px solid rgba(128, 91, 21, 0.1);
+        background: rgba(255, 255, 255, 0.96);
+        box-shadow: 0 -10px 24px rgba(60, 44, 17, 0.1);
+        backdrop-filter: blur(10px);
+      }
+
+      .lesson-timer-inner {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto auto;
+        gap: 8px;
+        align-items: center;
+      }
+
+      .timer-face {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 9px;
+        align-items: center;
+        min-width: 0;
+        padding: 8px 10px;
+        border: 1px solid rgba(128, 91, 21, 0.14);
+        border-radius: 8px;
+        background: #fffaf0;
+      }
+
+      .timer-icon {
+        display: grid;
+        place-items: center;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background: #fff3c7;
+        color: #946708;
+        font-size: 1rem;
+      }
+
+      .timer-copy {
+        display: grid;
+        gap: 2px;
+        min-width: 0;
+      }
+
+      .timer-label {
+        color: var(--muted);
+        font-size: 0.6rem;
+        font-weight: 950;
+        letter-spacing: 0.08em;
+      }
+
+      .timer-display {
+        color: #211a10;
+        font-variant-numeric: tabular-nums;
+        font-size: 1.32rem;
+        font-weight: 950;
+        letter-spacing: 0;
+      }
+
+      .timer-progress {
+        overflow: hidden;
+        grid-column: 1 / -1;
+        height: 4px;
+        border-radius: 999px;
+        background: #efe5d1;
+      }
+
+      .timer-progress-bar {
+        width: 100%;
+        height: 100%;
+        border-radius: inherit;
+        background: linear-gradient(90deg, #ffdf78, #f4bf37);
+        transition: width 0.25s ease;
+      }
+
+      .timer-button {
+        min-width: 64px;
+        min-height: 48px;
+        border: 1px solid rgba(128, 91, 21, 0.16);
+        border-radius: 8px;
+        background: #fff;
+        color: #3a2a10;
+        font: inherit;
+        font-size: 0.8rem;
+        font-weight: 950;
+        cursor: pointer;
+      }
+
+      .timer-button.primary {
+        background: #fff3c7;
+      }
+
+      .section-nav-inner {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 7px;
+      }
+
+      .section-nav a {
+        display: grid;
+        place-items: center;
+        min-height: 40px;
+        border: 1px solid rgba(148, 103, 8, 0.2);
+        border-radius: 8px;
+        background: #fff;
+        color: #3a2a10;
+        font-size: 0.74rem;
+        font-weight: 950;
+        text-decoration: none;
+      }
+
+      @media (max-width: 380px) {
+        .card {
+          grid-template-columns: 38px 1fr;
+          padding: 13px;
+        }
+
+        .num {
+          width: 38px;
+          height: 38px;
+        }
+
+        .alphabet {
+          gap: 6px;
+        }
+
+        .letter {
+          min-height: 50px;
+          font-size: 1.75rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="shell">
+      <header>
+        <figure class="hero">
+          <img src="./assets/private-lesson.png" alt="Private Lesson">
+        </figure>
+        <section class="intro">
+          <p class="eyebrow">1 ON 1 LESSON</p>
+          <h1>Private Lesson</h1>
+        </section>
+      </header>
+
+      <main>
+        <article class="card">
+          <span class="num">01</span>
+          <div class="card-body">
+            <p class="label">Number</p>
+            <h2>What is your number?</h2>
+            <p class="answer">B2075419</p>
+          </div>
+        </article>
+
+        <article class="card">
+          <span class="num">02</span>
+          <div class="card-body">
+            <p class="label">Date</p>
+            <h2>What’s the date today?</h2>
+            <p class="answer date-line">Friday, June 26, 2026.</p>
+          </div>
+        </article>
+
+        <article class="card">
+          <span class="num">03</span>
+          <div class="card-body">
+            <p class="label">Alphabet</p>
+            <h2>Read the alphabet aloud.</h2>
+            <div class="alphabet" aria-label="B V G Z">
+              <span class="letter">B</span>
+              <span class="letter">V</span>
+              <span class="letter">G</span>
+              <span class="letter">Z</span>
+            </div>
+          </div>
+        </article>
+
+        <section class="set-panel">
+          <p class="set-title">CHOOSE A SET</p>
+          <div class="tabs" aria-label="Choose a set">
+            <button class="tab-button is-active" type="button" data-set="A">SET A</button>
+            <button class="tab-button" type="button" data-set="B">SET B</button>
+            <button class="tab-button" type="button" data-set="C">SET C</button>
+            <button class="tab-button" type="button" data-set="D">SET D</button>
+            <button class="tab-button" type="button" data-set="E">SET E</button>
+          </div>
+          <div id="set-content"></div>
+        </section>
+      </main>
+
+      <footer>SOUND DESIGN LAB</footer>
+    </div>
+    <nav class="section-nav" aria-label="Section navigation">
+      <div class="section-nav-inner">
+        <a href="#section-2">SEC 2</a>
+        <a href="#section-3">SEC 3</a>
+        <a href="#section-4">SEC 4</a>
+        <a href="#section-5">SEC 5</a>
+      </div>
+    </nav>
+    <div class="lesson-timer" aria-label="23 minute timer">
+      <div class="lesson-timer-inner">
+        <div class="timer-face">
+          <span class="timer-icon" aria-hidden="true">◷</span>
+          <div class="timer-copy">
+            <div class="timer-label">LESSON TIMER</div>
+            <div class="timer-display" id="timer-display">23:00</div>
+          </div>
+          <div class="timer-progress" aria-hidden="true">
+            <div class="timer-progress-bar" id="timer-progress"></div>
+          </div>
+        </div>
+        <button class="timer-button primary" id="timer-start" type="button">Start</button>
+        <button class="timer-button" id="timer-reset" type="button">Reset</button>
+      </div>
+    </div>
+    <script>
+      const pairIpa = {
+        best: "/bɛst/", vest: "/vɛst/", work: "/wɝk/", walk: "/wɔk/ /wɑk/", seat: "/sit/", sheet: "/ʃit/",
+        no: "/noʊ/", know: "/noʊ/", robber: "/ˈrɑbɚ/", rubber: "/ˈrʌbɚ/", all: "/ɔl/", owl: "/aʊl/",
+        shot: "/ʃɑt/", shout: "/ʃaʊt/", hurt: "/hɝt/", heart: "/hɑrt/", pour: "/pɔr/", poor: "/pʊr/ /pɔr/",
+        G: "/dʒi/", Z: "/zi/", dirty: "/ˈdɝti/", duty: "/ˈduti/", coat: "/koʊt/", court: "/kɔrt/",
+        sick: "/sɪk/", thick: "/θɪk/", fry: "/fraɪ/", fly: "/flaɪ/", she: "/ʃi/", sea: "/si/",
+        light: "/laɪt/", right: "/raɪt/", force: "/fɔrs/", fourth: "/fɔrθ/", test: "/tɛst/", taste: "/teɪst/",
+        ship: "/ʃɪp/", sheep: "/ʃip/", very: "/ˈvɛri/", berry: "/ˈbɛri/", see: "/si/",
+        pain: "/peɪn/", pen: "/pɛn/", rock: "/rɑk/", lock: "/lɑk/", heard: "/hɝd/", hard: "/hɑrd/",
+        path: "/pæθ/", pass: "/pæs/", not: "/nɑt/", nut: "/nʌt/", fun: "/fʌn/", fan: "/fæn/",
+        think: "/θɪŋk/", sink: "/sɪŋk/", farm: "/fɑrm/", form: "/fɔrm/", bye: "/baɪ/", buy: "/baɪ/",
+        teach: "/titʃ/", peach: "/pitʃ/", play: "/pleɪ/", pray: "/preɪ/", hear: "/hɪr/", here: "/hɪr/",
+        wait: "/weɪt/", wet: "/wɛt/", block: "/blɑk/", black: "/blæk/", end: "/ɛnd/", and: "/ænd/ /ənd/",
+        wrong: "/rɔŋ/", long: "/lɔŋ/", map: "/mæp/", mop: "/mɑp/", win: "/wɪn/", wing: "/wɪŋ/",
+        shell: "/ʃɛl/", sell: "/sɛl/", been: "/bɪn/ /bɛn/", bean: "/bin/", age: "/eɪdʒ/", edge: "/ɛdʒ/",
+        fear: "/fɪr/", said: "/sɛd/", sad: "/sæd/", learn: "/lɝn/", lean: "/lin/"
+      };
+
+      const wordIpa = {
+        potato: "/pəˈteɪtoʊ/", world: "/wɝld/", volleyball: "/ˈvɑliˌbɔl/", October: "/ɑkˈtoʊbɚ/",
+        ask: "/æsk/", "6:15": "/sɪks fɪfˈtin/", trouble: "/ˈtrʌbəl/", message: "/ˈmɛsɪdʒ/",
+        white: "/waɪt/", Saturday: "/ˈsætɚdeɪ/", their: "/ðɛr/", rich: "/rɪtʃ/", war: "/wɔr/",
+        Australia: "/ɔˈstreɪljə/", horse: "/hɔrs/", famous: "/ˈfeɪməs/", shower: "/ˈʃaʊɚ/",
+        together: "/təˈɡɛðɚ/", both: "/boʊθ/", cabbage: "/ˈkæbɪdʒ/", "12:30": "/twɛlv ˈθɝti/",
+        machine: "/məˈʃin/", alive: "/əˈlaɪv/", January: "/ˈdʒænjuˌɛri/",
+        holiday: "/ˈhɑləˌdeɪ/", handsome: "/ˈhænsəm/", koala: "/koʊˈɑlə/",
+        another: "/əˈnʌðɚ/", theater: "/ˈθiətɚ/", Asia: "/ˈeɪʒə/", April: "/ˈeɪprəl/",
+        voice: "/vɔɪs/", manager: "/ˈmænɪdʒɚ/", health: "/hɛlθ/", delicious: "/dɪˈlɪʃəs/",
+        purple: "/ˈpɝpəl/", English: "/ˈɪŋɡlɪʃ/", chicken: "/ˈtʃɪkɪn/", "6:30": "/sɪks ˈθɝti/",
+        better: "/ˈbɛtɚ/", exit: "/ˈɛɡsɪt/ /ˈɛɡzɪt/", sorry: "/ˈsɑri/",
+        themselves: "/ðəmˈsɛlvz/", cookie: "/ˈkʊki/", banana: "/bəˈnænə/", girl: "/ɡɝl/",
+        November: "/noʊˈvɛmbɚ/", elementary: "/ˌɛləˈmɛntri/ /ˌɛləˈmɛntəri/", angry: "/ˈæŋɡri/",
+        travel: "/ˈtrævəl/", "5:40": "/faɪv ˈfɔrti/", Thursday: "/ˈθɝzdeɪ/", orange: "/ˈɔrɪndʒ/",
+        guitar: "/ɡɪˈtɑr/", zero: "/ˈzɪroʊ/", question: "/ˈkwɛstʃən/", "New York": "/nu jɔrk/",
+        dark: "/dɑrk/", Japan: "/dʒəˈpæn/", Tuesday: "/ˈtuzdeɪ/", February: "/ˈfɛbjuˌɛri/",
+        hungry: "/ˈhʌŋɡri/", theme: "/θim/", yellow: "/ˈjɛloʊ/", "1:40": "/wʌn ˈfɔrti/",
+        excuse: "/ɪkˈskjus/ /ɪkˈskjuz/", regular: "/ˈrɛɡjəlɚ/", leisure: "/ˈliʒɚ/"
+      };
+
+      const sentenceIpa = {
+        "How’s the weather tomorrow?": "/haʊz ðə ˈwɛðɚ təˈmɑroʊ/",
+        "The weather news said it’s going to be rainy.": "/ðə ˈwɛðɚ nuz sɛd ɪts ˈɡoʊɪŋ tə bi ˈreɪni/",
+        "Oh, no!": "/oʊ noʊ/",
+        "What’s wrong?": "/wʌts rɔŋ/",
+        "I’m supposed to go on a picnic tomorrow!": "/aɪm səˈpoʊzd tə ɡoʊ ɑn ə ˈpɪknɪk təˈmɑroʊ/",
+        "What do you want for your birthday this year?": "/wʌt du ju wɑnt fər jʊr ˈbɝθˌdeɪ ðɪs jɪr/",
+        "Let me think···· I would like to get a new bag.": "/lɛt mi θɪŋk/ /aɪ wʊd laɪk tə ɡɛt ə nu bæɡ/",
+        "That sounds really nice.": "/ðæt saʊndz ˈrɪəli naɪs/",
+        "What kind of bag are you looking for?": "/wʌt kaɪnd əv bæɡ ɑr ju ˈlʊkɪŋ fɔr/",
+        "I’m looking for a small black one that I can use every day.": "/aɪm ˈlʊkɪŋ fɔr ə smɔl blæk wʌn ðət aɪ kən juz ˈɛvri deɪ/",
+        "I’m home!": "/aɪm hoʊm/",
+        "Hey, how was your day?": "/heɪ haʊ wəz jʊr deɪ/",
+        "It was great, I ran into John during lunch.": "/ɪt wəz ɡreɪt aɪ ræn ˈɪntu dʒɑn ˈdʊrɪŋ lʌntʃ/",
+        "Oh, you did?": "/oʊ ju dɪd/",
+        "I haven’t seen John in a long time! How is he doing?": "/aɪ ˈhævənt sin dʒɑn ɪn ə lɔŋ taɪm/ /haʊ ɪz hi ˈduɪŋ/",
+        "He is doing well. He just moved into a new apartment in Boston.": "/hi ɪz ˈduɪŋ wɛl/ /hi dʒʌst muvd ˈɪntu ə nu əˈpɑrtmənt ɪn ˈbɔstən/",
+        "Why don’t we have Chinese food for dinner?": "/waɪ doʊnt wi hæv ˌtʃaɪˈniz fud fər ˈdɪnɚ/",
+        "Chinese food? I’m not in the mood for that.": "/ˌtʃaɪˈniz fud/ /aɪm nɑt ɪn ðə mud fɚ ðæt/",
+        "Then, do you have anything in mind?": "/ðɛn du ju hæv ˈɛniˌθɪŋ ɪn maɪnd/",
+        "How about ordering pizza delivery?": "/haʊ əˈbaʊt ˈɔrdɚɪŋ ˈpitsə dɪˈlɪvɚi/",
+        "Not bad at all.": "/nɑt bæd ət ɔl/",
+        "Would you like anything to drink?": "/wʊd ju laɪk ˈɛniˌθɪŋ tə drɪŋk/",
+        "Yes, what do you have?": "/jɛs wʌt du ju hæv/",
+        "We have soda, water, and orange juice.": "/wi hæv ˈsoʊdə ˈwɔt̬ɚ ənd ˈɔrɪndʒ dʒus/",
+        "I’ll have a glass of water.": "/aɪl hæv ə ɡlæs əv ˈwɔt̬ɚ/",
+        "Sure, no problem.": "/ʃʊr noʊ ˈprɑbləm/"
+      };
+
+      const phraseIpa = {
+        "a little girl": "/ə ˈlɪt̬əl ɡɝl/",
+        "graduate from high school": "/ˈɡrædʒuˌeɪt frəm haɪ skul/",
+        "grocery shopping": "/ˈɡroʊsəri ˈʃɑpɪŋ/",
+        "personal question": "/ˈpɝsənəl ˈkwɛstʃən/",
+        "family relationship": "/ˈfæməli rɪˈleɪʃənˌʃɪp/",
+        "one of them": "/ˈwʌn əv ðɛm/",
+        "man and woman": "/mæn ən(d) ˈwʊmən/",
+        "fantastic view": "/fænˈtæstɪk vju/",
+        "a police officer": "/ə pəˈlis ˈɔfəsɚ/",
+        "draw a picture": "/drɔ ə ˈpɪktʃɚ/",
+        "special performance": "/ˈspɛʃəl pɚˈfɔrməns/",
+        "do the homework": "/du ðə ˈhoʊmˌwɝk/",
+        "try it on": "/traɪ ɪt ɑn/",
+        "black and white picture": "/blæk ən waɪt ˈpɪktʃɚ/",
+        "a severe storm": "/ə səˈvɪr stɔrm/",
+        "at the library": "/ət ðə ˈlaɪˌbrɛri/",
+        "just a little thing": "/dʒʌst ə ˈlɪt̬əl θɪŋ/",
+        "the international airport": "/ði ˌɪntɚˈnæʃənəl ˈɛrˌpɔrt/",
+        "pass the exam": "/pæs ði ɪɡˈzæm/",
+        "send an Email": "/sɛnd ən ˈiˌmeɪl/",
+        "at the airport": "/ət ði ˈɛrˌpɔrt/",
+        "make an appointment": "/meɪk ən əˈpɔɪntmənt/",
+        "by the way": "/baɪ ðə weɪ/",
+        "personal computer": "/ˈpɝsənəl kəmˈpjut̬ɚ/",
+        "boys and girls": "/bɔɪz ən ɡɝlz/",
+        "open your heart": "/ˈoʊpən jʊr hɑrt/",
+        "beautiful flowers": "/ˈbjut̬əfəl ˈflaʊɚz/",
+        "New year holidays": "/ˌnu ˈjɪr ˈhɑlədeɪz/",
+        "a phone call": "/ə foʊn kɔl/",
+        "the broken window": "/ðə ˈbroʊkən ˈwɪndoʊ/",
+        "go for a walk": "/ɡoʊ fər ə wɔk/",
+        "as soon as possible": "/əz sun əz ˈpɑsəbəl/",
+        "answering machine": "/ˈænsərɪŋ məˌʃin/",
+        "a glass of water": "/ə ɡlæs əv ˈwɔt̬ɚ/",
+        "tomorrow morning": "/təˈmɑroʊ ˈmɔrnɪŋ/",
+        "have a good day": "/hæv ə ɡʊd deɪ/",
+        "top of the mountain": "/tɑp əv ðə ˈmaʊntən/",
+        "at my office": "/ət maɪ ˈɑfəs/",
+        "Christmas holiday": "/ˈkrɪsməs ˈhɑlədeɪ/",
+        "back and forth": "/bæk ən fɔrθ/",
+        "in the morning": "/ɪn ðə ˈmɔrnɪŋ/",
+        "looks good": "/lʊks ɡʊd/",
+        "pretty women": "/ˈprɪt̬i ˈwɪm.ɪn/",
+        "heavy rain and strong wind": "/ˈhɛvi reɪn ən strɔŋ wɪnd/",
+        "sightseeing tour": "/ˈsaɪtˌsiɪŋ tʊr/ ( /tɔr/でもOK）"
+      };
+
+      const sets = {
+        A: [
+        {
+          title: "SECTION 2",
+          type: "pairs",
+          items: [
+            ["best", "vest"],
+            ["no", "know"],
+            ["sick", "thick"],
+            ["fry", "fly"],
+            ["she", "sea"]
+          ]
+        },
+        {
+          title: "SECTION 03",
+          type: "words",
+          items: [
+            ["potato"],
+            ["world"],
+            ["volleyball"],
+            ["October"],
+            ["ask"],
+            ["6:15"],
+            ["trouble"],
+            ["message"],
+            ["white"],
+            ["Saturday"],
+            ["their"],
+            ["rich"],
+            ["war"],
+            ["Australia"],
+            ["horse"]
+          ]
+        },
+        {
+          title: "SECTION 4",
+          type: "sentences",
+          items: [
+            ["A: How’s the weather tomorrow?", "How’s the weather tomorrow?"],
+            ["B: The weather news said it’s going to be rainy.", "The weather news said it’s going to be rainy."],
+            ["A: Oh, no!", "Oh, no!"],
+            ["B: What’s wrong?", "What’s wrong?"],
+            ["A: I’m supposed to go on a picnic tomorrow!", "I’m supposed to go on a picnic tomorrow!"]
+          ]
+        },
+        {
+          title: "SECTION 5",
+          type: "phrases",
+          items: [
+            ["a little girl"],
+            ["graduate from high school"],
+            ["grocery shopping"],
+            ["personal question"],
+            ["family relationship"],
+            ["one of them"],
+            ["man and woman"],
+            ["fantastic view"],
+            ["a police officer"],
+            ["draw a picture"]
+          ]
+        }
+        ],
+        B: [
+          {
+            title: "SECTION 2",
+            type: "pairs",
+            items: [
+              ["light", "right"],
+              ["force", "fourth"],
+              ["best", "vest"],
+              ["test", "taste"]
+            ]
+          },
+          {
+            title: "SECTION 03",
+            type: "words",
+            items: [
+              ["famous"],
+              ["shower"],
+              ["together"],
+              ["both"],
+              ["cabbage"],
+              ["12:30"],
+              ["machine"],
+              ["alive"],
+              ["January"],
+              ["holiday"],
+              ["handsome"],
+              ["koala"],
+              ["another"],
+              ["theater"],
+              ["Asia"]
+            ]
+          },
+          {
+            title: "SECTION 4",
+            type: "sentences",
+            items: [
+              ["A: What do you want for your birthday this year?", "What do you want for your birthday this year?"],
+              ["B: Let me think···· I would like to get a new bag.", "Let me think···· I would like to get a new bag."],
+              ["A: That sounds really nice.", "That sounds really nice."],
+              ["A: What kind of bag are you looking for?", "What kind of bag are you looking for?"],
+              ["B: I’m looking for a small black one that I can use every day.", "I’m looking for a small black one that I can use every day."]
+            ]
+          },
+          {
+            title: "SECTION 5",
+            type: "phrases",
+            items: [
+              ["special performance"],
+              ["do the homework"],
+              ["try it on"],
+              ["black and white picture"],
+              ["a severe storm"],
+              ["at the library"],
+              ["just a little thing"],
+              ["the international airport"],
+              ["pass the exam"],
+              ["send an Email"]
+            ]
+          }
+        ],
+        C: [
+          {
+            title: "SECTION 2",
+            type: "pairs",
+            items: [
+              ["ship", "sheep"],
+              ["very", "berry"],
+              ["sea", "see"],
+              ["pain", "pen"],
+              ["rock", "lock"],
+              ["heard", "hard"],
+              ["path", "pass"],
+              ["not", "nut"],
+              ["fun", "fan"]
+            ]
+          },
+          {
+            title: "SECTION 03",
+            type: "words",
+            items: [
+              ["April"],
+              ["Saturday"],
+              ["voice"],
+              ["manager"],
+              ["health"],
+              ["delicious"],
+              ["purple"],
+              ["English"],
+              ["chicken"],
+              ["6:30"],
+              ["better"],
+              ["exit"],
+              ["sorry"],
+              ["themselves"],
+              ["cookie"]
+            ]
+          },
+          {
+            title: "SECTION 4",
+            type: "sentences",
+            items: [
+              ["I’m home!", "I’m home!"],
+              ["Hey, how was your day?", "Hey, how was your day?"],
+              ["It was great, I ran into John during lunch.", "It was great, I ran into John during lunch."],
+              ["Oh, you did?", "Oh, you did?"],
+              ["I haven’t seen John in a long time! How is he doing?", "I haven’t seen John in a long time! How is he doing?"],
+              ["He is doing well. He just moved into a new apartment in Boston.", "He is doing well. He just moved into a new apartment in Boston."]
+            ]
+          },
+          {
+            title: "SECTION 5",
+            type: "phrases",
+            items: [
+              ["at the airport"],
+              ["make an appointment"],
+              ["by the way"],
+              ["personal computer"],
+              ["boys and girls"],
+              ["open your heart"],
+              ["beautiful flowers"],
+              ["New year holidays"],
+              ["a phone call"],
+              ["the broken window"]
+            ]
+          }
+        ],
+        D: [
+          {
+            title: "SECTION 2",
+            type: "pairs",
+            items: [
+              ["think", "sink"],
+              ["farm", "form"],
+              ["bye", "buy"],
+              ["teach", "peach"],
+              ["play", "pray"],
+              ["hear", "here"],
+              ["wait", "wet"],
+              ["block", "black"],
+              ["end", "and"]
+            ]
+          },
+          {
+            title: "SECTION 03",
+            type: "words",
+            items: [
+              ["banana"],
+              ["health"],
+              ["girl"],
+              ["November"],
+              ["elementary"],
+              ["angry"],
+              ["travel"],
+              ["5:40"],
+              ["Thursday"],
+              ["orange"],
+              ["guitar"],
+              ["zero"],
+              ["question"],
+              ["New York"],
+              ["dark"]
+            ]
+          },
+          {
+            title: "SECTION 4",
+            type: "sentences",
+            items: [
+              ["Why don’t we have Chinese food for dinner?", "Why don’t we have Chinese food for dinner?"],
+              ["Chinese food? I’m not in the mood for that.", "Chinese food? I’m not in the mood for that."],
+              ["Then, do you have anything in mind?", "Then, do you have anything in mind?"],
+              ["How about ordering pizza delivery?", "How about ordering pizza delivery?"],
+              ["Not bad at all.", "Not bad at all."]
+            ]
+          },
+          {
+            title: "SECTION 5",
+            type: "phrases",
+            items: [
+              ["go for a walk"],
+              ["as soon as possible"],
+              ["answering machine"],
+              ["a glass of water"],
+              ["tomorrow morning"],
+              ["have a good day"],
+              ["top of the mountain"],
+              ["at my office"],
+              ["Christmas holiday"],
+              ["back and forth"]
+            ]
+          }
+        ],
+        E: [
+          {
+            title: "SECTION 2",
+            type: "pairs",
+            items: [
+              ["wrong", "long"],
+              ["map", "mop"],
+              ["win", "wing"],
+              ["hard", "heard"],
+              ["shell", "sell"],
+              ["been", "bean"],
+              ["age", "edge"],
+              ["fear", "hear"],
+              ["very", "berry"],
+              ["said", "sad"],
+              ["learn", "lean"],
+              ["path", "pass"]
+            ]
+          },
+          {
+            title: "SECTION 03",
+            type: "words",
+            items: [
+              ["Japan"],
+              ["themselves"],
+              ["Tuesday"],
+              ["February"],
+              ["hungry"],
+              ["manager"],
+              ["delicious"],
+              ["theme"],
+              ["yellow"],
+              ["1:40"],
+              ["excuse"],
+              ["regular"],
+              ["voice"],
+              ["leisure"],
+              ["chicken"]
+            ]
+          },
+          {
+            title: "SECTION 4",
+            type: "sentences",
+            items: [
+              ["Would you like anything to drink?", "Would you like anything to drink?"],
+              ["Yes, what do you have?", "Yes, what do you have?"],
+              ["We have soda, water, and orange juice.", "We have soda, water, and orange juice."],
+              ["I’ll have a glass of water.", "I’ll have a glass of water."],
+              ["Sure, no problem.", "Sure, no problem."]
+            ]
+          },
+          {
+            title: "SECTION 5",
+            type: "phrases",
+            items: [
+              ["in the morning"],
+              ["by the way"],
+              ["looks good"],
+              ["open your heart"],
+              ["make an appointment"],
+              ["beautiful flowers"],
+              ["pretty women"],
+              ["a phone call"],
+              ["heavy rain and strong wind"],
+              ["sightseeing tour"]
+            ]
+          }
+        ]
+      };
+
+      const content = document.querySelector("#set-content");
+      const topTabs = document.querySelectorAll(".set-panel > .tabs .tab-button");
+      const timerDisplay = document.querySelector("#timer-display");
+      const timerProgress = document.querySelector("#timer-progress");
+      const timerStart = document.querySelector("#timer-start");
+      const timerReset = document.querySelector("#timer-reset");
+      const timerTotalSeconds = 23 * 60;
+      let timerRemaining = timerTotalSeconds;
+      let timerId = null;
+
+      function hint(rows) {
+        return `
+          <div class="ipa-box" aria-hidden="true">
+            ${rows.map(([, ipa]) => `<div class="ipa-row"><span>${ipa}</span></div>`).join("")}
+          </div>
+        `;
+      }
+
+      function renderItem(section, item, index) {
+        if (section.type === "pairs") {
+          const [first, second] = item;
+          return `
+            <div class="drill-item">
+              <div class="drill-top">
+                <p class="drill-text">#${index + 1} ${first} – ${second}</p>
+                <button class="hint-button" type="button">Hint</button>
+              </div>
+              ${hint([[first, pairIpa[first]], [second, pairIpa[second]]])}
+            </div>
+          `;
+        }
+
+        if (section.type === "sentences") {
+          const [display, key] = item;
+          return `
+            <div class="drill-item">
+              <div class="drill-top">
+                <p class="drill-text">${display}</p>
+                <button class="hint-button" type="button">Hint</button>
+              </div>
+              ${hint([[key, sentenceIpa[key]]])}
+            </div>
+          `;
+        }
+
+        const [text] = item;
+        const ipa = section.type === "phrases" ? phraseIpa[text] : wordIpa[text];
+        return `
+          <div class="drill-item">
+            <div class="drill-top">
+              <p class="drill-text">#${index + 1} ${text}</p>
+              <button class="hint-button" type="button">Hint</button>
+            </div>
+            ${hint([[text, ipa]])}
+          </div>
+        `;
+      }
+
+      function renderSet(name) {
+        if (!sets[name]) {
+          content.innerHTML = `<div class="coming-soon">SET ${name} はこのあと追加できます。</div>`;
+          return;
+        }
+
+        const sectionsHtml = sets[name].map(section => `
+          <section class="section-block" id="${section.title.toLowerCase().replace(/^section 0?/, "section-")}">
+            <div class="section-heading">
+              <h2>${section.title}</h2>
+              <span>${section.items.length} items</span>
+            </div>
+            <div class="drill-list">
+              ${section.items.map((item, index) => renderItem(section, item, index)).join("")}
+            </div>
+          </section>
+        `).join("");
+
+        content.innerHTML = `
+          ${sectionsHtml}
+          <div class="tabs bottom-tabs" aria-label="Choose a set">
+            ${Object.keys({ A: 1, B: 1, C: 1, D: 1, E: 1 }).map(setName => `
+              <button class="tab-button ${setName === name ? "is-active" : ""}" type="button" data-set="${setName}">SET ${setName}</button>
+            `).join("")}
+          </div>
+        `;
+      }
+
+      function selectSet(name, shouldScroll = true) {
+        document.querySelectorAll(".tab-button").forEach((button) => {
+          button.classList.toggle("is-active", button.dataset.set === name);
+        });
+        renderSet(name);
+        if (shouldScroll) {
+          requestAnimationFrame(() => {
+            document.querySelector("#section-2")?.scrollIntoView({ behavior: "smooth", block: "start" });
+          });
+        }
+      }
+
+      document.addEventListener("click", (event) => {
+        const tab = event.target.closest(".tab-button");
+        if (!tab) return;
+        selectSet(tab.dataset.set);
+      });
+
+      content.addEventListener("click", (event) => {
+        const button = event.target.closest(".hint-button");
+        if (!button) return;
+        const item = button.closest(".drill-item");
+        const box = item.querySelector(".ipa-box");
+        const isOpen = item.classList.toggle("is-open");
+        button.classList.toggle("is-open", isOpen);
+        box.setAttribute("aria-hidden", String(!isOpen));
+      });
+
+      function renderTimer() {
+        const minutes = String(Math.floor(timerRemaining / 60)).padStart(2, "0");
+        const seconds = String(timerRemaining % 60).padStart(2, "0");
+        timerDisplay.textContent = `${minutes}:${seconds}`;
+        timerProgress.style.width = `${Math.max(0, (timerRemaining / timerTotalSeconds) * 100)}%`;
+        timerStart.textContent = timerId ? "Pause" : "Start";
+      }
+
+      function stopTimer() {
+        if (timerId) {
+          clearInterval(timerId);
+          timerId = null;
+        }
+        renderTimer();
+      }
+
+      timerStart.addEventListener("click", () => {
+        if (timerId) {
+          stopTimer();
+          return;
+        }
+        if (timerRemaining <= 0) timerRemaining = timerTotalSeconds;
+        timerId = setInterval(() => {
+          timerRemaining -= 1;
+          if (timerRemaining <= 0) {
+            timerRemaining = 0;
+            stopTimer();
+          }
+          renderTimer();
+        }, 1000);
+        renderTimer();
+      });
+
+      timerReset.addEventListener("click", () => {
+        stopTimer();
+        timerRemaining = timerTotalSeconds;
+        renderTimer();
+      });
+
+      selectSet("A", false);
+      renderTimer();
+    </script>
+  </body>
+</html>
