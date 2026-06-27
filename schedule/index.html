@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>7月 Schedule | EiMARi</title>
+    <meta name="description" content="EiMARiの7月スケジュールページです。1-on-1トレーニング、第2回・第3回レッスンの日程を確認できます。" />
+    <style>
+      :root {
+        --ink: #10284a;
+        --muted: #667085;
+        --paper: #fffdf8;
+        --line: rgba(16, 40, 74, 0.14);
+        --navy: #08244a;
+        --blue: #0d63b7;
+        --gold: #d7a94a;
+        --cream: #fff7e6;
+        --shadow: 0 18px 42px rgba(32, 49, 75, 0.14);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        min-height: 100%;
+        background:
+          radial-gradient(circle at 12% 0%, rgba(255, 223, 154, 0.38), transparent 28rem),
+          linear-gradient(180deg, #fffaf0 0%, #eef6ff 100%);
+        color: var(--ink);
+        font-family: "Avenir Next", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+      }
+
+      body {
+        display: flex;
+        justify-content: center;
+        padding: 14px 10px 42px;
+      }
+
+      button,
+      a {
+        font: inherit;
+      }
+
+      button {
+        cursor: pointer;
+      }
+
+      .page {
+        width: min(760px, 100%);
+      }
+
+      .hero {
+        border: 1px solid rgba(255, 255, 255, 0.86);
+        border-radius: 10px;
+        overflow: hidden;
+        background: #fff;
+        box-shadow: var(--shadow);
+      }
+
+      .hero img {
+        display: block;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+      }
+
+      .tabs {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+        margin: 14px 0;
+        padding: 6px;
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.72);
+        box-shadow: 0 10px 24px rgba(32, 49, 75, 0.09);
+      }
+
+      .tab-btn {
+        min-height: 46px;
+        border: 1px solid transparent;
+        border-radius: 8px;
+        color: var(--navy);
+        background: transparent;
+        font-weight: 900;
+      }
+
+      .tab-btn.active {
+        color: #fff;
+        background: linear-gradient(180deg, #104f91, #08244a);
+        box-shadow: 0 8px 18px rgba(8, 36, 74, 0.22);
+      }
+
+      .tab-panel[hidden] {
+        display: none;
+      }
+
+      .schedule-list {
+        display: grid;
+        gap: 14px;
+      }
+
+      .schedule-card {
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.92);
+        box-shadow: 0 12px 28px rgba(32, 49, 75, 0.09);
+        overflow: hidden;
+      }
+
+      .card-head {
+        display: grid;
+        gap: 6px;
+        padding: 16px;
+        border-bottom: 1px solid rgba(16, 40, 74, 0.09);
+        background: linear-gradient(135deg, rgba(255, 247, 230, 0.9), rgba(255, 255, 255, 0.94));
+      }
+
+      .date {
+        display: inline-flex;
+        width: fit-content;
+        align-items: center;
+        min-height: 30px;
+        padding: 5px 10px;
+        border-radius: 999px;
+        color: #6f4810;
+        background: #fff1c7;
+        font-size: 0.84rem;
+        font-weight: 900;
+      }
+
+      h1,
+      h2,
+      p {
+        margin: 0;
+      }
+
+      h1 {
+        margin: 0 0 12px;
+        color: var(--navy);
+        font-size: clamp(1.55rem, 6vw, 2.2rem);
+        line-height: 1.15;
+        letter-spacing: 0;
+      }
+
+      h2 {
+        color: var(--navy);
+        font-size: clamp(1.14rem, 4vw, 1.45rem);
+        line-height: 1.35;
+        letter-spacing: 0;
+      }
+
+      .time {
+        color: var(--blue);
+        font-size: 0.98rem;
+        font-weight: 900;
+      }
+
+      .card-body {
+        padding: 16px;
+      }
+
+      .notes {
+        display: grid;
+        gap: 8px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .notes li {
+        position: relative;
+        padding-left: 1.15em;
+        color: #243b5a;
+        font-weight: 700;
+        line-height: 1.7;
+      }
+
+      .notes li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0.82em;
+        width: 6px;
+        height: 6px;
+        border-radius: 999px;
+        background: var(--gold);
+      }
+
+      .reserve-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 46px;
+        margin-top: 14px;
+        padding: 11px 16px;
+        border-radius: 999px;
+        color: #fff;
+        background: linear-gradient(180deg, #145fa7, #08244a);
+        font-weight: 900;
+        text-decoration: none;
+        box-shadow: 0 10px 20px rgba(8, 36, 74, 0.2);
+      }
+
+      .notice {
+        margin-top: 10px;
+        padding: 12px 14px;
+        border: 1px solid rgba(215, 169, 74, 0.36);
+        border-radius: 8px;
+        color: #6f4810;
+        background: var(--cream);
+        font-weight: 800;
+        line-height: 1.65;
+      }
+
+      .coming-soon {
+        min-height: 220px;
+        display: grid;
+        place-items: center;
+        padding: 34px 18px;
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.9);
+        box-shadow: 0 12px 28px rgba(32, 49, 75, 0.09);
+        text-align: center;
+      }
+
+      .coming-soon p {
+        color: var(--muted);
+        font-size: 1.05rem;
+        font-weight: 900;
+      }
+
+      @media (max-width: 560px) {
+        body {
+          padding-top: 10px;
+        }
+
+        .card-head,
+        .card-body {
+          padding: 14px;
+        }
+
+        .hero {
+          border-radius: 8px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <section class="hero" aria-label="7月のSchedule">
+        <img src="./assets/july-schedule.png" alt="7月のSchedule" />
+      </section>
+
+      <div class="tabs" role="tablist" aria-label="月別スケジュール">
+        <button class="tab-btn active" type="button" role="tab" aria-selected="true" aria-controls="julyPanel" data-tab="julyPanel">7月</button>
+        <button class="tab-btn" type="button" role="tab" aria-selected="false" aria-controls="augustPanel" data-tab="augustPanel">8月</button>
+      </div>
+
+      <section id="julyPanel" class="tab-panel" role="tabpanel">
+        <h1>7月 Schedule</h1>
+        <div class="schedule-list">
+          <article class="schedule-card">
+            <div class="card-head">
+              <span class="date">7/1（水）〜 7/12（日）</span>
+              <h2>EIGHTとの1-on-1トレーニング</h2>
+            </div>
+            <div class="card-body">
+              <ul class="notes">
+                <li>2回ご予約いただくことが可能です。</li>
+                <li>前回のレッスンでのまりあからのフィードバックを反映できているか、細かくチェックします。</li>
+              </ul>
+              <a class="reserve-link" href="https://www.jicoo.com/t/eimari/e/fUquueYyUVUH" target="_blank" rel="noopener">予約はこちらから</a>
+            </div>
+          </article>
+
+          <article class="schedule-card">
+            <div class="card-head">
+              <span class="date">7/16（木）</span>
+              <h2>第2回レッスン</h2>
+              <p class="time">21:00 - 22:00</p>
+            </div>
+            <div class="card-body">
+              <p class="notice">課題は2週間前にお渡し予定です。</p>
+            </div>
+          </article>
+
+          <article class="schedule-card">
+            <div class="card-head">
+              <span class="date">7/18（土）〜 7/24（金）</span>
+              <h2>EIGHTとの1-on-1トレーニング</h2>
+            </div>
+            <div class="card-body">
+              <ul class="notes">
+                <li>1回ご予約いただくことが可能です。</li>
+                <li>前回のレッスンでのまりあからのフィードバックを反映できているか、細かくチェックします。</li>
+              </ul>
+              <a class="reserve-link" href="https://www.jicoo.com/t/eimari/e/fUquueYyUVUH" target="_blank" rel="noopener">予約はこちらから</a>
+            </div>
+          </article>
+
+          <article class="schedule-card">
+            <div class="card-head">
+              <span class="date">7/29（水）</span>
+              <h2>第3回レッスン※</h2>
+              <p class="time">21:00 - 22:00</p>
+            </div>
+            <div class="card-body">
+              <p class="notice">※木曜日が難しいため水曜日を予定しております。ご容赦ください。</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="augustPanel" class="tab-panel" role="tabpanel" hidden>
+        <div class="coming-soon">
+          <p>Coming soon</p>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const buttons = document.querySelectorAll(".tab-btn");
+
+      buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const targetId = button.dataset.tab;
+          document.querySelectorAll(".tab-panel").forEach((panel) => {
+            panel.hidden = panel.id !== targetId;
+          });
+          buttons.forEach((item) => {
+            const active = item === button;
+            item.classList.toggle("active", active);
+            item.setAttribute("aria-selected", String(active));
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
