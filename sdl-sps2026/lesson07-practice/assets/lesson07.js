@@ -136,7 +136,7 @@ const sentenceHints = {
   "Why don’t we have Chinese food for dinner?": "/waɪ doʊnt wi hæv ˌtʃaɪˈniz fud fər ˈdɪnɚ/",
   "Chinese food? I’m not in the mood for that.": "/ˌtʃaɪˈniz fud/ /aɪm nɑt ɪn ðə mud fɚ ðæt/",
   "Then, do you have anything in mind?": "/ðɛn du ju hæv ˈɛniˌθɪŋ ɪn maɪnd/",
-  "What kind of bag are you looking for?": "/wʌt kaɪnd əv bæɡ ɑr ju ˈlʊkɪŋ fɔr/",
+  "What kind of bag are you looking for?": "/wʌt kaɪnd əv bæɡ ɚ ju ˈlʊkɪŋ fɔr/",
   "I’m looking for a small black one that I can use every day.": "/aɪm ˈlʊkɪŋ fɔr ə smɔl blæk wʌn ðət aɪ kən juz ˈɛvri deɪ/",
   "I’m home!": "/aɪm hoʊm/",
   "Hey, how was your day?": "/heɪ haʊ wəz jʊr deɪ/",
