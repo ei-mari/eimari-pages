@@ -1,0 +1,499 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>つながる英語へ｜リズム・リンキングラボ 卒業生特設ページ</title>
+  <style>
+    :root{
+      --ink:#191713;--body:#3c372e;--muted:#7a7264;
+      --gold:#d6a45f;--gold-deep:#7b5524;
+      --lime:#caff3d;--lime-deep:#9ec92c;
+      --paper:#fffaf1;--line:rgba(48,39,28,.14);
+      --routeA:#e9f8d4;--routeA-ink:#4a6410;
+      --routeB:#fdeede;--routeB-ink:#8a5a1e;
+      --routeC:#e8f2fb;--routeC-ink:#1f5d8a;
+    }
+    *{box-sizing:border-box}
+    html{background:#17130e;scroll-behavior:smooth}
+    body{width:min(calc(100% - 16px),430px);min-height:100vh;margin:0 auto;color:var(--ink);font-family:"Hiragino Sans","Yu Gothic",system-ui,sans-serif;background:linear-gradient(180deg,#fffaf1,#f4efe6);line-height:1.9;box-shadow:0 0 0 1px rgba(241,210,160,.16),0 24px 90px rgba(0,0,0,.48);overflow-x:hidden;border-radius:18px;padding-bottom:96px}
+    a{text-decoration:none;color:inherit}
+    :focus-visible{outline:3px solid var(--lime-deep);outline-offset:2px;border-radius:6px}
+    .wrap{width:calc(100% - 32px);margin:0 auto}
+    .hero-img{width:100%;height:auto;object-fit:contain;display:block;background:#080807;min-height:100px;border-radius:18px 18px 0 0}
+
+    /* ---------- hero ---------- */
+    .top{background:#080807;color:#fff8ea;padding:0 0 32px}
+    .kicker{display:inline-flex;margin-top:26px;color:var(--lime);font-size:12px;font-weight:900;letter-spacing:.1em;line-height:1.7}
+    .top h1{margin:14px 0 0;font-size:30px;line-height:1.4;font-weight:900}
+    .top .lead{color:rgba(255,248,234,.85);margin-top:14px;font-size:14.5px;line-height:2;font-weight:500}
+    .lead-highlight{display:block;margin-top:16px;padding:12px 14px;border-left:3px solid var(--lime);border-radius:0 12px 12px 0;background:rgba(202,255,61,.14);color:#fff8ea;font-weight:800;line-height:1.9;font-size:13.5px}
+    /* 2つの締切 */
+    /* このページですること */
+    .todo{margin-top:20px;padding:16px;border-radius:16px;background:rgba(255,255,255,.06);border:1px solid rgba(202,255,61,.22)}
+    .todo h2{margin:0;font-size:14px;color:var(--lime);font-weight:900;letter-spacing:.04em}
+    .todo ol{margin:10px 0 0;padding:0;list-style:none;display:grid;gap:9px;counter-reset:todo}
+    .todo li{counter-increment:todo;display:grid;grid-template-columns:28px 1fr;gap:10px;align-items:start;font-size:13.5px;font-weight:800;color:#fff8ea;line-height:1.75}
+    .todo li::before{content:counter(todo);display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--lime);color:#17110a;font-weight:900;font-size:13px;margin-top:2px}
+    .todo li small{display:block;font-weight:600;font-size:12px;color:rgba(255,248,234,.62)}
+    .toc-title{margin:22px 0 0;color:var(--lime);font-size:12px;font-weight:900;letter-spacing:.14em;text-transform:uppercase}
+    .toc{margin-top:18px;display:grid;gap:8px}
+    .toc a{display:grid;grid-template-columns:30px 1fr auto;gap:10px;align-items:center;padding:12px 14px;border-radius:13px;background:rgba(255,255,255,.07);border:1px solid rgba(202,255,61,.22);font-weight:800;font-size:13.5px;color:#fff8ea}
+    .toc a b{display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--lime);color:#17110a;font-size:13px}
+    .toc a:after{content:"↓";color:var(--lime);font-weight:900}
+
+    /* ---------- sections ---------- */
+    .section{padding:40px 0 8px}
+    .section-dark{background:#11100e;color:#fff8ea;padding:40px 0 44px;margin-top:40px}
+    .section-dark .sec-title{color:#fff8ea}
+    .sec-eyebrow{display:inline-flex;border-radius:999px;background:#111;color:var(--lime);padding:4px 13px;font-size:11.5px;font-weight:900;letter-spacing:.08em}
+    .sec-eyebrow small{margin-left:6px;color:inherit;font-size:10.5px;font-weight:900;letter-spacing:.02em;opacity:.78}
+    .section-dark .sec-eyebrow{background:var(--lime);color:#17110a}
+    .sec-title{margin:12px 0 0;font-size:23px;line-height:1.45;font-weight:900}
+    .sec-lead{margin:12px 0 0;color:var(--body);font-weight:500;font-size:14px;line-height:2}
+    .section-dark .sec-lead{color:rgba(255,248,234,.75)}
+    .muted{color:var(--muted)}
+
+    /* ---------- recap ---------- */
+    .recap{display:grid;gap:10px;margin-top:16px}
+    .recap-item{display:grid;grid-template-columns:40px 1fr;gap:12px;align-items:start;padding:14px;border-radius:14px;background:#fff;border:1px solid rgba(214,164,95,.24);box-shadow:0 8px 18px rgba(21,16,10,.06)}
+    .recap-item .ic{display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:rgba(202,255,61,.4);font-size:17px}
+    .recap-item b{display:block;font-size:15px;line-height:1.55;font-weight:900}
+    .recap-item small{display:block;color:var(--body);font-size:12.5px;font-weight:500;line-height:1.8;margin-top:3px}
+    .punch{margin-top:18px;padding:16px;border-radius:15px;background:#11100e;color:#fff8ea;font-weight:800;line-height:1.95;text-align:center;font-size:14.5px}
+    .punch b{color:var(--lime)}
+
+    /* ---------- sound examples ---------- */
+    .sound{margin-top:14px;padding:16px;border-radius:15px;background:#fff;border:1px solid rgba(214,164,95,.24);box-shadow:0 8px 18px rgba(21,16,10,.06)}
+    .sound .en{font-size:21px;font-weight:900;letter-spacing:.02em}
+    .sound .tie{color:var(--lime-deep);font-weight:900;margin:0 1px}
+    .sound .rows{display:grid;gap:8px;margin-top:10px}
+    .sound .row{display:grid;grid-template-columns:76px 1fr;gap:10px;align-items:center}
+    .sound .tag{display:grid;place-items:center;border-radius:8px;padding:5px 0;font-size:11px;font-weight:900}
+    .tag-x{background:rgba(48,39,28,.08);color:var(--muted)}
+    .tag-o{background:linear-gradient(135deg,var(--lime),#fff47b);color:#17110a}
+    .sound .ipa{font-family:"Charis SIL","Gentium Plus","Doulos SIL","Times New Roman",serif;font-weight:700;font-size:17px}
+    .sound .ipa.strike{color:var(--muted);text-decoration:line-through;text-decoration-color:rgba(116,108,97,.55);font-weight:500}
+    .sound-note{margin:10px 0 0;font-size:12.5px;font-weight:600;color:var(--gold-deep);line-height:1.8;border-top:1px dashed rgba(214,164,95,.4);padding-top:9px}
+
+    /* ---------- RLL ---------- */
+    .fact{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+    .fact span{border-radius:999px;padding:6px 13px;background:rgba(202,255,61,.16);border:1px solid rgba(202,255,61,.3);color:#fff8ea;font-size:12px;font-weight:800}
+    .goal-grid{display:grid;gap:10px;margin-top:16px}
+    .goal{display:grid;grid-template-columns:44px 1fr;gap:12px;align-items:center;padding:14px;border-radius:14px;background:rgba(255,255,255,.08);border:1px solid rgba(202,255,61,.22);font-weight:700;line-height:1.75;color:#fff8ea;font-size:14px}
+    .goal-num{display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--lime),#fff47b);color:#17110a;font-weight:900}
+    .teacher{display:grid;grid-template-columns:1fr;gap:10px;margin-top:16px}
+    .teacher-item{padding:14px;border-radius:14px;background:rgba(255,255,255,.08);border:1px solid rgba(202,255,61,.18);color:#fff8ea}
+    .teacher-item b{display:block;font-size:15px;font-weight:900}
+    .teacher-item small{display:block;color:rgba(255,248,234,.72);font-size:12.5px;font-weight:500;line-height:1.8;margin-top:4px}
+
+    /* ---------- 3つの進み方 overview ---------- */
+    .routes-ov{display:grid;gap:12px;margin-top:18px}
+    .route-card{border-radius:16px;padding:16px;border:1px solid var(--line);background:#fff;box-shadow:0 10px 24px rgba(21,16,10,.08)}
+    .route-chip{display:inline-flex;align-items:center;border-radius:999px;padding:3px 12px;font-size:11.5px;font-weight:900;letter-spacing:.04em}
+    .chip-a{background:var(--routeA);color:var(--routeA-ink)}
+    .chip-b{background:var(--routeB);color:var(--routeB-ink)}
+    .chip-c{background:var(--routeC);color:var(--routeC-ink)}
+    .route-card h3{margin:9px 0 0;font-size:16.5px;line-height:1.55;font-weight:900}
+    .route-card .who{margin:6px 0 0;font-size:12px;font-weight:800;color:var(--gold-deep)}
+    .route-card p{margin:8px 0 0;font-size:13px;color:var(--body);line-height:1.9}
+    .route-card .pr{margin:10px 0 0;font-weight:900;font-size:16px}
+    .route-card .pr s{color:var(--muted);font-size:13px;margin-right:6px;font-weight:600}
+    .route-card .pr small{display:block;font-size:11.5px;color:var(--gold-deep);font-weight:800;margin-top:2px}
+    .offer-list{margin:12px 0 0;padding:13px;border-radius:14px;background:linear-gradient(135deg,#fffdf4,#fff6d8);border:1px solid rgba(214,164,95,.38);display:grid;gap:8px}
+    .offer-list b{display:flex;align-items:center;gap:6px;color:#7b5524;font-size:12px;font-weight:900;letter-spacing:.04em}
+    .offer-list p{margin:0!important;display:grid;grid-template-columns:26px 1fr;gap:8px;align-items:start;color:#3a3428;font-size:12.5px;font-weight:850;line-height:1.65}
+    .offer-list .offer-ic{display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:#111;color:var(--lime);font-size:12px;line-height:1}
+
+    /* ---------- timeline ---------- */
+    .tl{margin-top:18px;display:grid;gap:0}
+    .tl-item{position:relative;padding:0 0 22px 34px}
+    .tl-item:before{content:"";position:absolute;left:10px;top:8px;bottom:-2px;width:2px;background:rgba(214,164,95,.45)}
+    .tl-item:last-child:before{display:none}
+    .tl-item:after{content:"";position:absolute;left:4px;top:6px;width:14px;height:14px;border-radius:50%;background:linear-gradient(135deg,var(--lime),#fff47b);box-shadow:0 0 0 4px rgba(202,255,61,.2)}
+    .tl-date{display:inline-flex;border-radius:8px;background:#111;color:var(--lime);padding:3px 10px;font-size:11.5px;font-weight:900}
+    .tl-item b{display:block;font-size:15.5px;margin-top:6px;line-height:1.6;font-weight:900}
+    .tl-item p{margin:5px 0 0;color:var(--body);font-size:13px;font-weight:500;line-height:1.9}
+
+    /* ---------- accordion ---------- */
+    details.acc{margin-top:10px;border:1px solid rgba(214,164,95,.28);border-radius:15px;background:#fff;overflow:hidden}
+    details.acc summary{cursor:pointer;list-style:none;padding:14px 16px;font-weight:900;display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:14px;line-height:1.6}
+    details.acc summary::-webkit-details-marker{display:none}
+    details.acc summary:after{content:"+";flex:none;display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:#111;color:var(--lime);font-weight:900}
+    details.acc[open] summary:after{content:"−"}
+    details.acc .acc-body{padding:0 16px 16px;color:var(--body);font-weight:500;font-size:13.5px;line-height:1.95}
+    details.acc ul{list-style:none;padding:0;margin:0;display:grid;gap:7px}
+    details.acc li{position:relative;padding-left:22px}
+    details.acc li:before{content:"";position:absolute;left:0;top:.68em;width:11px;height:11px;border-radius:50%;background:var(--lime)}
+
+    /* ---------- gift ---------- */
+    .gift{margin-top:16px;padding:18px;border-radius:16px;background:linear-gradient(135deg,#fff6bf,#ffe8bd);border:1px solid rgba(185,150,80,.34)}
+    .gift-list{display:grid;gap:10px;margin-top:4px}
+    .gift-item{display:grid;grid-template-columns:40px 1fr;gap:10px;align-items:start;background:rgba(255,255,255,.75);border-radius:12px;padding:12px}
+    .gift-item .n{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:#111;color:var(--lime);font-weight:900}
+    .gift-item b{display:block;font-size:14.5px;line-height:1.6;font-weight:900}
+    .gift-item small{display:block;color:#6b5a3c;font-size:12.5px;font-weight:500;line-height:1.8;margin-top:2px}
+
+    /* ---------- flowchart ---------- */
+    .fc{margin-top:18px}
+    .fc-q{background:#11100e;color:#fff8ea;border-radius:15px;padding:14px 16px;font-weight:900;font-size:15px;line-height:1.7;box-shadow:0 14px 36px rgba(21,16,10,.22)}
+    .fc-q .qnum{display:block;color:var(--lime);font-size:11.5px;letter-spacing:.14em;margin-bottom:3px}
+    .fc-q .qsub{display:block;margin-top:6px;color:rgba(255,248,234,.66);font-size:12px;font-weight:500;line-height:1.8}
+    .fc-dest{display:block;padding:11px 14px;border-radius:13px;background:#fff;border:1.5px solid rgba(214,164,95,.45);font-weight:900;font-size:13.5px;line-height:1.6;color:#17110a;box-shadow:0 8px 18px rgba(21,16,10,.08);margin:12px 0;animation:fcIn .4s}
+    .fc-dest b{color:var(--gold-deep)}
+    .fc-info{display:block;padding:11px 14px;border-radius:13px;background:linear-gradient(135deg,#fff6bf,#ffe8bd);border:1px solid rgba(185,150,80,.34);font-weight:600;font-size:13px;line-height:1.85;color:#4a3a1c;margin:10px 0;animation:fcIn .4s}
+    .hid{display:none!important}
+    .fc-q+.fc-q,.fc-q.hid{margin-top:12px}
+    .fc-ans{display:flex;gap:10px;margin-top:12px}
+    button.fc-yn{appearance:none;border:none;cursor:pointer;flex:1;min-height:44px;font-family:inherit;font-size:14.5px;border-radius:999px;font-weight:900;transition:opacity .2s,box-shadow .2s;display:grid;place-items:center}
+    .yn-no{background:#fff;color:#5a5347;border:1.5px solid rgba(48,39,28,.25)}
+    .yn-yes{background:linear-gradient(135deg,var(--lime),#fff47b);color:#17110a;box-shadow:0 6px 14px rgba(202,255,61,.3)}
+    button.fc-yn.sel{box-shadow:0 0 0 3px rgba(202,255,61,.55)}
+    button.yn-no.sel{box-shadow:0 0 0 3px rgba(48,39,28,.3)}
+    button.fc-yn.dimmed{opacity:.32}
+    .fc-arrow{display:grid;place-items:center;margin:12px 0;color:var(--gold-deep);font-size:24px;font-weight:900;line-height:1;animation:fcIn .4s}
+    .fc-q,.fc-info{animation:fcIn .4s}
+    @keyframes fcIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+    @media (prefers-reduced-motion:reduce){.fc-q,.fc-info,.fc-dest,.fc-arrow{animation:none}}
+    .fc-reset{appearance:none;border:none;background:none;cursor:pointer;margin-top:14px;color:var(--muted);font-size:13px;font-weight:800;font-family:inherit;text-decoration:underline;padding:6px}
+    .route h3{margin:10px 0 0;font-size:19px;line-height:1.5;font-weight:900}
+    .route p{font-size:13.5px;color:var(--body);line-height:1.95;font-weight:500}
+    .route .price-line{font-weight:900;font-size:18px;color:var(--ink)}
+    .route .price-line s{color:var(--muted);font-size:14px;margin-right:7px;font-weight:600}
+    .route .price-line .off{display:block;font-size:12px;color:var(--gold-deep);font-weight:800;margin-top:2px}
+    .route ul{list-style:none;margin:10px 0 0;padding:0;display:grid;gap:6px}
+    .route li{position:relative;padding-left:20px;font-size:13px;font-weight:600;line-height:1.7}
+    .route li:before{content:"";position:absolute;left:0;top:.6em;width:10px;height:10px;border-radius:50%;background:var(--lime)}
+    .route-cta{display:flex;align-items:center;justify-content:center;min-height:48px;border-radius:999px;background:linear-gradient(135deg,var(--lime),#fff47b);color:#17110a;font-weight:900;margin-top:14px;box-shadow:0 8px 20px rgba(202,255,61,.26)}
+
+    /* ---------- price ---------- */
+    .price-table{display:grid;gap:12px;margin-top:18px}
+    .price-option{border:1px solid rgba(214,164,95,.32);border-radius:18px;background:rgba(255,255,255,.78);padding:16px;box-shadow:0 12px 28px rgba(21,16,10,.1)}
+    .price-option.featured{background:linear-gradient(150deg,#11100e,#241b12);color:#fff8ea;border-color:rgba(202,255,61,.44)}
+    .price-option h3{margin:10px 0 0;font-size:18px;line-height:1.5;font-weight:900}
+    .amount{margin:8px 0 0;font-size:27px;font-weight:900;line-height:1.15}
+    .amount s{color:var(--muted);font-size:14px;margin-right:7px;font-weight:600}
+    .price-option.featured .amount s{color:rgba(255,248,234,.5)}
+    .price-note{margin-top:8px;color:var(--gold-deep);font-size:12.5px;font-weight:600;line-height:1.8}
+    .price-option.featured .price-note{color:rgba(255,248,234,.78)}
+    .price-option ul{list-style:none;margin:12px 0 0;padding:0;display:grid;gap:6px}
+    .price-option li{position:relative;padding-left:20px;font-size:13px;font-weight:600;line-height:1.7}
+    .price-option li:before{content:"";position:absolute;left:0;top:.62em;width:10px;height:10px;border-radius:50%;background:var(--lime)}
+
+    /* ---------- deadline ---------- */
+    .deadline{margin-top:18px;padding:16px;border-radius:15px;background:#11100e;color:#fff8ea;text-align:center;font-weight:800;line-height:1.8;font-size:14px}
+    .deadline span{color:var(--lime);font-weight:900}
+    .count{display:flex;justify-content:center;gap:8px;margin-top:10px}
+    .count div{min-width:64px;padding:8px 6px;border-radius:12px;background:rgba(202,255,61,.14);border:1px solid rgba(202,255,61,.3)}
+    .count b{display:block;font-size:24px;color:var(--lime);line-height:1.1}
+    .count small{font-size:10.5px;color:rgba(255,248,234,.7);font-weight:700}
+    .note{margin-top:14px;font-size:12px;color:var(--muted);font-weight:500;line-height:1.9}
+    .btn{display:flex;align-items:center;justify-content:center;min-height:52px;border-radius:999px;background:linear-gradient(135deg,var(--lime),#fff47b);font-weight:900;color:#17110a;margin-top:20px;box-shadow:0 10px 24px rgba(202,255,61,.28)}
+    .subbtn{background:#1b1916;color:#fff8ea;box-shadow:none}
+
+    /* ---------- sticky ---------- */
+    .cta-bar{position:fixed;left:50%;transform:translateX(-50%);bottom:8px;width:min(calc(100% - 24px),418px);z-index:50;display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;background:rgba(8,8,7,.94);border:1px solid rgba(202,255,61,.3);border-radius:16px;padding:10px 12px;box-shadow:0 14px 40px rgba(0,0,0,.5)}
+    .cta-bar .txt{color:#fff8ea;font-size:11.5px;font-weight:800;line-height:1.5}
+    .cta-bar .txt span{color:var(--lime)}
+    .cta-bar a{display:grid;place-items:center;min-height:42px;padding:0 16px;border-radius:999px;background:linear-gradient(135deg,var(--lime),#fff47b);font-weight:900;font-size:13.5px;color:#17110a}
+  </style>
+</head>
+<body>
+
+  <!-- ═══ HERO ═══ -->
+  <header class="top">
+    <img class="hero-img" src="https://ei-mari.github.io/eimari-pages/rhythm-linking-lab-special/assets/hero-thumbnail.png" alt="リズム・リンキングラボ｜つながりを感じ、より自然な英語へ。" referrerpolicy="no-referrer" loading="eager" onerror="this.style.display='none'">
+    <div class="wrap">
+      <span class="kicker">SOUND DESIGN LAB アーカイブコースを修了されたみなさまへ</span>
+      <h1>卒業、おめでとうございます。<br>——次は、つながる英語へ。</h1>
+      <p class="lead">録画を見ながら、これまでを走り切ったこと。それ自体が、簡単なことではありません。このページでは、その手にした力の「次の使い道」をご案内します。</p>
+      <p class="lead"><span class="lead-highlight">📢 まずお知らせ：全アーカイブの視聴期間を <b>7/12（日）23:59 まで延長</b>しました。終了のご案内が行き届いておらず、申し訳ありません。最後の1週間、総復習にお使いください。</span></p>
+
+      <div class="todo">
+        <h2>このページで、確認していただきたいこと</h2>
+        <ol>
+          <li><div>EPT Basic（発音テスト）の受験を予約する<small>受験料4,950円はえいまりが全額負担します。全員が対象の卒業ギフトです🎁</small></div></li>
+          <li><div>3つの「進み方」から、自分に合うコースを選ぶ<small>独学での学びも含め、今後のコースを決めてください。悩んだ時はLINEで相談してくださいね。</small></div></li>
+          <li><div>7/12（日）までに、お申し込み・ご相談<small>コースの継続をされる場合は7/12（日）までにお願い申し上げます。決めきれない場合は、相談だけでも歓迎です。</small></div></li>
+        </ol>
+      </div>
+
+      <div class="toc-title">Contents</div>
+      <nav class="toc">
+        <a href="#recap"><b>1</b>ここまでの振り返り</a>
+        <a href="#next-task"><b>2</b>次の課題</a>
+        <a href="#next"><b>3</b>新コース「リズム・リンキングラボ」とは</a>
+        <a href="#routes"><b>4</b>3つの進み方（早見表）</a>
+        <a href="#price"><b>5</b>料金と締切</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ═══ 1. 記憶の回復 ═══ -->
+  <section class="section" id="recap">
+    <div class="wrap">
+      <span class="sec-eyebrow">CHAPTER 1<small>ここまでの振り返り</small></span>
+      <h2 class="sec-title">まず、思い出してください。<br>すでに、ここまで来ています。</h2>
+      <p class="sec-lead">録画を見ながら、身につけてきたのは——英語の「音そのもの」を作る技術でした。</p>
+      <div class="recap">
+        <div class="recap-item"><span class="ic">🔤</span><div><b>発音記号が読めるようになった</b><small>/æ/ /ʌ/ /ɑ/ の違い、/f-v/ /θ-ð/ /r-l/ の出し方。カタカナに頼らず、記号から音を再現する力。</small></div></div>
+        <div class="recap-item"><span class="ic">💪</span><div><b>強勢（ストレス）の位置がわかるようになった</b><small>単語のどこを強く読むか。「英語らしさ」の半分は、強弱の付け方で決まることを学びました。</small></div></div>
+        <div class="recap-item"><span class="ic">📍</span><div><b>EPTという「ものさし」を知った</b><small>EPT（英語発音テスト）Basic：発音力を100点満点で測るオンラインテスト。学びを数字で確認する道具です。</small></div></div>
+      </div>
+      <div class="punch">単語単位の発音は、仕上がってきました。<br>では——なぜ、まだ<b>「文」になると英語らしく聞こえない</b>のでしょうか？</div>
+    </div>
+  </section>
+
+  <!-- ═══ 2. 次の課題 ═══ -->
+  <section class="section" id="next-task">
+    <div class="wrap">
+      <span class="sec-eyebrow">CHAPTER 2<small>次の課題</small></span>
+      <h2 class="sec-title">理由は、単語の「外側」に<br>まだ手をつけていないから。</h2>
+      <p class="sec-lead">実際の英語では、単語と単語の間で音がつながり、弱まり、姿を変えます。このルールを知らない音は、口から出せないだけでなく——耳でも聞き取れません。</p>
+
+      <div class="sound">
+        <div class="en">Check<span class="tie">‿</span>it<span class="tie">‿</span>out</div>
+        <div class="rows">
+          <div class="row"><span class="tag tag-x">1語ずつ</span><span class="ipa strike">/tʃɛk/ /ɪt/ /aʊt/</span></div>
+          <div class="row"><span class="tag tag-o">つながると</span><span class="ipa">/tʃɛ.kɪ.ɾaʊt/</span></div>
+        </div>
+        <p class="sound-note">語尾の子音が次の母音とつながり、/t/ は ɾ（フラップ）に変わる。</p>
+      </div>
+
+      <div class="sound">
+        <div class="en">not<span class="tie">‿</span>at<span class="tie">‿</span>all</div>
+        <div class="rows">
+          <div class="row"><span class="tag tag-x">1語ずつ</span><span class="ipa strike">/nɑt/ /æt/ /ɔl/</span></div>
+          <div class="row"><span class="tag tag-o">つながると</span><span class="ipa">/nɑ.ɾə.ɾɔl/</span></div>
+        </div>
+        <p class="sound-note">2つの /t/ がどちらも ɾ に。at は弱形 /ət/ へ——「弱くなる」もルールです。</p>
+      </div>
+
+      <p class="muted" style="margin-top:14px;font-weight:600;font-size:13.5px;line-height:2">——今、この記号を読んで音の変化が想像できたはずです。<strong style="color:#17110a">それは、SOUND DESIGN LABを走り切ったからこそできること。</strong>発音記号と強勢という土台の上に、次は「つながりのルール」を載せる番です。</p>
+    </div>
+  </section>
+
+  <!-- ═══ 3. RLLとは ═══ -->
+  <section class="section-dark" id="next">
+    <div class="wrap">
+      <span class="sec-eyebrow">CHAPTER 3<small>リズム・リンキングラボ</small></span>
+      <h2 class="sec-title">リズム・リンキングラボ</h2>
+      <p class="sec-lead">単語を読む英語から、自然につながって伝わる英語へ。リンキング（音のつながり）・弱形・リズム・イントネーションを段階的に学ぶ、SOUND DESIGN LABの続編です。</p>
+
+      <div class="fact">
+        <span>📅 8/23（日）・8/26（水）開講</span><span>🎓 本編 全10回 + 2回のEIGHTセッション</span><span>👥 各クラス最大7名</span><span>💻 オンライン（Zoom）</span><span>🎥 全回アーカイブつき</span>
+      </div>
+
+      <h3 class="sec-title" style="margin-top:22px;font-size:19px">リズム・リンキングラボのゴール</h3>
+      <div class="goal-grid">
+        <div class="goal"><span class="goal-num">01</span>リンキングのルールを理解し、自然につなげて読める・聞き取れるようになる</div>
+        <div class="goal"><span class="goal-num">02</span>英語らしい強弱のリズムで、文を読めるようになる</div>
+        <div class="goal"><span class="goal-num">03</span>母音・子音・強勢の理解をさらに深め、発音の総合力を一段上げる</div>
+      </div>
+
+      <h3 class="sec-title" style="margin-top:24px;font-size:19px">担当講師</h3>
+      <div class="teacher">
+        <div class="teacher-item"><b>🎙 まりあ元帥（本編10回担当）</b><small>次はリアルタイムで、一緒に学習しませんか？（もちろんアーカイブでの受講継続も喜んで☺️）</small></div>
+        <div class="teacher-item"><b>📚 EIGHT（学習セッション担当）</b><small>機能語・品詞の理解と総合復習のセッションで、学びの整理と定着を伴走します。また学習の習慣化のためのコーチングも実施します。</small></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ 4. 3つの進み方 早見表 ═══ -->
+  <section class="section" id="routes">
+    <div class="wrap">
+      <span class="sec-eyebrow">CHAPTER 4<small>3つの進み方</small></span>
+      <h2 class="sec-title">この後の進み方は<br>次の3つがあります。</h2>
+
+      <div class="routes-ov">
+        <div class="route-card">
+          <span class="route-chip chip-b">SELF STUDY</span>
+          <h3>🎥 アーカイブコース</h3>
+          <p class="who">こんな方に：録画で自分のペースで進めたい方</p>
+          <p>本編アーカイブ視聴、スライド・課題、会員サイト利用で、リズム・リンキングラボを自分のペースで学びます。</p>
+          <div class="offer-list">
+            <b>🎁 ご参加特典</b>
+            <p><span class="offer-ic">📚</span><span>SOUND DESIGN LABのアーカイブ共有を2026年12月末まで延長</span></p>
+          </div>
+        </div>
+        <div class="route-card">
+          <span class="route-chip chip-a">POPULAR</span>
+          <h3>🎙 通常コース</h3>
+          <p class="who">こんな方に：リアルタイムで参加できる方</p>
+          <p>まりあ担当グループレッスン10回、アーカイブ、EIGHTセッション2回で「つなげる英語」を実践します。</p>
+          <div class="offer-list">
+            <b>🎁 ご参加特典</b>
+            <p><span class="offer-ic">📚</span><span>SOUND DESIGN LABのアーカイブ共有を無期限に延長</span></p>
+            <p><span class="offer-ic">🎥</span><span>リズム・リンキングラボのアーカイブ共有が無期限</span></p>
+          </div>
+        </div>
+        <div class="route-card">
+          <span class="route-chip chip-c">SELF LEARNING</span>
+          <h3>📚 独学で継続</h3>
+          <p class="who">こんな方に：今回はコース参加を見送って、自分で学習を続けたい方</p>
+          <p>ただし、今回は早割価格と復習環境がつくアーカイブコースをご用意しています。今後どう進めるか迷う場合は、お得な特典がつくアーカイブコースがおすすめです。</p>
+        </div>
+      </div>
+      <p class="note">※ コースの詳細と料金はページ下の料金表をご確認ください。<br>※ どの進み方でも、EPT Basic の受験（無料の卒業特典）はおすすめです。</p>
+    </div>
+  </section>
+
+  <!-- ═══ 5. 受講の流れ ═══ -->
+  <section class="section">
+    <div class="wrap">
+      <span class="sec-eyebrow">CHAPTER 5<small>開講までの流れ</small></span>
+      <h2 class="sec-title">開講までの流れと日程</h2>
+      <div class="tl">
+        <div class="tl-item"><span class="tl-date">いま〜7/12（日）</span><b>総復習＆お申し込み</b><p>SOUND DESIGN LABのアーカイブで復習しつつ、進み方を決めてお申し込み。迷ったらLINEで相談を。</p></div>
+        <div class="tl-item"><span class="tl-date">いま〜8/23</span><b>EPT Basicを受験（どのコースの方も）</b><p>現在の発音力を、点数で確かめましょう（結果は試験終了後約2週間後に届きます）。<strong>受験費用（4,950円）は卒業特典としてえいまりが全額負担いたします。</strong></p></div>
+        <div class="tl-item"><span class="tl-date">8/23（日）または 8/26（水）開講</span><b>本編10回＋2回の復習セッション（日曜ひる ／ 水曜よる）</b><p>日曜クラスと水曜クラスで通いやすい方を選べます（各クラス最大7名）。<br><br>詳細は＋を押してカリキュラムをご確認ください。</p></div>
+      <div style="padding:0 0 22px 34px">
+      <details class="acc" style="margin-top:0">
+        <summary>☀️ 日曜クラスの日程（13:00-15:00・最大7名）</summary>
+        <div class="acc-body"><ul>
+          <li>8/23　リンキング Part 1</li>
+          <li>8/24〜9/5　1-on-1コーチング ※EIGHT担当</li>
+          <li>9/6　リンキング Part 2</li>
+          <li>9/13　実践練習 #1</li>
+          <li>9/20　弱形</li>
+          <li>9/27　機能語探し（品詞）※EIGHT担当</li>
+          <li>10/4　リズム</li>
+          <li>10/11　実践練習 #2</li>
+          <li>10/18　イントネーション・文アクセント</li>
+          <li>10/25　これまでの総合復習 ※EIGHT担当</li>
+          <li>11/1　フレーズ強勢</li>
+          <li>11/8　実践練習 #3</li>
+          <li>11/15　Jobs Analysis（総仕上げ）</li>
+        </ul></div>
+      </details>
+      <details class="acc">
+        <summary>🌙 水曜クラスの日程（21:00-23:00・最大7名）</summary>
+        <div class="acc-body"><ul>
+          <li>8/26　リンキング Part 1</li>
+          <li>8/27〜9/8　1-on-1コーチング ※EIGHT担当</li>
+          <li>9/9　リンキング Part 2</li>
+          <li>9/16　実践練習 #1</li>
+          <li>9/23　弱形</li>
+          <li>9/30　機能語探し（品詞）※EIGHT担当</li>
+          <li>10/7　リズム</li>
+          <li>10/14　実践練習 #2</li>
+          <li>10/21　イントネーション・文アクセント</li>
+          <li>10/28　これまでの総合復習 ※EIGHT担当</li>
+          <li>11/4　フレーズ強勢</li>
+          <li>11/11　実践練習 #3</li>
+          <li>11/18　Jobs Analysis（総仕上げ）</li>
+        </ul></div>
+      </details>
+      <p class="note" style="margin-top:10px">※ 1-on-1コーチング（EIGHT担当）は、上記の期間内で日程を調整の上、決定します。<br>※ 日程が合わない回は、すべて録画で受講できます。また別曜日のクラスに振替が可能です。</p>
+      </div>
+        <div class="tl-item"><span class="tl-date">いつでも</span><b>EIMARI LIBRARYで復習</b><p>会員サイトに全レッスンのアーカイブ・スライド・課題を整理してお届け。アーカイブでの学習を走り切ったみなさんの、いちばんの得意分野です。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ 6. 卒業特典 ═══ -->
+  <section class="section">
+    <div class="wrap">
+      <span class="sec-eyebrow">CHAPTER 6<small>卒業特典</small></span>
+      <h2 class="sec-title">アーカイブコース卒業生だけの特典</h2>
+      <div class="gift">
+        <div class="gift-list">
+          <div class="gift-item"><span class="n">🎁</span><div><b>EPT Basic 受験費用（4,950円）を全額負担</b><small>リズム・リンキングラボを継続されない場合も含めて全員に受験いただけます。詳細はボタンを押してご確認ください。</small><a href="ept.html" style="display:flex;align-items:center;justify-content:center;min-height:40px;margin-top:10px;border-radius:999px;background:#111;color:var(--lime);font-weight:900;font-size:13px">受験のご案内・申込手順を見る</a></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ 7. 料金表 ═══ -->
+  <section class="section" id="price">
+    <div class="wrap">
+      <span class="sec-eyebrow">PRICE</span>
+      <h2 class="sec-title">卒業生向け料金表</h2>
+      <p class="sec-lead">3つのコースに対応した料金です。Early Bird価格（早割価格）・特典は7/12（日）23:59までです。</p>
+
+      <div class="price-table">
+        <div class="price-option">
+          <span class="route-chip chip-b">SELF STUDY</span>
+          <h3>🎥 アーカイブコース</h3>
+          <p class="amount"><s>通常 39,800円</s>19,800円</p>
+          <p class="price-note">支払方法：一括払い。早割価格として20,000円OFF。本編は録画・スライド・課題で自習するコースです。</p>
+          <ul>
+            <li>本編アーカイブ視聴</li>
+            <li>スライド・課題</li>
+            <li>会員サイト利用</li>
+          </ul>
+        </div>
+
+        <div class="price-option featured">
+          <span class="route-chip chip-a">POPULAR</span>
+          <h3>🎙 通常コース</h3>
+          <p class="amount"><s>138,000円</s>108,000円</p>
+          <p class="price-note">支払方法：一括払い or 2回払い。まりあ担当グループレッスンに参加し、実際に声を出して練習するコースです。</p>
+          <ul>
+            <li>まりあ担当グループレッスン10回</li>
+            <li>アーカイブ・スライド・課題</li>
+            <li>EIGHTセッション2回＋1回の1-on-1コーチング</li>
+          </ul>
+          <p class="note" style="color:rgba(255,248,234,.82)">⚠️ EPT Basicのスコアが86点以上の方が対象となります。EPT Basicのスコアを現在お持ちでない方は、スコアが届く日までの特例をご用意しておりますので、<a href="https://s.lmes.jp/landing-qr/2002147064-Ao2680Jr?uLand=JEEXBq" style="color:var(--lime);font-weight:900;text-decoration:underline">LINEにてご相談ください</a>。</p>
+        </div>
+
+      </div>
+
+      <p class="note">※ EPT Basicの結果や参加可能な日程により、おすすめのコースが変わる場合があります。迷ったらLINEでご相談ください。</p>
+    </div>
+  </section>
+
+  <!-- ═══ 9. 締切 ═══ -->
+  <section class="section" style="padding-bottom:8px">
+    <div class="wrap">
+      <span class="sec-eyebrow">DEADLINE</span>
+      <h2 class="sec-title">お申し込みと卒業特典は、<br>7/12（日）が締切です。</h2>
+      <div class="deadline">
+        アーカイブ視聴の延長・卒業特典・卒業生価格は<br><span>7/12（日）23:59</span> で終了します
+        <div class="count" id="count">
+          <div><b id="d">–</b><small>DAYS</small></div>
+          <div><b id="h">–</b><small>HOURS</small></div>
+          <div><b id="m">–</b><small>MIN</small></div>
+        </div>
+      </div>
+      <a class="btn" href="https://tally.so/r/GxyrAo">今すぐコースへ申し込む</a>
+      <a class="btn subbtn" href="https://www.jicoo.com/t/eimari/e/1Lt6yoymAH9X">カウンセリングを予約する（無料）</a>
+    </div>
+  </section>
+
+  <!-- ═══ 10. FAQ ═══ -->
+  <section class="section" style="padding-bottom:46px">
+    <div class="wrap">
+      <span class="sec-eyebrow">FAQ</span>
+      <h2 class="sec-title">よくある質問</h2>
+      <details class="acc"><summary>SOUND DESIGN LABの内容、正直ほとんど忘れています…</summary><div class="acc-body">大丈夫です。そのために視聴期間を7/12まで延長しました。本編が始まるのは8月末——まずは苦手だった回だけでも見返してみてください。1回目よりずっと分かるはずで、それがいちばんの準備になります。</div></details>
+      <details class="acc"><summary>レッスンに毎回出られるか不安です</summary><div class="acc-body">全レッスンの録画とスライドをEIMARI LIBRARY（会員サイト）でご覧いただけます。出られない回は録画で、出られる回はレッスンで。アーカイブでの学習を走り切ったみなさんなら、この使い分けは得意なはずです。</div></details>
+      <details class="acc"><summary>EPTってなんでしたっけ？ 受けないとだめですか？</summary><div class="acc-body">EPT（英語発音テスト）は、発音の力を100点満点で測るオンラインテストです（結果は試験終了後約2週間後に届きます）。学びの成果を数字で確かめられるほか、86点以上のスコアは次期通常コースへの切符になります。卒業特典として受験費用4,950円はえいまりが全額負担するので、どのコースに進む方も、この機会にぜひ。</div></details>
+      <details class="acc"><summary>EPTの結果が7/12までに届かないのですが、申し込めますか？</summary><div class="acc-body">はい、ご安心ください。結果の到着が締切のあとになる場合の進め方は、LINEでご相談いただければ状況に合わせてご案内します。まずは受験の予約とご連絡だけ、7/12までにお済ませください。</div></details>
+      <details class="acc"><summary>86点のスコアを持っていない場合は？</summary><div class="acc-body">リンキングラボの通常コースに参加できるのは86点以上となりますが、受験がまだの場合に向けたレベルチェックもご用意しております。<br><br><a href="https://s.lmes.jp/landing-qr/2002147064-Ao2680Jr?uLand=JEEXBq" style="color:#7b5524;font-weight:900;text-decoration:underline">こちらをタップし、LINEにてご相談ください。</a><br><br>なお、アーカイブコースはスコアに関わらずご参加いただけます。2026年いっぱいまでSOUND DESIGN LABとリズム・リンキングラボのアーカイブを確認できるため、独学で進めるよりも学びを続けやすい進み方です。</div></details>
+      <details class="acc"><summary>支払い方法・分割はできますか？</summary><div class="acc-body">アーカイブコースは一括払いのみでのご参加となります。通常コースは手数料無料での2回払いも可能です。</div></details>
+      <p class="note">※ 継続価格は、今期（7/12まで）のお申し込みに限り有効です。<br>※ EPT Basicの受験手順は<a href="ept.html" style="color:#7b5524;font-weight:900;text-decoration:underline">こちらのご案内ページ</a>をご覧ください。</p>
+    </div>
+  </section>
+
+  <div class="cta-bar">
+    <div class="txt">早割価格は<br><span>7/12（日）23:59まで</span></div>
+    <a href="https://tally.so/r/GxyrAo">今すぐコースへ申し込む</a>
+  </div>
+
+  <script>
+    (function(){
+      var end = new Date("2026-07-12T23:59:59+09:00").getTime();
+      function tick(){
+        var now = Date.now(), diff = end - now;
+        if(diff <= 0){document.getElementById("count").innerHTML = "<div style='min-width:auto;padding:8px 14px'><b style='font-size:16px'>受付を終了しました</b></div>";return;}
+        document.getElementById("d").textContent = Math.floor(diff/86400000);
+        document.getElementById("h").textContent = Math.floor(diff%86400000/3600000);
+        document.getElementById("m").textContent = Math.floor(diff%3600000/60000);
+        setTimeout(tick, 30000);
+      }
+      tick();
+    })();
+  </script>
+</body>
+</html>
