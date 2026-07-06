@@ -8,7 +8,7 @@
     :root{--ink:#11110f;--muted:#746c61;--gold:#d6a45f;--lime:#caff3d;--paper:#fffaf1;--line:rgba(48,39,28,.14)}
     *{box-sizing:border-box}
     html{background:#17130e;scroll-behavior:smooth}
-    body{width:min(calc(100% - 16px),430px);min-height:100vh;margin:0 auto;color:var(--ink);font-family:"Hiragino Sans","Yu Gothic",system-ui,sans-serif;background:linear-gradient(180deg,#fffaf1,#f4efe6);line-height:1.75;box-shadow:0 0 0 1px rgba(241,210,160,.16),0 24px 90px rgba(0,0,0,.48);overflow-x:hidden;border-radius:18px;padding-bottom:30px}
+    body{width:min(calc(100% - 16px),430px);min-height:100vh;margin:0 auto;color:var(--ink);font-family:"Hiragino Sans","Yu Gothic",system-ui,sans-serif;background:linear-gradient(180deg,#fffaf1,#f4efe6);line-height:1.75;box-shadow:0 0 0 1px rgba(241,210,160,.16),0 24px 90px rgba(0,0,0,.48);overflow-x:hidden;border-radius:18px;padding-bottom:112px}
     a{text-decoration:none;color:inherit}
     .wrap{width:calc(100% - 30px);margin:0 auto}
     .top{background:#080807;color:#fff8ea;padding:8px 0 30px}
@@ -38,6 +38,8 @@
     .btn{display:flex;align-items:center;justify-content:center;min-height:52px;border-radius:999px;background:linear-gradient(135deg,var(--lime),#fff47b);font-weight:950;margin-top:20px;box-shadow:0 10px 24px rgba(202,255,61,.28)}
     .subbtn{background:#1b1916;color:#fff8ea;box-shadow:none}
     .note{margin-top:14px;font-size:12px;color:var(--muted);font-weight:850;line-height:1.75}
+    .sticky-reserve{position:fixed;left:50%;bottom:12px;z-index:20;width:min(calc(100% - 28px),402px);transform:translateX(-50%);padding:10px;border-radius:20px;background:rgba(17,17,15,.92);box-shadow:0 18px 46px rgba(0,0,0,.34);backdrop-filter:blur(10px)}
+    .sticky-reserve .btn{margin-top:0;min-height:54px}
   </style>
 </head>
 <body>
@@ -88,7 +90,7 @@
         <div class="step">
           <span class="step-num">STEP 3</span>
           <h3>ご連絡事項に、次の一文を入れる</h3>
-          <p>お名前などを入力したあと、「ご連絡事項」のらんに次の一文をそのまま入れてください。<strong>この一文が、受験料を私たちが支払うための合図になります。</strong></p>
+          <p>お名前などを入力したあと、「ご連絡事項」の欄に次の一文をそのまま入れてください。<strong>この一文が、受験料を私たちが支払うための合図になります。</strong></p>
           <div class="copybox">
             <div class="txt" id="copyTarget">英会話スクールの紹介です。振込は「カノマタトシユキ」名義で行います。</div>
             <button class="copybtn" onclick="copyText(this)">📋 この一文をコピーする</button>
@@ -110,6 +112,10 @@
       </div>
     </section>
   </main>
+
+  <div class="sticky-reserve">
+    <a class="btn" href="https://reserve.ept.or.jp/form" target="_blank" rel="noopener">EPTオンライン受験を予約する</a>
+  </div>
 
   <script>
     function copyText(btn){
