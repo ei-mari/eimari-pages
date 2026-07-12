@@ -1,0 +1,582 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RHYTHM & LINKING LAB｜スペシャルオファー</title>
+  <meta name="description" content="SOUND DESIGN LAB修了者向け。発音の土台を整えてからリンキングラボ本編へ進む、特練付き参加プランのご案内。">
+  <style>
+    :root {
+      --ink: #11110f;
+      --soft-ink: #3c3933;
+      --muted: #746c61;
+      --paper: #fffaf0;
+      --paper-2: #f5efe4;
+      --line: rgba(48, 39, 28, .14);
+      --gold: #d6a45f;
+      --gold-2: #f1d2a0;
+      --lime: #caff3d;
+      --lime-2: #ecffaf;
+      --night: #080807;
+      --card: rgba(255, 252, 246, .88);
+      --shadow: 0 22px 70px rgba(21, 16, 10, .16);
+      --radius: 24px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: "Hiragino Sans", "Yu Gothic", "Noto Sans JP", system-ui, sans-serif;
+      background:
+        radial-gradient(circle at 12% 4%, rgba(214, 164, 95, .24), transparent 28rem),
+        radial-gradient(circle at 87% 18%, rgba(202, 255, 61, .12), transparent 22rem),
+        linear-gradient(180deg, #fffaf1 0%, #f4efe6 44%, #fffaf1 100%);
+      line-height: 1.75;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .wrap { width: min(1120px, calc(100% - 32px)); margin: 0 auto; }
+    .section { padding: 88px 0; position: relative; }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: #604018;
+    }
+    .eyebrow::before {
+      content: "";
+      width: 32px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--lime), var(--gold));
+    }
+    h1, h2, h3 { margin: 0; line-height: 1.18; letter-spacing: 0; }
+    h1 {
+      margin-top: 16px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(46px, 7vw, 92px);
+      color: #fff3dd;
+      text-shadow: 0 2px 24px rgba(214, 164, 95, .42);
+    }
+    h2 { font-size: clamp(30px, 4vw, 52px); font-weight: 950; }
+    h3 { font-size: 22px; font-weight: 900; }
+    p { margin: 0; }
+    .lead { font-size: clamp(17px, 2vw, 21px); color: var(--soft-ink); }
+    .muted { color: var(--muted); }
+
+    .hero {
+      min-height: 96vh;
+      color: #fff8ea;
+      overflow: hidden;
+      background: #080807;
+      display: grid;
+      align-items: end;
+      padding: 0 0 64px;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(214, 164, 95, .18), transparent 18rem),
+        linear-gradient(180deg, rgba(8, 8, 7, 0), rgba(8, 8, 7, .94) 18rem),
+        #080807;
+    }
+    .hero::after {
+      content: none;
+    }
+    .hero-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0;
+      align-items: start;
+    }
+    .hero-image {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      border-bottom: 1px solid rgba(214, 164, 95, .46);
+      box-shadow: 0 18px 52px rgba(0, 0, 0, .46);
+    }
+    .hero-image img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+    .hero-content { padding-top: 30px; }
+    .hero .eyebrow { color: var(--gold-2); }
+    .hero .title-ja {
+      margin-top: 12px;
+      font-size: clamp(30px, 5vw, 62px);
+      font-weight: 950;
+      color: #fff;
+    }
+    .hero-copy {
+      margin-top: 24px;
+      max-width: 680px;
+      font-size: 18px;
+      color: rgba(255, 248, 234, .86);
+    }
+    .message-block {
+      margin-top: 26px;
+      padding: 24px 0 4px;
+      border-top: 1px solid rgba(241, 210, 160, .28);
+      border-bottom: 1px solid rgba(241, 210, 160, .16);
+    }
+    .message-block p {
+      margin: 0 0 20px;
+      color: rgba(255, 248, 234, .86);
+      font-size: 17px;
+      line-height: 1.82;
+    }
+    .message-block .congrats {
+      color: #fff;
+      font-size: 19px;
+      font-weight: 950;
+    }
+    .message-block .emphasis {
+      color: var(--lime-2);
+      font-weight: 950;
+    }
+    .message-block .closing {
+      margin-top: 28px;
+      padding-left: 16px;
+      border-left: 2px solid var(--gold);
+      color: rgba(255, 248, 234, .76);
+      font-size: 16px;
+    }
+    .hero-card {
+      border: 1px solid rgba(241, 210, 160, .34);
+      border-radius: var(--radius);
+      background: rgba(12, 10, 8, .68);
+      backdrop-filter: blur(16px);
+      box-shadow: 0 24px 90px rgba(0,0,0,.38);
+      padding: 24px;
+    }
+    .hero-stats { display: grid; gap: 12px; margin-top: 18px; }
+    .hero-stat {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      border-bottom: 1px solid rgba(241, 210, 160, .18);
+      padding-bottom: 12px;
+      color: rgba(255, 248, 234, .88);
+    }
+    .hero-stat strong { color: var(--lime-2); }
+
+    .actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 30px; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 0 22px;
+      border-radius: 999px;
+      font-weight: 900;
+      border: 1px solid rgba(17, 17, 15, .18);
+      background: #fff;
+      box-shadow: 0 12px 28px rgba(0,0,0,.12);
+    }
+    .btn.primary {
+      background: linear-gradient(135deg, var(--lime), #fff47b);
+      color: #161611;
+      border-color: transparent;
+    }
+    .hero .btn:not(.primary) {
+      background: rgba(255,255,255,.1);
+      color: #fff8ea;
+      border-color: rgba(255,255,255,.26);
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(0, .85fr) minmax(280px, .55fr);
+      gap: 36px;
+      align-items: end;
+      margin-bottom: 34px;
+    }
+    .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--card);
+      box-shadow: var(--shadow);
+      padding: 26px;
+    }
+    .mini-card {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: rgba(255,255,255,.62);
+      padding: 18px;
+      font-weight: 850;
+    }
+    .check-list, .plain-list { list-style: none; padding: 0; margin: 18px 0 0; display: grid; gap: 10px; }
+    .check-list li, .plain-list li {
+      position: relative;
+      padding-left: 28px;
+      color: var(--soft-ink);
+    }
+    .check-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: .65em;
+      width: 13px;
+      height: 13px;
+      border-radius: 50%;
+      background: var(--lime);
+      box-shadow: 0 0 0 4px rgba(202,255,61,.18);
+    }
+    .plain-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: .75em;
+      width: 14px;
+      height: 2px;
+      background: var(--gold);
+    }
+
+    .dark-band {
+      color: #fff8ea;
+      background:
+        linear-gradient(135deg, rgba(8,8,7,.94), rgba(34,25,15,.92)),
+        url("assets/hero-thumbnail.png") center / cover fixed;
+    }
+    .dark-band h2, .dark-band h3 { color: #fff; }
+    .dark-band .lead, .dark-band .muted, .dark-band li { color: rgba(255,248,234,.78); }
+    .dark-band .card {
+      background: rgba(8,8,7,.72);
+      border-color: rgba(241,210,160,.24);
+      box-shadow: 0 22px 70px rgba(0,0,0,.28);
+    }
+
+    .steps { counter-reset: step; display: grid; gap: 14px; }
+    .step {
+      counter-increment: step;
+      display: grid;
+      grid-template-columns: 72px 1fr;
+      gap: 18px;
+      align-items: start;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: rgba(255,255,255,.68);
+    }
+    .step::before {
+      content: "STEP " counter(step);
+      display: grid;
+      place-items: center;
+      min-height: 56px;
+      border-radius: 16px;
+      background: var(--night);
+      color: var(--lime);
+      font-size: 12px;
+      font-weight: 950;
+      text-align: center;
+      line-height: 1.2;
+    }
+
+    .pricing-card {
+      position: relative;
+      overflow: hidden;
+    }
+    .pricing-card.featured {
+      transform: translateY(-14px);
+      border: 2px solid #15120c;
+      background: #11100e;
+      color: #fff8ea;
+    }
+    .pricing-card.limited { border-color: rgba(214,164,95,.62); }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 30px;
+      padding: 0 12px;
+      border-radius: 999px;
+      background: var(--lime);
+      color: #111;
+      font-size: 12px;
+      font-weight: 950;
+      letter-spacing: .08em;
+    }
+    .price {
+      margin: 18px 0 2px;
+      font-size: 38px;
+      line-height: 1;
+      font-weight: 950;
+      letter-spacing: 0;
+    }
+    .regular { color: var(--muted); text-decoration: line-through; }
+    .featured .muted, .featured li { color: rgba(255,248,234,.76); }
+    .featured .regular { color: rgba(255,248,234,.5); }
+
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.72);
+      box-shadow: var(--shadow);
+    }
+    table { width: 100%; border-collapse: collapse; min-width: 820px; }
+    th, td { padding: 16px; border-bottom: 1px solid var(--line); text-align: center; }
+    th:first-child, td:first-child { text-align: left; font-weight: 850; }
+    th { background: #17130e; color: #fff8ea; }
+    td:nth-child(3) { background: rgba(202,255,61,.14); font-weight: 900; }
+
+    .timeline { display: grid; gap: 14px; }
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 170px 1fr;
+      gap: 18px;
+      padding: 18px;
+      border-left: 4px solid var(--gold);
+      border-radius: 0 18px 18px 0;
+      background: rgba(255,255,255,.66);
+    }
+    .date { font-weight: 950; color: #604018; }
+
+    details {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: rgba(255,255,255,.72);
+      padding: 18px 20px;
+    }
+    details + details { margin-top: 10px; }
+    summary { cursor: pointer; font-weight: 900; }
+    details p { margin-top: 10px; color: var(--soft-ink); }
+
+    .footer-cta {
+      text-align: center;
+      color: #fff8ea;
+      background:
+        linear-gradient(180deg, rgba(8,8,7,.22), rgba(8,8,7,.92)),
+        url("assets/hero-thumbnail.png") center / cover no-repeat;
+    }
+    .footer-cta h2 { color: #fff; }
+    .footer-cta .lead { color: rgba(255,248,234,.84); max-width: 800px; margin: 18px auto 0; }
+    .apply-box { margin-top: 38px; text-align: left; }
+
+    @media (max-width: 900px) {
+      .hero { min-height: auto; padding-top: 0; }
+      .hero::before {
+        background:
+          radial-gradient(circle at 50% 0%, rgba(214, 164, 95, .18), transparent 18rem),
+          linear-gradient(180deg, rgba(8, 8, 7, 0), rgba(8, 8, 7, .94) 18rem),
+          #080807;
+      }
+      .hero::after { inset: 14px; }
+      .hero-grid, .section-head, .grid-2, .grid-3 { grid-template-columns: 1fr; }
+      .pricing-card.featured { transform: none; }
+      .section { padding: 64px 0; }
+      .timeline-item { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 560px) {
+      .wrap { width: min(100% - 22px, 1120px); }
+      .card { padding: 20px; border-radius: 18px; }
+      .hero-card { padding: 18px; }
+      .actions { display: grid; }
+      .btn { width: 100%; }
+      .step { grid-template-columns: 1fr; }
+      .hero .title-ja { font-size: 34px; }
+      .price { font-size: 32px; }
+    }
+
+    /* Fixed mobile presentation: desktop browsers see the same narrow layout. */
+    html {
+      background:
+        radial-gradient(circle at 50% 0%, rgba(214, 164, 95, .22), transparent 28rem),
+        #17130e;
+    }
+    body {
+      width: min(calc(100% - 16px), 430px);
+      min-height: 100vh;
+      margin: 0 auto;
+      overflow-x: hidden;
+      border-radius: 18px;
+      box-shadow: 0 0 0 1px rgba(241, 210, 160, .16), 0 24px 90px rgba(0, 0, 0, .48);
+    }
+    .wrap { width: min(100% - 30px, 1120px); }
+    .section { padding: 64px 0; }
+    h1 { font-size: clamp(43px, 12.4vw, 54px); }
+    h2 { font-size: clamp(29px, 8.5vw, 38px); }
+    h3 { font-size: 21px; }
+    .lead { font-size: 17px; }
+    .hero {
+      min-height: auto;
+      padding-top: 0;
+      padding-bottom: 18px;
+    }
+    .hero::before {
+      background:
+        radial-gradient(circle at 50% 0%, rgba(214, 164, 95, .18), transparent 18rem),
+        linear-gradient(180deg, rgba(8, 8, 7, 0), rgba(8, 8, 7, .94) 18rem),
+        #080807;
+    }
+    .hero::after { inset: 14px; }
+    .hero-grid,
+    .section-head,
+    .grid-2,
+    .grid-3 {
+      grid-template-columns: 1fr;
+    }
+    .section-head { gap: 18px; }
+    .hero .title-ja { font-size: 34px; }
+    .hero-copy { font-size: 17px; }
+    .hero-card,
+    .card {
+      padding: 20px;
+      border-radius: 18px;
+    }
+    .actions { display: grid; }
+    .btn { width: 100%; }
+    .pricing-card.featured { transform: none; }
+    .price { font-size: 32px; }
+    .step { grid-template-columns: 1fr; }
+    .timeline-item { grid-template-columns: 1fr; }
+    table { min-width: 680px; }
+    .menu-section {
+      padding: 0 0 34px;
+      background: linear-gradient(180deg, #080807 0%, #080807 18%, #fffaf1 76%);
+    }
+    .menu-section .wrap {
+      width: min(100% - 32px, 1120px);
+    }
+    .contents-title {
+      margin: 0 0 14px;
+      color: var(--gold-2);
+      font-size: 13px;
+      font-weight: 950;
+      letter-spacing: .18em;
+    }
+    .contents-title::after {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 1px;
+      margin-top: 10px;
+      background: rgba(241, 210, 160, .22);
+    }
+    .tap-menu {
+      display: grid;
+      gap: 12px;
+    }
+    .tap-card {
+      display: grid;
+      grid-template-columns: 44px 1fr 20px;
+      gap: 12px;
+      align-items: center;
+      min-height: 88px;
+      padding: 16px;
+      border: 1px solid rgba(214, 164, 95, .34);
+      border-radius: 18px;
+      color: #fff8ea;
+      background: linear-gradient(135deg, rgba(14, 12, 9, .94), rgba(45, 34, 21, .92));
+      box-shadow: 0 16px 42px rgba(0, 0, 0, .24);
+    }
+    .tap-card strong {
+      display: block;
+      font-size: 17px;
+      line-height: 1.3;
+    }
+    .tap-card span {
+      display: block;
+      margin-top: 4px;
+      color: rgba(255, 248, 234, .68);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+    .tap-num {
+      display: grid;
+      place-items: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      color: #111;
+      background: var(--lime);
+      font-weight: 950;
+    }
+    .tap-arrow {
+      color: var(--lime);
+      font-size: 24px;
+      font-weight: 900;
+    }
+    .page-section {
+      scroll-margin-top: 16px;
+    }
+    .section-kicker {
+      display: inline-flex;
+      margin-bottom: 12px;
+      color: #604018;
+      font-size: 13px;
+      font-weight: 950;
+    }
+    .course-card {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, .7);
+      padding: 20px;
+    }
+    .course-card + .course-card { margin-top: 14px; }
+    .price-card {
+      border: 1px solid rgba(214, 164, 95, .52);
+      border-radius: 18px;
+      background: #11100e;
+      color: #fff8ea;
+      padding: 20px;
+    }
+    .price-card .muted,
+    .price-card li { color: rgba(255, 248, 234, .72); }
+    .price-card + .price-card { margin-top: 14px; }
+  </style>
+</head>
+<body>
+  <header class="hero section">
+    <div class="hero-image">
+      <img src="assets/hero-thumbnail.png" alt="リズム・リンキングラボのサムネイル。ヘッドホンをつけた猫とマイク、本を読む学習シーン。">
+    </div>
+    <div class="wrap hero-grid">
+      <div class="hero-content">
+        <h1>RHYTHM &<br>LINKING LAB</h1>
+        <p class="title-ja">スペシャルオファー</p>
+        <div class="message-block">
+          <p class="congrats">12週間のSOUND DESIGN LAB、本当にお疲れ様でした。</p>
+          <p>ここからは、作った音を「単語の中」だけで終わらせず、文章・会話の中で自然につなげていくステージです。</p>
+          <p>発音記号（母音/子音）・強勢の土台を整えながら、<span class="emphasis">リンキング・弱形・リズム・イントネーション</span>へ進むための特別な参加プランをご用意しました。</p>
+          <p class="closing">以下の6つを順番にご確認ください。<br>流れ・内容・料金・不安点まで、このページでまとめて確認できます。</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section menu-section">
+      <div class="wrap">
+        <h2 class="contents-title">CONTENTS</h2>
+        <div class="tap-menu" aria-label="詳細メニュー">
+          <a class="tap-card" href="guide.html"><div class="tap-num">1</div><div><strong>この後の進め方</strong><span>特練、EPT Basic、リズム・リンキングラボまでの流れ</span></div><div class="tap-arrow">›</div></a>
+          <a class="tap-card" href="training.html"><div class="tap-num">2</div><div><strong>特練とは？</strong><span>まりあの発音の師匠（音バカ村松先生）による90分×4回の少人数スペシャルレッスン</span></div><div class="tap-arrow">›</div></a>
+          <a class="tap-card" href="lab.html"><div class="tap-num">3</div><div><strong>リズム・リンキングラボとは</strong><span>音の土台を、文章と会話の流れへつなげる講座</span></div><div class="tap-arrow">›</div></a>
+          <a class="tap-card" href="price.html"><div class="tap-num">4</div><div><strong>料金表</strong><span>アーカイブ / 通常 / 1-on-1付 の3つの参加プラン（水曜日クラス）</span></div><div class="tap-arrow">›</div></a>
+          <a class="tap-card" href="faq.html"><div class="tap-num">5</div><div><strong>よくある質問</strong><span>受講前に気になるポイント</span></div><div class="tap-arrow">›</div></a>
+          <a class="tap-card" href="price.html#morning"><div class="tap-num">6</div><div><strong>☀️ 朝クラス、検討中です</strong><span>土曜朝10時 or 日曜朝10時。30秒の匿名アンケートにご協力ください</span></div><div class="tap-arrow">›</div></a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+</body>
+</html>
