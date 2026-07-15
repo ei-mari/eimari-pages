@@ -44,9 +44,9 @@
     .condition-item span:last-child{display:block;color:rgba(255,248,234,.76);font-size:13px;line-height:1.6}
     .important{margin-top:16px;padding:13px 14px;border-left:3px solid var(--lime);border-radius:0 12px 12px 0;background:rgba(202,255,61,.12);font-size:13px;font-weight:850}
     details{margin-top:14px;border:1px solid rgba(214,164,95,.32);border-radius:16px;background:#fff;overflow:hidden}
-    summary{display:flex;align-items:center;justify-content:space-between;cursor:pointer;list-style:none;padding:15px 16px;font-weight:950}
+    summary{position:relative;display:block;cursor:pointer;list-style:none;padding:15px 54px 15px 16px;font-weight:950}
     summary::-webkit-details-marker{display:none}
-    summary:after{content:"+";display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:#111;color:var(--lime)}
+    summary:after{content:"+";position:absolute;top:50%;right:16px;display:grid;place-items:center;width:28px;height:28px;transform:translateY(-50%);border-radius:50%;background:#111;color:var(--lime);font-size:20px;line-height:1;font-weight:500}
     details[open] summary:after{content:"−"}
     .schedule-list{display:grid;gap:8px;padding:0 14px 14px}
     .schedule-row{display:grid;grid-template-columns:34px 1fr;gap:10px;padding:11px;border-radius:13px;background:#fffaf1;border:1px solid rgba(214,164,95,.16)}
@@ -68,8 +68,8 @@
     .price-regular{color:var(--muted);font-size:12px;text-decoration:line-through}
     .price-desc{margin:5px 0 0;color:var(--muted);font-size:12px;line-height:1.55}
     .price-services{margin-top:12px;border-color:rgba(214,164,95,.22);border-radius:12px}
-    .price-services summary{padding:11px 12px;font-size:13px}
-    .price-services summary:after{width:24px;height:24px;font-size:16px}
+    .price-services summary{padding:12px 48px 12px 13px;font-size:13px;line-height:1.3}
+    .price-services summary:after{right:12px;width:25px;height:25px;font-size:18px}
     .price-services ul{list-style:none;margin:0;padding:0 12px 12px;display:grid;gap:7px;font-size:12px}
     .price-services li{display:flex;gap:7px;align-items:flex-start;line-height:1.5}
     .service-ok{color:#537500;font-weight:950}
