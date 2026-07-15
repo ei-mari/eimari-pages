@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>日曜日午前クラス 新規開講｜RHYTHM &amp; LINKING LAB</title>
+  <meta name="description" content="リズム・リンキングラボ 日曜日午前クラス（10:00-12:00）の新規開講案内。">
+  <style>
+    :root{--ink:#11110f;--muted:#746c61;--gold:#d6a45f;--gold2:#f1d2a0;--lime:#caff3d;--paper:#fffaf1;--line:rgba(48,39,28,.14);--red:#b33a2f}
+    *{box-sizing:border-box}
+    html{background:#17130e;scroll-behavior:smooth}
+    body{width:min(calc(100% - 16px),430px);min-height:100vh;margin:0 auto;color:var(--ink);font-family:"Hiragino Sans","Yu Gothic",system-ui,sans-serif;background:linear-gradient(180deg,#fffaf1,#f4efe6);line-height:1.75;box-shadow:0 0 0 1px rgba(241,210,160,.16),0 24px 90px rgba(0,0,0,.48);overflow-x:hidden;border-radius:18px}
+    a{text-decoration:none;color:inherit}
+    img{display:block;width:100%;height:auto}
+    .wrap{width:calc(100% - 30px);margin:0 auto}
+    .hero{background:#080807;color:#fff8ea;padding-bottom:30px}
+    .hero-img{border-bottom:1px solid rgba(214,164,95,.45)}
+    .kicker{display:inline-flex;margin-top:24px;color:var(--lime);font-size:12px;font-weight:950;letter-spacing:.12em}
+    h1,h2,h3,p{margin-top:0}
+    h1{margin-bottom:0;font-size:36px;line-height:1.18}
+    .hero h1{margin-top:12px}
+    .hero-lead{margin:14px 0 0;color:rgba(255,248,234,.82);font-size:16px}
+    .class-time{display:flex;align-items:center;gap:10px;margin-top:20px;padding:15px;border:1px solid rgba(202,255,61,.35);border-radius:16px;background:rgba(202,255,61,.11)}
+    .class-time span{display:grid;place-items:center;width:42px;height:42px;border-radius:50%;background:var(--lime);font-size:21px}
+    .class-time strong{display:block;color:#fff;font-size:19px;line-height:1.4}
+    .class-time small{display:block;color:var(--gold2);font-weight:850}
+    .section{padding:34px 0}
+    .card{border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.76);padding:20px;box-shadow:0 16px 42px rgba(21,16,10,.11)}
+    .card+.card{margin-top:14px}
+    .eyebrow{display:inline-flex;color:#73501f;font-size:11px;font-weight:950;letter-spacing:.12em}
+    h2{margin:7px 0 0;font-size:24px;line-height:1.3}
+    h3{margin:0;font-size:17px;line-height:1.45}
+    .muted{margin:10px 0 0;color:var(--muted)}
+    .feature-list{list-style:none;padding:0;margin:16px 0 0;display:grid;gap:10px}
+    .feature-list li{position:relative;padding-left:28px;font-weight:850}
+    .feature-list li:before{content:"";position:absolute;left:0;top:.55em;width:14px;height:14px;border-radius:50%;background:var(--lime);box-shadow:0 0 0 4px rgba(202,255,61,.18)}
+    .condition{border:2px solid var(--gold);background:linear-gradient(145deg,#17130e,#3a2815);color:#fff8ea}
+    .condition .eyebrow{color:var(--lime)}
+    .condition p{margin:12px 0 0;color:rgba(255,248,234,.82)}
+    .condition-grid{display:grid;gap:10px;margin-top:16px}
+    .condition-item{display:grid;grid-template-columns:38px 1fr;gap:10px;align-items:start;padding:12px;border-radius:14px;background:rgba(255,255,255,.08)}
+    .condition-icon{display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:var(--lime);color:#111;font-size:18px}
+    .condition-item strong{display:block;color:#fff}
+    .condition-item span:last-child{display:block;color:rgba(255,248,234,.76);font-size:13px;line-height:1.6}
+    .important{margin-top:16px;padding:13px 14px;border-left:3px solid var(--lime);border-radius:0 12px 12px 0;background:rgba(202,255,61,.12);font-size:13px;font-weight:850}
+    details{margin-top:14px;border:1px solid rgba(214,164,95,.32);border-radius:16px;background:#fff;overflow:hidden}
+    summary{display:flex;align-items:center;justify-content:space-between;cursor:pointer;list-style:none;padding:15px 16px;font-weight:950}
+    summary::-webkit-details-marker{display:none}
+    summary:after{content:"+";display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:#111;color:var(--lime)}
+    details[open] summary:after{content:"−"}
+    .schedule-list{display:grid;gap:8px;padding:0 14px 14px}
+    .schedule-row{display:grid;grid-template-columns:34px 1fr;gap:10px;padding:11px;border-radius:13px;background:#fffaf1;border:1px solid rgba(214,164,95,.16)}
+    .schedule-no{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:#15100b;color:var(--lime);font-size:11px;font-weight:950}
+    .schedule-title{display:block;font-weight:950;line-height:1.4}
+    .schedule-date{display:block;color:#6c5840;font-size:12px;font-weight:850;line-height:1.5}
+    .note{margin:12px 0 0;color:var(--muted);font-size:12px}
+    .cta{margin-top:16px;border-radius:18px;background:#11100e;color:#fff8ea;padding:20px;text-align:center}
+    .cta p{margin:10px 0 0;color:rgba(255,248,234,.76);font-size:13px}
+    .price-section{margin-top:16px}
+    .price-lead{margin:10px 0 0;color:var(--muted);font-size:13px}
+    .price-grid{display:grid;gap:10px;margin-top:16px}
+    .price-item{padding:15px;border:1px solid rgba(214,164,95,.32);border-radius:15px;background:#fff}
+    .price-item.recommended{border:2px solid var(--gold);background:linear-gradient(145deg,#fffdf8,#fff2d9)}
+    .price-item h3{display:flex;align-items:center;gap:7px}
+    .price-tag{display:inline-flex;margin-top:5px;color:#866027;font-size:11px;font-weight:900;letter-spacing:.08em}
+    .price-row{display:flex;align-items:baseline;gap:8px;margin-top:5px}
+    .price-current{font-size:25px;font-weight:950;color:#16120d}
+    .price-regular{color:var(--muted);font-size:12px;text-decoration:line-through}
+    .price-desc{margin:5px 0 0;color:var(--muted);font-size:12px;line-height:1.55}
+    .price-services{margin-top:12px;border-color:rgba(214,164,95,.22);border-radius:12px}
+    .price-services summary{padding:11px 12px;font-size:13px}
+    .price-services summary:after{width:24px;height:24px;font-size:16px}
+    .price-services ul{list-style:none;margin:0;padding:0 12px 12px;display:grid;gap:7px;font-size:12px}
+    .price-services li{display:flex;gap:7px;align-items:flex-start;line-height:1.5}
+    .service-ok{color:#537500;font-weight:950}
+    .service-no{color:#a33b32;font-weight:950}
+    .btn{display:flex;align-items:center;justify-content:center;min-height:54px;margin-top:16px;border-radius:999px;background:linear-gradient(135deg,var(--lime),#fff47b);color:#111;font-weight:950;box-shadow:0 12px 28px rgba(0,0,0,.15)}
+    .subbtn{background:#1b1916;color:#fff8ea;border:1px solid rgba(255,255,255,.2);box-shadow:none}
+    .sticky{position:sticky;bottom:10px;z-index:5;margin:0 15px 14px}
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <img class="hero-img" src="assets/hero-thumbnail.png" alt="リズム・リンキングラボ">
+    <div class="wrap">
+      <span class="kicker">NEW CLASS / SUNDAY MORNING</span>
+      <h1>日曜日午前クラス<br>新規開講のご案内</h1>
+      <p class="hero-lead">朝の時間に、英語の音と流れをじっくり磨く新しいクラスをご用意しました。</p>
+      <div class="class-time"><span>☀️</span><div><small>日曜日午前クラス</small><strong>10:00 - 12:00</strong></div></div>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="wrap">
+      <section class="card">
+        <span class="eyebrow">CLASS OVERVIEW</span>
+        <h2>朝の時間に、自然につながる英語を。</h2>
+        <p class="muted">まりあ担当のグループレッスンを中心に、リンキング・弱形・リズム・イントネーションを段階的に学びます。</p>
+        <ul class="feature-list">
+          <li>日曜日 10:00 - 12:00</li>
+          <li>まりあ担当グループレッスン10回</li>
+          <li>EIGHTによるスペシャルセッション</li>
+          <li>アーカイブ・スライド・課題つき</li>
+        </ul>
+      </section>
+
+      <section class="card" id="schedule">
+        <span class="eyebrow">SCHEDULE</span>
+        <h2>日曜日午前クラスの日程</h2>
+        <p class="muted">全日程を日曜日の午前10:00から開催します。</p>
+        <details open>
+          <summary>全日程を見る</summary>
+          <div class="schedule-list">
+            <div class="schedule-row"><span class="schedule-no">1</span><span><span class="schedule-title">リンキング Part 1</span><span class="schedule-date">8/23（日）10:00 - 12:00</span></span></div>
+            <div class="schedule-row"><span class="schedule-no">E</span><span><span class="schedule-title">1-on-1コーチング</span><span class="schedule-date">日程は調整の上決定</span></span></div>
+            <div class="schedule-row"><span class="schedule-no">2</span><span><span class="schedule-title">リンキング Part 2</span><span class="schedule-date">9/6（日）10:00 - 12:00</span></span></div>
+            <div class="schedule-row"><span class="schedule-no">3</span><span><span class="schedule-title">実践練習 #1</span><span class="schedule-date">9/13（日）10:00 - 12:00</span></span></div>
+            <div class="schedule-row"><span class="schedule-no">4</span><span><span class="schedule-title">弱形</span><span class="schedule-date">9/20（日）10:00 - 12:00</span></span></div>
+            <div class="schedule-row"><span class="schedule-no">E</span><span><span class="schedule-title">機能語探し（品詞）</span><span class="schedule-date">9/27（日）10:00 - 12:00</span></span></div>
+            <div class="schedule-row"><span class="schedule-no">5</span><span><span class="schedule-title">リズム</span><span class="schedule-date">10/4（日）10:00 - 12:00</span></span></div>
+            <div class="schedule-row"><span class="schedule-no">6</span><span><span class="schedule-title">実践練習 #2</span><span class="schedule-date">10/11（日）10:00 - 12:00</span></span></div>
+            <div class="schedule-row"><span class="schedule-no">7</span><span><span class="schedule-title">イントネーション・文アクセント</span><span class="schedule-date">10/18（日）10:00 - 12:00</span></span></div>
+            <div class="schedule-row"><span class="schedule-no">E</span><span><span class="schedule-title">これまでの総合復習</span><span class="schedule-date">10/25（日）10:00 - 12:00</span></span></div>
+            <div class="schedule-row"><span class="schedule-no">8</span><span><span class="schedule-title">フレーズ強勢</span><span class="schedule-date">11/1（日）10:00 - 12:00</span></span></div>
+            <div class="schedule-row"><span class="schedule-no">9</span><span><span class="schedule-title">実践練習 #3</span><span class="schedule-date">11/8（日）10:00 - 12:00</span></span></div>
+            <div class="schedule-row"><span class="schedule-no">10</span><span><span class="schedule-title">Jobs Analysis</span><span class="schedule-date">11/15（日）10:00 - 12:00</span></span></div>
+            <div class="schedule-row"><span class="schedule-no">PL</span><span><span class="schedule-title">1-on-1レッスン Part 1</span><span class="schedule-date">11/29（日）10:00 - 12:00ごろ</span></span></div>
+            <div class="schedule-row"><span class="schedule-no">PL</span><span><span class="schedule-title">1-on-1レッスン Part 2</span><span class="schedule-date">12/13（日）10:00 - 12:00ごろ</span></span></div>
+          </div>
+        </details>
+        <p class="note">※EはEIGHT担当、PLは1-on-1付コース限定です。実施順は進捗に応じて変更となる場合があります。</p>
+      </section>
+
+      <section class="card condition">
+        <span class="eyebrow">OPENING REQUIREMENT</span>
+        <h2>開講条件について</h2>
+        <p>本クラスは、<strong>3名以上のお申し込み</strong>で開講いたします。</p>
+        <div class="condition-grid">
+          <div class="condition-item"><span class="condition-icon">3</span><span><strong>3名以上で正式開講</strong><span>お申し込みが3名に達した時点で、開講を確定します。</span></span></div>
+          <div class="condition-item"><span class="condition-icon">↩</span><span><strong>3名未満の場合は全額返金</strong><span>開講を見送る場合、お支払いいただいた金額は全額返金します。</span></span></div>
+          <div class="condition-item"><span class="condition-icon">🎥</span><span><strong>アーカイブコースを無料提供</strong><span>返金に加えて、リズム・リンキングラボのアーカイブコースを無料でご提供します。</span></span></div>
+        </div>
+        <div class="important">開講可否は、お申し込み状況を確認したうえで改めてご案内します。</div>
+      </section>
+
+      <section class="cta">
+        <h2>日曜日午前クラスに申し込む</h2>
+        <p>内容と開講条件をご確認のうえ、申込フォームへお進みください。</p>
+        <a class="btn" href="https://tally.so/r/OD9k6Y">申込フォームを開く</a>
+      </section>
+
+      <section class="card price-section" id="price">
+        <span class="eyebrow">PRICE</span>
+        <h2>料金表</h2>
+        <p class="price-lead">日曜日午前クラスに参加できる3つのコースをご用意しています。</p>
+        <div class="price-grid">
+          <article class="price-item recommended">
+            <h3>🎙 通常コース＋特練</h3>
+            <span class="price-tag">おすすめ</span>
+            <div class="price-row"><strong class="price-current">129,800円</strong><span class="price-regular">通常 159,800円</span></div>
+            <p class="price-desc">特練で土台を整え、日曜日午前クラスで声に出して実践。</p>
+            <details class="price-services"><summary>詳しいサービス内容</summary><ul>
+              <li><span class="service-ok">✔</span><span>特練 90分 × 4回</span></li>
+              <li><span class="service-ok">✔</span><span>まりあ担当：グループレッスン10回</span></li>
+              <li><span class="service-ok">✔</span><span>アーカイブ・スライド・課題</span></li>
+              <li><span class="service-ok">✔</span><span>EIGHT：スペシャルセッション2回</span></li>
+              <li><span class="service-no">×</span><span>1-on-1レッスン</span></li>
+              <li><span class="service-no">×</span><span>音バカ村松：レベルチェック1-on-1</span></li>
+            </ul></details>
+          </article>
+          <article class="price-item">
+            <h3>🎧 1-on-1付コース＋特練</h3>
+            <span class="price-tag">個別確認まで</span>
+            <div class="price-row"><strong class="price-current">218,000円</strong><span class="price-regular">通常 248,000円</span></div>
+            <p class="price-desc">グループレッスンに加えて、1-on-1で個別に確認。</p>
+            <details class="price-services"><summary>詳しいサービス内容</summary><ul>
+              <li><span class="service-ok">✔</span><span>特練 90分 × 4回</span></li>
+              <li><span class="service-ok">✔</span><span>まりあ担当：グループレッスン10回</span></li>
+              <li><span class="service-ok">✔</span><span>アーカイブ・スライド・課題</span></li>
+              <li><span class="service-ok">✔</span><span>EIGHT：スペシャルセッション2回</span></li>
+              <li><span class="service-ok">✔</span><span>1-on-1レッスン × 2回</span></li>
+              <li><span class="service-ok">✔</span><span>音バカ村松：レベルチェック1-on-1</span></li>
+            </ul></details>
+          </article>
+          <article class="price-item">
+            <h3>📚 アーカイブコース＋特練</h3>
+            <span class="price-tag">自分のペースで</span>
+            <div class="price-row"><strong class="price-current">59,800円</strong><span class="price-regular">通常 89,800円</span></div>
+            <p class="price-desc">特練に参加し、本編は動画・スライド・課題で学習。</p>
+            <details class="price-services"><summary>詳しいサービス内容</summary><ul>
+              <li><span class="service-ok">✔</span><span>特練 90分 × 4回</span></li>
+              <li><span class="service-ok">✔</span><span>特練での発話参加</span></li>
+              <li><span class="service-ok">✔</span><span>本編アーカイブ視聴</span></li>
+              <li><span class="service-ok">✔</span><span>スライド・課題閲覧</span></li>
+              <li><span class="service-ok">✔</span><span>会員サイト利用</span></li>
+              <li><span class="service-no">×</span><span>まりあ担当：グループレッスン10回</span></li>
+              <li><span class="service-no">×</span><span>本編リアルタイム視聴</span></li>
+              <li><span class="service-no">×</span><span>1-on-1レッスン</span></li>
+            </ul></details>
+          </article>
+        </div>
+        <p class="note">※料金・提供内容の詳細は、各コースのご案内をご確認ください。</p>
+      </section>
+      <a class="btn subbtn" href="index.html">トップへ戻る</a>
+    </div>
+  </main>
+
+  <div class="sticky"><a class="btn" href="https://tally.so/r/OD9k6Y">日曜日午前クラスに申し込む</a></div>
+</body>
+</html>
