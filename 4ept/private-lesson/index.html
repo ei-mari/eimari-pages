@@ -580,7 +580,7 @@
           <div class="card-body">
             <p class="label">Date</p>
             <h2>What’s the date today?</h2>
-            <p class="answer date-line">Sunday, July 12, 2026.</p>
+            <p class="answer date-line" id="todayDate">Sunday, July 12, 2026.</p>
           </div>
         </article>
 
@@ -1230,8 +1230,22 @@
         renderTimer();
       });
 
+      function renderTodayDate() {
+        const todayDate = document.getElementById("todayDate");
+        const date = new Intl.DateTimeFormat("en-US", {
+          timeZone: "Asia/Tokyo",
+          weekday: "long",
+          month: "long",
+          day: "numeric",
+          year: "numeric"
+        }).format(new Date());
+        todayDate.textContent = `${date}.`;
+      }
+
       selectSet("A", false);
       renderTimer();
+      renderTodayDate();
+      setInterval(renderTodayDate, 60 * 1000);
     </script>
   </body>
 </html>
