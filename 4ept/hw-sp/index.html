@@ -53,7 +53,7 @@
 
     .tabs {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 8px;
       margin-bottom: 14px;
       padding: 6px;
@@ -61,6 +61,130 @@
       border-radius: 10px;
       background: rgba(255, 255, 255, .72);
       box-shadow: 0 10px 24px rgba(18, 48, 79, .08);
+    }
+
+    .player-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      min-height: 48px;
+      margin-bottom: 8px;
+      padding: 0 16px;
+      border: 1px solid rgba(18, 48, 79, .16);
+      border-radius: 8px;
+      color: #fff;
+      background: linear-gradient(135deg, var(--navy), var(--blue));
+      box-shadow: 0 10px 24px rgba(18, 48, 79, .14);
+      font: inherit;
+      font-size: 14px;
+      font-weight: 900;
+      cursor: pointer;
+    }
+
+    .player-toggle-icon {
+      font-size: 20px;
+      line-height: 1;
+      transition: transform .2s ease;
+    }
+
+    .player-toggle[aria-expanded="true"] .player-toggle-icon {
+      transform: rotate(180deg);
+    }
+
+    .master-player {
+      display: grid;
+      gap: 12px;
+      margin-bottom: 14px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: 0 12px 28px rgba(18, 48, 79, .12);
+    }
+
+    .master-player[hidden] {
+      display: none;
+    }
+
+    .master-label {
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .master-scope {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 5px;
+    }
+
+    .master-modes {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 6px;
+    }
+
+    .master-option {
+      min-height: 36px;
+      padding: 4px;
+      border: 1px solid #c6d8e8;
+      border-radius: 7px;
+      color: var(--navy);
+      background: #fff;
+      font: inherit;
+      font-size: 11px;
+      font-weight: 900;
+      cursor: pointer;
+    }
+
+    .master-option.active {
+      color: #fff;
+      border-color: var(--blue);
+      background: var(--blue);
+    }
+
+    .master-now {
+      min-height: 58px;
+      padding: 10px 12px;
+      border-left: 4px solid var(--accent);
+      background: var(--soft);
+    }
+
+    .master-meta {
+      margin: 0 0 4px;
+      color: var(--blue);
+      font-size: 11px;
+      font-weight: 900;
+    }
+
+    .master-sentence {
+      margin: 0;
+      color: var(--ink);
+      font-size: 14px;
+      font-weight: 800;
+      line-height: 1.45;
+    }
+
+    .master-transport {
+      display: grid;
+      grid-template-columns: 40px 1fr 40px;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .master-skip {
+      display: grid;
+      place-items: center;
+      width: 40px;
+      height: 40px;
+      border: 1px solid #c6d8e8;
+      border-radius: 50%;
+      color: var(--navy);
+      background: #fff;
+      font-size: 16px;
+      cursor: pointer;
     }
 
     .tab-btn {
@@ -328,20 +452,64 @@
 </head>
 <body>
   <div class="page">
+    <button class="player-toggle" type="button" id="playerToggle" aria-expanded="false" aria-controls="masterPlayer">
+      <span>PLAYER</span>
+      <span class="player-toggle-icon" aria-hidden="true">⌄</span>
+    </button>
+
+    <section class="master-player" id="masterPlayer" aria-label="All audio player" hidden>
+      <div>
+        <div class="master-label">PLAYLIST</div>
+        <div class="master-scope" id="masterScope">
+          <button class="master-option active" type="button" data-scope="all">ALL</button>
+          <button class="master-option" type="button" data-scope="tag2">HW 2</button>
+          <button class="master-option" type="button" data-scope="tag3">HW 3</button>
+          <button class="master-option" type="button" data-scope="tag4">HW 4</button>
+        </div>
+      </div>
+
+      <div>
+        <div class="master-label">LOOP MODE</div>
+        <div class="master-modes" id="masterModes">
+          <button class="master-option active" type="button" data-mode="all">ALL LOOP</button>
+          <button class="master-option" type="button" data-mode="single">SINGLE LOOP</button>
+        </div>
+      </div>
+
+      <div class="master-now" aria-live="polite">
+        <p class="master-meta" id="masterMeta"></p>
+        <p class="master-sentence" id="masterSentence"></p>
+      </div>
+
+      <div class="master-transport">
+        <button class="master-skip" type="button" id="masterPrev" aria-label="Previous audio" title="Previous audio">◀</button>
+        <audio id="masterAudio" controls preload="metadata"></audio>
+        <button class="master-skip" type="button" id="masterNext" aria-label="Next audio" title="Next audio">▶</button>
+      </div>
+
+      <div class="speed-row" id="masterSpeed" aria-label="Master player playback speed">
+        <button class="speed-btn" type="button" data-rate="0.25">0.25</button>
+        <button class="speed-btn" type="button" data-rate="0.5">0.5</button>
+        <button class="speed-btn" type="button" data-rate="0.75">0.75</button>
+        <button class="speed-btn active" type="button" data-rate="1">1.0</button>
+      </div>
+    </section>
+
     <nav class="tabs" aria-label="Homework tags">
-      <button class="tab-btn active" type="button" data-tag="tag1">HW 1</button>
-      <button class="tab-btn" type="button" data-tag="tag2">HW 2</button>
+      <button class="tab-btn active" type="button" data-tag="tag2">HW 2</button>
+      <button class="tab-btn" type="button" data-tag="tag3">HW 3</button>
+      <button class="tab-btn" type="button" data-tag="tag4">HW 4</button>
     </nav>
 
     <header class="hero">
       <div class="hero-images" id="heroImages" aria-label="Homework thumbnails">
-        <img src="assets/images/car-1.jpeg" alt="">
-        <img src="assets/images/car-2.jpeg" alt="">
-        <img src="assets/images/car-3.jpeg" alt="">
+        <img src="assets/images/uncle-1.jpeg" alt="">
+        <img src="assets/images/uncle-2.jpeg" alt="">
+        <img src="assets/images/uncle-3.jpeg" alt="">
       </div>
       <div class="title-block">
         <div class="eyebrow">4EPT Homework SP</div>
-        <h1 id="pageTitle">Car Society</h1>
+        <h1 id="pageTitle">Uncle Robert</h1>
         <p class="period" id="pagePeriod">2026年3月 〜 2026年6月</p>
         <p class="guidance">まずは音声を活用せずに音読に挑戦しましょう。その後音声を確認しギャップを埋めながら練習してください！</p>
       </div>
@@ -354,7 +522,7 @@
     <section class="practice" aria-label="Sentence audio practice">
       <div class="section-head">
         <h2>Sentence Practice</h2>
-        <p>好きな方の音声を活用し練習しましょう。気になる単語は発音記号を調べてOKです。</p>
+        <p>音声を活用し練習しましょう。気になる単語は発音記号を調べてOKです。</p>
       </div>
       <div class="sentence-list" id="sentenceList"></div>
     </section>
@@ -405,15 +573,68 @@
           "Though he passed away last year, his memory resonates within us, cherished and enduring.",
           "His laughter still stays with us, bringing warmth even on the coldest days."
         ]
+      },
+      tag3: {
+        title: "Magic",
+        period: "2026年3月 〜 2026年6月",
+        images: [
+          ["assets/images/magic-1.jpeg", "Playing cards and coins"],
+          ["assets/images/magic-2.jpeg", "Magician performing with a wand"],
+          ["assets/images/magic-3.jpeg", "Las Vegas at night"]
+        ],
+        audio: { single: "tag3" },
+        sentences: [
+          "Magic is an amazing art that fascinates audiences everywhere.",
+          "Magicians use wands and say mysterious words to perform incredible tricks.",
+          "For example, pulling a rabbit out of a hat always amazes people.",
+          "The number three holds special significance in many illusions;",
+          "watch closely as the magician makes three colorful scarves disappear and reappear in a puff of smoke.",
+          "Famous magicians like David Copper field have dazzled audiences with their extraordinary big tricks,",
+          "such as making the Statue of Liberty vanish into thin air.",
+          "In Las Vegas, the entertainment capital of the world, magicians perform nightly shows with 52 mind-bending tricks using playing cards and coins.",
+          "Over 2,000,000 people watch these shows every year.",
+          "So, get ready to be amazed as you witness the magic unfold before your eyes!"
+        ]
+      },
+      tag4: {
+        title: "The Johnny Appleseed Festival",
+        period: "2026年3月 〜 2026年6月",
+        images: [
+          ["assets/images/festival-1.jpg", "Dancers performing at the Johnny Appleseed Festival"],
+          ["assets/images/festival-2.jpg", "Festival visitors beside a historic tent"],
+          ["assets/images/festival-3.jpg", "Apple pancake roll-ups at the festival" ]
+        ],
+        audio: { single: "tag4" },
+        sentences: [
+          "The Johnny Appleseed Festival is held every year in Fort Wayne, Indiana, to honor the memory of John Chapman, who is popularly remembered as Johnny Appleseed.",
+          "He was born on September 26, 1774, and became widely known for spreading apple seeds throughout the United States.",
+          "The event is organized on the third weekend of September, and in 2023, it took place on September 16th and 17th.",
+          "More than 300 vendors joined the festival, selling regional foods, handmade crafts, and local products.",
+          "Visitors could enjoy folk music, storytelling performances, and apple-inspired activities.",
+          "Many families shared fresh apple cider and homemade pies.",
+          "Approximately 250,000 people visit the event each year.",
+          "It remains a significant celebration of his remarkable influence on American culture."
+        ]
       }
     };
 
-    let activeTag = "tag1";
+    const visibleTagKeys = ["tag2", "tag3", "tag4"];
+    let activeTag = "tag2";
     const heroImages = document.getElementById("heroImages");
     const pageTitle = document.getElementById("pageTitle");
     const pagePeriod = document.getElementById("pagePeriod");
     const passageText = document.getElementById("passageText");
     const sentenceList = document.getElementById("sentenceList");
+    const playerToggle = document.getElementById("playerToggle");
+    const masterPlayer = document.getElementById("masterPlayer");
+    const masterAudio = document.getElementById("masterAudio");
+    const masterMeta = document.getElementById("masterMeta");
+    const masterSentence = document.getElementById("masterSentence");
+    let masterScope = "all";
+    let masterMode = "all";
+    let masterRate = 1;
+    let masterIndex = 0;
+    let masterPlaylist = [];
 
     function padNumber(number) {
       return String(number).padStart(2, "0");
@@ -435,6 +656,49 @@
       `;
     }
 
+    function audioVariants(tag) {
+      if (tag.audio.single) {
+        return [{ folder: tag.audio.single, label: "Audio" }];
+      }
+      return [{ folder: tag.audio.normal, label: "Normal" }];
+    }
+
+    function buildMasterPlaylist(scope) {
+      const tagKeys = scope === "all" ? visibleTagKeys : [scope];
+      return tagKeys.flatMap((tagKey) => {
+        const tag = tags[tagKey];
+        const variants = audioVariants(tag);
+        return tag.sentences.flatMap((sentence, sentenceIndex) => (
+          variants.map((variant) => ({
+            src: `assets/audio/${variant.folder}/sentence-${padNumber(sentenceIndex + 1)}.mp3`,
+            sentence,
+            label: variant.label,
+            homework: `HW ${tagKey.replace("tag", "")}`,
+            sentenceNumber: sentenceIndex + 1
+          }))
+        ));
+      });
+    }
+
+    function loadMasterTrack(index, autoplay = false) {
+      if (!masterPlaylist.length) return;
+      masterIndex = (index + masterPlaylist.length) % masterPlaylist.length;
+      const track = masterPlaylist[masterIndex];
+      masterAudio.src = track.src;
+      masterAudio.loop = masterMode === "single";
+      masterAudio.playbackRate = masterRate;
+      masterMeta.textContent = `${track.homework} · ${track.sentenceNumber} · ${track.label} · ${masterIndex + 1}/${masterPlaylist.length}`;
+      masterSentence.textContent = track.sentence;
+      if (autoplay) {
+        masterAudio.play().catch(() => {});
+      }
+    }
+
+    function resetMasterPlaylist(autoplay = false) {
+      masterPlaylist = buildMasterPlaylist(masterScope);
+      loadMasterTrack(0, autoplay);
+    }
+
     function render() {
       const tag = tags[activeTag];
       pageTitle.textContent = tag.title;
@@ -446,6 +710,12 @@
 
       sentenceList.innerHTML = tag.sentences.map((sentence, index) => {
         const number = index + 1;
+        const players = tag.audio.single
+          ? playerMarkup(tag.audio.single, "Audio", number)
+          : `
+              ${playerMarkup(tag.audio.normal, "Speaker 1", number)}
+              ${playerMarkup(tag.audio.slow, "Speaker 2", number)}
+            `;
         return `
           <article class="sentence-card">
             <div class="sentence-head">
@@ -453,8 +723,7 @@
               <p class="sentence">${sentence}</p>
             </div>
             <div class="players">
-              ${playerMarkup(tag.audio.normal, "Speaker 1", number)}
-              ${playerMarkup(tag.audio.slow, "Speaker 2", number)}
+              ${players}
             </div>
           </article>
         `;
@@ -472,6 +741,64 @@
       });
     });
 
+    playerToggle.addEventListener("click", () => {
+      const isOpen = playerToggle.getAttribute("aria-expanded") === "true";
+      playerToggle.setAttribute("aria-expanded", String(!isOpen));
+      masterPlayer.hidden = isOpen;
+    });
+
+    document.getElementById("masterScope").addEventListener("click", (event) => {
+      const button = event.target.closest("[data-scope]");
+      if (!button) return;
+      const wasPlaying = !masterAudio.paused;
+      masterScope = button.dataset.scope;
+      document.querySelectorAll("[data-scope]").forEach((item) => {
+        item.classList.toggle("active", item === button);
+      });
+      resetMasterPlaylist(wasPlaying);
+    });
+
+    document.getElementById("masterModes").addEventListener("click", (event) => {
+      const button = event.target.closest("[data-mode]");
+      if (!button) return;
+      masterMode = button.dataset.mode;
+      masterAudio.loop = masterMode === "single";
+      document.querySelectorAll("[data-mode]").forEach((item) => {
+        item.classList.toggle("active", item === button);
+      });
+    });
+
+    document.getElementById("masterPrev").addEventListener("click", () => {
+      loadMasterTrack(masterIndex - 1, true);
+    });
+
+    document.getElementById("masterNext").addEventListener("click", () => {
+      loadMasterTrack(masterIndex + 1, true);
+    });
+
+    document.getElementById("masterSpeed").addEventListener("click", (event) => {
+      const button = event.target.closest(".speed-btn");
+      if (!button) return;
+      masterRate = Number(button.dataset.rate);
+      masterAudio.playbackRate = masterRate;
+      document.querySelectorAll("#masterSpeed .speed-btn").forEach((item) => {
+        item.classList.toggle("active", item === button);
+      });
+    });
+
+    masterAudio.addEventListener("ended", () => {
+      if (masterMode === "all") {
+        loadMasterTrack(masterIndex + 1, true);
+      }
+    });
+
+    document.addEventListener("play", (event) => {
+      if (!(event.target instanceof HTMLAudioElement)) return;
+      document.querySelectorAll("audio").forEach((audio) => {
+        if (audio !== event.target) audio.pause();
+      });
+    }, true);
+
     sentenceList.addEventListener("click", (event) => {
       const button = event.target.closest(".speed-btn");
       if (!button) return;
@@ -488,6 +815,7 @@
     });
 
     render();
+    resetMasterPlaylist();
   </script>
 </body>
 </html>
